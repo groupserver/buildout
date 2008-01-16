@@ -1,0 +1,4 @@
+
+      [zc.buildout]
+      default = vortex.recipe.setup_install:SetupInstall
+      

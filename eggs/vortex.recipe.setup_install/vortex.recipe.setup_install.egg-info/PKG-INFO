@@ -1,0 +1,79 @@
+Metadata-Version: 1.0
+Name: vortex.recipe.setup-install
+Version: 1.0dev
+Summary: zc.buildout recipe for creating files from file templates
+Home-page: http://vortexdna.com/
+Author: Darryl Cousins
+Author-email: darryl.cousins@treefernwebservices.co.nz
+License: UNKNOWN
+Description: The ``vortex.recipe.setup_install`` recipe installs a python package using
+        'setup.py install'.
+        
+        We have an archive with a demo foo tar ball:
+        
+        >>> ls(distros)
+        -  foo.tgz
+        
+        Now let's create a buildout configuration so that we can test the buildout.
+        
+        >>> write(sample_buildout, 'buildout.cfg',
+        ... """
+        ... [buildout]
+        ... index = http://download.zope.org/zope3.4
+        ... parts = foo
+        ...
+        ... [foo]
+        ... recipe = vortex.recipe.setup_install
+        ... url = file://%s/foo.tgz
+        ... """ % distros)
+        
+        Run the buildout
+        
+        >>> print system(buildout)
+        Getting distribution for 'zc.recipe.cmmi'.
+        Got zc.recipe.cmmi 1.1.0.
+        Installing foo.
+        foo: Downloading
+        file:///tmp/tmp...buildoutSetUp/_TEST_/distros/foo.tgz
+        foo: Unpacking and configuring
+        configuring foo install
+        
+        
+        If the package is found (by ``import package``) then it is not installed.
+        
+        >>> write(sample_buildout, 'buildout.cfg',
+        ... """
+        ... [buildout]
+        ... index = http://download.zope.org/zope3.4
+        ... parts = foo
+        ...
+        ... [foo]
+        ... recipe = vortex.recipe.setup_install
+        ... url = file://%s/foo.tgz
+        ... package = os
+        ... """ % distros)
+        
+        Run the buildout
+        
+        >>> print system(buildout)
+        Uninstalling foo.
+        Installing foo.
+        foo: Package os found for ...
+        
+        
+        Changes
+        =======
+        
+        0.1dev
+        ------
+        
+        Initial import.
+        
+Platform: UNKNOWN
+Classifier: Development Status :: 1 - Planning
+Classifier: Intended Audience :: Developers
+Classifier: License :: Other/Proprietary License
+Classifier: Programming Language :: Python
+Classifier: Operating System :: OS Independent
+Classifier: Topic :: Software Development :: Build Tools
+Classifier: Framework :: Buildout
