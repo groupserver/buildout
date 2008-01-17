@@ -1,0 +1,19 @@
+Apache Configuration
+--------------------
+
+Ubuntu:
+
+$ apt-get install apache2
+$ sudo ln -s /etc/apache2/mods-available/rewrite.load \
+             /etc/apache2/mods-enabled/
+$ sudo ln -s /etc/apache2/mods-available/proxy.load \
+             /etc/apache2/mods-enabled/
+$ sudo ln -s /etc/apache2/mods-available/proxy_http.load \
+             /etc/apache2/mods-enabled/
+$ cp BUILDOUT_ROOT/templates/apache-groupserver \
+           /etc/apache2/sites-available/groupserver
+$ sudo ln -s /etc/apache2/sites-available/groupserver \
+       /etc/apache2/sites-enabled/
+$ sudo /etc/init.d/apache2 restart
+
+
