@@ -1,3 +1,40 @@
+Configuring buildout
+--------------------
+
+In buildout.cfg:
+
+- Update the buildout section to point to the postgresql
+headers on your system.
+
+- Edit the instance section to configure zope to start on the port you wish
+to use. The default is 8080.
+
+Setup Database
+--------------
+
+createuser testbed
+createdb -U testbed -E UTF8 testbed
+createlang -U testbed plpgsql testbed
+psql -U testbed testbed < src/XWFMailingListManager/sql/email.sql
+psql -U testbed testbed < src/GSSearch/sql/create_word_count.sql
+psql -U testbed testbed < CustomUserFolder/sql/password_reset.sql 
+psql -U testbed testbed < CustomUserFolder/sql/user_invitation.sql 
+psql -U testbed testbed < CustomUserFolder/sql/user.sql 
+psql -U testbed testbed < CustomUserFolder/sql/verify.sql
+
+Building on CentOS 5
+--------------------
+
+The layout of Postgresql 8.x has a different layout on Centos 5.
+
+In order to allow the buildout to complete, please rename:
+
+  /usr/include/pgsql/server/pgconfig.h to something else
+
+and copy:
+  
+  /usr/include/pgsql/server/pg_config_your_arch.h to /usr/include/pgsql/server/pg_config.h
+
 Apache Configuration
 --------------------
 
