@@ -8,8 +8,8 @@ GSContent https://svn.iopen.net/xwft/GSContent/
 GSGroup https://svn.iopen.net/xwft/GSGroup/trunk/
 GSLogin https://svn.iopen.net/xwft/GSLogin/trunk/
 GSParticipationStats https://svn.iopen.net/xwft/GSParticipationStats/trunk/
-GSProfile https://svn.iopen.net/xwft/GSProfile/trunk/
-GSRedirect https://svn.iopen.net/xwft/GSRedirect/
+GSProfile https://svn.iopen.net/xwft/branches/GSProfile-traversal
+GSRedirect https://svn.iopen.net/xwft/branches/GSRedirect-newstyle
 GSSearch https://svn.iopen.net/xwft/GSSearch/trunk/
 GSSkin https://svn.iopen.net/xwft/GSSkin/trunk/
 GroupServer https://svn.iopen.net/xwft/GroupServerTemplates/trunk/
@@ -20,7 +20,7 @@ XWFCore https://svn.iopen.net/xwft/XWFCore/trunk/
 XWFContentFramework https://svn.iopen.net/xwft/XWFContentFramework/trunk/
 XWFFileLibrary2 https://svn.iopen.net/xwft/XWFFileLibrary2/trunk/
 XWFIdFactory https://svn.iopen.net/xwft/XWFIdFactory/trunk/
-XWFMailingListManager https://svn.iopen.net/xwft/XWFMailingListManager/trunk/
+XWFMailingListManager https://svn.iopen.net/xwft/branches/XWFMailingListManager-traversal
 XWFMetadata https://svn.iopen.net/xwft/XWFMetadata/trunk/
 XWFNewsContent https://svn.iopen.net/xwft/XWFNewsContent/trunk/
 XWFPluggableFiles https://svn.iopen.net/xwft/XWFPluggableFiles/trunk/
