@@ -9,6 +9,13 @@ headers on your system.
 - Edit the instance section to configure zope to start on the port you wish
 to use. The default is 8080.
 
+Prequisites
+-----------
+
+zlib1g-dev
+lib64z1-dev
+libzzip-dev
+
 Installing the buildout
 -----------------------
 
