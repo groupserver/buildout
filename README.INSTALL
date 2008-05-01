@@ -39,7 +39,7 @@ to
 In buildout.cfg:
 
 - Edit the [buildout] section to set pgsql_path to the path for the postgresql 
-  headers on your system (either CentOS 5 or Ubuntu).
+  headers on your system. The default is the Ubuntu path.
 
 - Edit the [instance] section to set http-address to the port you wish Zope to
   use. The default is 8080.
@@ -68,6 +68,10 @@ $ cat src/XWFMailingListManager/sql/email.sql \
 -------------------------------------
  Installing Example GroupServer Site
 -------------------------------------
+
+- Start Zope
+
+    $ ./bin/instance start
 
 - Log into your Zope instance by visiting http://localhost:8080/manage_main and
   entering
@@ -123,5 +127,6 @@ In scripts/apache-groupserver:
   folder of the GroupServer site you installed.
 
 - Run:
-  $ ./scripts/ubuntu_apache_setup.sh
+  $ cd scripts
+  $ ./ubuntu_apache_setup.sh
   
