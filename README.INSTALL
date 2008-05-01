@@ -1,54 +1,127 @@
-Configuring buildout
---------------------
-
-In buildout.cfg:
-
-- Update the buildout section to point to the postgresql
-headers on your system.
-
-- Edit the instance section to configure zope to start on the port you wish
-to use. The default is 8080.
-
-Prequisites
------------
+-------------
+ Prequisites
+-------------
 
 zlib1g-dev
 lib64z1-dev
 libzzip-dev
+postgresql
+postgresql-8.x
+postgresql-common
+postgresql-client-8.x
+postgresql-client-common
+postgresql-server-dev-8.x
 
-Installing the buildout
------------------------
+
+--------------------------------------
+ CentOS 5 Users: Configure Postgresql 
+--------------------------------------
+
+The layout of Postgresql 8.x is different on Centos 5.
+
+In order to allow the buildout to complete, please rename
+
+  /usr/include/pgsql/server/pgconfig.h
+  
+to something else and copy
+  
+  /usr/include/pgsql/server/pg_config_your_arch.h
+
+to
+
+  /usr/include/pgsql/server/pg_config.h
+
+
+--------------------
+ Configure Buildout
+--------------------
+
+In buildout.cfg:
+
+- Edit the [buildout] section to set pgsql_path to the path for the postgresql 
+  headers on your system (either CentOS 5 or Ubuntu).
+
+- Edit the [instance] section to set http-address to the port you wish Zope to
+  use. The default is 8080.
+
+
+------------------
+ Install Buildout
+------------------
 
 $ python bootstrap.py
 $ ./bin/buildout -v
 
-Setup Database
---------------
 
-$ createuser testbed
+-----------------
+ Set Up Database
+-----------------
+
+$ sudo su postgres -c createuser testbed
 $ createdb -U testbed -E UTF8 testbed
 $ createlang -U testbed plpgsql testbed
 $ cat src/XWFMailingListManager/sql/email.sql \
       src/CustomUserFolder/sql/*.sql \
       src/XWFChat/sql/chat.sql | psql -U testbed testbed
 
-Building on CentOS 5
---------------------
 
-The layout of Postgresql 8.x has a different layout on Centos 5.
+-------------------------------------
+ Installing Example GroupServer Site
+-------------------------------------
 
-In order to allow the buildout to complete, please rename:
+- Log into your Zope instance by visiting http://localhost:8080/manage_main and
+  entering
 
-  /usr/include/pgsql/server/pgconfig.h to something else
+    Username: admin
+    Password: admin
 
-and copy:
+- From the dropdown menu, add a Folder ('sites' would be a sensible name).
+
+- Navigate to the new folder.
+
+- From the dropdown menu, choose "Groupserver Site".
+
+    * ID and Title apply to the GroupServer Site.
+
+    * Initial User ID and Initial Password are the credentials for the user 
+      created as a site administrator.
+      
+    * Support Email Address is the address where support queries will be 
+      directed. It will also be used as the email address for the initial user
+      (the initial user's email address can be changed later).
+
+    * Default Timezone is the timezone that will be used to represent dates and
+      times displayed on the site.
+      
+    * Canonical Hostname is the domain name at which your site will be found.
+
+    * User Verification Email Address is deprecated, but must be set to something.
+      
+    * Registration Email Address is deprecated, but must be set to something.
+    
+    * Database Host is localhost (unless you know it is not).
+    
+    * Database Port is 5432 (unless you know it is not).
+    
+    * Database Name is testbed (unless you named it differently).
+    
+    * Database Username is testbed (unless you named it differently).
+    
+    * Database Password is blank (unless you set one).
+    
+
+------------------------------------
+ Ubuntu Users: Apache Configuration
+------------------------------------
+
+In scripts/apache-groupserver:
+
+- Edit the ServerName to match the canonical hostname you specified when 
+  installing the GroupServer site.
+
+- Edit the RewriteRule to match the location of example_site in the Content 
+  folder of the GroupServer site you installed.
+
+- Run:
+  $ ./scripts/ubuntu_apache_setup.sh
   
-  /usr/include/pgsql/server/pg_config_your_arch.h to /usr/include/pgsql/server/pg_config.h
-
-Apache Configuration
---------------------
-
-Ubuntu:
-
-$ cd scripts
-$ ./ubuntu_apache_setup.sh

@@ -11,7 +11,6 @@ GSParticipationStats https://svn.iopen.net/xwft/GSParticipationStats/trunk/
 GSProfile https://svn.iopen.net/xwft/branches/GSProfile-traversal
 GSRedirect https://svn.iopen.net/xwft/branches/GSRedirect-newstyle
 GSSearch https://svn.iopen.net/xwft/GSSearch/trunk/
-GSSkin https://svn.iopen.net/xwft/GSSkin/trunk/
 GroupServer https://svn.iopen.net/xwft/GroupServerTemplates/trunk/
 NuxUserGroups https://svn.iopen.net/xwft/NuxUserGroups/trunk/
 WYMEditor https://svn.iopen.net/xwft/WYMEditor/
@@ -22,7 +21,6 @@ XWFFileLibrary2 https://svn.iopen.net/xwft/XWFFileLibrary2/trunk/
 XWFIdFactory https://svn.iopen.net/xwft/XWFIdFactory/trunk/
 XWFMailingListManager https://svn.iopen.net/xwft/branches/XWFMailingListManager-traversal
 XWFMetadata https://svn.iopen.net/xwft/XWFMetadata/trunk/
-XWFNewsContent https://svn.iopen.net/xwft/XWFNewsContent/trunk/
 XWFPluggableFiles https://svn.iopen.net/xwft/XWFPluggableFiles/trunk/
 ZPsycopgDA https://svn.iopen.net/xwft/NeededButDeprecatedUpstream/ZPsycopgDA
 ZSQLAlchemy https://svn.iopen.net/xwft/NeededButDeprecatedUpstream/ZSQLAlchemy
