@@ -2,6 +2,8 @@
  Prequisites
 -------------
 
+g++
+libpq-dev
 zlib1g-dev
 lib64z1-dev
 libzzip-dev
