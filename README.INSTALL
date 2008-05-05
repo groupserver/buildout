@@ -3,6 +3,7 @@
 -------------
 
 g++
+python2.4
 libpq-dev
 zlib1g-dev
 lib64z1-dev
@@ -59,7 +60,7 @@ $ ./bin/buildout -v
  Set Up Database
 -----------------
 
-$ sudo su postgres -c createuser testbed
+$ sudo su postgres -c createuser -s testbed
 $ createdb -U testbed -E UTF8 testbed
 $ createlang -U testbed plpgsql testbed
 $ cat src/XWFMailingListManager/sql/email.sql \
