@@ -52,7 +52,7 @@ In buildout.cfg:
  Install Buildout
 ------------------
 
-$ python bootstrap.py
+$ python2.4 bootstrap.py
 $ ./bin/buildout -v
 
 
@@ -91,7 +91,8 @@ $ cat src/XWFMailingListManager/sql/email.sql \
     * ID and Title apply to the GroupServer Site.
 
     * Initial User ID and Initial Password are the credentials for the user 
-      created as a site administrator.
+      created as a *site* administrator, which is distinct from the ZMI
+      administrator; the two users must have different IDs.
       
     * Support Email Address is the address where support queries will be 
       directed. It will also be used as the email address for the initial user
@@ -108,7 +109,8 @@ $ cat src/XWFMailingListManager/sql/email.sql \
     
     * Database Host is localhost (unless you know it is not).
     
-    * Database Port is 5432 (unless you know it is not).
+    * Database Port is 5432 (unless you know it is not; it may be 5433 if
+      multiple versions of PostgreSQL are installed).
     
     * Database Name is testbed (unless you named it differently).
     
@@ -127,7 +129,8 @@ In scripts/apache-groupserver:
   installing the GroupServer site.
 
 - Edit the RewriteRule to match the location of example_site in the Content 
-  folder of the GroupServer site you installed.
+  folder of the GroupServer site you installed (everything between the port
+  and "VirtualHostBase" is part of the path in the ZMI).
 
 - Run:
   $ cd scripts
