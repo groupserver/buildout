@@ -1,0 +1,84 @@
+Configuring Postfix
+-------------------
+
+In order to use GroupServer mailing lists, you will need to configure
+Postfix to deliver mail to the Zope-side GroupServer processing
+engine. Like the Apache configuration, this is just a 'possible'
+configuration, there are numerous ways to achieve the same thing. It
+is assumed that you have a WORKING configuration already!
+
+IMPORTANT: the GroupServer setup shown here is a virtual host
+setup. The list domain that you are configuring must NOT match the
+myhostname (which defaults to the hostname of the machine) used in
+your postfix setup. If it does, you should change the myhostname
+parameter to something different. If it matches, you will get strange,
+difficult to debug, looping problems. 
+
+In our experence, the following setup will not work for hosts that relay 
+mail.
+
+i)   You will need to determine:
+
+		    POSTFIX_CONFIG_PATH: the path to your postfix configuration,
+				perhaps /etc/postfix
+   
+				POSTFIX_USER: the user which postfix uses to execute external
+				scripts.  To determine this you can use
+				  # /usr/sbin/postconf | grep default_privs" 
+				
+				POSTFIX_GROUP: the group to which postfix belongs.
+				
+				PATH_TO_GROUPSERVER: the path in which you have installed
+				GroupServer.
+
+				DOMAINNAME: the domainname as configured in Apache.
+   
+ii)  In your postfix 'main.cf' (probably in
+		 POSTFIX_CONFIG_PATH/main.cf),  find the alias_maps parameter, and
+		 add:
+		   hash:POSTFIX_CONFIG_PATH/groupserver.aliases
+   
+		 It should now (depending on your prior configuration) look a
+		 little like: 
+   
+alias_maps = hash:POSTFIX_CONFIG_PATH/aliases
+             hash:POSTFIX_CONFIG_PATH/groupserver.aliases
+		
+iii) In your postfix 'main.cf' find the 'virtual_alias_maps' parameter
+		 and add 
+		   hash:POSTFIX_CONFIG_PATH/groupserver.virtual     
+   
+iv)	 Create a file called 'groupserver.aliases' in
+		 POSTFIX_CONFIG_PATH, with the following contents.
+
+#############################
+verify-address:   "|PATH_TO_GROUPSERVER/src/XWFMailingListManager/smtp2zope-nonautomatic.py http://DOMAINNAME/acl_users/verify_address"
+group-automagic:  "|PATH_TO_GROUPSERVER/src/XWFMailingListManager/smtp2zope.py  http://DOMAINNAME/ListManager"
+#############################
+
+v)   Create a file called 'groupserver.virtual' in
+		 POSTFIX_CONFIG_PATH, with the following contents:
+   
+#############################
+DOMAINNAME			virtual
+verify@DOMAINNAME		verify-address
+@DOMAINNAME			group-automagic
+#############################
+
+vi)  Run the commands:
+		   # chown POSTFIX_USER.POSTFIX_GROUP ZOPE_INSTANCE_DIR/src/XWFMailingListManager/smtp2zope.py
+			 # chmod 750 ZOPE_INSTANCE_DIR/Products/XWFMailingListManager/smtp2zope.py
+			 # chown POSTFIX_USER.POSTFIX_GROUP ZOPE_INSTANCE_DIR/src/XWFMailingListManager/smtp2zope-nonautomatic.py
+			 # chmod 750 ZOPE_INSTANCE_DIR/src/XWFMailingListManager/smtp2zope-nonautomatic.py
+
+vii) Make the following edits to
+		   ZOPE_INSTANCE_DIR/src/XWFMailingListManager/smtp2zope.py and 
+		 smtp2zope-nonautomatic.py
+		 + Change AUTHORIZATION to match the username/password you created
+			 for automated scripts in the initial setup (step 6)
+
+viii) Run the commands:
+			# postalias POSTFIX_CONFIG_PATH/groupserver.aliases
+			# postmap POSTFIX_CONFIG_PATH/groupserver.virtual
+			# postfix reload
+
