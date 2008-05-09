@@ -7,7 +7,6 @@ python2.4
 libpq-dev
 zlib1g-dev
 lib64z1-dev
-libzzip-dev
 postgresql
 postgresql-8.x
 postgresql-common
