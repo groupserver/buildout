@@ -59,7 +59,7 @@ $ ./bin/buildout -v
  Set Up Database
 -----------------
 
-$ sudo su postgres -c createuser -s testbed
+$ sudo su -s /bin/bash -c "/usr/bin/createuser -s testbed" postgres
 $ createdb -U testbed -E UTF8 testbed
 $ createlang -U testbed plpgsql testbed
 $ cat src/XWFMailingListManager/sql/email.sql \
