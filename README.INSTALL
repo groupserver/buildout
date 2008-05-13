@@ -2,18 +2,13 @@
  Prequisites
 -------------
 
-g++
-python2.4
-libpq-dev
-zlib1g-dev
-lib64z1-dev
-postgresql
-postgresql-8.x
-postgresql-common
-postgresql-client-8.x
-postgresql-client-common
-postgresql-server-dev-8.x
-
+The following (Ubuntu) packages are required for GroupServer 1.0α
+  g++ 
+  python2.4 
+  postgresql 
+  postgresql-server-dev-8.3 
+  lib64z1-dev (from main)
+  libzzip-dev (from universe)
 
 --------------------------------------
  CentOS 5 Users: Configure Postgresql 
