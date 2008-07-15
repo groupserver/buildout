@@ -6,6 +6,7 @@ DataTemplates https://svn.iopen.net/xwft/DataTemplates/trunk/
 FileSystemSite https://svn.iopen.net/xwft/FileSystemSite/trunk/
 GSContent https://svn.iopen.net/xwft/GSContent/
 GSGroup https://svn.iopen.net/xwft/GSGroup/trunk/
+GSGroupMember https://svn.iopen.net/xwft/GSGroupMember/trunk
 GSLogin https://svn.iopen.net/xwft/GSLogin/trunk/
 GSParticipationStats https://svn.iopen.net/xwft/GSParticipationStats/trunk/
 GSProfile https://svn.iopen.net/xwft/branches/GSProfile-traversal
