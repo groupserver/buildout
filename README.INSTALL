@@ -71,7 +71,8 @@ Once you have your postgres UNIX-user set up, you have to create the
   $ createlang -U testbed plpgsql testbed
   $ cat src/XWFMailingListManager/sql/email.sql \
         src/CustomUserFolder/sql/*.sql \
-        src/XWFChat/sql/chat.sql | psql -U testbed testbed
+        src/XWFChat/sql/chat.sql \
+        src/GSGroupMember/sql/*.sql | psql -U testbed testbed
 
 -------------------------------------
  Installing Example GroupServer Site
