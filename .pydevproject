@@ -1,0 +1,8 @@
+<?xml version="1.0" ?><?eclipse-pydev version="1.0"?><pydev_project>
+<pydev_pathproperty name="org.python.pydev.PROJECT_SOURCE_PATH">
+<path>/groupserver/src</path>
+</pydev_pathproperty>
+<pydev_property name="org.python.pydev.PYTHON_PROJECT_VERSION">python 2.4</pydev_property>
+
+
+<pydev_pathproperty name="org.python.pydev.PROJECT_EXTERNAL_SOURCE_PATH"><path>/home/richard/workspace/groupserver/eggs/zif.jsonserver-0.6-py2.4.egg</path><path>/home/richard/workspace/groupserver/eggs/SQLAlchemy-0.3.11-py2.4.egg</path><path>/home/richard/workspace/groupserver/eggs/python_cjson-1.0.5-py2.4-linux-i686.egg</path><path>/home/richard/workspace/groupserver/eggs/feedparser-4.1-py2.4.egg</path><path>/home/richard/workspace/groupserver/eggs/FormEncode-1.0.1-py2.4.egg</path><path>/home/richard/workspace/groupserver/eggs/psycopg2-2.0.7-py2.4-linux-i686.egg</path><path>/home/richard/workspace/groupserver/eggs/PIL-1.1.6-py2.4-linux-i686.egg</path><path>/home/richard/workspace/groupserver/eggs/setuptools-0.6c8-py2.4.egg</path></pydev_pathproperty></pydev_project>
