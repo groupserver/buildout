@@ -1,0 +1,17 @@
+README.txt
+setup.cfg
+setup.py
+gs/__init__.py
+gs.recipe.setupgs.egg-info/PKG-INFO
+gs.recipe.setupgs.egg-info/SOURCES.txt
+gs.recipe.setupgs.egg-info/dependency_links.txt
+gs.recipe.setupgs.egg-info/entry_points.txt
+gs.recipe.setupgs.egg-info/namespace_packages.txt
+gs.recipe.setupgs.egg-info/requires.txt
+gs.recipe.setupgs.egg-info/top_level.txt
+gs.recipe.setupgs.egg-info/zip-safe
+gs/recipe/__init__.py
+gs/recipe/setupgs/__init__.py
+gs/recipe/setupgs/setupgs.py
+gs/recipe/setupgs/tests/__init__.py
+gs/recipe/setupgs/tests/test_docs.py

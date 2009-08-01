@@ -1,0 +1,42 @@
+import sys
+
+recipe_egg_path = '%(recipe_egg_path)s'
+print recipe_egg_path
+
+sys.path.insert(0, recipe_egg_path)
+
+from gs.recipe.setupgs.setupgs import SetupGS 
+
+setup = SetupGS(app=app,
+                zope_admin_name='%(zope_admin_name)s')
+
+setup.create_database_user('%(database_admin)s',
+						   '%(database_username)s',
+					       '%(database_host)s',
+					       '%(database_port)s')   
+
+setup.create_database('%(database_username)s',
+					  '%(database_host)s',
+					  '%(database_port)s',
+					  '%(database_name)s')
+
+setup.setup_database('%(database_username)s',
+					 '%(database_host)s',
+					 '%(database_port)s',
+					 '%(sql_base)s',
+					 '%(database_name)s')
+
+setup.create_site('%(instance_id)s',
+                  '%(instance_title)s',
+                  '%(gs_admin_name)s',
+                  '%(gs_admin_password)s',
+                  '%(gs_support_email)s',
+                  '%(gs_timezone)s',
+                  '%(gs_hostname)s',
+                  '%(gs_verification_email)s',
+                  '%(gs_registration_email)s',
+                  '%(database_host)s',
+                   %(database_port)s,
+                  '%(database_username)s',
+                  '%(database_password)s',
+                  '%(database_name)s')

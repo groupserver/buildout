@@ -58,7 +58,6 @@ $ virtualenv -p python2.4 .
 $ ./bin/python bootstrap.py
 $ ./bin/buildout -v
 
-
 -----------------
  Set Up Database
 -----------------
@@ -68,20 +67,11 @@ find it easy to throw security out the window by adding the following lines
 to the "pg_hba.conf" file in the PostgreSQL configuration directory
   # Database administrative login by UNIX sockets
   local   all         postgres                          trust
+
 For those who value privacy, security and trust, but have little 
 understanding of PostgreSQL we recommend the following article 
   "PostgreSQL User Administration" by David Pashley
   http://www.davidpashley.com/articles/postgresql-user-administration.html
-
-Once you have your postgres UNIX-user set up, you have to create the 
-"testbed" database-user and "testbed" database.
-  $ sudo su -s /bin/bash -c "/usr/bin/createuser -s testbed" postgres
-  $ createdb -U testbed -E UTF8 testbed
-  $ createlang -U testbed plpgsql testbed
-  $ cat src/XWFMailingListManager/sql/email.sql \
-        src/CustomUserFolder/sql/*.sql \
-        src/XWFChat/sql/chat.sql \
-        src/GSGroupMember/sql/*.sql | psql -U testbed testbed
 
 -------------------------------------
  Installing Example GroupServer Site
@@ -132,22 +122,3 @@ Once you have your postgres UNIX-user set up, you have to create the
     * Database Username is testbed (unless you named it differently).
     
     * Database Password is blank (unless you set one).
-    
-
-------------------------------------
- Ubuntu Users: Apache Configuration
-------------------------------------
-
-In scripts/apache-groupserver:
-
-- Edit the ServerName to match the canonical hostname you specified when 
-  installing the GroupServer site.
-
-- Edit the RewriteRule to match the location of example_site in the Content 
-  folder of the GroupServer site you installed (everything between the port
-  and "VirtualHostBase" is part of the path in the ZMI).
-
-- Run:
-  $ cd scripts
-  $ ./ubuntu_apache_setup.sh
-  
