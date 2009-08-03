@@ -64,9 +64,18 @@ $ ./bin/buildout -v
 
 First, set up authentication for your PostgreSQL user. For testing, we
 find it easy to throw security out the window by adding the following lines
-to the "pg_hba.conf" file in the PostgreSQL configuration directory
+to the "pg_hba.conf" file in the PostgreSQL configuration directory:
+
+
   # Database administrative login by UNIX sockets
   local   all         postgres                          trust
+  
+  # IPv4 local connections:
+  host    all         all         127.0.0.1/32          trust
+  
+  # IPv6 local connections:
+  host    all         all         ::1/128               trust
+
 
 For those who value privacy, security and trust, but have little 
 understanding of PostgreSQL we recommend the following article 
