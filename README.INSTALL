@@ -35,6 +35,29 @@ to
 
   /usr/include/pgsql/server/pg_config.h
 
+--------------------------
+ Set Up Database Security
+--------------------------
+
+First, set up authentication for your PostgreSQL user. For testing, we
+find it easy to throw security out the window by adding the following lines
+to the "pg_hba.conf" file in the PostgreSQL configuration directory:
+
+
+  # Database administrative login by UNIX sockets
+  local   all         postgres                          trust
+  
+  # IPv4 local connections:
+  host    all         all         127.0.0.1/32          trust
+  
+  # IPv6 local connections:
+  host    all         all         ::1/128               trust
+
+
+For those who value privacy, security and trust, but have little 
+understanding of PostgreSQL we recommend the following article 
+  "PostgreSQL User Administration" by David Pashley
+  http://www.davidpashley.com/articles/postgresql-user-administration.html
 
 --------------------
  Configure Buildout
@@ -57,30 +80,6 @@ In the buildout base directory:
 $ virtualenv -p python2.4 .
 $ ./bin/python bootstrap.py
 $ ./bin/buildout -v
-
------------------
- Set Up Database
------------------
-
-First, set up authentication for your PostgreSQL user. For testing, we
-find it easy to throw security out the window by adding the following lines
-to the "pg_hba.conf" file in the PostgreSQL configuration directory:
-
-
-  # Database administrative login by UNIX sockets
-  local   all         postgres                          trust
-  
-  # IPv4 local connections:
-  host    all         all         127.0.0.1/32          trust
-  
-  # IPv6 local connections:
-  host    all         all         ::1/128               trust
-
-
-For those who value privacy, security and trust, but have little 
-understanding of PostgreSQL we recommend the following article 
-  "PostgreSQL User Administration" by David Pashley
-  http://www.davidpashley.com/articles/postgresql-user-administration.html
 
 -------------------------------------
  Installing Example GroupServer Site
