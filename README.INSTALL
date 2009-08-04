@@ -41,7 +41,9 @@ to
 
 First, set up authentication for your PostgreSQL user. For testing, we
 find it easy to throw security out the window by adding the following lines
-to the "pg_hba.conf" file in the PostgreSQL configuration directory:
+to the "pg_hba.conf" file in the PostgreSQL configuration directory. On
+Ubuntu this should be located in /etc/postgresql/X.X/main/ (where X.X is the
+PostgreSQL version number).
 
 
   # Database administrative login by UNIX sockets
