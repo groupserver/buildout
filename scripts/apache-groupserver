@@ -1,9 +1,0 @@
-<VirtualHost *>
-ServerAdmin webmaster@localhost
-ServerName groupserver
-
-RewriteEngine on
-RewriteRule ^/(.*) http://127.0.0.1:8080/sites/test/Content/example_site/VirtualHostBase/http/%{HTTP_HOST}:80/VirtualHostRoot/$1 [L,P]
-ProxyVia On
-</VirtualHost>
-

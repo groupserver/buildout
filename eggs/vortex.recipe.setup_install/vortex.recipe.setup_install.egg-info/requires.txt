@@ -1,3 +1,0 @@
-setuptools
-zc.buildout
-zc.recipe.cmmi
