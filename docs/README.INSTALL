@@ -8,6 +8,7 @@ The following (Ubuntu) packages are required for GroupServer 1.0α
   python2.4 
   python2.4-dev
   postgresql 
+  libpq-dev
   libexpat1-dev (from main)
   lib64z1-dev (from main)
   libzzip-dev (from universe)
