@@ -60,7 +60,7 @@ In instance.cfg:
 
 In the buildout base directory:
 
-$ virtualenv -p python2.4 .
+$ virtualenv -p python2.4 --no-site-packages .
 $ ./bin/python bootstrap.py
 $ ./bin/buildout -v
 
