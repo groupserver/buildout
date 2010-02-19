@@ -1,83 +1,270 @@
--------------
- Prequisites
--------------
+.. sectnum::
 
-The following (Ubuntu) packages are required for GroupServer 1.0α
-  python-virtualenv
-  g++ 
-  python2.4 
-  python2.4-dev
-  postgresql 
-  libpq-dev
-  libexpat1-dev (from main)
-  lib64z1-dev (from main)
-  libzzip-dev (from universe)
-  libjpeg-dev (from main)
-  libgif-dev (from main)
-  libpng-dev (from main)
-  libtiff-dev (from main)
+========================
+GroupServer Installation
+========================
 
---------------------------
- Set Up Database Security
---------------------------
+:Authors: Michael JasonSmith; Richard Waid; Alice Murphy; Dan Randow
+:Contact: Michael JasonSmith <mpj17@onlinegroups.net>
+:Date: 2010-02-18
+:Organization: `GroupServer.org <http://groupserver.org>`_
+:Copyright: OnlineGroups.Net, licensed under a 
+  `Creative Commons Attribution-Share Alike 3.0 New Zealand License
+  <http://creativecommons.org/licenses/by-sa/3.0/nz/>`_
 
-First, set up authentication for your PostgreSQL user. For testing, we
-find it easy to throw security out the window by adding the following lines
-to the "pg_hba.conf" file in the PostgreSQL configuration directory. On
-Ubuntu this should be located in /etc/postgresql/X.X/main/ (where X.X is the
-PostgreSQL version number).
+Introduction
+============
 
+Installing GroupServer requires the installation and configuration of
+five different components:
+
+  #. An `email server`_,
+  #. A `database server`_,
+  #. `Zope`_
+  #. `GroupServer`_ itself, and
+  #. Am optional `web server`_.
+  
+Requirements
+------------
+
+GroupServer is developed on `Ubuntu <http://ubuntu.com/>`_, and is
+know to run on `CentOS <http://centos.org/>`_. Below the packages in
+Ubuntu that are required to install GroupServer are listed.
+
++----------------------+---------------------------------+
+| System               | Ubuntu Package                  |
++======================+=================================+
+| Python               | ``python2.4``                   |
+|                      +---------------------------------+
+|                      | ``python-virtialenv``           |
++----------------------+---------------------------------+
+| GNU C++ Compiler     | ``g++``                         |
++----------------------+---------------------------------+
+| PostgreSQL Database  | ``postgresql``                  |
+|                      +---------------------------------+
+|                      | ``posgresql-server-8.4``        |
+|                      +---------------------------------+
+|                      | ``libpq-dev``                   |
++----------------------+---------------------------------+
+| Postfix Email Server | ``postfix``                     |
+|                      +---------------------------------+
+|                      | ``postfix-dev``                 |
++----------------------+---------------------------------+
+| Compression          | ``libzzip-dev`` (from universe) |
+|                      +---------------------------------+
+|                      | ``lib64z1-dev`` (from main)     |    
++----------------------+---------------------------------+
+
+Email Server
+============
+
+Configuring Postfix is tricky, and is optional: you can use the Web
+interface to GroupServer without configuring the email server.
+However, Postfix is required to provide the email interface for
+GroupServer. GroupServer uses Postfix to:
+
+* Queue email that is delivered to groups,
+* Pass the email messages to GroupServer, and
+* Send email messages from GroupServer to the email accounts of the
+  group members.
+
+Database Server
+===============
+
+GroupServer uses the PostgreSQL relational database to store data. In
+theory other relational databases could be used, but none have been
+tried.
+
+Turning Off Security
+--------------------
+
+Database administrators who know what they are doing should ignore this
+section. For humble administrators that just want to try GroupServer,
+life is easier if the excellent security in PostgreSQL is disabled. To
+turn off security, change the bottom few lines in the 
+``/etc/postgresql/8.4/main/pg_hba.conf`` file::
 
   # Database administrative login by UNIX sockets
   local   all         postgres                          trust
-  
+  # TYPE  DATABASE    USER        CIDR-ADDRESS          METHOD
+  # "local" is for Unix domain socket connections only
+  local   all         all                               trust
   # IPv4 local connections:
   host    all         all         127.0.0.1/32          trust
-  
   # IPv6 local connections:
   host    all         all         ::1/128               trust
 
+For those who value privacy, security and trust, and want to 
+understand more of PostgreSQL we recommend 
+`PostgreSQL User Administration by David Pashley 
+<http://www.davidpashley.com/articles/postgresql-user-administration.html>`_
 
-For those who value privacy, security and trust, but have little 
-understanding of PostgreSQL we recommend the following article 
-  "PostgreSQL User Administration" by David Pashley
-  http://www.davidpashley.com/articles/postgresql-user-administration.html
+Creating the Database
+---------------------
 
---------------------
- Configure Buildout
---------------------
+[*mpj17* Do I have to document this, or should we fix it so it, um, 
+goes?]
 
-In instance.cfg:
+Zope
+====
 
-- Edit the [config] section to match your local configuration.
-  To use a zope_port of 80 you will need to start Zope as root. We do not
-  recommend this, but rather recommend that you proxy Zope behind a server
-  such as Apache or NGINX.
+Installing Zope is carried out in three parts: first you 
+`configure Zope`_, next `run buildout`_ to install Zope as well as 
+GroupServer, and finally `start Zope`_. After that you will be able to
+configure and start `GroupServer`_.
 
-------------------
- Install Buildout
-------------------
+Configure Zope
+--------------
 
-In the buildout base directory:
+In ``instance.cfg``:
 
-$ virtualenv -p python2.4 --no-site-packages .
-$ ./bin/python bootstrap.py
-$ ./bin/buildout -v
+* Check the PostgreSQL IP port (``pgsql_port``). It set to the default
+  port for Ubuntu; it may be 5433 if multiple versions of PostgreSQL 
+  are installed
+* Check the Zope IP port (``zope_port``). No other service should be
+  running on this port. To use port 80, the normal port for Web 
+  services, you will have to run Zope as root, which can cause 
+  security problems, and is unnecessary because Apache will mediate. 
+  The default port for Zope is 8080.
 
--------------------------------------
- Accessing Example GroupServer Site
--------------------------------------
+Run Buildout
+------------
 
-- Start Zope
+`Buildout <http://www.buildout.org/>`_ is the python-based system that
+we use to download and installs Zope, GroupServer, and all the libraries
+that they both require. To run buildout, first create a virtual Python
+installation::
 
-    $ ./bin/instance start
+  $ virtualenv -p python2.4 .
 
-- Log into your Zope instance by visiting http://localhost:8080/manage_main and
-  entering
+This creates a sandbox for buildout with its own version of python, 
+placed in ``./bin/``. When buildout runs it will install all the 
+packages in the sandbox. The version of Python that is maintained by
+your Linux distribution will be untouched.
 
-    Username: admin
-    Password: admin
+Next, run the  ``bootstrap.py`` script to download and install the 
+buildout system::
 
-- Navigate to the 'example' site.
+  $ ./bin/python bootstrap.py
 
-# TODO: explain how to view actual GS site!
+Finally, run ``buildout``::
+
+  $ ./bin/buildout -v
+
+Buildout takes a while, as it will download and install all the 
+requirements for GroupServer, including:
+  
+* Zope 2.9
+* PIL
+* ``lxml``
+* SQL Alchemy
+* ``psycopg2``
+
+It is a good idea to make a cup of coffee, or go to lunch, while 
+buildout processes. 
+
+Start Zope
+----------
+
+To start the Zope *instance* as a daemon process run the following 
+command::
+
+  $ ./bin/instance start
+
+GroupServer
+===========
+
+Create the GroupServer Site
+---------------------------
+
+To create a new GroupServer instance carry out the following steps.
+
+* Log into Zope by going to <http://localhost:8080/manage_main>. You
+  will be prompted for a user name (defaults to ``admin``) and a 
+  password (defaults to ``admin``). The *Zope Management Interface*
+  (ZMI) will be shown.
+    
+* From the dropdown menu to the right of the page, add a *Folder*.
+  Fill out the form, giving the new folder the *ID* ``sites``. The 
+  name is optional.
+* Navigate to the new folder.
+* From the dropdown menu, choose *Groupserver Site*.
+
+  + The *ID* and *Title* apply to the GroupServer Site.
+  + Initial User ID and Initial Password are the credentials for the 
+    user created as a *site administrator*. This user is distinct from
+    the *ZMI* *administrator*, which you are logged in as now. The two
+    users must have different IDs.
+  + *Support Email Address* is the address where support queries will 
+    be directed. It will also be used as the email address for the 
+    initial user. Both the support email address, and the user's email
+    address can be changed later.
+  + *Default Timezone* is the timezone that will be used to represent 
+    dates and times displayed on the site. Example zones include
+    
+    - ``Pacific/Auckland``
+    - ``Europe/London``
+    - ``America/New_York``
+    - ``America/Los_Angeles``
+    
+  + *Canonical Hostname* is the domain name at which your site will be
+    found.
+  + *User Verification Email Address* is deprecated, but must be set
+    to something.
+  + *Registration Email Address* is deprecated, but must be set to 
+    something.
+  + *Database Host* is ``localhost`` (unless you know it is not).
+  + *Database Port* is 5432 (unless you know it is not).
+  + *Database Name* is ``testbed`` (unless you named it differently).
+  + *Database Username* is ``testbed`` (unless you named it 
+    differently).
+  + *Database Password* is blank (unless you set one).
+
+Configure Virtual Hosting
+-------------------------
+
+There are two ways to provide virtual hosting: relying on the inbuilt
+virtual hosting in Zope, or using an external `web server`_. In this
+section we document how to set up virtual hosting in Zope.
+
+* Log into Zope by going to <http://localhost:8080/manage_main>.
+* Click on ``virtual_hosting`` at the root of the Zope site.
+* Click on the *Mappings* tab at the top of the page.
+* Add the following line::
+
+    gsbuildout/sites/gsbuildout/Content/example_site/++skin++skin_gs_base
+
+  + The text before the first ``/`` is the name of the host: 
+    ``gsbuildout``.
+  + The text after the first ``/`` is the path to the GroupServer site
+    you created in the previous section:
+    ``sites/gsbuildout/Content/example_site/``.
+  + The final part is the *skin* directive, which selects the Zope skin
+    to use. The base skin for GroupServer (black and white) is shown in
+    the above example: ``++skin++skin_gs_base``.
+
+* Click the *Save Changes* button.
+* Navigate to your site <http://gsbuildout:8080>, replacing the domain
+  with your domain.
+
+Web Server
+==========
+
+A web server is not required to try GroupServer. However, for production
+sites it is a good idea to run a web server to provide the following
+services:
+
+* To mediate between the low level HTTP port (port 80) and the 
+  high-port that `Zope`_ runs on (normally port 8080).
+* To rewrite the URL to include a skin directive.
+* To rewrite the URL to support virtual hosting.
+* To provide caching.
+
+For Apache a rewrite rule is required to provide the mapping. It will
+look something like the following::
+
+  RewriteRule ^/(.*) http://127.0.0.1:8080/sites/gsbuildout/Content/example_site/++skin++skin_gs_base/VirtualHostBase/http/%{HTTP_HOST}:80/VirtualHostRoot/$1 [L,P]
+  
+GroupServer is known to work with many Web servers including 
+Varnish, NGINX, and ha_proxy.
+
