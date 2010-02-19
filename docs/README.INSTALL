@@ -18,11 +18,11 @@ Introduction
 Installing GroupServer requires the installation and configuration of
 five different components:
 
-  #. An `email server`_,
   #. A `database server`_,
   #. `Zope`_
-  #. `GroupServer`_ itself, and
-  #. Am optional `web server`_.
+  #. `GroupServer`_ itself, 
+  #. An `email server`_, and
+  #. An optional `web server`_.
   
 Requirements
 ------------
@@ -54,19 +54,6 @@ Ubuntu that are required to install GroupServer are listed.
 |                      +---------------------------------+
 |                      | ``lib64z1-dev`` (from main)     |    
 +----------------------+---------------------------------+
-
-Email Server
-============
-
-Configuring Postfix is tricky, and is optional: you can use the Web
-interface to GroupServer without configuring the email server.
-However, Postfix is required to provide the email interface for
-GroupServer. GroupServer uses Postfix to:
-
-* Queue email that is delivered to groups,
-* Pass the email messages to GroupServer, and
-* Send email messages from GroupServer to the email accounts of the
-  group members.
 
 Database Server
 ===============
@@ -174,8 +161,8 @@ command::
 GroupServer
 ===========
 
-Create the GroupServer Site
----------------------------
+The GroupServer Site
+--------------------
 
 To create a new GroupServer instance carry out the following steps.
 
@@ -220,8 +207,8 @@ To create a new GroupServer instance carry out the following steps.
     differently).
   + *Database Password* is blank (unless you set one).
 
-Configure Virtual Hosting
--------------------------
+Virtual Hosting
+---------------
 
 There are two ways to provide virtual hosting: relying on the inbuilt
 virtual hosting in Zope, or using an external `web server`_. In this
@@ -235,7 +222,8 @@ section we document how to set up virtual hosting in Zope.
     gsbuildout/sites/gsbuildout/Content/example_site/++skin++skin_gs_base
 
   + The text before the first ``/`` is the name of the host: 
-    ``gsbuildout``.
+    ``gsbuildout``. For a trial system this name can be set up in
+    ``hosts(5)``.
   + The text after the first ``/`` is the path to the GroupServer site
     you created in the previous section:
     ``sites/gsbuildout/Content/example_site/``.
@@ -246,6 +234,95 @@ section we document how to set up virtual hosting in Zope.
 * Click the *Save Changes* button.
 * Navigate to your site <http://gsbuildout:8080>, replacing the domain
   with your domain.
+
+Email Server
+============
+
+Configuring Postfix is tricky, and is optional: you can use the Web
+interface to GroupServer without configuring the email server.
+However, Postfix is required to provide the email interface for
+GroupServer. GroupServer uses Postfix to:
+
+* Queue email that is delivered to groups,
+* Pass the email messages to GroupServer, and
+* Send email messages from GroupServer to the email accounts of the
+  group members.
+
+Determine Your Setup
+--------------------
+
+**POSTFIX_CONFIG_PATH**
+  The path to your postfix configuration, perhaps ``/etc/postfix``
+   
+**POSTFIX_USER**
+  The user which postfix uses to execute external scripts. To determine
+  this you can use the following command::
+  
+  /usr/sbin/postconf | grep default_privs
+				
+**POSTFIX_GROUP**
+  The user-group to which postfix belongs.
+				
+**PATH_TO_GROUPSERVER** 
+  The path in which you have installed GroupServer.
+
+**DOMAIN_NAME**
+  The domain name as configured when you set up `virtual hosting`_.
+  
+Change the Configuration
+------------------------
+
+* Open ``POSTFIX_CONFIG_PATH/main.cf`` in a text editor.
+* Find the ``alias_maps`` parameter.
+* Add the following on a line below the existing value of
+  ``alias_maps``::
+
+    hash:POSTFIX_CONFIG_PATH/groupserver.aliases
+
+* Find the '`virtual_alias_maps`' parameter.
+* Add the following::
+
+    hash:POSTFIX_CONFIG_PATH/groupserver.virtual     
+
+Copy the Needed Scripts
+-----------------------
+
+**Note** This step is bung. We need to fix it.
+
+* Run the following commands::
+
+    mkdir PATH_TO_GROUPSERVER/utils
+    cp eggs/Products.XWFMailingListManager*/Products/XWFMailingListManager/smtp2zope*py PATH_TO_GROUPSERVER/utils
+    chown POSTFIX_USER.POSTFIX_GROUP PATH_TO_GROUPSERVER/utils/smtp2zope*py
+    chmod 750 ZOPE_PATH_TO_GROUPSERVER/utils/smtp2zope*py
+
+* Edit ``PATH_TO_GROUPSERVER/utils/smtp2zope.py`` and 
+  ``PATH_TO_GROUPSERVER/utils/smtp2zope-nonautomatic.py``
+  
+  + Change ``AUTHORIZATION`` to match the username and password you 
+    set when you created `the GroupServer site`_ [really?]
+
+GroupServer Postifx Configuration
+---------------------------------
+
+* Create a file called ``POSTFIX_CONFIG_PATH/groupserver.aliases``.
+* Set the contents to the following::
+
+    verify-address:   "|PATH_TO_GROUPSERVER/utils/smtp2zope-nonautomatic.py http://DOMAINNAME/acl_users/verify_address"
+    group-automagic:  "|PATH_TO_GROUPSERVER/utils/smtp2zope.py  http://DOMAINNAME/ListManager"
+
+* Create a file called ``POSTFIX_CONFIG_PATH/groupserver.virtual``.
+* Set the contents to the following::
+
+    DOMAINNAME           virtual
+    verify@DOMAINNAME    verify-address
+    @DOMAINNAME          group-automagic
+    
+* Run the commands [as root?]::
+
+			postalias POSTFIX_CONFIG_PATH/groupserver.aliases
+			postmap POSTFIX_CONFIG_PATH/groupserver.virtual
+			postfix reload
 
 Web Server
 ==========
@@ -260,11 +337,8 @@ services:
 * To rewrite the URL to support virtual hosting.
 * To provide caching.
 
-For Apache a rewrite rule is required to provide the mapping. It will
-look something like the following::
-
-  RewriteRule ^/(.*) http://127.0.0.1:8080/sites/gsbuildout/Content/example_site/++skin++skin_gs_base/VirtualHostBase/http/%{HTTP_HOST}:80/VirtualHostRoot/$1 [L,P]
-  
 GroupServer is known to work with many Web servers including 
-Varnish, NGINX, and ha_proxy.
+Varnish, NGINX, ha_proxy, and Apache. For Apache a rewrite rule that is
+required to provide the mapping look something like the one in the 
+example file ``apache-groupserver``.
 
