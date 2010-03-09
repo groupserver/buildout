@@ -6,7 +6,7 @@ GroupServer Installation
 
 :Authors: Michael JasonSmith; Richard Waid; Alice Murphy; Dan Randow
 :Contact: Michael JasonSmith <mpj17@onlinegroups.net>
-:Date: 2010-02-18
+:Date: 2010-03-09
 :Organization: `GroupServer.org <http://groupserver.org>`_
 :Copyright: OnlineGroups.Net, licensed under a 
   `Creative Commons Attribution-Share Alike 3.0 New Zealand License
@@ -86,12 +86,6 @@ understand more of PostgreSQL we recommend
 `PostgreSQL User Administration by David Pashley 
 <http://www.davidpashley.com/articles/postgresql-user-administration.html>`_
 
-Creating the Database
----------------------
-
-[*mpj17* Do I have to document this, or should we fix it so it, um, 
-goes?]
-
 Zope
 ====
 
@@ -103,16 +97,53 @@ configure and start `GroupServer`_.
 Configure Zope
 --------------
 
-In ``instance.cfg``:
+The configuration of Zope is carried out by modifying ``instance.cfg``,
+which is located in the root of the GroupServer folder. The ``cfg`` file
+is interpreted by the Python `ConfigParser module
+<http://docs.python.org/library/configparser.html>`_, which accepts
+a syntax very similar to Windows INI files. The user-configurable 
+options are in the ``config`` section.
 
-* Check the PostgreSQL IP port (``pgsql_port``). It set to the default
+``pgsql_host``
+  The host that runs the PostgreSQL database. It defaults to the local
+  machine, ``localhost``.
+  
+``pgsql_port``
+  The IP port that PosgtreSQL listens  to. It is set to the default
   port for Ubuntu; it may be 5433 if multiple versions of PostgreSQL 
   are installed
-* Check the Zope IP port (``zope_port``). No other service should be
-  running on this port. To use port 80, the normal port for Web 
-  services, you will have to run Zope as root, which can cause 
-  security problems, and is unnecessary because Apache will mediate. 
-  The default port for Zope is 8080.
+
+``pgsql_dbname``
+  During installation of GroupServer a database will be created in
+  PostgreSQL. The ``pgsql_dbname`` option defines the name of the 
+  database.
+
+``pgsql_admin``
+  I have  no idea what this option does. **TODO** fix.
+  
+``pgsql_user``
+  The name of the database user that will connect to the GroupServer
+  database and modify the data. The database user is separate from the
+  other users on the system, including those that log into the computer
+  and those in Zope.
+
+``pgsql_password``
+  The password required to attach to the PostgreSQL database as the
+  ``pgsql_user``. May be blank.
+  
+``zope_host``
+  The host that will run Zope. It defaults to the local machine.
+  
+``zope_port``
+  The IP port that Zope should listen to. It defaults to 8080. Zope will
+  have to run as ``root`` to use port 80, and this is not recommended.
+  
+``zope_admin``
+  The name of the user who will administer Zope.
+  
+``zope_pass``
+  The password for the Zope administrator. It can (and should) be 
+  changed after GroupServer has been set up.
 
 Run Buildout
 ------------
