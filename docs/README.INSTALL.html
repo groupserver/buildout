@@ -379,7 +379,8 @@ tried.</p>
 section. For humble administrators that just want to try GroupServer,
 life is easier if the excellent security in PostgreSQL is disabled. To
 turn off security, change the bottom few lines in the
-<tt class="docutils literal"><span class="pre">/etc/postgresql/8.4/main/pg_hba.conf</span></tt> file:</p>
+<tt class="docutils literal"><span class="pre">/etc/postgresql/8.4/main/pg_hba.conf</span></tt> file (you will have to be root
+to modify it):</p>
 <pre class="literal-block">
 # Database administrative login by UNIX sockets
 local   all         postgres                          trust
@@ -390,6 +391,11 @@ local   all         all                               trust
 host    all         all         127.0.0.1/32          trust
 # IPv6 local connections:
 host    all         all         ::1/128               trust
+</pre>
+<p>PosgreSQL will have to be restarted after the <tt class="docutils literal"><span class="pre">pg_hba.conf</span></tt> file has
+been modified:</p>
+<pre class="literal-block">
+$ sudo /etc/init.d/posgtresql-8.4 restart
 </pre>
 <p>For those who value privacy, security and trust, and want to
 understand more of PostgreSQL we recommend
@@ -456,7 +462,14 @@ $ virtualenv -p python2.4 .
 placed in <tt class="docutils literal"><span class="pre">./bin/</span></tt>. When buildout runs it will install all the
 packages in the sandbox. The version of Python that is maintained by
 your Linux distribution will be untouched.</p>
-<p>Next, run the  <tt class="docutils literal"><span class="pre">bootstrap.py</span></tt> script to download and install the
+<p>You many need to upgrade <tt class="docutils literal"><span class="pre">setuptools</span></tt> from the version shipped
+with your distribution. To do this, run the local version of
+<tt class="docutils literal"><span class="pre">easy_install</span></tt>:</p>
+<pre class="literal-block">
+$ ./bin/easy_install -U setuptools
+</pre>
+<p>No harm will come if you try and upgrade but nothing needs to change.
+Next, run the  <tt class="docutils literal"><span class="pre">bootstrap.py</span></tt> script to download and install the
 buildout system:</p>
 <pre class="literal-block">
 $ ./bin/python bootstrap.py
