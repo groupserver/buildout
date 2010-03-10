@@ -69,7 +69,8 @@ Database administrators who know what they are doing should ignore this
 section. For humble administrators that just want to try GroupServer,
 life is easier if the excellent security in PostgreSQL is disabled. To
 turn off security, change the bottom few lines in the 
-``/etc/postgresql/8.4/main/pg_hba.conf`` file::
+``/etc/postgresql/8.4/main/pg_hba.conf`` file (you will have to be root
+to modify it)::
 
   # Database administrative login by UNIX sockets
   local   all         postgres                          trust
@@ -80,6 +81,11 @@ turn off security, change the bottom few lines in the
   host    all         all         127.0.0.1/32          trust
   # IPv6 local connections:
   host    all         all         ::1/128               trust
+
+PosgreSQL will have to be restarted after the ``pg_hba.conf`` file has
+been modified::
+  
+  $ sudo /etc/init.d/posgtresql-8.4 restart
 
 For those who value privacy, security and trust, and want to 
 understand more of PostgreSQL we recommend 
@@ -158,8 +164,15 @@ installation::
 This creates a sandbox for buildout with its own version of python, 
 placed in ``./bin/``. When buildout runs it will install all the 
 packages in the sandbox. The version of Python that is maintained by
-your Linux distribution will be untouched.
+your Linux distribution will be untouched. 
 
+You many need to upgrade ``setuptools`` from the version shipped
+with your distribution. To do this, run the local version of
+``easy_install``::
+
+  $ ./bin/easy_install -U setuptools
+
+No harm will come if you try and upgrade but nothing needs to change.
 Next, run the  ``bootstrap.py`` script to download and install the 
 buildout system::
 
