@@ -1,0 +1,697 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="Docutils 0.5: http://docutils.sourceforge.net/" />
+<title>GroupServer Installation</title>
+<meta name="authors" content="Michael JasonSmith  Richard Waid  Alice Murphy  Dan Randow" />
+<meta name="date" content="2010-03-09" />
+<meta name="organization" content="GroupServer.org" />
+<meta name="copyright" content="OnlineGroups.Net, licensed under a Creative Commons Attribution-Share Alike 3.0 New Zealand License" />
+<style type="text/css">
+
+/*
+:Author: David Goodger (goodger@python.org)
+:Id: $Id: html4css1.css 5196 2007-06-03 20:25:28Z wiemann $
+:Copyright: This stylesheet has been placed in the public domain.
+
+Default cascading style sheet for the HTML output of Docutils.
+
+See http://docutils.sf.net/docs/howto/html-stylesheets.html for how to
+customize this style sheet.
+*/
+
+/* used to remove borders from tables and images */
+.borderless, table.borderless td, table.borderless th {
+  border: 0 }
+
+table.borderless td, table.borderless th {
+  /* Override padding for "table.docutils td" with "! important".
+     The right padding separates the table cells. */
+  padding: 0 0.5em 0 0 ! important }
+
+.first {
+  /* Override more specific margin styles with "! important". */
+  margin-top: 0 ! important }
+
+.last, .with-subtitle {
+  margin-bottom: 0 ! important }
+
+.hidden {
+  display: none }
+
+a.toc-backref {
+  text-decoration: none ;
+  color: black }
+
+blockquote.epigraph {
+  margin: 2em 5em ; }
+
+dl.docutils dd {
+  margin-bottom: 0.5em }
+
+/* Uncomment (and remove this text!) to get bold-faced definition list terms
+dl.docutils dt {
+  font-weight: bold }
+*/
+
+div.abstract {
+  margin: 2em 5em }
+
+div.abstract p.topic-title {
+  font-weight: bold ;
+  text-align: center }
+
+div.admonition, div.attention, div.caution, div.danger, div.error,
+div.hint, div.important, div.note, div.tip, div.warning {
+  margin: 2em ;
+  border: medium outset ;
+  padding: 1em }
+
+div.admonition p.admonition-title, div.hint p.admonition-title,
+div.important p.admonition-title, div.note p.admonition-title,
+div.tip p.admonition-title {
+  font-weight: bold ;
+  font-family: sans-serif }
+
+div.attention p.admonition-title, div.caution p.admonition-title,
+div.danger p.admonition-title, div.error p.admonition-title,
+div.warning p.admonition-title {
+  color: red ;
+  font-weight: bold ;
+  font-family: sans-serif }
+
+/* Uncomment (and remove this text!) to get reduced vertical space in
+   compound paragraphs.
+div.compound .compound-first, div.compound .compound-middle {
+  margin-bottom: 0.5em }
+
+div.compound .compound-last, div.compound .compound-middle {
+  margin-top: 0.5em }
+*/
+
+div.dedication {
+  margin: 2em 5em ;
+  text-align: center ;
+  font-style: italic }
+
+div.dedication p.topic-title {
+  font-weight: bold ;
+  font-style: normal }
+
+div.figure {
+  margin-left: 2em ;
+  margin-right: 2em }
+
+div.footer, div.header {
+  clear: both;
+  font-size: smaller }
+
+div.line-block {
+  display: block ;
+  margin-top: 1em ;
+  margin-bottom: 1em }
+
+div.line-block div.line-block {
+  margin-top: 0 ;
+  margin-bottom: 0 ;
+  margin-left: 1.5em }
+
+div.sidebar {
+  margin: 0 0 0.5em 1em ;
+  border: medium outset ;
+  padding: 1em ;
+  background-color: #ffffee ;
+  width: 40% ;
+  float: right ;
+  clear: right }
+
+div.sidebar p.rubric {
+  font-family: sans-serif ;
+  font-size: medium }
+
+div.system-messages {
+  margin: 5em }
+
+div.system-messages h1 {
+  color: red }
+
+div.system-message {
+  border: medium outset ;
+  padding: 1em }
+
+div.system-message p.system-message-title {
+  color: red ;
+  font-weight: bold }
+
+div.topic {
+  margin: 2em }
+
+h1.section-subtitle, h2.section-subtitle, h3.section-subtitle,
+h4.section-subtitle, h5.section-subtitle, h6.section-subtitle {
+  margin-top: 0.4em }
+
+h1.title {
+  text-align: center }
+
+h2.subtitle {
+  text-align: center }
+
+hr.docutils {
+  width: 75% }
+
+img.align-left {
+  clear: left }
+
+img.align-right {
+  clear: right }
+
+ol.simple, ul.simple {
+  margin-bottom: 1em }
+
+ol.arabic {
+  list-style: decimal }
+
+ol.loweralpha {
+  list-style: lower-alpha }
+
+ol.upperalpha {
+  list-style: upper-alpha }
+
+ol.lowerroman {
+  list-style: lower-roman }
+
+ol.upperroman {
+  list-style: upper-roman }
+
+p.attribution {
+  text-align: right ;
+  margin-left: 50% }
+
+p.caption {
+  font-style: italic }
+
+p.credits {
+  font-style: italic ;
+  font-size: smaller }
+
+p.label {
+  white-space: nowrap }
+
+p.rubric {
+  font-weight: bold ;
+  font-size: larger ;
+  color: maroon ;
+  text-align: center }
+
+p.sidebar-title {
+  font-family: sans-serif ;
+  font-weight: bold ;
+  font-size: larger }
+
+p.sidebar-subtitle {
+  font-family: sans-serif ;
+  font-weight: bold }
+
+p.topic-title {
+  font-weight: bold }
+
+pre.address {
+  margin-bottom: 0 ;
+  margin-top: 0 ;
+  font-family: serif ;
+  font-size: 100% }
+
+pre.literal-block, pre.doctest-block {
+  margin-left: 2em ;
+  margin-right: 2em }
+
+span.classifier {
+  font-family: sans-serif ;
+  font-style: oblique }
+
+span.classifier-delimiter {
+  font-family: sans-serif ;
+  font-weight: bold }
+
+span.interpreted {
+  font-family: sans-serif }
+
+span.option {
+  white-space: nowrap }
+
+span.pre {
+  white-space: pre }
+
+span.problematic {
+  color: red }
+
+span.section-subtitle {
+  /* font-size relative to parent (h1..h6 element) */
+  font-size: 80% }
+
+table.citation {
+  border-left: solid 1px gray;
+  margin-left: 1px }
+
+table.docinfo {
+  margin: 2em 4em }
+
+table.docutils {
+  margin-top: 0.5em ;
+  margin-bottom: 0.5em }
+
+table.footnote {
+  border-left: solid 1px black;
+  margin-left: 1px }
+
+table.docutils td, table.docutils th,
+table.docinfo td, table.docinfo th {
+  padding-left: 0.5em ;
+  padding-right: 0.5em ;
+  vertical-align: top }
+
+table.docutils th.field-name, table.docinfo th.docinfo-name {
+  font-weight: bold ;
+  text-align: left ;
+  white-space: nowrap ;
+  padding-left: 0 }
+
+h1 tt.docutils, h2 tt.docutils, h3 tt.docutils,
+h4 tt.docutils, h5 tt.docutils, h6 tt.docutils {
+  font-size: 100% }
+
+ul.auto-toc {
+  list-style-type: none }
+
+</style>
+</head>
+<body>
+<div class="document" id="groupserver-installation">
+<h1 class="title">GroupServer Installation</h1>
+<table class="docinfo" frame="void" rules="none">
+<col class="docinfo-name" />
+<col class="docinfo-content" />
+<tbody valign="top">
+<tr><th class="docinfo-name">Authors:</th>
+<td>Michael JasonSmith
+<br />Richard Waid
+<br />Alice Murphy
+<br />Dan Randow</td></tr>
+<tr><th class="docinfo-name">Contact:</th>
+<td>Michael JasonSmith &lt;<a class="reference external" href="mailto:mpj17&#64;onlinegroups.net">mpj17&#64;onlinegroups.net</a>&gt;</td></tr>
+<tr><th class="docinfo-name">Date:</th>
+<td>2010-03-09</td></tr>
+<tr><th class="docinfo-name">Organization:</th>
+<td><a class="first reference external" href="http://groupserver.org">GroupServer.org</a></td></tr>
+<tr><th class="docinfo-name">Copyright:</th>
+<td>OnlineGroups.Net, licensed under a
+<a class="reference external" href="http://creativecommons.org/licenses/by-sa/3.0/nz/">Creative Commons Attribution-Share Alike 3.0 New Zealand License</a></td></tr>
+</tbody>
+</table>
+<div class="section" id="introduction">
+<h1>1&nbsp;&nbsp;&nbsp;Introduction</h1>
+<p>Installing GroupServer requires the installation and configuration of
+five different components:</p>
+<blockquote>
+<ol class="arabic simple">
+<li>A <a class="reference internal" href="#database-server">database server</a>,</li>
+<li><a class="reference internal" href="#zope">Zope</a></li>
+<li><a class="reference internal" href="#groupserver">GroupServer</a> itself,</li>
+<li>An <a class="reference internal" href="#email-server">email server</a>, and</li>
+<li>An optional <a class="reference internal" href="#web-server">web server</a>.</li>
+</ol>
+</blockquote>
+<div class="section" id="requirements">
+<h2>1.1&nbsp;&nbsp;&nbsp;Requirements</h2>
+<p>GroupServer is developed on <a class="reference external" href="http://ubuntu.com/">Ubuntu</a>, and is
+know to run on <a class="reference external" href="http://centos.org/">CentOS</a>. Below the packages in
+Ubuntu that are required to install GroupServer are listed.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="40%" />
+<col width="60%" />
+</colgroup>
+<thead valign="bottom">
+<tr><th class="head">System</th>
+<th class="head">Ubuntu Package</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr><td rowspan="2">Python</td>
+<td><tt class="docutils literal"><span class="pre">python2.4</span></tt></td>
+</tr>
+<tr><td><tt class="docutils literal"><span class="pre">python-virtialenv</span></tt></td>
+</tr>
+<tr><td>GNU C++ Compiler</td>
+<td><tt class="docutils literal"><span class="pre">g++</span></tt></td>
+</tr>
+<tr><td rowspan="3">PostgreSQL Database</td>
+<td><tt class="docutils literal"><span class="pre">postgresql</span></tt></td>
+</tr>
+<tr><td><tt class="docutils literal"><span class="pre">posgresql-server-8.4</span></tt></td>
+</tr>
+<tr><td><tt class="docutils literal"><span class="pre">libpq-dev</span></tt></td>
+</tr>
+<tr><td rowspan="2">Postfix Email Server</td>
+<td><tt class="docutils literal"><span class="pre">postfix</span></tt></td>
+</tr>
+<tr><td><tt class="docutils literal"><span class="pre">postfix-dev</span></tt></td>
+</tr>
+<tr><td rowspan="2">Compression</td>
+<td><tt class="docutils literal"><span class="pre">libzzip-dev</span></tt> (from universe)</td>
+</tr>
+<tr><td><tt class="docutils literal"><span class="pre">lib64z1-dev</span></tt> (from main)</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="section" id="database-server">
+<h1>2&nbsp;&nbsp;&nbsp;Database Server</h1>
+<p>GroupServer uses the PostgreSQL relational database to store data. In
+theory other relational databases could be used, but none have been
+tried.</p>
+<div class="section" id="turning-off-security">
+<h2>2.1&nbsp;&nbsp;&nbsp;Turning Off Security</h2>
+<p>Database administrators who know what they are doing should ignore this
+section. For humble administrators that just want to try GroupServer,
+life is easier if the excellent security in PostgreSQL is disabled. To
+turn off security, change the bottom few lines in the
+<tt class="docutils literal"><span class="pre">/etc/postgresql/8.4/main/pg_hba.conf</span></tt> file:</p>
+<pre class="literal-block">
+# Database administrative login by UNIX sockets
+local   all         postgres                          trust
+# TYPE  DATABASE    USER        CIDR-ADDRESS          METHOD
+# &quot;local&quot; is for Unix domain socket connections only
+local   all         all                               trust
+# IPv4 local connections:
+host    all         all         127.0.0.1/32          trust
+# IPv6 local connections:
+host    all         all         ::1/128               trust
+</pre>
+<p>For those who value privacy, security and trust, and want to
+understand more of PostgreSQL we recommend
+<a class="reference external" href="http://www.davidpashley.com/articles/postgresql-user-administration.html">PostgreSQL User Administration by David Pashley</a></p>
+</div>
+</div>
+<div class="section" id="zope">
+<h1>3&nbsp;&nbsp;&nbsp;Zope</h1>
+<p>Installing Zope is carried out in three parts: first you
+<a class="reference internal" href="#configure-zope">configure Zope</a>, next <a class="reference internal" href="#run-buildout">run buildout</a> to install Zope as well as
+GroupServer, and finally <a class="reference internal" href="#start-zope">start Zope</a>. After that you will be able to
+configure and start <a class="reference internal" href="#groupserver">GroupServer</a>.</p>
+<div class="section" id="configure-zope">
+<h2>3.1&nbsp;&nbsp;&nbsp;Configure Zope</h2>
+<p>The configuration of Zope is carried out by modifying <tt class="docutils literal"><span class="pre">instance.cfg</span></tt>,
+which is located in the root of the GroupServer folder. The <tt class="docutils literal"><span class="pre">cfg</span></tt> file
+is interpreted by the Python <a class="reference external" href="http://docs.python.org/library/configparser.html">ConfigParser module</a>, which accepts
+a syntax very similar to Windows INI files. The user-configurable
+options are in the <tt class="docutils literal"><span class="pre">config</span></tt> section.</p>
+<dl class="docutils">
+<dt><tt class="docutils literal"><span class="pre">pgsql_host</span></tt></dt>
+<dd>The host that runs the PostgreSQL database. It defaults to the local
+machine, <tt class="docutils literal"><span class="pre">localhost</span></tt>.</dd>
+<dt><tt class="docutils literal"><span class="pre">pgsql_port</span></tt></dt>
+<dd>The IP port that PosgtreSQL listens  to. It is set to the default
+port for Ubuntu; it may be 5433 if multiple versions of PostgreSQL
+are installed</dd>
+<dt><tt class="docutils literal"><span class="pre">pgsql_dbname</span></tt></dt>
+<dd>During installation of GroupServer a database will be created in
+PostgreSQL. The <tt class="docutils literal"><span class="pre">pgsql_dbname</span></tt> option defines the name of the
+database.</dd>
+<dt><tt class="docutils literal"><span class="pre">pgsql_admin</span></tt></dt>
+<dd>I have  no idea what this option does. <strong>TODO</strong> fix.</dd>
+<dt><tt class="docutils literal"><span class="pre">pgsql_user</span></tt></dt>
+<dd>The name of the database user that will connect to the GroupServer
+database and modify the data. The database user is separate from the
+other users on the system, including those that log into the computer
+and those in Zope.</dd>
+<dt><tt class="docutils literal"><span class="pre">pgsql_password</span></tt></dt>
+<dd>The password required to attach to the PostgreSQL database as the
+<tt class="docutils literal"><span class="pre">pgsql_user</span></tt>. May be blank.</dd>
+<dt><tt class="docutils literal"><span class="pre">zope_host</span></tt></dt>
+<dd>The host that will run Zope. It defaults to the local machine.</dd>
+<dt><tt class="docutils literal"><span class="pre">zope_port</span></tt></dt>
+<dd>The IP port that Zope should listen to. It defaults to 8080. Zope will
+have to run as <tt class="docutils literal"><span class="pre">root</span></tt> to use port 80, and this is not recommended.</dd>
+<dt><tt class="docutils literal"><span class="pre">zope_admin</span></tt></dt>
+<dd>The name of the user who will administer Zope.</dd>
+<dt><tt class="docutils literal"><span class="pre">zope_pass</span></tt></dt>
+<dd>The password for the Zope administrator. It can (and should) be
+changed after GroupServer has been set up.</dd>
+</dl>
+</div>
+<div class="section" id="run-buildout">
+<h2>3.2&nbsp;&nbsp;&nbsp;Run Buildout</h2>
+<p><a class="reference external" href="http://www.buildout.org/">Buildout</a> is the python-based system that
+we use to download and installs Zope, GroupServer, and all the libraries
+that they both require. To run buildout, first create a virtual Python
+installation:</p>
+<pre class="literal-block">
+$ virtualenv -p python2.4 .
+</pre>
+<p>This creates a sandbox for buildout with its own version of python,
+placed in <tt class="docutils literal"><span class="pre">./bin/</span></tt>. When buildout runs it will install all the
+packages in the sandbox. The version of Python that is maintained by
+your Linux distribution will be untouched.</p>
+<p>Next, run the  <tt class="docutils literal"><span class="pre">bootstrap.py</span></tt> script to download and install the
+buildout system:</p>
+<pre class="literal-block">
+$ ./bin/python bootstrap.py
+</pre>
+<p>Finally, run <tt class="docutils literal"><span class="pre">buildout</span></tt>:</p>
+<pre class="literal-block">
+$ ./bin/buildout -v
+</pre>
+<p>Buildout takes a while, as it will download and install all the
+requirements for GroupServer, including:</p>
+<ul class="simple">
+<li>Zope 2.9</li>
+<li>PIL</li>
+<li><tt class="docutils literal"><span class="pre">lxml</span></tt></li>
+<li>SQL Alchemy</li>
+<li><tt class="docutils literal"><span class="pre">psycopg2</span></tt></li>
+</ul>
+<p>It is a good idea to make a cup of coffee, or go to lunch, while
+buildout processes.</p>
+</div>
+<div class="section" id="start-zope">
+<h2>3.3&nbsp;&nbsp;&nbsp;Start Zope</h2>
+<p>To start the Zope <em>instance</em> as a daemon process run the following
+command:</p>
+<pre class="literal-block">
+$ ./bin/instance start
+</pre>
+</div>
+</div>
+<div class="section" id="groupserver">
+<h1>4&nbsp;&nbsp;&nbsp;GroupServer</h1>
+<div class="section" id="the-groupserver-site">
+<h2>4.1&nbsp;&nbsp;&nbsp;The GroupServer Site</h2>
+<p>To create a new GroupServer instance carry out the following steps.</p>
+<ul class="simple">
+<li>Log into Zope by going to &lt;<a class="reference external" href="http://localhost:8080/manage_main">http://localhost:8080/manage_main</a>&gt;. You
+will be prompted for a user name (defaults to <tt class="docutils literal"><span class="pre">admin</span></tt>) and a
+password (defaults to <tt class="docutils literal"><span class="pre">admin</span></tt>). The <em>Zope Management Interface</em>
+(ZMI) will be shown.</li>
+<li>From the dropdown menu to the right of the page, add a <em>Folder</em>.
+Fill out the form, giving the new folder the <em>ID</em> <tt class="docutils literal"><span class="pre">sites</span></tt>. The
+name is optional.</li>
+<li>Navigate to the new folder.</li>
+<li>From the dropdown menu, choose <em>Groupserver Site</em>.<ul>
+<li>The <em>ID</em> and <em>Title</em> apply to the GroupServer Site.</li>
+<li>Initial User ID and Initial Password are the credentials for the
+user created as a <em>site administrator</em>. This user is distinct from
+the <em>ZMI</em> <em>administrator</em>, which you are logged in as now. The two
+users must have different IDs.</li>
+<li><em>Support Email Address</em> is the address where support queries will
+be directed. It will also be used as the email address for the
+initial user. Both the support email address, and the user's email
+address can be changed later.</li>
+<li><em>Default Timezone</em> is the timezone that will be used to represent
+dates and times displayed on the site. Example zones include<ul>
+<li><tt class="docutils literal"><span class="pre">Pacific/Auckland</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">Europe/London</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">America/New_York</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">America/Los_Angeles</span></tt></li>
+</ul>
+</li>
+<li><em>Canonical Hostname</em> is the domain name at which your site will be
+found.</li>
+<li><em>User Verification Email Address</em> is deprecated, but must be set
+to something.</li>
+<li><em>Registration Email Address</em> is deprecated, but must be set to
+something.</li>
+<li><em>Database Host</em> is <tt class="docutils literal"><span class="pre">localhost</span></tt> (unless you know it is not).</li>
+<li><em>Database Port</em> is 5432 (unless you know it is not).</li>
+<li><em>Database Name</em> is <tt class="docutils literal"><span class="pre">testbed</span></tt> (unless you named it differently).</li>
+<li><em>Database Username</em> is <tt class="docutils literal"><span class="pre">testbed</span></tt> (unless you named it
+differently).</li>
+<li><em>Database Password</em> is blank (unless you set one).</li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="virtual-hosting">
+<h2>4.2&nbsp;&nbsp;&nbsp;Virtual Hosting</h2>
+<p>There are two ways to provide virtual hosting: relying on the inbuilt
+virtual hosting in Zope, or using an external <a class="reference internal" href="#web-server">web server</a>. In this
+section we document how to set up virtual hosting in Zope.</p>
+<ul>
+<li><p class="first">Log into Zope by going to &lt;<a class="reference external" href="http://localhost:8080/manage_main">http://localhost:8080/manage_main</a>&gt;.</p>
+</li>
+<li><p class="first">Click on <tt class="docutils literal"><span class="pre">virtual_hosting</span></tt> at the root of the Zope site.</p>
+</li>
+<li><p class="first">Click on the <em>Mappings</em> tab at the top of the page.</p>
+</li>
+<li><p class="first">Add the following line:</p>
+<pre class="literal-block">
+gsbuildout/sites/gsbuildout/Content/example_site/++skin++skin_gs_base
+</pre>
+<ul class="simple">
+<li>The text before the first <tt class="docutils literal"><span class="pre">/</span></tt> is the name of the host:
+<tt class="docutils literal"><span class="pre">gsbuildout</span></tt>. For a trial system this name can be set up in
+<tt class="docutils literal"><span class="pre">hosts(5)</span></tt>.</li>
+<li>The text after the first <tt class="docutils literal"><span class="pre">/</span></tt> is the path to the GroupServer site
+you created in the previous section:
+<tt class="docutils literal"><span class="pre">sites/gsbuildout/Content/example_site/</span></tt>.</li>
+<li>The final part is the <em>skin</em> directive, which selects the Zope skin
+to use. The base skin for GroupServer (black and white) is shown in
+the above example: <tt class="docutils literal"><span class="pre">++skin++skin_gs_base</span></tt>.</li>
+</ul>
+</li>
+<li><p class="first">Click the <em>Save Changes</em> button.</p>
+</li>
+<li><p class="first">Navigate to your site &lt;<a class="reference external" href="http://gsbuildout:8080">http://gsbuildout:8080</a>&gt;, replacing the domain
+with your domain.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="email-server">
+<h1>5&nbsp;&nbsp;&nbsp;Email Server</h1>
+<p>Configuring Postfix is tricky, and is optional: you can use the Web
+interface to GroupServer without configuring the email server.
+However, Postfix is required to provide the email interface for
+GroupServer. GroupServer uses Postfix to:</p>
+<ul class="simple">
+<li>Queue email that is delivered to groups,</li>
+<li>Pass the email messages to GroupServer, and</li>
+<li>Send email messages from GroupServer to the email accounts of the
+group members.</li>
+</ul>
+<div class="section" id="determine-your-setup">
+<h2>5.1&nbsp;&nbsp;&nbsp;Determine Your Setup</h2>
+<dl class="docutils">
+<dt><strong>POSTFIX_CONFIG_PATH</strong></dt>
+<dd>The path to your postfix configuration, perhaps <tt class="docutils literal"><span class="pre">/etc/postfix</span></tt></dd>
+<dt><strong>POSTFIX_USER</strong></dt>
+<dd><p class="first">The user which postfix uses to execute external scripts. To determine
+this you can use the following command:</p>
+<pre class="last literal-block">
+/usr/sbin/postconf | grep default_privs
+</pre>
+</dd>
+<dt><strong>POSTFIX_GROUP</strong></dt>
+<dd>The user-group to which postfix belongs.</dd>
+<dt><strong>PATH_TO_GROUPSERVER</strong></dt>
+<dd>The path in which you have installed GroupServer.</dd>
+<dt><strong>DOMAIN_NAME</strong></dt>
+<dd>The domain name as configured when you set up <a class="reference internal" href="#virtual-hosting">virtual hosting</a>.</dd>
+</dl>
+</div>
+<div class="section" id="change-the-configuration">
+<h2>5.2&nbsp;&nbsp;&nbsp;Change the Configuration</h2>
+<ul>
+<li><p class="first">Open <tt class="docutils literal"><span class="pre">POSTFIX_CONFIG_PATH/main.cf</span></tt> in a text editor.</p>
+</li>
+<li><p class="first">Find the <tt class="docutils literal"><span class="pre">alias_maps</span></tt> parameter.</p>
+</li>
+<li><p class="first">Add the following on a line below the existing value of
+<tt class="docutils literal"><span class="pre">alias_maps</span></tt>:</p>
+<pre class="literal-block">
+hash:POSTFIX_CONFIG_PATH/groupserver.aliases
+</pre>
+</li>
+<li><p class="first">Find the '<cite>virtual_alias_maps</cite>' parameter.</p>
+</li>
+<li><p class="first">Add the following:</p>
+<pre class="literal-block">
+hash:POSTFIX_CONFIG_PATH/groupserver.virtual
+</pre>
+</li>
+</ul>
+</div>
+<div class="section" id="copy-the-needed-scripts">
+<h2>5.3&nbsp;&nbsp;&nbsp;Copy the Needed Scripts</h2>
+<p><strong>Note</strong> This step is bung. We need to fix it.</p>
+<ul>
+<li><p class="first">Run the following commands:</p>
+<pre class="literal-block">
+mkdir PATH_TO_GROUPSERVER/utils
+cp eggs/Products.XWFMailingListManager*/Products/XWFMailingListManager/smtp2zope*py PATH_TO_GROUPSERVER/utils
+chown POSTFIX_USER.POSTFIX_GROUP PATH_TO_GROUPSERVER/utils/smtp2zope*py
+chmod 750 ZOPE_PATH_TO_GROUPSERVER/utils/smtp2zope*py
+</pre>
+</li>
+<li><p class="first">Edit <tt class="docutils literal"><span class="pre">PATH_TO_GROUPSERVER/utils/smtp2zope.py</span></tt> and
+<tt class="docutils literal"><span class="pre">PATH_TO_GROUPSERVER/utils/smtp2zope-nonautomatic.py</span></tt></p>
+<ul class="simple">
+<li>Change <tt class="docutils literal"><span class="pre">AUTHORIZATION</span></tt> to match the username and password you
+set when you created <a class="reference internal" href="#the-groupserver-site">the GroupServer site</a> [really?]</li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="groupserver-postifx-configuration">
+<h2>5.4&nbsp;&nbsp;&nbsp;GroupServer Postifx Configuration</h2>
+<ul>
+<li><p class="first">Create a file called <tt class="docutils literal"><span class="pre">POSTFIX_CONFIG_PATH/groupserver.aliases</span></tt>.</p>
+</li>
+<li><p class="first">Set the contents to the following:</p>
+<pre class="literal-block">
+verify-address:   &quot;|PATH_TO_GROUPSERVER/utils/smtp2zope-nonautomatic.py http://DOMAINNAME/acl_users/verify_address&quot;
+group-automagic:  &quot;|PATH_TO_GROUPSERVER/utils/smtp2zope.py  http://DOMAINNAME/ListManager&quot;
+</pre>
+</li>
+<li><p class="first">Create a file called <tt class="docutils literal"><span class="pre">POSTFIX_CONFIG_PATH/groupserver.virtual</span></tt>.</p>
+</li>
+<li><p class="first">Set the contents to the following:</p>
+<pre class="literal-block">
+DOMAINNAME           virtual
+verify&#64;DOMAINNAME    verify-address
+&#64;DOMAINNAME          group-automagic
+</pre>
+</li>
+<li><p class="first">Run the commands [as root?]:</p>
+<pre class="literal-block">
+postalias POSTFIX_CONFIG_PATH/groupserver.aliases
+postmap POSTFIX_CONFIG_PATH/groupserver.virtual
+postfix reload
+</pre>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="web-server">
+<h1>6&nbsp;&nbsp;&nbsp;Web Server</h1>
+<p>A web server is not required to try GroupServer. However, for production
+sites it is a good idea to run a web server to provide the following
+services:</p>
+<ul class="simple">
+<li>To mediate between the low level HTTP port (port 80) and the
+high-port that <a class="reference internal" href="#zope">Zope</a> runs on (normally port 8080).</li>
+<li>To rewrite the URL to include a skin directive.</li>
+<li>To rewrite the URL to support virtual hosting.</li>
+<li>To provide caching.</li>
+</ul>
+<p>GroupServer is known to work with many Web servers including
+Varnish, NGINX, ha_proxy, and Apache. For Apache a rewrite rule that is
+required to provide the mapping look something like the one in the
+example file <tt class="docutils literal"><span class="pre">apache-groupserver</span></tt>.</p>
+</div>
+</div>
+</body>
+</html>
