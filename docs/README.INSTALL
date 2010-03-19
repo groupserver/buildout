@@ -240,10 +240,6 @@ To create a new GroupServer instance carry out the following steps.
     
   + *Canonical Hostname* is the domain name at which your site will be
     found.
-  + *User Verification Email Address* is deprecated, but must be set
-    to something.
-  + *Registration Email Address* is deprecated, but must be set to 
-    something.
   + *Database Host* is ``localhost`` (unless you know it is not).
   + *Database Port* is 5432 (unless you know it is not).
   + *Database Name* is ``testbed`` (unless you named it differently).
