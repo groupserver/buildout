@@ -100,6 +100,21 @@ Installing Zope is carried out in three parts: first you
 GroupServer, and finally `start Zope`_. After that you will be able to
 configure and start `GroupServer`_.
 
+Pick a Host Name
+----------------
+
+Your new site needs a domain name. For a trial system this name can be
+set up in the ``hosts(5)`` file.
+
+* Open ``/etc/hosts`` as ``root``.
+* Add the new host name to the ``localhost`` entry, which is normally
+  the first one. For example, to add the name ``gstest`` change the
+  line to the following::
+
+    127.0.0.1    localhost gstest
+
+* Save the ``hosts`` file.
+
 Configure Zope
 --------------
 
@@ -107,8 +122,12 @@ The configuration of Zope is carried out by modifying ``instance.cfg``,
 which is located in the root of the GroupServer folder. The ``cfg`` file
 is interpreted by the Python `ConfigParser module
 <http://docs.python.org/library/configparser.html>`_, which accepts
-a syntax very similar to Windows INI files. The user-configurable 
-options are in the ``config`` section.
+a syntax very similar to Windows INI files. 
+
+config
+~~~~~~
+
+The first set of user-configurable options are in the ``config`` section.
 
 ``pgsql_host``
   The host that runs the PostgreSQL database. It defaults to the local
@@ -125,7 +144,8 @@ options are in the ``config`` section.
   database.
 
 ``pgsql_admin``
-  I have  no idea what this option does. **TODO** fix.
+  The name of the admin of PostgreSQL, used to create the PostgreSQL
+  user. The default is the name of the administrator under Ubuntu.
   
 ``pgsql_user``
   The name of the database user that will connect to the GroupServer
@@ -150,6 +170,30 @@ options are in the ``config`` section.
 ``zope_pass``
   The password for the Zope administrator. It can (and should) be 
   changed after GroupServer has been set up.
+
+setup-gs
+~~~~~~~~
+
+The second set of options is in the ``setup-gs`` section. They control
+the setup of the initial GroupServer instance
+
+``gs_hostname``
+  The domain name used by your new GroupServer instance. It must be the
+  same as what you picked a host name earlier.
+
+``gs_support_email``
+  The email address where support messages are sent, and were email
+  notifications are send from. For testing this can be set to your own
+  email address.
+  
+``gs_timezone``
+  The timezone that will be used to represent dates and times. It defaults
+  to universal time (``UTC``) but can be set other zones including  
+  
+  - ``Pacific/Auckland``
+  - ``Europe/London``
+  - ``America/New_York``
+  - ``America/Los_Angeles``
 
 Run Buildout
 ------------
@@ -208,23 +252,8 @@ requests`` is displayed.
 GroupServer
 ===========
 
-Configuring GroupServer to display a site is done three steps,
-first you `pick a host name`_, then `set up virtual hosting`_ before
-you `set up GroupServer`_.
-
-Pick a Host Name
-----------------
-
-For a trial system this name can be set up in the ``hosts(5)`` file.
-
-* Open ``/etc/hosts`` as ``root``.
-* Add the new host name to the ``localhost`` entry, which is normally
-  the first one. For example, to add the name ``gstest`` change the
-  line to the following::
-
-    127.0.0.1    localhost gstest
-
-* Save the ``hosts`` file.
+Configuring GroupServer to display a site is done three steps, first
+`set up virtual hosting`_ before you `set up GroupServer`_.
 
 Set Up Virtual Hosting
 ----------------------
@@ -262,32 +291,10 @@ Set Up GroupServer
 To configure the new GroupServer instance carry out the following steps.
 
 * A default GroupServer instance would have been created during
-  installation. Open it by clicking on ``example (Example Site)``.
-  *TODO:* Rename it to ``Example Instance`` to stop confusion with the
-  ``example_site``.
-* The configuration options that are shared by all sites in the
-  GroupServer instance are stored in the ``GlobalConfguration``.
-
-  **supportEmail**
-  
-    This is the address that all support email messages should be
-    sent to. You should change it to something other than 
-    ``example@example.com``. 
+  installation. Open it by clicking on ``example (Example Instance)``.
     
-    + *TODO:* Change the example support email address.
     + *TODO:*  Why does it have a ``canonicalHost``?
     + *TODO:*  Why does it have a ``siteName``?
-  
-  **timezone**
-
-    This is the timezone that will be used to represent dates and
-    times. It defaults to universal time (``UTC``) but can be set other
-    zones including
-  
-    - ``Pacific/Auckland``
-    - ``Europe/London``
-    - ``America/New_York``
-    - ``America/Los_Angeles``
   
 * Navigate to the ``example_site``, which is in the ``Content`` folder
   of the ``example`` instance.

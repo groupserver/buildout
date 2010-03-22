@@ -408,13 +408,33 @@ understand more of PostgreSQL we recommend
 <a class="reference internal" href="#configure-zope">configure Zope</a>, next <a class="reference internal" href="#run-buildout">run buildout</a> to install Zope as well as
 GroupServer, and finally <a class="reference internal" href="#start-zope">start Zope</a>. After that you will be able to
 configure and start <a class="reference internal" href="#groupserver">GroupServer</a>.</p>
+<div class="section" id="pick-a-host-name">
+<h2>3.1&nbsp;&nbsp;&nbsp;Pick a Host Name</h2>
+<p>Your new site needs a domain name. For a trial system this name can be
+set up in the <tt class="docutils literal"><span class="pre">hosts(5)</span></tt> file.</p>
+<ul>
+<li><p class="first">Open <tt class="docutils literal"><span class="pre">/etc/hosts</span></tt> as <tt class="docutils literal"><span class="pre">root</span></tt>.</p>
+</li>
+<li><p class="first">Add the new host name to the <tt class="docutils literal"><span class="pre">localhost</span></tt> entry, which is normally
+the first one. For example, to add the name <tt class="docutils literal"><span class="pre">gstest</span></tt> change the
+line to the following:</p>
+<pre class="literal-block">
+127.0.0.1    localhost gstest
+</pre>
+</li>
+<li><p class="first">Save the <tt class="docutils literal"><span class="pre">hosts</span></tt> file.</p>
+</li>
+</ul>
+</div>
 <div class="section" id="configure-zope">
-<h2>3.1&nbsp;&nbsp;&nbsp;Configure Zope</h2>
+<h2>3.2&nbsp;&nbsp;&nbsp;Configure Zope</h2>
 <p>The configuration of Zope is carried out by modifying <tt class="docutils literal"><span class="pre">instance.cfg</span></tt>,
 which is located in the root of the GroupServer folder. The <tt class="docutils literal"><span class="pre">cfg</span></tt> file
 is interpreted by the Python <a class="reference external" href="http://docs.python.org/library/configparser.html">ConfigParser module</a>, which accepts
-a syntax very similar to Windows INI files. The user-configurable
-options are in the <tt class="docutils literal"><span class="pre">config</span></tt> section.</p>
+a syntax very similar to Windows INI files.</p>
+<div class="section" id="config">
+<h3>3.2.1&nbsp;&nbsp;&nbsp;config</h3>
+<p>The first set of user-configurable options are in the <tt class="docutils literal"><span class="pre">config</span></tt> section.</p>
 <dl class="docutils">
 <dt><tt class="docutils literal"><span class="pre">pgsql_host</span></tt></dt>
 <dd>The host that runs the PostgreSQL database. It defaults to the local
@@ -428,7 +448,8 @@ are installed</dd>
 PostgreSQL. The <tt class="docutils literal"><span class="pre">pgsql_dbname</span></tt> option defines the name of the
 database.</dd>
 <dt><tt class="docutils literal"><span class="pre">pgsql_admin</span></tt></dt>
-<dd>I have  no idea what this option does. <strong>TODO</strong> fix.</dd>
+<dd>The name of the admin of PostgreSQL, used to create the PostgreSQL
+user. The default is the name of the administrator under Ubuntu.</dd>
 <dt><tt class="docutils literal"><span class="pre">pgsql_user</span></tt></dt>
 <dd>The name of the database user that will connect to the GroupServer
 database and modify the data. The database user is separate from the
@@ -449,8 +470,33 @@ have to run as <tt class="docutils literal"><span class="pre">root</span></tt> t
 changed after GroupServer has been set up.</dd>
 </dl>
 </div>
+<div class="section" id="setup-gs">
+<h3>3.2.2&nbsp;&nbsp;&nbsp;setup-gs</h3>
+<p>The second set of options is in the <tt class="docutils literal"><span class="pre">setup-gs</span></tt> section. They control
+the setup of the initial GroupServer instance</p>
+<dl class="docutils">
+<dt><tt class="docutils literal"><span class="pre">gs_hostname</span></tt></dt>
+<dd>The domain name used by your new GroupServer instance. It must be the
+same as what you picked a host name earlier.</dd>
+<dt><tt class="docutils literal"><span class="pre">gs_support_email</span></tt></dt>
+<dd>The email address where support messages are sent, and were email
+notifications are send from. For testing this can be set to your own
+email address.</dd>
+<dt><tt class="docutils literal"><span class="pre">gs_timezone</span></tt></dt>
+<dd><p class="first">The timezone that will be used to represent dates and times. It defaults
+to universal time (<tt class="docutils literal"><span class="pre">UTC</span></tt>) but can be set other zones including</p>
+<ul class="last simple">
+<li><tt class="docutils literal"><span class="pre">Pacific/Auckland</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">Europe/London</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">America/New_York</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">America/Los_Angeles</span></tt></li>
+</ul>
+</dd>
+</dl>
+</div>
+</div>
 <div class="section" id="run-buildout">
-<h2>3.2&nbsp;&nbsp;&nbsp;Run Buildout</h2>
+<h2>3.3&nbsp;&nbsp;&nbsp;Run Buildout</h2>
 <p><a class="reference external" href="http://www.buildout.org/">Buildout</a> is the python-based system that
 we use to download and installs Zope, GroupServer, and all the libraries
 that they both require. To run buildout, first create a virtual Python
@@ -491,7 +537,7 @@ requirements for GroupServer, including:</p>
 buildout processes.</p>
 </div>
 <div class="section" id="start-zope">
-<h2>3.3&nbsp;&nbsp;&nbsp;Start Zope</h2>
+<h2>3.4&nbsp;&nbsp;&nbsp;Start Zope</h2>
 <p>To start the Zope <em>instance</em> as a daemon process run the following
 command:</p>
 <pre class="literal-block">
@@ -506,25 +552,8 @@ $ ./bin/instance start
 <p>Configuring GroupServer to display a site is done three steps,
 first you <a class="reference internal" href="#pick-a-host-name">pick a host name</a>, then <a class="reference internal" href="#set-up-virtual-hosting">set up virtual hosting</a> before
 you <a class="reference internal" href="#set-up-groupserver">set up GroupServer</a>.</p>
-<div class="section" id="pick-a-host-name">
-<h2>4.1&nbsp;&nbsp;&nbsp;Pick a Host Name</h2>
-<p>For a trial system this name can be set up in the <tt class="docutils literal"><span class="pre">hosts(5)</span></tt> file.</p>
-<ul>
-<li><p class="first">Open <tt class="docutils literal"><span class="pre">/etc/hosts</span></tt> as <tt class="docutils literal"><span class="pre">root</span></tt>.</p>
-</li>
-<li><p class="first">Add the new host name to the <tt class="docutils literal"><span class="pre">localhost</span></tt> entry, which is normally
-the first one. For example, to add the name <tt class="docutils literal"><span class="pre">gstest</span></tt> change the
-line to the following:</p>
-<pre class="literal-block">
-127.0.0.1    localhost gstest
-</pre>
-</li>
-<li><p class="first">Save the <tt class="docutils literal"><span class="pre">hosts</span></tt> file.</p>
-</li>
-</ul>
-</div>
 <div class="section" id="set-up-virtual-hosting">
-<h2>4.2&nbsp;&nbsp;&nbsp;Set Up Virtual Hosting</h2>
+<h2>4.1&nbsp;&nbsp;&nbsp;Set Up Virtual Hosting</h2>
 <p>There are two ways to provide virtual hosting: relying on the inbuilt
 virtual hosting in Zope, or using an external <a class="reference internal" href="#web-server">web server</a>. In this
 section we document how to set up virtual hosting in Zope.</p>
@@ -560,13 +589,11 @@ the above example: <tt class="docutils literal"><span class="pre">++skin++skin_g
 </ul>
 </div>
 <div class="section" id="set-up-groupserver">
-<h2>4.3&nbsp;&nbsp;&nbsp;Set Up GroupServer</h2>
+<h2>4.2&nbsp;&nbsp;&nbsp;Set Up GroupServer</h2>
 <p>To configure the new GroupServer instance carry out the following steps.</p>
 <ul>
 <li><p class="first">A default GroupServer instance would have been created during
-installation. Open it by clicking on <tt class="docutils literal"><span class="pre">example</span> <span class="pre">(Example</span> <span class="pre">Site)</span></tt>.
-<em>TODO:</em> Rename it to <tt class="docutils literal"><span class="pre">Example</span> <span class="pre">Instance</span></tt> to stop confusion with the
-<tt class="docutils literal"><span class="pre">example_site</span></tt>.</p>
+installation. Open it by clicking on <tt class="docutils literal"><span class="pre">example</span> <span class="pre">(Example</span> <span class="pre">Instance)</span></tt>.</p>
 </li>
 <li><p class="first">The configuration options that are shared by all sites in the
 GroupServer instance are stored in the <tt class="docutils literal"><span class="pre">GlobalConfguration</span></tt>.</p>
