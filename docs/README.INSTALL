@@ -202,79 +202,105 @@ command::
 
   $ ./bin/instance start
 
+Zope will have started when the message ``Zope Ready to handle 
+requests`` is displayed.
+
 GroupServer
 ===========
 
-The GroupServer Site
---------------------
+Configuring GroupServer to display a site is done three steps,
+first you `pick a host name`_, then `set up virtual hosting`_ before
+you `set up GroupServer`_.
 
-To create a new GroupServer instance carry out the following steps.
+Pick a Host Name
+----------------
 
-* Log into Zope by going to <http://localhost:8080/manage_main>. You
-  will be prompted for a user name (defaults to ``admin``) and a 
-  password (defaults to ``admin``). The *Zope Management Interface*
-  (ZMI) will be shown.
-    
-* From the dropdown menu to the right of the page, add a *Folder*.
-  Fill out the form, giving the new folder the *ID* ``sites``. The 
-  name is optional.
-* Navigate to the new folder.
-* From the dropdown menu, choose *Groupserver Site*.
+For a trial system this name can be set up in the ``hosts(5)`` file.
 
-  + The *ID* and *Title* apply to the GroupServer Site.
-  + Initial User ID and Initial Password are the credentials for the 
-    user created as a *site administrator*. This user is distinct from
-    the *ZMI* *administrator*, which you are logged in as now. The two
-    users must have different IDs.
-  + *Support Email Address* is the address where support queries will 
-    be directed. It will also be used as the email address for the 
-    initial user. Both the support email address, and the user's email
-    address can be changed later.
-  + *Default Timezone* is the timezone that will be used to represent 
-    dates and times displayed on the site. Example zones include
-    
-    - ``Pacific/Auckland``
-    - ``Europe/London``
-    - ``America/New_York``
-    - ``America/Los_Angeles``
-    
-  + *Canonical Hostname* is the domain name at which your site will be
-    found.
-  + *Database Host* is ``localhost`` (unless you know it is not).
-  + *Database Port* is 5432 (unless you know it is not).
-  + *Database Name* is ``testbed`` (unless you named it differently).
-  + *Database Username* is ``testbed`` (unless you named it 
-    differently).
-  + *Database Password* is blank (unless you set one).
+* Open ``/etc/hosts`` as ``root``.
+* Add the new host name to the ``localhost`` entry, which is normally
+  the first one. For example, to add the name ``gstest`` change the
+  line to the following::
 
-Virtual Hosting
----------------
+    127.0.0.1    localhost gstest
+
+* Save the ``hosts`` file.
+
+Set Up Virtual Hosting
+----------------------
 
 There are two ways to provide virtual hosting: relying on the inbuilt
 virtual hosting in Zope, or using an external `web server`_. In this
 section we document how to set up virtual hosting in Zope.
 
-* Log into Zope by going to <http://localhost:8080/manage_main>.
+* Log into the *Zope Management Interface* (ZMI) by going to
+  ``http://{zope_host}:{zope_port}/manage``.  If you did not change
+  the defaults when you configured Zope the ZMI address will be
+  <http://localhost:8080/manage>. You will be prompted for a user name
+  (which defaults to ``admin``) and a password (which also defaults to
+  ``admin``).
 * Click on ``virtual_hosting`` at the root of the Zope site.
 * Click on the *Mappings* tab at the top of the page.
 * Add the following line::
 
-    gsbuildout/sites/gsbuildout/Content/example_site/++skin++skin_gs_base
+    gstest/example/Content/example_site/++skin++skin_gs_base
 
-  + The text before the first ``/`` is the name of the host: 
-    ``gsbuildout``. For a trial system this name can be set up in
-    ``hosts(5)``.
-  + The text after the first ``/`` is the path to the GroupServer site
-    you created in the previous section:
-    ``sites/gsbuildout/Content/example_site/``.
+  + The text before the first ``/`` is the name of the host,
+    ``gstest``, which you set up earlier.
+  + The text after the first ``/`` is the path to the GroupServer site,
+    ``example/Content/example_site/``, which you will configure in the
+    next section.
   + The final part is the *skin* directive, which selects the Zope skin
     to use. The base skin for GroupServer (black and white) is shown in
     the above example: ``++skin++skin_gs_base``.
 
 * Click the *Save Changes* button.
-* Navigate to your site <http://gsbuildout:8080>, replacing the domain
-  with your domain.
 
+Set Up GroupServer
+------------------
+
+To configure the new GroupServer instance carry out the following steps.
+
+* A default GroupServer instance would have been created during
+  installation. Open it by clicking on ``example (Example Site)``.
+  *TODO:* Rename it to ``Example Instance`` to stop confusion with the
+  ``example_site``.
+* The configuration options that are shared by all sites in the
+  GroupServer instance are stored in the ``GlobalConfguration``.
+
+  **supportEmail**
+  
+    This is the address that all support email messages should be
+    sent to. You should change it to something other than 
+    ``example@example.com``. 
+    
+    + *TODO:* Change the example support email address.
+    + *TODO:*  Why does it have a ``canonicalHost``?
+    + *TODO:*  Why does it have a ``siteName``?
+  
+  **timezone**
+
+    This is the timezone that will be used to represent dates and
+    times. It defaults to universal time (``UTC``) but can be set other
+    zones including
+  
+    - ``Pacific/Auckland``
+    - ``Europe/London``
+    - ``America/New_York``
+    - ``America/Los_Angeles``
+  
+* Navigate to the ``example_site``, which is in the ``Content`` folder
+  of the ``example`` instance.
+  
+  + Open the ``DivisionConfiguration``. This contains the basic
+    configuration for the site.
+  + Change **canonicalHost** to the host name you picked earlier.
+    (Think of the ``canonicalHost`` as a reverse lookup for GroupServer:
+    the virtual hosting maps a host-name to a site, while the canonical
+    host maps the site to a host name.)
+    
+* View the site
+    
 Email Server
 ============
 
@@ -307,7 +333,7 @@ Determine Your Setup
   The path in which you have installed GroupServer.
 
 **DOMAIN_NAME**
-  The domain name as configured when you set up `virtual hosting`_.
+  The domain name as configured when you `set up virtual hosting`_.
   
 Change the Configuration
 ------------------------
@@ -340,7 +366,7 @@ Copy the Needed Scripts
   ``PATH_TO_GROUPSERVER/utils/smtp2zope-nonautomatic.py``
   
   + Change ``AUTHORIZATION`` to match the username and password you 
-    set when you created `the GroupServer site`_ [really?]
+    set when you `set up GroupServer`_ [really?]
 
 GroupServer Postifx Configuration
 ---------------------------------

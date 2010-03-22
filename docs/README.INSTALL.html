@@ -497,59 +497,44 @@ command:</p>
 <pre class="literal-block">
 $ ./bin/instance start
 </pre>
+<p>Zope will have started when the message <tt class="docutils literal"><span class="pre">Zope</span> <span class="pre">Ready</span> <span class="pre">to</span> <span class="pre">handle</span>
+<span class="pre">requests</span></tt> is displayed.</p>
 </div>
 </div>
 <div class="section" id="groupserver">
 <h1>4&nbsp;&nbsp;&nbsp;GroupServer</h1>
-<div class="section" id="the-groupserver-site">
-<h2>4.1&nbsp;&nbsp;&nbsp;The GroupServer Site</h2>
-<p>To create a new GroupServer instance carry out the following steps.</p>
-<ul class="simple">
-<li>Log into Zope by going to &lt;<a class="reference external" href="http://localhost:8080/manage_main">http://localhost:8080/manage_main</a>&gt;. You
-will be prompted for a user name (defaults to <tt class="docutils literal"><span class="pre">admin</span></tt>) and a
-password (defaults to <tt class="docutils literal"><span class="pre">admin</span></tt>). The <em>Zope Management Interface</em>
-(ZMI) will be shown.</li>
-<li>From the dropdown menu to the right of the page, add a <em>Folder</em>.
-Fill out the form, giving the new folder the <em>ID</em> <tt class="docutils literal"><span class="pre">sites</span></tt>. The
-name is optional.</li>
-<li>Navigate to the new folder.</li>
-<li>From the dropdown menu, choose <em>Groupserver Site</em>.<ul>
-<li>The <em>ID</em> and <em>Title</em> apply to the GroupServer Site.</li>
-<li>Initial User ID and Initial Password are the credentials for the
-user created as a <em>site administrator</em>. This user is distinct from
-the <em>ZMI</em> <em>administrator</em>, which you are logged in as now. The two
-users must have different IDs.</li>
-<li><em>Support Email Address</em> is the address where support queries will
-be directed. It will also be used as the email address for the
-initial user. Both the support email address, and the user's email
-address can be changed later.</li>
-<li><em>Default Timezone</em> is the timezone that will be used to represent
-dates and times displayed on the site. Example zones include<ul>
-<li><tt class="docutils literal"><span class="pre">Pacific/Auckland</span></tt></li>
-<li><tt class="docutils literal"><span class="pre">Europe/London</span></tt></li>
-<li><tt class="docutils literal"><span class="pre">America/New_York</span></tt></li>
-<li><tt class="docutils literal"><span class="pre">America/Los_Angeles</span></tt></li>
-</ul>
+<p>Configuring GroupServer to display a site is done three steps,
+first you <a class="reference internal" href="#pick-a-host-name">pick a host name</a>, then <a class="reference internal" href="#set-up-virtual-hosting">set up virtual hosting</a> before
+you <a class="reference internal" href="#set-up-groupserver">set up GroupServer</a>.</p>
+<div class="section" id="pick-a-host-name">
+<h2>4.1&nbsp;&nbsp;&nbsp;Pick a Host Name</h2>
+<p>For a trial system this name can be set up in the <tt class="docutils literal"><span class="pre">hosts(5)</span></tt> file.</p>
+<ul>
+<li><p class="first">Open <tt class="docutils literal"><span class="pre">/etc/hosts</span></tt> as <tt class="docutils literal"><span class="pre">root</span></tt>.</p>
 </li>
-<li><em>Canonical Hostname</em> is the domain name at which your site will be
-found.</li>
-<li><em>Database Host</em> is <tt class="docutils literal"><span class="pre">localhost</span></tt> (unless you know it is not).</li>
-<li><em>Database Port</em> is 5432 (unless you know it is not).</li>
-<li><em>Database Name</em> is <tt class="docutils literal"><span class="pre">testbed</span></tt> (unless you named it differently).</li>
-<li><em>Database Username</em> is <tt class="docutils literal"><span class="pre">testbed</span></tt> (unless you named it
-differently).</li>
-<li><em>Database Password</em> is blank (unless you set one).</li>
-</ul>
+<li><p class="first">Add the new host name to the <tt class="docutils literal"><span class="pre">localhost</span></tt> entry, which is normally
+the first one. For example, to add the name <tt class="docutils literal"><span class="pre">gstest</span></tt> change the
+line to the following:</p>
+<pre class="literal-block">
+127.0.0.1    localhost gstest
+</pre>
+</li>
+<li><p class="first">Save the <tt class="docutils literal"><span class="pre">hosts</span></tt> file.</p>
 </li>
 </ul>
 </div>
-<div class="section" id="virtual-hosting">
-<h2>4.2&nbsp;&nbsp;&nbsp;Virtual Hosting</h2>
+<div class="section" id="set-up-virtual-hosting">
+<h2>4.2&nbsp;&nbsp;&nbsp;Set Up Virtual Hosting</h2>
 <p>There are two ways to provide virtual hosting: relying on the inbuilt
 virtual hosting in Zope, or using an external <a class="reference internal" href="#web-server">web server</a>. In this
 section we document how to set up virtual hosting in Zope.</p>
 <ul>
-<li><p class="first">Log into Zope by going to &lt;<a class="reference external" href="http://localhost:8080/manage_main">http://localhost:8080/manage_main</a>&gt;.</p>
+<li><p class="first">Log into the <em>Zope Management Interface</em> (ZMI) by going to
+<tt class="docutils literal"><span class="pre">http://{zope_host}:{zope_port}/manage</span></tt>.  If you did not change
+the defaults when you configured Zope the ZMI address will be
+&lt;<a class="reference external" href="http://localhost:8080/manage">http://localhost:8080/manage</a>&gt;. You will be prompted for a user name
+(which defaults to <tt class="docutils literal"><span class="pre">admin</span></tt>) and a password (which also defaults to
+<tt class="docutils literal"><span class="pre">admin</span></tt>).</p>
 </li>
 <li><p class="first">Click on <tt class="docutils literal"><span class="pre">virtual_hosting</span></tt> at the root of the Zope site.</p>
 </li>
@@ -557,15 +542,14 @@ section we document how to set up virtual hosting in Zope.</p>
 </li>
 <li><p class="first">Add the following line:</p>
 <pre class="literal-block">
-gsbuildout/sites/gsbuildout/Content/example_site/++skin++skin_gs_base
+gstest/example/Content/example_site/++skin++skin_gs_base
 </pre>
 <ul class="simple">
-<li>The text before the first <tt class="docutils literal"><span class="pre">/</span></tt> is the name of the host:
-<tt class="docutils literal"><span class="pre">gsbuildout</span></tt>. For a trial system this name can be set up in
-<tt class="docutils literal"><span class="pre">hosts(5)</span></tt>.</li>
-<li>The text after the first <tt class="docutils literal"><span class="pre">/</span></tt> is the path to the GroupServer site
-you created in the previous section:
-<tt class="docutils literal"><span class="pre">sites/gsbuildout/Content/example_site/</span></tt>.</li>
+<li>The text before the first <tt class="docutils literal"><span class="pre">/</span></tt> is the name of the host,
+<tt class="docutils literal"><span class="pre">gstest</span></tt>, which you set up earlier.</li>
+<li>The text after the first <tt class="docutils literal"><span class="pre">/</span></tt> is the path to the GroupServer site,
+<tt class="docutils literal"><span class="pre">example/Content/example_site/</span></tt>, which you will configure in the
+next section.</li>
 <li>The final part is the <em>skin</em> directive, which selects the Zope skin
 to use. The base skin for GroupServer (black and white) is shown in
 the above example: <tt class="docutils literal"><span class="pre">++skin++skin_gs_base</span></tt>.</li>
@@ -573,8 +557,55 @@ the above example: <tt class="docutils literal"><span class="pre">++skin++skin_g
 </li>
 <li><p class="first">Click the <em>Save Changes</em> button.</p>
 </li>
-<li><p class="first">Navigate to your site &lt;<a class="reference external" href="http://gsbuildout:8080">http://gsbuildout:8080</a>&gt;, replacing the domain
-with your domain.</p>
+</ul>
+</div>
+<div class="section" id="set-up-groupserver">
+<h2>4.3&nbsp;&nbsp;&nbsp;Set Up GroupServer</h2>
+<p>To configure the new GroupServer instance carry out the following steps.</p>
+<ul>
+<li><p class="first">A default GroupServer instance would have been created during
+installation. Open it by clicking on <tt class="docutils literal"><span class="pre">example</span> <span class="pre">(Example</span> <span class="pre">Site)</span></tt>.
+<em>TODO:</em> Rename it to <tt class="docutils literal"><span class="pre">Example</span> <span class="pre">Instance</span></tt> to stop confusion with the
+<tt class="docutils literal"><span class="pre">example_site</span></tt>.</p>
+</li>
+<li><p class="first">The configuration options that are shared by all sites in the
+GroupServer instance are stored in the <tt class="docutils literal"><span class="pre">GlobalConfguration</span></tt>.</p>
+<p><strong>supportEmail</strong></p>
+<blockquote>
+<p>This is the address that all support email messages should be
+sent to. You should change it to something other than
+<tt class="docutils literal"><span class="pre">example&#64;example.com</span></tt>.</p>
+<ul class="simple">
+<li><em>TODO:</em> Change the example support email address.</li>
+<li><em>TODO:</em>  Why does it have a <tt class="docutils literal"><span class="pre">canonicalHost</span></tt>?</li>
+<li><em>TODO:</em>  Why does it have a <tt class="docutils literal"><span class="pre">siteName</span></tt>?</li>
+</ul>
+</blockquote>
+<p><strong>timezone</strong></p>
+<blockquote>
+<p>This is the timezone that will be used to represent dates and
+times. It defaults to universal time (<tt class="docutils literal"><span class="pre">UTC</span></tt>) but can be set other
+zones including</p>
+<ul class="simple">
+<li><tt class="docutils literal"><span class="pre">Pacific/Auckland</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">Europe/London</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">America/New_York</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">America/Los_Angeles</span></tt></li>
+</ul>
+</blockquote>
+</li>
+<li><p class="first">Navigate to the <tt class="docutils literal"><span class="pre">example_site</span></tt>, which is in the <tt class="docutils literal"><span class="pre">Content</span></tt> folder
+of the <tt class="docutils literal"><span class="pre">example</span></tt> instance.</p>
+<ul class="simple">
+<li>Open the <tt class="docutils literal"><span class="pre">DivisionConfiguration</span></tt>. This contains the basic
+configuration for the site.</li>
+<li>Change <strong>canonicalHost</strong> to the host name you picked earlier.
+(Think of the <tt class="docutils literal"><span class="pre">canonicalHost</span></tt> as a reverse lookup for GroupServer:
+the virtual hosting maps a host-name to a site, while the canonical
+host maps the site to a host name.)</li>
+</ul>
+</li>
+<li><p class="first">View the site</p>
 </li>
 </ul>
 </div>
@@ -608,7 +639,7 @@ this you can use the following command:</p>
 <dt><strong>PATH_TO_GROUPSERVER</strong></dt>
 <dd>The path in which you have installed GroupServer.</dd>
 <dt><strong>DOMAIN_NAME</strong></dt>
-<dd>The domain name as configured when you set up <a class="reference internal" href="#virtual-hosting">virtual hosting</a>.</dd>
+<dd>The domain name as configured when you <a class="reference internal" href="#set-up-virtual-hosting">set up virtual hosting</a>.</dd>
 </dl>
 </div>
 <div class="section" id="change-the-configuration">
@@ -649,7 +680,7 @@ chmod 750 ZOPE_PATH_TO_GROUPSERVER/utils/smtp2zope*py
 <tt class="docutils literal"><span class="pre">PATH_TO_GROUPSERVER/utils/smtp2zope-nonautomatic.py</span></tt></p>
 <ul class="simple">
 <li>Change <tt class="docutils literal"><span class="pre">AUTHORIZATION</span></tt> to match the username and password you
-set when you created <a class="reference internal" href="#the-groupserver-site">the GroupServer site</a> [really?]</li>
+set when you <a class="reference internal" href="#set-up-groupserver">set up GroupServer</a> [really?]</li>
 </ul>
 </li>
 </ul>
