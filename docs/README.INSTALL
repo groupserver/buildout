@@ -6,29 +6,35 @@ GroupServer Installation
 
 :Authors: Michael JasonSmith; Richard Waid; Alice Murphy; Dan Randow
 :Contact: Michael JasonSmith <mpj17@onlinegroups.net>
-:Date: 2010-03-09
+:Date: 2010-03-25
 :Organization: `GroupServer.org <http://groupserver.org>`_
 :Copyright: OnlineGroups.Net, licensed under a 
   `Creative Commons Attribution-Share Alike 3.0 New Zealand License
   <http://creativecommons.org/licenses/by-sa/3.0/nz/>`_
 
-Introduction
-============
+Quick Start
+===========
 
-Installing GroupServer requires the installation and configuration of
-five different components:
+#. Install the required packages (see `Requirements`_).
+#. Ensure that the user that will run GroupServer can create databases
+   in PostgreSQL (see `Configure PostgreSQL`_).
+#. Create a new hostname for your GroupServer site. Yes, you will need 
+   a new one (see `Pick a Host Name`_).
+#. Edit ``instance.cfg`` (see `Configure Zope`_).
+#. Run the following (see `Run Buildout`_ and `Start Zope`_)::
 
-#. `Configure PostgreSQL`_,
-#. `Set up Zope`_
-#. `Configure GroupServer`_ itself, 
-#. Set up the `email server`_, and
-#. An optional `web server`_.
+   $ virtualenv -p python2.4 . && ./bin/easy_install -U setuptools
+   $ ./bin/python bootstrap.py && ./bin/buildout -v
+   $ ./bin/instance start
 
-For those who have experience at setting up systems, the `Quick Start`_
-outlines the basic steps required to configure and set up GroupServer.
+#. Set up the virtual host mapping to point from your new host to 
+   ``example/Content/example_site`` (see `Configure GroupServer`_).
+#. Visit your new site.
+
+Later you can set up the `Email Server`_ and an optional `Web Proxy`_.
 
 Requirements
-------------
+============
 
 GroupServer is developed on `Ubuntu <http://ubuntu.com/>`_, and is
 know to run on `CentOS <http://centos.org/>`_. Below the packages in
@@ -58,31 +64,14 @@ Ubuntu that are required to install GroupServer are listed.
 |                      | ``lib64z1-dev`` (from main)     |    
 +----------------------+---------------------------------+
 
-Quick Start
-===========
-
-#. Ensure that the user that will run GroupServer can create databases
-   in PostgreSQL (see `Configure PostgreSQL`_).
-#. Create a new hostname lookup for your new GroupServer site 
-   (see `Pick a Host Name`_).
-#. Edit ``instance.cfg`` (see `Configure Zope`_).
-#. Run the following (see `Run Buildout`_ and `Start Zope`_)::
-
-   $ virtualenv -p python2.4 . && ./bin/easy_install -U setuptools
-   $ ./bin/python bootstrap.py && ./bin/buildout -v
-   $ ./bin/instance start
-
-#. Set up the virtual host mapping to point from your new host to 
-   ``example/Content/example_site`` (see `Configure GroupServer`_).
-#. Visit your new site.
 
 Configure PostgreSQL
 ====================
 
-Database administrators who know what they are doing should ignore this
-section. For humble administrators that just want to try GroupServer,
-life is easier if the excellent security in PostgreSQL is disabled. To
-turn off security, change the bottom few lines in the 
+Database administrators who know what they are doing should ignore
+this section. Life is easier for humble administrators that just
+want to try GroupServer if the excellent security in PostgreSQL is
+disabled. To turn off security, change the bottom few lines in the
 ``/etc/postgresql/8.4/main/pg_hba.conf`` file (you will have to be root
 to modify it)::
 
@@ -110,15 +99,17 @@ Set up Zope
 ===========
 
 Installing Zope is carried out in four parts: first `pick a host name`_,
-then `configure Zope`_, `run buildout`_ to install Zope as well as
-GroupServer, and finally `start Zope`_. After that you will be able to
-configure and start GroupServer (see `Configure GroupServer`_).
+then `configure Zope`_, `run buildout`_ to install Zope, and finally
+`start Zope`_. After that you will be able to configure and start
+GroupServer (see `Configure GroupServer`_).
 
 Pick a Host Name
 ----------------
 
-Your new site needs a domain name. For a trial system this name can be
-set up in the ``hosts(5)`` file.
+Your new site needs its own host name, so Zope knows which GroupServer
+site to serve. (Zope can serve multiple sites, as well as its web-based
+management system.) For a trial system the name can be set up in the
+``hosts(5)`` file.
 
 * Edit ``/etc/hosts`` as ``root``.
 * Add the new host name to the ``localhost`` entry, which is normally
@@ -138,8 +129,8 @@ is interpreted by the Python `ConfigParser module
 <http://docs.python.org/library/configparser.html>`_, which accepts
 a syntax very similar to Windows INI files. 
 
-config
-~~~~~~
+``config``
+~~~~~~~~~~
 
 The first set of user-configurable options are in the ``config`` section.
 
@@ -164,7 +155,7 @@ The first set of user-configurable options are in the ``config`` section.
   The name of the database user that will connect to the GroupServer
   database and modify the data. The database user is separate from the
   other users on the system, including those that log into the computer
-  and those in Zope. The value of this option can be set to any thing,
+  and those in Zope. The value of this option can be set to anything,
   but the default is usually good enough.
 
 ``pgsql_password``
@@ -184,10 +175,14 @@ The first set of user-configurable options are in the ``config`` section.
   
 ``zope_pass``
   The password for the Zope administrator. It can (and should) be
-  changed after GroupServer has been set up.
+  changed after GroupServer has been set up. (However, if you change the
+  password after installation you will also have to change the scripts
+  that Postfix uses to communicate with GroupServer, as they store the
+  password too, see `Set up Scripts`_; we realise that the passwords
+  should not be stored in the scripts.)
 
-setup-gs
-~~~~~~~~
+``setup-gs``
+~~~~~~~~~~~~
 
 The second set of options is in the ``setup-gs`` section. They control
 the setup of the initial GroupServer instance
@@ -272,7 +267,7 @@ Configure GroupServer
 Once built, the only thing remaining to do before you can see your new
 GroupServer site is to configure virtual hosting.  There are two ways
 to provide virtual hosting: relying on the inbuilt virtual hosting in
-Zope, or using an external `web server`_. In this section we document
+Zope, or using an external `web proxy`_. In this section we document
 how to set up virtual hosting in Zope.
 
 * Log into the *Zope Management Interface* (ZMI) by going to
@@ -302,10 +297,10 @@ how to set up virtual hosting in Zope.
 Email Server
 ============
 
-Configuring Postfix is tricky, and is optional: you can use the Web
-interface to GroupServer without configuring the email server.
-However, Postfix is required to provide the email interface for
-GroupServer. GroupServer uses Postfix to:
+Postfix provides the email interface for GroupServer. Configuring
+Postfix is tricky, and is optional: you can use the Web interface to
+GroupServer without configuring the email server.  However, GroupServer
+uses Postfix to:
 
 * Queue email that is delivered to groups,
 * Pass the email messages to GroupServer, and
@@ -319,21 +314,6 @@ Postfix has to know to run two scripts when email messages come in for
 your GroupServer site. To do this two you will have to change some files
 in the Postfix configuration directory. For Ubuntu this directory is
 ``/etc/postfix``.
-
-Change ``main.cf``
-~~~~~~~~~~~~~~~~~~
-
-* As root, open ``main.cf`` in your Postfix configuration.
-* Find the ``alias_maps`` parameter.
-* Add the following on a line below the existing value of
-  ``alias_maps``::
-
-    hash:/etc/postfix/groupserver.aliases
-
-* Find the '`virtual_alias_maps`' parameter.
-* Add the following::
-
-    hash:/etc/postfix/groupserver.virtual     
 
 Copy the Configuration Files
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -351,6 +331,31 @@ Copy the Configuration Files
   
     $ /usr/sbin/postconf | grep default_privs
 
+Change ``main.cf``
+~~~~~~~~~~~~~~~~~~
+
+* Edit ``/etc/postfix/main.cf``.
+* Find the ``alias_maps`` parameter.
+* Add the following on a line below the existing value of
+  ``alias_maps``::
+
+    hash:/etc/postfix/groupserver.aliases
+
+* Find the ``virtual_alias_maps`` parameter.
+* Add the following on a line below the existing value of 
+  ``virtual_alias_maps`` ::
+
+    hash:/etc/postfix/groupserver.virtual     
+
+Update Postfix
+~~~~~~~~~~~~~~
+
+To load the new configuration into Postfix run the following commands::
+
+    # postalias /etc/postifx/groupserver.aliases
+    # postmap /etc/postifx/groupserver.virtual
+    # postfix reload
+
 Set up Scripts
 --------------
 
@@ -362,29 +367,11 @@ Ubuntu the command will be::
 
   # chown nobody.nogroup utils/*py
   
-Update Postfix
---------------
+Web Proxy
+=========
 
-To load the new configuration into Postfix run the following commands::
-
-    # postalias /etc/postifx/groupserver.aliases
-    # postmap /etc/postifx/groupserver.virtual
-    # postfix reload
- 
-
-
-* Edit ``PATH_TO_GROUPSERVER/utils/smtp2zope.py`` and 
-  ``PATH_TO_GROUPSERVER/utils/smtp2zope-nonautomatic.py``
-  
-  + Change ``AUTHORIZATION`` to match the username and password you 
-    set when you set up Zope (see `Configure Zope`_) [really?]
-
-
-Web Server
-==========
-
-A web server is not required to try GroupServer. However, for production
-sites it is a good idea to run a web server to provide the following
+A web proxy is not required to try GroupServer. However, for production
+sites it is a good idea to run a proxy to provide the following
 services:
 
 * To mediate between the low level HTTP port (port 80) and the 
@@ -393,8 +380,8 @@ services:
 * To rewrite the URL to support virtual hosting.
 * To provide caching.
 
-GroupServer is known to work with many Web servers including 
-Varnish, NGINX, ha_proxy, and Apache. For Apache a rewrite rule that is
-required to provide the mapping look something like the one in the 
-example file ``apache-groupserver``.
+GroupServer is known to work with many Web proxies including Varnish,
+``NGINX``, ``ha_proxy``, and Apache. For Apache a rewrite rule that is
+required to provide the mapping looks like the one in the example file
+``apache-groupserver``.
 
