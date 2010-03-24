@@ -622,8 +622,77 @@ GroupServer. GroupServer uses Postfix to:</p>
 <li>Send email messages from GroupServer to the email accounts of the
 group members.</li>
 </ul>
+<div class="section" id="change-the-configuration">
+<h2>6.1&nbsp;&nbsp;&nbsp;Change the Configuration</h2>
+<p>Postfix has to know to run two scripts when email messages come in for
+your GroupServer site. To do this two you will have to change some files
+in the Postfix configuration directory. For Ubuntu this directory is
+<tt class="docutils literal"><span class="pre">/etc/postfix</span></tt>.</p>
+<div class="section" id="change-main-cf">
+<h3>6.1.1&nbsp;&nbsp;&nbsp;Change <tt class="docutils literal"><span class="pre">main.cf</span></tt></h3>
+<ul>
+<li><p class="first">As root, open <tt class="docutils literal"><span class="pre">main.cf</span></tt> in your Postfix configuration.</p>
+</li>
+<li><p class="first">Find the <tt class="docutils literal"><span class="pre">alias_maps</span></tt> parameter.</p>
+</li>
+<li><p class="first">Add the following on a line below the existing value of
+<tt class="docutils literal"><span class="pre">alias_maps</span></tt>:</p>
+<pre class="literal-block">
+hash:/etc/postfix/groupserver.aliases
+</pre>
+</li>
+<li><p class="first">Find the '<cite>virtual_alias_maps</cite>' parameter.</p>
+</li>
+<li><p class="first">Add the following:</p>
+<pre class="literal-block">
+hash:/etc/postfix/groupserver.virtual
+</pre>
+</li>
+</ul>
+</div>
+<div class="section" id="copy-the-configuration-files">
+<h3>6.1.2&nbsp;&nbsp;&nbsp;Copy the Configuration Files</h3>
+<ul>
+<li><p class="first">Copy the files <tt class="docutils literal"><span class="pre">postfix_config/groupserver.*</span></tt> from the GroupServer
+installation directory to the Postfix configuration directory
+<tt class="docutils literal"><span class="pre">/etc/postfix</span></tt>.</p>
+</li>
+<li><p class="first">Change the ownership of the files to the Postfix user and group. For
+Ubuntu this would be:</p>
+<pre class="literal-block">
+# chown nobody.nogroup /etc/postfix/groupserver.*
+</pre>
+<p>If you are not on Ubuntu, running the following will display the
+user-name of the Postfix user:</p>
+<pre class="literal-block">
+$ /usr/sbin/postconf | grep default_privs
+</pre>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="set-up-scripts">
+<h2>6.2&nbsp;&nbsp;&nbsp;Set up Scripts</h2>
+<p>The two scripts that are run by Postfix are stored in the <tt class="docutils literal"><span class="pre">utils</span></tt>
+directory of your GroupServer installation. To allow them to be run by
+Postfix the ownership will need to be changed to the same user and group
+as the configuration fixes (see <a class="reference internal" href="#copy-the-configuration-files">Copy the Configuration Files</a>). For
+Ubuntu the command will be:</p>
+<pre class="literal-block">
+# chown nobody.nogroup utils/*py
+</pre>
+</div>
+<div class="section" id="update-postfix">
+<h2>6.3&nbsp;&nbsp;&nbsp;Update Postfix</h2>
+<p>To load the new configuration into Postfix run the following commands:</p>
+<pre class="literal-block">
+# postalias /etc/postifx/groupserver.aliases
+# postmap /etc/postifx/groupserver.virtual
+# postfix reload
+</pre>
+</div>
 <div class="section" id="determine-your-setup">
-<h2>6.1&nbsp;&nbsp;&nbsp;Determine Your Setup</h2>
+<h2>6.4&nbsp;&nbsp;&nbsp;Determine Your Setup</h2>
 <dl class="docutils">
 <dt><tt class="docutils literal"><span class="pre">POSTFIX_CONFIG_PATH</span></tt></dt>
 <dd>The path to your postfix configuration. In Ubuntu this is
@@ -640,78 +709,17 @@ $ /usr/sbin/postconf | grep default_privs
 <dt><tt class="docutils literal"><span class="pre">PATH_TO_GROUPSERVER</span></tt></dt>
 <dd>The path in which you have installed GroupServer.</dd>
 <dt><tt class="docutils literal"><span class="pre">DOMAIN_NAME</span></tt></dt>
-<dd>The domain you set up earlier (see <a class="reference internal" href="#pick-a-host-name">Pick a Host Name</a>).</dd>
+<dd><p class="first">The domain you set up earlier (see <a class="reference internal" href="#pick-a-host-name">Pick a Host Name</a>).</p>
+<blockquote class="last">
+chmod 750 ZOPE_PATH_TO_GROUPSERVER/utils/smtp2zope*py</blockquote>
+</dd>
 </dl>
-</div>
-<div class="section" id="change-the-configuration">
-<h2>6.2&nbsp;&nbsp;&nbsp;Change the Configuration</h2>
-<ul>
-<li><p class="first">Open <tt class="docutils literal"><span class="pre">POSTFIX_CONFIG_PATH/main.cf</span></tt> in a text editor.</p>
-</li>
-<li><p class="first">Find the <tt class="docutils literal"><span class="pre">alias_maps</span></tt> parameter.</p>
-</li>
-<li><p class="first">Add the following on a line below the existing value of
-<tt class="docutils literal"><span class="pre">alias_maps</span></tt>:</p>
-<pre class="literal-block">
-hash:POSTFIX_CONFIG_PATH/groupserver.aliases
-</pre>
-</li>
-<li><p class="first">Find the '<cite>virtual_alias_maps</cite>' parameter.</p>
-</li>
-<li><p class="first">Add the following:</p>
-<pre class="literal-block">
-hash:POSTFIX_CONFIG_PATH/groupserver.virtual
-</pre>
-</li>
-</ul>
-</div>
-<div class="section" id="copy-the-needed-scripts">
-<h2>6.3&nbsp;&nbsp;&nbsp;Copy the Needed Scripts</h2>
-<p><strong>Note</strong> This step is bung. We need to fix it.</p>
-<ul>
-<li><p class="first">Run the following commands:</p>
-<pre class="literal-block">
-mkdir PATH_TO_GROUPSERVER/utils
-cp eggs/Products.XWFMailingListManager*/Products/XWFMailingListManager/smtp2zope*py PATH_TO_GROUPSERVER/utils
-chown POSTFIX_USER.POSTFIX_GROUP PATH_TO_GROUPSERVER/utils/smtp2zope*py
-chmod 750 ZOPE_PATH_TO_GROUPSERVER/utils/smtp2zope*py
-</pre>
-</li>
-<li><p class="first">Edit <tt class="docutils literal"><span class="pre">PATH_TO_GROUPSERVER/utils/smtp2zope.py</span></tt> and
-<tt class="docutils literal"><span class="pre">PATH_TO_GROUPSERVER/utils/smtp2zope-nonautomatic.py</span></tt></p>
 <ul class="simple">
+<li>Edit <tt class="docutils literal"><span class="pre">PATH_TO_GROUPSERVER/utils/smtp2zope.py</span></tt> and
+<tt class="docutils literal"><span class="pre">PATH_TO_GROUPSERVER/utils/smtp2zope-nonautomatic.py</span></tt><ul>
 <li>Change <tt class="docutils literal"><span class="pre">AUTHORIZATION</span></tt> to match the username and password you
 set when you set up Zope (see <a class="reference internal" href="#configure-zope">Configure Zope</a>) [really?]</li>
 </ul>
-</li>
-</ul>
-</div>
-<div class="section" id="groupserver-postifx-configuration">
-<h2>6.4&nbsp;&nbsp;&nbsp;GroupServer Postifx Configuration</h2>
-<ul>
-<li><p class="first">Create a file called <tt class="docutils literal"><span class="pre">POSTFIX_CONFIG_PATH/groupserver.aliases</span></tt>.</p>
-</li>
-<li><p class="first">Set the contents to the following:</p>
-<pre class="literal-block">
-verify-address:   &quot;|PATH_TO_GROUPSERVER/utils/smtp2zope-nonautomatic.py http://DOMAINNAME/acl_users/verify_address&quot;
-group-automagic:  &quot;|PATH_TO_GROUPSERVER/utils/smtp2zope.py  http://DOMAINNAME/ListManager&quot;
-</pre>
-</li>
-<li><p class="first">Create a file called <tt class="docutils literal"><span class="pre">POSTFIX_CONFIG_PATH/groupserver.virtual</span></tt>.</p>
-</li>
-<li><p class="first">Set the contents to the following:</p>
-<pre class="literal-block">
-DOMAINNAME           virtual
-verify&#64;DOMAINNAME    verify-address
-&#64;DOMAINNAME          group-automagic
-</pre>
-</li>
-<li><p class="first">Run the commands [as root?]:</p>
-<pre class="literal-block">
-postalias POSTFIX_CONFIG_PATH/groupserver.aliases
-postmap POSTFIX_CONFIG_PATH/groupserver.virtual
-postfix reload
-</pre>
 </li>
 </ul>
 </div>

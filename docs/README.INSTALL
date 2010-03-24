@@ -311,55 +311,67 @@ GroupServer. GroupServer uses Postfix to:
 * Pass the email messages to GroupServer, and
 * Send email messages from GroupServer to the email accounts of the
   group members.
-
-Determine Your Setup
---------------------
-
-``POSTFIX_CONFIG_PATH``
-  The path to your postfix configuration. In Ubuntu this is
-  ``/etc/postfix``.
-   
-``POSTFIX_USER``
-  The user which postfix uses to execute external scripts. To determine
-  this you can use the following command::
-  
-  $ /usr/sbin/postconf | grep default_privs
-				
-``POSTFIX_GROUP``
-  The user-group to which postfix belongs.
-				
-``PATH_TO_GROUPSERVER``
-  The path in which you have installed GroupServer.
-
-``DOMAIN_NAME``
-  The domain you set up earlier (see `Pick a Host Name`_).
   
 Change the Configuration
 ------------------------
 
-* Open ``POSTFIX_CONFIG_PATH/main.cf`` in a text editor.
+Postfix has to know to run two scripts when email messages come in for
+your GroupServer site. To do this two you will have to change some files
+in the Postfix configuration directory. For Ubuntu this directory is
+``/etc/postfix``.
+
+Change ``main.cf``
+~~~~~~~~~~~~~~~~~~
+
+* As root, open ``main.cf`` in your Postfix configuration.
 * Find the ``alias_maps`` parameter.
 * Add the following on a line below the existing value of
   ``alias_maps``::
 
-    hash:POSTFIX_CONFIG_PATH/groupserver.aliases
+    hash:/etc/postfix/groupserver.aliases
 
 * Find the '`virtual_alias_maps`' parameter.
 * Add the following::
 
-    hash:POSTFIX_CONFIG_PATH/groupserver.virtual     
+    hash:/etc/postfix/groupserver.virtual     
 
-Copy the Needed Scripts
------------------------
+Copy the Configuration Files
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-**Note** This step is bung. We need to fix it.
+* Copy the files ``postfix_config/groupserver.*`` from the GroupServer
+  installation directory to the Postfix configuration directory
+  ``/etc/postfix``.
+* Change the ownership of the files to the Postfix user and group. For
+  Ubuntu this would be::
+  
+    # chown nobody.nogroup /etc/postfix/groupserver.*
 
-* Run the following commands::
+  If you are not on Ubuntu, running the following will display the
+  user-name of the Postfix user::
+  
+    $ /usr/sbin/postconf | grep default_privs
 
-    mkdir PATH_TO_GROUPSERVER/utils
-    cp eggs/Products.XWFMailingListManager*/Products/XWFMailingListManager/smtp2zope*py PATH_TO_GROUPSERVER/utils
-    chown POSTFIX_USER.POSTFIX_GROUP PATH_TO_GROUPSERVER/utils/smtp2zope*py
-    chmod 750 ZOPE_PATH_TO_GROUPSERVER/utils/smtp2zope*py
+Set up Scripts
+--------------
+
+The two scripts that are run by Postfix are stored in the ``utils`` 
+directory of your GroupServer installation. To allow them to be run by
+Postfix the ownership will need to be changed to the same user and group
+as the configuration fixes (see `Copy the Configuration Files`_). For
+Ubuntu the command will be::
+
+  # chown nobody.nogroup utils/*py
+  
+Update Postfix
+--------------
+
+To load the new configuration into Postfix run the following commands::
+
+    # postalias /etc/postifx/groupserver.aliases
+    # postmap /etc/postifx/groupserver.virtual
+    # postfix reload
+ 
+
 
 * Edit ``PATH_TO_GROUPSERVER/utils/smtp2zope.py`` and 
   ``PATH_TO_GROUPSERVER/utils/smtp2zope-nonautomatic.py``
@@ -367,27 +379,6 @@ Copy the Needed Scripts
   + Change ``AUTHORIZATION`` to match the username and password you 
     set when you set up Zope (see `Configure Zope`_) [really?]
 
-GroupServer Postifx Configuration
----------------------------------
-
-* Create a file called ``POSTFIX_CONFIG_PATH/groupserver.aliases``.
-* Set the contents to the following::
-
-    verify-address:   "|PATH_TO_GROUPSERVER/utils/smtp2zope-nonautomatic.py http://DOMAINNAME/acl_users/verify_address"
-    group-automagic:  "|PATH_TO_GROUPSERVER/utils/smtp2zope.py  http://DOMAINNAME/ListManager"
-
-* Create a file called ``POSTFIX_CONFIG_PATH/groupserver.virtual``.
-* Set the contents to the following::
-
-    DOMAINNAME           virtual
-    verify@DOMAINNAME    verify-address
-    @DOMAINNAME          group-automagic
-    
-* Run the commands [as root?]::
-
-			postalias POSTFIX_CONFIG_PATH/groupserver.aliases
-			postmap POSTFIX_CONFIG_PATH/groupserver.virtual
-			postfix reload
 
 Web Server
 ==========
