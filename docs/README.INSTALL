@@ -18,12 +18,15 @@ Introduction
 Installing GroupServer requires the installation and configuration of
 five different components:
 
-  #. A `database server`_,
-  #. `Zope`_
-  #. `GroupServer`_ itself, 
-  #. An `email server`_, and
-  #. An optional `web server`_.
-  
+#. `Configure PostgreSQL`_,
+#. `Set up Zope`_
+#. `Configure GroupServer`_ itself, 
+#. Set up the `email server`_, and
+#. An optional `web server`_.
+
+For those who have experience at setting up systems, the `Quick Start`_
+outlines the basic steps required to configure and set up GroupServer.
+
 Requirements
 ------------
 
@@ -55,15 +58,26 @@ Ubuntu that are required to install GroupServer are listed.
 |                      | ``lib64z1-dev`` (from main)     |    
 +----------------------+---------------------------------+
 
-Database Server
-===============
+Quick Start
+===========
 
-GroupServer uses the PostgreSQL relational database to store data. In
-theory other relational databases could be used, but none have been
-tried.
+#. Ensure that the user that will run GroupServer can create databases
+   in PostgreSQL (see `Configure PostgreSQL`_).
+#. Create a new hostname lookup for your new GroupServer site 
+   (see `Pick a Host Name`_).
+#. Edit ``instance.cfg`` (see `Configure Zope`_).
+#. Run the following (see `Run Buildout`_ and `Start Zope`_)::
 
-Turning Off Security
---------------------
+   $ virtualenv -p python2.4 . && ./bin/easy_install -U setuptools
+   $ ./bin/python bootstrap.py && ./bin/buildout -v
+   $ ./bin/instance start
+
+#. Set up the virtual host mapping to point from your new host to 
+   ``example/Content/example_site`` (see `Configure GroupServer`_).
+#. Visit your new site.
+
+Configure PostgreSQL
+====================
 
 Database administrators who know what they are doing should ignore this
 section. For humble administrators that just want to try GroupServer,
@@ -92,13 +106,13 @@ understand more of PostgreSQL we recommend
 `PostgreSQL User Administration by David Pashley 
 <http://www.davidpashley.com/articles/postgresql-user-administration.html>`_
 
-Zope
-====
+Set up Zope
+===========
 
-Installing Zope is carried out in three parts: first you 
-`configure Zope`_, next `run buildout`_ to install Zope as well as 
+Installing Zope is carried out in four parts: first `pick a host name`_,
+then `configure Zope`_, `run buildout`_ to install Zope as well as
 GroupServer, and finally `start Zope`_. After that you will be able to
-configure and start `GroupServer`_.
+configure and start GroupServer (see `Configure GroupServer`_).
 
 Pick a Host Name
 ----------------
@@ -106,7 +120,7 @@ Pick a Host Name
 Your new site needs a domain name. For a trial system this name can be
 set up in the ``hosts(5)`` file.
 
-* Open ``/etc/hosts`` as ``root``.
+* Edit ``/etc/hosts`` as ``root``.
 * Add the new host name to the ``localhost`` entry, which is normally
   the first one. For example, to add the name ``gstest`` change the
   line to the following::
@@ -136,12 +150,11 @@ The first set of user-configurable options are in the ``config`` section.
 ``pgsql_port``
   The IP port that PosgtreSQL listens  to. It is set to the default
   port for Ubuntu; it may be 5433 if multiple versions of PostgreSQL 
-  are installed
+  are installed.
 
 ``pgsql_dbname``
-  During installation of GroupServer a database will be created in
-  PostgreSQL. The ``pgsql_dbname`` option defines the name of the 
-  database.
+  During installation a database will be created in PostgreSQL. The
+  ``pgsql_dbname`` option defines the name of the database.
 
 ``pgsql_admin``
   The name of the admin of PostgreSQL, used to create the PostgreSQL
@@ -151,11 +164,13 @@ The first set of user-configurable options are in the ``config`` section.
   The name of the database user that will connect to the GroupServer
   database and modify the data. The database user is separate from the
   other users on the system, including those that log into the computer
-  and those in Zope.
+  and those in Zope. The value of this option can be set to any thing,
+  but the default is usually good enough.
 
 ``pgsql_password``
   The password required to attach to the PostgreSQL database as the
-  ``pgsql_user``. May be blank.
+  ``pgsql_user``. The default is blank, which means that no password
+  is required.
   
 ``zope_host``
   The host that will run Zope. It defaults to the local machine.
@@ -168,7 +183,7 @@ The first set of user-configurable options are in the ``config`` section.
   The name of the user who will administer Zope.
   
 ``zope_pass``
-  The password for the Zope administrator. It can (and should) be 
+  The password for the Zope administrator. It can (and should) be
   changed after GroupServer has been set up.
 
 setup-gs
@@ -179,7 +194,7 @@ the setup of the initial GroupServer instance
 
 ``gs_hostname``
   The domain name used by your new GroupServer instance. It must be the
-  same as what you picked a host name earlier.
+  same as what you picked a host name earlier (see `Pick a Host Name`_).
 
 ``gs_support_email``
   The email address where support messages are sent, and were email
@@ -187,8 +202,9 @@ the setup of the initial GroupServer instance
   email address.
   
 ``gs_timezone``
-  The timezone that will be used to represent dates and times. It defaults
-  to universal time (``UTC``) but can be set other zones including  
+  The timezone that will be used to represent dates and times. It
+  defaults to universal time (``UTC``) but can be set other zones
+  including
   
   - ``Pacific/Auckland``
   - ``Europe/London``
@@ -198,14 +214,15 @@ the setup of the initial GroupServer instance
 Run Buildout
 ------------
 
-`Buildout <http://www.buildout.org/>`_ is the python-based system that
-we use to download and installs Zope, GroupServer, and all the libraries
-that they both require. To run buildout, first create a virtual Python
-installation::
+`Buildout <http://www.buildout.org/>`_ is the python-based system
+that we use to download and installs Zope, GroupServer, and all the
+libraries that they both require. To run buildout, first create
+a virtual Python installation in the directory that contains the
+GroupServer installation::
 
   $ virtualenv -p python2.4 .
 
-This creates a sandbox for buildout with its own version of python, 
+This creates a sandbox for buildout with its own version of Python, 
 placed in ``./bin/``. When buildout runs it will install all the 
 packages in the sandbox. The version of Python that is maintained by
 your Linux distribution will be untouched. 
@@ -230,10 +247,10 @@ Buildout takes a while, as it will download and install all the
 requirements for GroupServer, including:
   
 * Zope 2.9
-* PIL
-* ``lxml``
-* SQL Alchemy
-* ``psycopg2``
+* `PIL <http://www.pythonware.com/products/pil/>`_
+* `lxml <http://codespeak.net/lxml/>`_
+* `SQL Alchemy <http://www.sqlalchemy.org/>`_
+* `psycopg2 <http://initd.org/psycopg/>`_
 
 It is a good idea to make a cup of coffee, or go to lunch, while 
 buildout processes. 
@@ -247,66 +264,40 @@ command::
   $ ./bin/instance start
 
 Zope will have started when the message ``Zope Ready to handle 
-requests`` is displayed.
+requests`` is displayed in the terminal.
 
-GroupServer
-===========
+Configure GroupServer
+=====================
 
-Configuring GroupServer to display a site is done three steps, first
-`set up virtual hosting`_ before you `set up GroupServer`_.
-
-Set Up Virtual Hosting
-----------------------
-
-There are two ways to provide virtual hosting: relying on the inbuilt
-virtual hosting in Zope, or using an external `web server`_. In this
-section we document how to set up virtual hosting in Zope.
+Once built, the only thing remaining to do before you can see your new
+GroupServer site is to configure virtual hosting.  There are two ways
+to provide virtual hosting: relying on the inbuilt virtual hosting in
+Zope, or using an external `web server`_. In this section we document
+how to set up virtual hosting in Zope.
 
 * Log into the *Zope Management Interface* (ZMI) by going to
-  ``http://{zope_host}:{zope_port}/manage``.  If you did not change
-  the defaults when you configured Zope the ZMI address will be
-  <http://localhost:8080/manage>. You will be prompted for a user name
-  (which defaults to ``admin``) and a password (which also defaults to
-  ``admin``).
+  ``http://{zope_host}:{zope_port}/manage``. The ZMI address will be
+  <http://localhost:8080/manage> if you did not change the defaults
+  when you configured Zope (see `config`_). You will be prompted for
+  a user name (which defaults to ``admin``) and a password (which also
+  defaults to ``admin``).
 * Click on ``virtual_hosting`` at the root of the Zope site.
 * Click on the *Mappings* tab at the top of the page.
 * Add the following line::
 
-    gstest/example/Content/example_site/++skin++skin_gs_base
+    gstest/example/Content/example_site
 
   + The text before the first ``/`` is the name of the host,
-    ``gstest``, which you set up earlier.
+    ``gstest``, which you set up earlier (see `Pick a Host Name`_).
   + The text after the first ``/`` is the path to the GroupServer site,
-    ``example/Content/example_site/``, which you will configure in the
-    next section.
-  + The final part is the *skin* directive, which selects the Zope skin
-    to use. The base skin for GroupServer (black and white) is shown in
-    the above example: ``++skin++skin_gs_base``.
+    ``example/Content/example_site/``.
 
 * Click the *Save Changes* button.
-
-Set Up GroupServer
-------------------
-
-To configure the new GroupServer instance carry out the following steps.
-
-* A default GroupServer instance would have been created during
-  installation. Open it by clicking on ``example (Example Instance)``.
-    
-    + *TODO:*  Why does it have a ``canonicalHost``?
-    + *TODO:*  Why does it have a ``siteName``?
+* View the GroupServer site at `http://{host}:{zope_port}`. If you did
+  not change the defaults, the address will be <http://gstest:8080>
   
-* Navigate to the ``example_site``, which is in the ``Content`` folder
-  of the ``example`` instance.
-  
-  + Open the ``DivisionConfiguration``. This contains the basic
-    configuration for the site.
-  + Change **canonicalHost** to the host name you picked earlier.
-    (Think of the ``canonicalHost`` as a reverse lookup for GroupServer:
-    the virtual hosting maps a host-name to a site, while the canonical
-    host maps the site to a host name.)
-    
-* View the site
+  + The host is the one you picked earlier (see `Pick a Host Name`_).
+  + The port is the one that Zope listens to (see `config`_).
     
 Email Server
 ============
@@ -324,23 +315,24 @@ GroupServer. GroupServer uses Postfix to:
 Determine Your Setup
 --------------------
 
-**POSTFIX_CONFIG_PATH**
-  The path to your postfix configuration, perhaps ``/etc/postfix``
+``POSTFIX_CONFIG_PATH``
+  The path to your postfix configuration. In Ubuntu this is
+  ``/etc/postfix``.
    
-**POSTFIX_USER**
+``POSTFIX_USER``
   The user which postfix uses to execute external scripts. To determine
   this you can use the following command::
   
-  /usr/sbin/postconf | grep default_privs
+  $ /usr/sbin/postconf | grep default_privs
 				
-**POSTFIX_GROUP**
+``POSTFIX_GROUP``
   The user-group to which postfix belongs.
 				
-**PATH_TO_GROUPSERVER** 
+``PATH_TO_GROUPSERVER``
   The path in which you have installed GroupServer.
 
-**DOMAIN_NAME**
-  The domain name as configured when you `set up virtual hosting`_.
+``DOMAIN_NAME``
+  The domain you set up earlier (see `Pick a Host Name`_).
   
 Change the Configuration
 ------------------------
@@ -373,7 +365,7 @@ Copy the Needed Scripts
   ``PATH_TO_GROUPSERVER/utils/smtp2zope-nonautomatic.py``
   
   + Change ``AUTHORIZATION`` to match the username and password you 
-    set when you `set up GroupServer`_ [really?]
+    set when you set up Zope (see `Configure Zope`_) [really?]
 
 GroupServer Postifx Configuration
 ---------------------------------
@@ -405,7 +397,7 @@ sites it is a good idea to run a web server to provide the following
 services:
 
 * To mediate between the low level HTTP port (port 80) and the 
-  high-port that `Zope`_ runs on (normally port 8080).
+  high-port that runs on (normally port 8080, see `Set up Zope`_).
 * To rewrite the URL to include a skin directive.
 * To rewrite the URL to support virtual hosting.
 * To provide caching.
