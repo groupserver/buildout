@@ -384,10 +384,10 @@ Ubuntu that are required to install GroupServer are listed.</p>
 </div>
 <div class="section" id="configure-postgresql">
 <h1>3&nbsp;&nbsp;&nbsp;Configure PostgreSQL</h1>
-<p>Database administrators who know what they are doing should ignore
-this section. Life is easier for humble administrators that just
-want to try GroupServer if the excellent security in PostgreSQL is
-disabled. To turn off security, change the bottom few lines in the
+<p>Database administrators who know what they are doing should ignore this
+section.  For humble administrators that just want to try GroupServer,
+life is easier if the excellent security in PostgreSQL is disabled. To
+turn off security, change the bottom few lines in the
 <tt class="docutils literal"><span class="pre">/etc/postgresql/8.4/main/pg_hba.conf</span></tt> file (you will have to be root
 to modify it):</p>
 <pre class="literal-block">
@@ -412,7 +412,7 @@ understand more of PostgreSQL we recommend
 </div>
 <div class="section" id="set-up-zope">
 <h1>4&nbsp;&nbsp;&nbsp;Set up Zope</h1>
-<p>Installing Zope is carried out in four parts: first <a class="reference internal" href="#pick-a-host-name">pick a host name</a>,
+<p>Installing Zope is done in four steps: first <a class="reference internal" href="#pick-a-host-name">pick a host name</a>,
 then <a class="reference internal" href="#configure-zope">configure Zope</a>, <a class="reference internal" href="#run-buildout">run buildout</a> to install Zope, and finally
 <a class="reference internal" href="#start-zope">start Zope</a>. After that you will be able to configure and start
 GroupServer (see <a class="reference internal" href="#configure-groupserver">Configure GroupServer</a>).</p>
@@ -420,7 +420,7 @@ GroupServer (see <a class="reference internal" href="#configure-groupserver">Con
 <h2>4.1&nbsp;&nbsp;&nbsp;Pick a Host Name</h2>
 <p>Your new site needs its own host name, so Zope knows which GroupServer
 site to serve. (Zope can serve multiple sites, as well as its web-based
-management system.) For a trial system the name can be set up in the
+management system.) For a trial system, the name can be set up in the
 <tt class="docutils literal"><span class="pre">hosts(5)</span></tt> file.</p>
 <ul>
 <li><p class="first">Edit <tt class="docutils literal"><span class="pre">/etc/hosts</span></tt> as <tt class="docutils literal"><span class="pre">root</span></tt>.</p>

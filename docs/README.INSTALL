@@ -68,10 +68,10 @@ Ubuntu that are required to install GroupServer are listed.
 Configure PostgreSQL
 ====================
 
-Database administrators who know what they are doing should ignore
-this section. Life is easier for humble administrators that just
-want to try GroupServer if the excellent security in PostgreSQL is
-disabled. To turn off security, change the bottom few lines in the
+Database administrators who know what they are doing should ignore this
+section.  For humble administrators that just want to try GroupServer,
+life is easier if the excellent security in PostgreSQL is disabled. To
+turn off security, change the bottom few lines in the
 ``/etc/postgresql/8.4/main/pg_hba.conf`` file (you will have to be root
 to modify it)::
 
@@ -98,7 +98,7 @@ understand more of PostgreSQL we recommend
 Set up Zope
 ===========
 
-Installing Zope is carried out in four parts: first `pick a host name`_,
+Installing Zope is done in four steps: first `pick a host name`_,
 then `configure Zope`_, `run buildout`_ to install Zope, and finally
 `start Zope`_. After that you will be able to configure and start
 GroupServer (see `Configure GroupServer`_).
@@ -108,7 +108,7 @@ Pick a Host Name
 
 Your new site needs its own host name, so Zope knows which GroupServer
 site to serve. (Zope can serve multiple sites, as well as its web-based
-management system.) For a trial system the name can be set up in the
+management system.) For a trial system, the name can be set up in the
 ``hosts(5)`` file.
 
 * Edit ``/etc/hosts`` as ``root``.
