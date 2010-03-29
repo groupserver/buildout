@@ -1,0 +1,394 @@
+.. sectnum::
+
+========================
+GroupServer Installation
+========================
+
+:Authors: Michael JasonSmith; Richard Waid; Alice Murphy; Dan Randow
+:Contact: Michael JasonSmith <mpj17@onlinegroups.net>
+:Date: 2010-03-25
+:Organization: `GroupServer.org <http://groupserver.org>`_
+:Copyright: This document is licensed under a  
+  `Creative Commons Attribution-Share Alike 3.0 New Zealand License
+  <http://creativecommons.org/licenses/by-sa/3.0/nz/>`_ by 
+  `OnlineGroups.Net <http://onlinegroups.net>`_.
+
+Quick Start
+===========
+
+#. Install the required packages (see `Requirements`_).
+#. Ensure that the user that will run GroupServer can create databases
+   in PostgreSQL (see `Configure PostgreSQL`_).
+#. Create a new hostname for your GroupServer site. Yes, you will need 
+   a new one (see `Pick a Host Name`_).
+#. Edit ``instance.cfg`` (see `Configure Zope`_).
+#. Run the following (see `Run Buildout`_ and `Start Zope`_)::
+
+   $ virtualenv -p python2.4 --no-site-packages . 
+   $ ./bin/easy_install -U setuptools && ./bin/python bootstrap.py
+   $ ./bin/buildout -v
+   $ ./bin/instance fg
+
+#. Set up the virtual host mapping to point from your new host to 
+   ``example/Content/example_site`` (see `Configure GroupServer`_).
+#. Visit your new site.
+
+Later you can set up the `Email Server`_ and an optional `Web Proxy`_.
+
+Requirements
+============
+
+GroupServer is developed on `Ubuntu <http://ubuntu.com/>`_, and is know
+to run on `CentOS <http://centos.org/>`_. We will gladly accept any
+modifications you have that will make GroupServer run on more plaforms.
+
+Below the packages in Ubuntu that are required to install GroupServer
+are listed.
+
++----------------------+---------------------------------+
+| System               | Ubuntu Package                  |
++======================+=================================+
+| Python               | ``python2.4``                   |
+|                      +---------------------------------+
+|                      | ``python-virtualenv``           |
++----------------------+---------------------------------+
+| GNU C++ Compiler     | ``g++``                         |
++----------------------+---------------------------------+
+| PostgreSQL Database  | ``postgresql``                  |
+|                      +---------------------------------+
+|                      | ``postgresql-server-8.4``       |
+|                      +---------------------------------+
+|                      | ``libpq-dev``                   |
++----------------------+---------------------------------+
+| Postfix Email Server | ``postfix``                     |
+|                      +---------------------------------+
+|                      | ``postfix-dev``                 |
++----------------------+---------------------------------+
+| Compression          | ``libzzip-dev`` (from universe) |
+|                      +---------------------------------+
+|                      | ``lib64z1-dev`` (from main)     |    
++----------------------+---------------------------------+
+
+
+Configure PostgreSQL
+====================
+
+Database administrators who know what they are doing should ignore this
+section.  For humble administrators that just want to try GroupServer,
+life is easier if the excellent security in PostgreSQL is disabled. To
+turn off security, change the bottom few lines in the
+``/etc/postgresql/8.4/main/pg_hba.conf`` file (you will have to be root
+to modify it)::
+
+  # Database administrative login by UNIX sockets
+  local   all         postgres                          trust
+  # TYPE  DATABASE    USER        CIDR-ADDRESS          METHOD
+  # "local" is for Unix domain socket connections only
+  local   all         all                               trust
+  # IPv4 local connections:
+  host    all         all         127.0.0.1/32          trust
+  # IPv6 local connections:
+  host    all         all         ::1/128               trust
+
+PosgreSQL will have to be restarted after the ``pg_hba.conf`` file has
+been modified::
+  
+  $ sudo service postgresql-8.4 restart
+
+For those who value privacy, security and trust, and want to 
+understand more of PostgreSQL we recommend 
+`PostgreSQL User Administration by David Pashley 
+<http://www.davidpashley.com/articles/postgresql-user-administration.html>`_.
+
+Set up Zope
+===========
+
+Installing Zope is done in four steps: first `pick a host name`_,
+then `configure Zope`_, `run buildout`_ to install Zope, and finally
+`start Zope`_. After that you will be able to configure and start
+GroupServer (see `Configure GroupServer`_).
+
+Pick a Host Name
+----------------
+
+Your new site needs its own hostname. The name needs to be know to to
+the *web browser* that you will use to access the site. It will pass
+the name to Zope so it knows which GroupServer site to serve. (Zope can
+serve multiple sites, as well as its web-based management system.) For
+a trial system, the name can be set up in the ``hosts(5)`` file.
+
+* Edit ``/etc/hosts`` as ``root``.
+* Add the new host name to the ``localhost`` entry, which is normally
+  the first one. For example, to add the name ``gstest`` change the
+  line to the following::
+
+    127.0.0.1    localhost gstest
+
+* Save the ``hosts`` file.
+
+Configure Zope
+--------------
+
+The configuration of Zope is carried out by modifying ``instance.cfg``,
+which is located in the root of the GroupServer folder. The ``cfg`` file
+is interpreted by the Python `ConfigParser module
+<http://docs.python.org/library/configparser.html>`_, which accepts
+a syntax very similar to Windows INI files. 
+
+``config``
+~~~~~~~~~~
+
+The first set of user-configurable options are in the ``config`` section.
+
+``pgsql_host``
+  The host that runs the PostgreSQL database. It defaults to the local
+  machine, ``localhost``.
+  
+``pgsql_port``
+  The IP port that PosgtreSQL listens  to. It is set to the default
+  port for Ubuntu; it may be 5433 if multiple versions of PostgreSQL 
+  are installed.
+
+``pgsql_dbname``
+  During installation a database will be created in PostgreSQL. The
+  ``pgsql_dbname`` option defines the name of the database.
+
+``pgsql_admin``
+  The name of the admin of PostgreSQL, used to create the PostgreSQL
+  user. The default is the name of the administrator under Ubuntu.
+  
+``pgsql_user``
+  The name of the database user that will connect to the GroupServer
+  database and modify the data. The database user is separate from the
+  other users on the system, including those that log into the computer
+  and those in Zope. The value of this option can be set to anything,
+  but the default is usually good enough.
+
+``pgsql_password``
+  The password required to attach to the PostgreSQL database as the
+  ``pgsql_user``. The default is blank, which means that no password
+  is required.
+  
+``zope_host``
+  The host that will run Zope. It defaults to the local machine.
+  
+``zope_port``
+  The IP port that Zope should listen to. It defaults to 8080. Zope will
+  have to run as ``root`` to use port 80, and this is not recommended.
+  
+``zope_admin``
+  The name of the user who will administer Zope.
+  
+``zope_pass``
+  The password for the Zope administrator. It can (and should) be
+  changed after GroupServer has been set up. (However, if you change the
+  password after installation you will also have to change the scripts
+  that Postfix uses to communicate with GroupServer, as they store the
+  password too, see `Set up Scripts`_; we realise that the passwords
+  should not be stored in the scripts.)
+
+``setup-gs``
+~~~~~~~~~~~~
+
+The second set of options is in the ``setup-gs`` section. They control
+the setup of the initial GroupServer instance
+
+``gs_hostname``
+  The domain name used by your new GroupServer instance. It must be the
+  same as what you picked a host name earlier (see `Pick a Host Name`_).
+
+``gs_support_email``
+  The email address where support messages are sent, and were email
+  notifications are send from. For testing this can be set to your own
+  email address.
+  
+``gs_timezone``
+  The timezone that will be used to represent dates and times. It
+  defaults to Coordinated Universal Time (``UTC``) but can be set other
+  zones including
+  
+  - ``Pacific/Auckland``
+  - ``Europe/London``
+  - ``America/New_York``
+  - ``America/Los_Angeles``
+  - `…and others <http://en.wikipedia.org/wiki/List_of_tz_database_time_zones>`_.
+
+Run Buildout
+------------
+
+`Buildout <http://www.buildout.org/>`_ is the python-based system
+that we use to download and installs Zope, GroupServer, and all the
+libraries that they both require. To run buildout, first create
+a virtual Python installation in the directory that contains the
+GroupServer installation::
+
+  $ virtualenv -p python2.4 --no-site-packages .
+
+This creates a sandbox for buildout with its own version of Python, 
+placed in ``./bin/``. When buildout runs it will install all the 
+packages in the sandbox. The version of Python that is maintained by
+your Linux distribution will be untouched. 
+
+You many need to upgrade ``setuptools`` from the version shipped
+with your distribution. To do this, run the local version of
+``easy_install``::
+
+  $ ./bin/easy_install -U setuptools
+
+No harm will come if you try and upgrade but nothing needs to change.
+Next, run the  ``bootstrap.py`` script to download and install the 
+buildout system::
+
+  $ ./bin/python bootstrap.py
+
+Finally, run ``buildout``::
+
+  $ ./bin/buildout -v
+
+Buildout takes a while, as it will download and install all the 
+requirements for GroupServer, including:
+  
+* Zope 2.9
+* `PIL <http://www.pythonware.com/products/pil/>`_
+* `lxml <http://codespeak.net/lxml/>`_
+* `SQL Alchemy <http://www.sqlalchemy.org/>`_
+* `psycopg2 <http://initd.org/psycopg/>`_
+
+It is a good idea to make a cup of coffee, or go to lunch, while 
+buildout processes. 
+
+Start Zope
+----------
+
+To start the Zope *instance* run the following command::
+
+  $ ./bin/instance fg
+
+Zope will have started when the message ``Zope Ready to handle 
+requests`` is displayed in the terminal. The above command runs Zope in
+foreground mode; to run Zope as a daemon replace ``fg`` with ``start``.
+
+Configure GroupServer
+=====================
+
+Once built, the only thing remaining to do before you can see your new
+GroupServer site is to configure virtual hosting.  There are two ways
+to provide virtual hosting: relying on the inbuilt virtual hosting in
+Zope, or using an external `web proxy`_. In this section we document
+how to set up virtual hosting in Zope.
+
+* Log into the *Zope Management Interface* (ZMI) by going to
+  ``http://{zope_host}:{zope_port}/manage``. The ZMI address will be
+  <http://localhost:8080/manage> if you did not change the defaults
+  when you configured Zope (see `config`_). You will be prompted for
+  a user name (which defaults to ``admin``) and a password (which also
+  defaults to ``admin``).
+* Click on ``virtual_hosting`` at the root of the Zope site.
+* Click on the *Mappings* tab at the top of the page.
+* Add the following line::
+
+    gstest/example/Content/example_site
+
+  + The text before the first ``/`` is the name of the host,
+    ``gstest``, which you set up earlier (see `Pick a Host Name`_).
+  + The text after the first ``/`` is the path to the GroupServer site,
+    ``example/Content/example_site/``.
+
+* Click the *Save Changes* button.
+* View the GroupServer site at `http://{host}:{zope_port}`. If you did
+  not change the defaults, the address will be <http://gstest:8080>
+  
+  + The host is the one you picked earlier (see `Pick a Host Name`_).
+  + The port is the one that Zope listens to (see `config`_).
+    
+Email Server
+============
+
+Postfix provides the email interface for GroupServer. Configuring
+Postfix is tricky, and is optional: you can use the Web interface to
+GroupServer without configuring the email server.  However, GroupServer
+uses Postfix to:
+
+* Queue email that is delivered to groups,
+* Pass the email messages to GroupServer, and
+* Send email messages from GroupServer to the email accounts of the
+  group members.
+  
+Change the Configuration
+------------------------
+
+Postfix has to know to run two scripts when email messages come in for
+your GroupServer site. To do this two you will have to change some files
+in the Postfix configuration directory. For Ubuntu this directory is
+``/etc/postfix``.
+
+Copy the Configuration Files
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+* Copy the files ``postfix_config/groupserver.*`` from the GroupServer
+  installation directory to the Postfix configuration directory
+  ``/etc/postfix``.
+* Change the ownership of the files to the Postfix user and group. For
+  Ubuntu this would be::
+  
+    # chown nobody.nogroup /etc/postfix/groupserver.*
+
+  If you are not on Ubuntu, running the following will display the
+  user-name of the Postfix user::
+  
+    $ /usr/sbin/postconf | grep default_privs
+
+Change ``main.cf``
+~~~~~~~~~~~~~~~~~~
+
+* Edit ``/etc/postfix/main.cf``.
+* Find the ``alias_maps`` parameter.
+* Add the following on a line below the existing value of
+  ``alias_maps``::
+
+    hash:/etc/postfix/groupserver.aliases
+
+* Find the ``virtual_alias_maps`` parameter.
+* Add the following on a line below the existing value of 
+  ``virtual_alias_maps`` ::
+
+    hash:/etc/postfix/groupserver.virtual     
+
+Update Postfix
+~~~~~~~~~~~~~~
+
+To load the new configuration into Postfix run the following commands::
+
+    # postalias /etc/postifx/groupserver.aliases
+    # postmap /etc/postifx/groupserver.virtual
+    # postfix reload
+
+Set up Scripts
+--------------
+
+The two scripts that are run by Postfix are stored in the ``utils`` 
+directory of your GroupServer installation. To allow them to be run by
+Postfix the ownership will need to be changed to the same user and group
+as the configuration fixes (see `Copy the Configuration Files`_). For
+Ubuntu the command will be::
+
+  # chown nobody.nogroup utils/*py
+  
+Web Proxy
+=========
+
+A web proxy is not required to try GroupServer. However, for production
+sites it is a good idea to run a proxy to provide the following
+services:
+
+* To mediate between the low level HTTP port (port 80) and the 
+  high-port that Zope runs on (normally port 8080, see `Set up Zope`_).
+* To rewrite the URL to include a skin directive.
+* To rewrite the URL to support virtual hosting.
+* To provide caching.
+
+GroupServer is known to work with many Web proxies including Varnish,
+``NGINX``, ``ha_proxy``, and Apache. For Apache a rewrite rule that is
+required to provide the mapping looks like the one in the example file
+``apache-groupserver``.
+
