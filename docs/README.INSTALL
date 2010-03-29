@@ -8,9 +8,10 @@ GroupServer Installation
 :Contact: Michael JasonSmith <mpj17@onlinegroups.net>
 :Date: 2010-03-25
 :Organization: `GroupServer.org <http://groupserver.org>`_
-:Copyright: OnlineGroups.Net, licensed under a 
+:Copyright: This document is licensed under a  
   `Creative Commons Attribution-Share Alike 3.0 New Zealand License
-  <http://creativecommons.org/licenses/by-sa/3.0/nz/>`_
+  <http://creativecommons.org/licenses/by-sa/3.0/nz/>`_ by 
+  `OnlineGroups.Net <http://onlinegroups.net>`_.
 
 Quick Start
 ===========
@@ -23,9 +24,10 @@ Quick Start
 #. Edit ``instance.cfg`` (see `Configure Zope`_).
 #. Run the following (see `Run Buildout`_ and `Start Zope`_)::
 
-   $ virtualenv -p python2.4 . && ./bin/easy_install -U setuptools
-   $ ./bin/python bootstrap.py && ./bin/buildout -v
-   $ ./bin/instance start
+   $ virtualenv -p python2.4 --no-site-packages . 
+   $ ./bin/easy_install -U setuptools && ./bin/python bootstrap.py
+   $ ./bin/buildout -v
+   $ ./bin/instance fg
 
 #. Set up the virtual host mapping to point from your new host to 
    ``example/Content/example_site`` (see `Configure GroupServer`_).
@@ -36,22 +38,25 @@ Later you can set up the `Email Server`_ and an optional `Web Proxy`_.
 Requirements
 ============
 
-GroupServer is developed on `Ubuntu <http://ubuntu.com/>`_, and is
-know to run on `CentOS <http://centos.org/>`_. Below the packages in
-Ubuntu that are required to install GroupServer are listed.
+GroupServer is developed on `Ubuntu <http://ubuntu.com/>`_, and is know
+to run on `CentOS <http://centos.org/>`_. We will gladly accept any
+modifications you have that will make GroupServer run on more plaforms.
+
+Below the packages in Ubuntu that are required to install GroupServer
+are listed.
 
 +----------------------+---------------------------------+
 | System               | Ubuntu Package                  |
 +======================+=================================+
 | Python               | ``python2.4``                   |
 |                      +---------------------------------+
-|                      | ``python-virtialenv``           |
+|                      | ``python-virtualenv``           |
 +----------------------+---------------------------------+
 | GNU C++ Compiler     | ``g++``                         |
 +----------------------+---------------------------------+
 | PostgreSQL Database  | ``postgresql``                  |
 |                      +---------------------------------+
-|                      | ``posgresql-server-8.4``        |
+|                      | ``postgresql-server-8.4``       |
 |                      +---------------------------------+
 |                      | ``libpq-dev``                   |
 +----------------------+---------------------------------+
@@ -88,12 +93,12 @@ to modify it)::
 PosgreSQL will have to be restarted after the ``pg_hba.conf`` file has
 been modified::
   
-  $ sudo /etc/init.d/posgtresql-8.4 restart
+  $ sudo service postgresql-8.4 restart
 
 For those who value privacy, security and trust, and want to 
 understand more of PostgreSQL we recommend 
 `PostgreSQL User Administration by David Pashley 
-<http://www.davidpashley.com/articles/postgresql-user-administration.html>`_
+<http://www.davidpashley.com/articles/postgresql-user-administration.html>`_.
 
 Set up Zope
 ===========
@@ -106,10 +111,11 @@ GroupServer (see `Configure GroupServer`_).
 Pick a Host Name
 ----------------
 
-Your new site needs its own host name, so Zope knows which GroupServer
-site to serve. (Zope can serve multiple sites, as well as its web-based
-management system.) For a trial system, the name can be set up in the
-``hosts(5)`` file.
+Your new site needs its own hostname. The name needs to be know to to
+the *web browser* that you will use to access the site. It will pass
+the name to Zope so it knows which GroupServer site to serve. (Zope can
+serve multiple sites, as well as its web-based management system.) For
+a trial system, the name can be set up in the ``hosts(5)`` file.
 
 * Edit ``/etc/hosts`` as ``root``.
 * Add the new host name to the ``localhost`` entry, which is normally
@@ -198,13 +204,14 @@ the setup of the initial GroupServer instance
   
 ``gs_timezone``
   The timezone that will be used to represent dates and times. It
-  defaults to universal time (``UTC``) but can be set other zones
-  including
+  defaults to Coordinated Universal Time (``UTC``) but can be set other
+  zones including
   
   - ``Pacific/Auckland``
   - ``Europe/London``
   - ``America/New_York``
   - ``America/Los_Angeles``
+  - `…and others <http://en.wikipedia.org/wiki/List_of_tz_database_time_zones>`_.
 
 Run Buildout
 ------------
@@ -215,7 +222,7 @@ libraries that they both require. To run buildout, first create
 a virtual Python installation in the directory that contains the
 GroupServer installation::
 
-  $ virtualenv -p python2.4 .
+  $ virtualenv -p python2.4 --no-site-packages .
 
 This creates a sandbox for buildout with its own version of Python, 
 placed in ``./bin/``. When buildout runs it will install all the 
@@ -253,13 +260,13 @@ buildout processes.
 Start Zope
 ----------
 
-To start the Zope *instance* as a daemon process run the following 
-command::
+To start the Zope *instance* run the following command::
 
-  $ ./bin/instance start
+  $ ./bin/instance fg
 
 Zope will have started when the message ``Zope Ready to handle 
-requests`` is displayed in the terminal.
+requests`` is displayed in the terminal. The above command runs Zope in
+foreground mode; to run Zope as a daemon replace ``fg`` with ``start``.
 
 Configure GroupServer
 =====================
@@ -375,7 +382,7 @@ sites it is a good idea to run a proxy to provide the following
 services:
 
 * To mediate between the low level HTTP port (port 80) and the 
-  high-port that runs on (normally port 8080, see `Set up Zope`_).
+  high-port that Zope runs on (normally port 8080, see `Set up Zope`_).
 * To rewrite the URL to include a skin directive.
 * To rewrite the URL to support virtual hosting.
 * To provide caching.

@@ -8,7 +8,7 @@
 <meta name="authors" content="Michael JasonSmith  Richard Waid  Alice Murphy  Dan Randow" />
 <meta name="date" content="2010-03-25" />
 <meta name="organization" content="GroupServer.org" />
-<meta name="copyright" content="OnlineGroups.Net, licensed under a Creative Commons Attribution-Share Alike 3.0 New Zealand License" />
+<meta name="copyright" content="This document is licensed under a Creative Commons Attribution-Share Alike 3.0 New Zealand License by OnlineGroups.Net." />
 <style type="text/css">
 
 /*
@@ -306,8 +306,9 @@ ul.auto-toc {
 <tr><th class="docinfo-name">Organization:</th>
 <td><a class="first reference external" href="http://groupserver.org">GroupServer.org</a></td></tr>
 <tr><th class="docinfo-name">Copyright:</th>
-<td>OnlineGroups.Net, licensed under a
-<a class="reference external" href="http://creativecommons.org/licenses/by-sa/3.0/nz/">Creative Commons Attribution-Share Alike 3.0 New Zealand License</a></td></tr>
+<td>This document is licensed under a
+<a class="reference external" href="http://creativecommons.org/licenses/by-sa/3.0/nz/">Creative Commons Attribution-Share Alike 3.0 New Zealand License</a> by
+<a class="reference external" href="http://onlinegroups.net">OnlineGroups.Net</a>.</td></tr>
 </tbody>
 </table>
 <div class="section" id="quick-start">
@@ -325,9 +326,10 @@ a new one (see <a class="reference internal" href="#pick-a-host-name">Pick a Hos
 </li>
 <li><p class="first">Run the following (see <a class="reference internal" href="#run-buildout">Run Buildout</a> and <a class="reference internal" href="#start-zope">Start Zope</a>):</p>
 <pre class="literal-block">
-$ virtualenv -p python2.4 . &amp;&amp; ./bin/easy_install -U setuptools
-$ ./bin/python bootstrap.py &amp;&amp; ./bin/buildout -v
-$ ./bin/instance start
+$ virtualenv -p python2.4 --no-site-packages .
+$ ./bin/easy_install -U setuptools &amp;&amp; ./bin/python bootstrap.py
+$ ./bin/buildout -v
+$ ./bin/instance fg
 </pre>
 </li>
 <li><p class="first">Set up the virtual host mapping to point from your new host to
@@ -340,9 +342,11 @@ $ ./bin/instance start
 </div>
 <div class="section" id="requirements">
 <h1>2&nbsp;&nbsp;&nbsp;Requirements</h1>
-<p>GroupServer is developed on <a class="reference external" href="http://ubuntu.com/">Ubuntu</a>, and is
-know to run on <a class="reference external" href="http://centos.org/">CentOS</a>. Below the packages in
-Ubuntu that are required to install GroupServer are listed.</p>
+<p>GroupServer is developed on <a class="reference external" href="http://ubuntu.com/">Ubuntu</a>, and is know
+to run on <a class="reference external" href="http://centos.org/">CentOS</a>. We will gladly accept any
+modifications you have that will make GroupServer run on more plaforms.</p>
+<p>Below the packages in Ubuntu that are required to install GroupServer
+are listed.</p>
 <table border="1" class="docutils">
 <colgroup>
 <col width="40%" />
@@ -357,7 +361,7 @@ Ubuntu that are required to install GroupServer are listed.</p>
 <tr><td rowspan="2">Python</td>
 <td><tt class="docutils literal"><span class="pre">python2.4</span></tt></td>
 </tr>
-<tr><td><tt class="docutils literal"><span class="pre">python-virtialenv</span></tt></td>
+<tr><td><tt class="docutils literal"><span class="pre">python-virtualenv</span></tt></td>
 </tr>
 <tr><td>GNU C++ Compiler</td>
 <td><tt class="docutils literal"><span class="pre">g++</span></tt></td>
@@ -365,7 +369,7 @@ Ubuntu that are required to install GroupServer are listed.</p>
 <tr><td rowspan="3">PostgreSQL Database</td>
 <td><tt class="docutils literal"><span class="pre">postgresql</span></tt></td>
 </tr>
-<tr><td><tt class="docutils literal"><span class="pre">posgresql-server-8.4</span></tt></td>
+<tr><td><tt class="docutils literal"><span class="pre">postgresql-server-8.4</span></tt></td>
 </tr>
 <tr><td><tt class="docutils literal"><span class="pre">libpq-dev</span></tt></td>
 </tr>
@@ -404,11 +408,11 @@ host    all         all         ::1/128               trust
 <p>PosgreSQL will have to be restarted after the <tt class="docutils literal"><span class="pre">pg_hba.conf</span></tt> file has
 been modified:</p>
 <pre class="literal-block">
-$ sudo /etc/init.d/posgtresql-8.4 restart
+$ sudo service postgresql-8.4 restart
 </pre>
 <p>For those who value privacy, security and trust, and want to
 understand more of PostgreSQL we recommend
-<a class="reference external" href="http://www.davidpashley.com/articles/postgresql-user-administration.html">PostgreSQL User Administration by David Pashley</a></p>
+<a class="reference external" href="http://www.davidpashley.com/articles/postgresql-user-administration.html">PostgreSQL User Administration by David Pashley</a>.</p>
 </div>
 <div class="section" id="set-up-zope">
 <h1>4&nbsp;&nbsp;&nbsp;Set up Zope</h1>
@@ -418,10 +422,11 @@ then <a class="reference internal" href="#configure-zope">configure Zope</a>, <a
 GroupServer (see <a class="reference internal" href="#configure-groupserver">Configure GroupServer</a>).</p>
 <div class="section" id="pick-a-host-name">
 <h2>4.1&nbsp;&nbsp;&nbsp;Pick a Host Name</h2>
-<p>Your new site needs its own host name, so Zope knows which GroupServer
-site to serve. (Zope can serve multiple sites, as well as its web-based
-management system.) For a trial system, the name can be set up in the
-<tt class="docutils literal"><span class="pre">hosts(5)</span></tt> file.</p>
+<p>Your new site needs its own hostname. The name needs to be know to to
+the <em>web browser</em> that you will use to access the site. It will pass
+the name to Zope so it knows which GroupServer site to serve. (Zope can
+serve multiple sites, as well as its web-based management system.) For
+a trial system, the name can be set up in the <tt class="docutils literal"><span class="pre">hosts(5)</span></tt> file.</p>
 <ul>
 <li><p class="first">Edit <tt class="docutils literal"><span class="pre">/etc/hosts</span></tt> as <tt class="docutils literal"><span class="pre">root</span></tt>.</p>
 </li>
@@ -499,13 +504,14 @@ notifications are send from. For testing this can be set to your own
 email address.</dd>
 <dt><tt class="docutils literal"><span class="pre">gs_timezone</span></tt></dt>
 <dd><p class="first">The timezone that will be used to represent dates and times. It
-defaults to universal time (<tt class="docutils literal"><span class="pre">UTC</span></tt>) but can be set other zones
-including</p>
+defaults to Coordinated Universal Time (<tt class="docutils literal"><span class="pre">UTC</span></tt>) but can be set other
+zones including</p>
 <ul class="last simple">
 <li><tt class="docutils literal"><span class="pre">Pacific/Auckland</span></tt></li>
 <li><tt class="docutils literal"><span class="pre">Europe/London</span></tt></li>
 <li><tt class="docutils literal"><span class="pre">America/New_York</span></tt></li>
 <li><tt class="docutils literal"><span class="pre">America/Los_Angeles</span></tt></li>
+<li><a class="reference external" href="http://en.wikipedia.org/wiki/List_of_tz_database_time_zones">…and others</a>.</li>
 </ul>
 </dd>
 </dl>
@@ -519,7 +525,7 @@ libraries that they both require. To run buildout, first create
 a virtual Python installation in the directory that contains the
 GroupServer installation:</p>
 <pre class="literal-block">
-$ virtualenv -p python2.4 .
+$ virtualenv -p python2.4 --no-site-packages .
 </pre>
 <p>This creates a sandbox for buildout with its own version of Python,
 placed in <tt class="docutils literal"><span class="pre">./bin/</span></tt>. When buildout runs it will install all the
@@ -555,13 +561,13 @@ buildout processes.</p>
 </div>
 <div class="section" id="start-zope">
 <h2>4.4&nbsp;&nbsp;&nbsp;Start Zope</h2>
-<p>To start the Zope <em>instance</em> as a daemon process run the following
-command:</p>
+<p>To start the Zope <em>instance</em> run the following command:</p>
 <pre class="literal-block">
-$ ./bin/instance start
+$ ./bin/instance fg
 </pre>
 <p>Zope will have started when the message <tt class="docutils literal"><span class="pre">Zope</span> <span class="pre">Ready</span> <span class="pre">to</span> <span class="pre">handle</span>
-<span class="pre">requests</span></tt> is displayed in the terminal.</p>
+<span class="pre">requests</span></tt> is displayed in the terminal. The above command runs Zope in
+foreground mode; to run Zope as a daemon replace <tt class="docutils literal"><span class="pre">fg</span></tt> with <tt class="docutils literal"><span class="pre">start</span></tt>.</p>
 </div>
 </div>
 <div class="section" id="configure-groupserver">
@@ -695,7 +701,7 @@ sites it is a good idea to run a proxy to provide the following
 services:</p>
 <ul class="simple">
 <li>To mediate between the low level HTTP port (port 80) and the
-high-port that runs on (normally port 8080, see <a class="reference internal" href="#set-up-zope">Set up Zope</a>).</li>
+high-port that Zope runs on (normally port 8080, see <a class="reference internal" href="#set-up-zope">Set up Zope</a>).</li>
 <li>To rewrite the URL to include a skin directive.</li>
 <li>To rewrite the URL to support virtual hosting.</li>
 <li>To provide caching.</li>
