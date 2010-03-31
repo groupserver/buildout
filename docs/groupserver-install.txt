@@ -6,7 +6,7 @@ GroupServer Installation
 
 :Authors: Michael JasonSmith; Richard Waid; Alice Murphy; Dan Randow
 :Contact: Michael JasonSmith <mpj17@onlinegroups.net>
-:Date: 2010-03-25
+:Date: 2010-03-31
 :Organization: `GroupServer.org <http://groupserver.org>`_
 :Copyright: This document is licensed under a  
   `Creative Commons Attribution-Share Alike 3.0 New Zealand License
@@ -35,8 +35,7 @@ Quick Start
 
 Later you can set up the `Email Server`_ and an optional `Web Proxy`_.
 
-If you are unhappy with GroupServer, you can `remove GroupServer`_ in
-three steps.
+You can `remove GroupServer`_ in three steps.
 
 Requirements
 ============
@@ -418,4 +417,16 @@ database user, and the directory that contains the GroupServer install.
 2. Remove the directory that contains the GroupServer install::
 
     $ rm -r groupserver-1.0alpha
+
+History
+=======
+
+======= ==========  ====================================================
+Version Date        Change
+======= ==========  ====================================================
+1.0α    2010-03-31  Fixed the `Requirements`_, added 
+                    `Remove GroupServer`_ and `History`_
+1.0α    2010-03-25  Fixed the config options, added `Quick Start`_
+1.0α    2009-10-04  Updated to reflect the new egg-based system
+======= ==========  ====================================================
 
