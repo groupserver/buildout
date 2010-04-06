@@ -6,7 +6,7 @@ GroupServer Installation
 
 :Authors: Michael JasonSmith; Richard Waid; Alice Murphy; Dan Randow
 :Contact: Michael JasonSmith <mpj17@onlinegroups.net>
-:Date: 2010-03-31
+:Date: 2010-03-31 (see `History`_)
 :Organization: `GroupServer.org <http://groupserver.org>`_
 :Copyright: This document is licensed under a  
   `Creative Commons Attribution-Share Alike 3.0 New Zealand License
@@ -58,7 +58,7 @@ are listed.
 +----------------------+---------------------------------+
 | PostgreSQL Database  | ``postgresql``                  |
 |                      +---------------------------------+
-|                      | `` postgresql-server-dev-8.4``  |
+|                      | ``postgresql-server-dev-8.4``   |
 |                      +---------------------------------+
 |                      | ``libpq-dev``                   |
 +----------------------+---------------------------------+
@@ -424,6 +424,7 @@ History
 ======= ==========  ====================================================
 Version Date        Change
 ======= ==========  ====================================================
+1.0α    2010-04-06  Fixed some quoting in the requirements.
 1.0α    2010-03-31  Fixed the `Requirements`_, added 
                     `Remove GroupServer`_ and `History`_
 1.0α    2010-03-25  Fixed the config options, added `Quick Start`_
