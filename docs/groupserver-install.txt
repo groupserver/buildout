@@ -52,6 +52,8 @@ are listed.
 +======================+=================================+
 | Python               | ``python2.4``                   |
 |                      +---------------------------------+
+|                      | ``python2.4-dev``               |
+|                      +---------------------------------+
 |                      | ``python-virtualenv``           |
 +----------------------+---------------------------------+
 | GNU C++ Compiler     | ``g++``                         |
@@ -266,9 +268,9 @@ To start the Zope *instance* run the following command::
 
   $ ./bin/instance fg
 
-Zope will have started when the message ``Zope Ready to handle 
-requests`` is displayed in the terminal. The above command runs Zope in
-foreground mode; to run Zope as a daemon replace ``fg`` with ``start``.
+Zope will have started when the message ``Zope Ready to handle requests`` 
+is displayed in the terminal. The above command runs Zope in foreground
+mode; to run Zope as a daemon replace ``fg`` with ``start``.
 
 Configure GroupServer
 =====================
