@@ -17,7 +17,7 @@ Quick Start
 ===========
 
 #. Download the latest version of GroupServer from 
-   <http://groupserver.org/downloads>.
+   <http://groupserver.org/downloads> and extract the archive.
 #. Install the required packages (see `Requirements`_).
 #. Ensure that the user that will run GroupServer can create databases
    in PostgreSQL (see `Configure PostgreSQL`_).
@@ -80,9 +80,10 @@ Configure PostgreSQL
 ====================
 
 Database administrators who know what they are doing should ignore this
-section.  For humble administrators that just want to try GroupServer,
-life is easier if the excellent security in PostgreSQL is disabled. To
-turn off security, change the bottom few lines in the
+section. For humble administrators that just want to try GroupServer,
+life is easier if the excellent security in PostgreSQL is disabled, by
+maing the authentication methods ``trust`` in all cases. To do this, 
+change the bottom few lines in the 
 ``/etc/postgresql/8.4/main/pg_hba.conf`` file (you will have to be root
 to modify it)::
 
@@ -428,7 +429,8 @@ History
 ======= ==========  ====================================================
 Version Date        Change
 ======= ==========  ====================================================
-1.0α    2010-04-23  Added a link to the downloads page.
+1.0α    2010-04-23  Added a link to the downloads page. Clarified the
+                    security changes that are made to PostgreSQL.
 1.0α    2010-04-06  Fixed some quoting in the requirements.
 1.0α    2010-03-31  Fixed the `Requirements`_, added 
                     `Remove GroupServer`_ and `History`_
