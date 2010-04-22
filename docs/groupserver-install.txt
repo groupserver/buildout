@@ -16,6 +16,8 @@ GroupServer Installation
 Quick Start
 ===========
 
+#. Download the latest version of GroupServer from 
+   <http://groupserver.org/downloads>.
 #. Install the required packages (see `Requirements`_).
 #. Ensure that the user that will run GroupServer can create databases
    in PostgreSQL (see `Configure PostgreSQL`_).
@@ -426,6 +428,7 @@ History
 ======= ==========  ====================================================
 Version Date        Change
 ======= ==========  ====================================================
+1.0α    2010-04-23  Added a link to the downloads page.
 1.0α    2010-04-06  Fixed some quoting in the requirements.
 1.0α    2010-03-31  Fixed the `Requirements`_, added 
                     `Remove GroupServer`_ and `History`_
