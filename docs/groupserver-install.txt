@@ -6,7 +6,7 @@ GroupServer Installation
 
 :Authors: Michael JasonSmith; Richard Waid; Alice Murphy; Dan Randow
 :Contact: Michael JasonSmith <mpj17@onlinegroups.net>
-:Date: 2010-03-31 (see `History`_)
+:Date: 2010-04-23 (see `History`_)
 :Organization: `GroupServer.org <http://groupserver.org>`_
 :Copyright: This document is licensed under a  
   `Creative Commons Attribution-Share Alike 3.0 New Zealand License
@@ -82,7 +82,7 @@ Configure PostgreSQL
 Database administrators who know what they are doing should ignore this
 section. For humble administrators that just want to try GroupServer,
 life is easier if the excellent security in PostgreSQL is disabled, by
-maing the authentication methods ``trust`` in all cases. To do this, 
+making the authentication methods ``trust`` in all cases. To do this, 
 change the bottom few lines in the 
 ``/etc/postgresql/8.4/main/pg_hba.conf`` file (you will have to be root
 to modify it)::
@@ -231,10 +231,10 @@ GroupServer installation::
 
   $ virtualenv -p python2.4 --no-site-packages .
 
-This creates a sandbox for buildout with its own version of Python, 
+This creates a sandbox for buildout with its own version of Python 2.4, 
 placed in ``./bin/``. When buildout runs it will install all the 
-packages in the sandbox. The version of Python that is maintained by
-your Linux distribution will be untouched. 
+packages in the sandbox. The version of Python 2.4 that is maintained by
+your Linux distribution will be untouched.
 
 You many need to upgrade ``setuptools`` from the version shipped
 with your distribution. To do this, run the local version of
@@ -430,7 +430,7 @@ History
 Version Date        Change
 ======= ==========  ====================================================
 1.0α    2010-04-23  Added a link to the downloads page. Clarified the
-                    security changes that are made to PostgreSQL.
+                    security changes that are made to PostgreSQL. 
 1.0α    2010-04-06  Fixed some quoting in the requirements.
 1.0α    2010-03-31  Fixed the `Requirements`_, added 
                     `Remove GroupServer`_ and `History`_
