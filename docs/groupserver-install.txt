@@ -200,9 +200,14 @@ The first set of user-configurable options are in the ``config`` section.
 The second set of options is in the ``setup-gs`` section. They control
 the setup of the initial GroupServer instance
 
-``gs_hostname``
+``gs_host``
   The domain name used by your new GroupServer instance. It must be the
   same as what you picked a host name earlier (see `Pick a Host Name`_).
+
+``gs_port``
+  The port that your new GroupServer instance will run on. By default it
+  is ``8080``, which is the same as the ``zope_port``. To run on any 
+  other port you will need to set up a `web proxy`_.
 
 ``gs_support_email``
   The email address where support messages are sent, and were email
@@ -253,13 +258,14 @@ Finally, run ``buildout``::
   $ ./bin/buildout -v
 
 Buildout takes a while, as it will download and install all the 
-requirements for GroupServer, including:
+requirements for GroupServer (around 30MB of packages) including:
   
-* Zope 2.9
-* `PIL <http://www.pythonware.com/products/pil/>`_
-* `lxml <http://codespeak.net/lxml/>`_
-* `SQL Alchemy <http://www.sqlalchemy.org/>`_
-* `psycopg2 <http://initd.org/psycopg/>`_
+* Zope 2.10.9 (7MB)
+* `ReportLab <http://www.reportlab.com/>`_ (2MB)
+* `lxml <http://codespeak.net/lxml/>`_ (1.2MB)
+* `SQL Alchemy <http://www.sqlalchemy.org/>`_ (1MB)
+* `PIL <http://www.pythonware.com/products/pil/>`_ (0.5MB)
+* `psycopg2 <http://initd.org/psycopg/>`_ (0.25MB)
 
 It is a good idea to make a cup of coffee, or go to lunch, while 
 buildout processes. 
