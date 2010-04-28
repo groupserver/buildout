@@ -209,6 +209,23 @@ the setup of the initial GroupServer instance
   it is ``8080``, which is the same as the ``zope_port``. To run on
   any other port you will need to set up a `web proxy`_.
 
+``gs_smtp_host``
+  The SMTP host that will be used to send notifications from
+  GroupServer. It defaults to ``localhost``, assuming you will be
+  running a local SMTP server.
+
+``gs_smtp_port``
+  The port that the SMTP host will be listening to. Defaults to the
+  standard SMTP port, ``25``.
+
+``gs_smtp_user``
+  The user-name that the SMTP host requires to send email messages. It
+  defaults to no user name.
+
+``gs_smtp_password``
+  The password the SMTP host requires to send email messages. It defaults
+  to no password.
+
 ``gs_admin_email``
   When GroupServer is installed, an example site and group are
   created. So you can use the administration functions you must
