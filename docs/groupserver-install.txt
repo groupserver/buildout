@@ -24,15 +24,17 @@ Quick Start
 #. Create a new hostname for your GroupServer site. Yes, you will need 
    a new one (see `Pick a Host Name`_).
 #. Edit ``instance.cfg`` (see `Configure Zope`_).
-#. Run the following (see `Run Buildout`_ and `Start Zope`_)::
+#. Run the following (see `Run Buildout`_)::
 
    $ virtualenv -p python2.4 --no-site-packages . 
    $ ./bin/easy_install -U setuptools && ./bin/python bootstrap.py
    $ ./bin/buildout -v
    $ ./bin/instance fg
 
-#. Set up the virtual host mapping to point from your new host to 
-   ``example/Content/example_site`` (see `Configure GroupServer`_).
+#. `Start Zope`_::
+
+   $ ./bin/instance fg
+
 #. Visit your new site.
 
 Later you can set up the `Email Server`_ and an optional `Web Proxy`_.
@@ -112,8 +114,7 @@ Set up Zope
 
 Installing Zope is done in four steps: first `pick a host name`_,
 then `configure Zope`_, `run buildout`_ to install Zope, and finally
-`start Zope`_. After that you will be able to configure and start
-GroupServer (see `Configure GroupServer`_).
+`start Zope`_.
 
 Pick a Host Name
 ----------------
@@ -325,38 +326,12 @@ Zope will have started when the message ``Zope Ready to handle requests``
 is displayed in the terminal. The above command runs Zope in foreground
 mode; to run Zope as a daemon replace ``fg`` with ``start``.
 
-Configure GroupServer
-=====================
-
-Once built, the only thing remaining to do before you can see your new
-GroupServer site is to configure virtual hosting.  There are two ways
-to provide virtual hosting: relying on the inbuilt virtual hosting in
-Zope, or using an external `web proxy`_. In this section we document
-how to set up virtual hosting in Zope.
-
-* Log into the *Zope Management Interface* (ZMI) by going to
-  ``http://{zope_host}:{zope_port}/manage``. The ZMI address will be
-  <http://localhost:8080/manage> if you did not change the defaults
-  when you configured Zope (see `config`_). You will be prompted for
-  a user name (which defaults to ``admin``) and a password (which also
-  defaults to ``admin``).
-* Click on ``virtual_hosting`` at the root of the Zope site.
-* Click on the *Mappings* tab at the top of the page.
-* Add the following line::
-
-    gstest/example/Content/example_site
-
-  + The text before the first ``/`` is the name of the host,
-    ``gstest``, which you set up earlier (see `Pick a Host Name`_).
-  + The text after the first ``/`` is the path to the GroupServer site,
-    ``example/Content/example_site/``.
-
-* Click the *Save Changes* button.
-* View the GroupServer site at `http://{host}:{zope_port}`. If you did
-  not change the defaults, the address will be <http://gstest:8080>
+You should be able to view your GroupServer site at
+`http://{host}:{zope_port}`. If you did not change the defaults, the
+address will be <http://gstest:8080>
   
-  + The host is the one you picked earlier (see `Pick a Host Name`_).
-  + The port is the one that Zope listens to (see `config`_).
+* The host is the one you picked earlier (see `Pick a Host Name`_).
+* The port is the one that Zope listens to (see `config`_).
     
 Email Server
 ============
@@ -479,6 +454,8 @@ History
 ======= ==========  ====================================================
 Version Date        Change
 ======= ==========  ====================================================
+1.0α    2010-04-29  Better automatic configuration, so the Configure
+                    GroupServer section has been removed.
 1.0α    2010-04-28  Improved the documentation for ``gs_port`` and 
                     added documentation for the ``gs_admin`` and
                     ``gs_user`` configuration options.
