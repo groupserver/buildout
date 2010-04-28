@@ -205,10 +205,37 @@ the setup of the initial GroupServer instance
   same as what you picked a host name earlier (see `Pick a Host Name`_).
 
 ``gs_port``
-  The port that your new GroupServer instance will run on. By default it
-  is ``8080``, which is the same as the ``zope_port``. To run on any 
-  other port you will need to set up a `web proxy`_.
+  The port that your new GroupServer instance will run on. By default
+  it is ``8080``, which is the same as the ``zope_port``. To run on
+  any other port you will need to set up a `web proxy`_.
 
+``gs_admin_email``
+  When GroupServer is installed, an example site and group are
+  created. So you can use the administration functions you must
+  log in as an administrator. This is the email address of that
+  administrator. Posts to the example group will be sent to the
+  administrator at this address. In addition, this email address will
+  be used to log into the new site.
+  
+``gs_admin_password``
+  The password of the administrator of the new GroupServer site. The
+  password will be used to log in, and can be changed after the site
+  has been created.
+  
+``gs_user_email``
+  The email address of the normal user that is created along with the
+  new GroupServer site. The normal user is a member of the same group
+  as the administrator, but the user has no permission to alter the
+  site. Posts to the example group will be sent to the user at this
+  address. In addition, this email address will be used to log in
+  to the new site.  The email address for the normal user **must**
+  be different to the email address for the administrator.
+
+``gs_user_password``
+  The password for the normal user of the new GroupServer site. The
+  password will be used to log in, and can be changed after the site
+  has been created.
+  
 ``gs_support_email``
   The email address where support messages are sent, and were email
   notifications are send from. For testing this can be set to your own
@@ -435,6 +462,9 @@ History
 ======= ==========  ====================================================
 Version Date        Change
 ======= ==========  ====================================================
+1.0α    2010-04-28  Improved the documentation for ``gs_port`` and 
+                    added documentation for the ``gs_admin`` and
+                    ``gs_user`` configuration options.
 1.0α    2010-04-23  Added a link to the downloads page. Clarified the
                     security changes that are made to PostgreSQL. 
 1.0α    2010-04-06  Fixed some quoting in the requirements.
