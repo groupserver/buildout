@@ -27,7 +27,8 @@ Quick Start
 #. Run the following (see `Run Buildout`_)::
 
    $ virtualenv -p python2.4 --no-site-packages . 
-   $ ./bin/easy_install -U setuptools && ./bin/python bootstrap.py
+   $ ./bin/easy_install -U setuptools
+   $ ./bin/python bootstrap.py -v 1.4.3
    $ ./bin/buildout -v
    $ ./bin/instance fg
 
@@ -454,6 +455,7 @@ History
 ======= ==========  ====================================================
 Version Date        Change
 ======= ==========  ====================================================
+1.0α    2010-05-01  Fixes because upstream broke our buildout.
 1.0α    2010-04-29  Better automatic configuration, so the Configure
                     GroupServer section has been removed.
 1.0α    2010-04-28  Improved the documentation for ``gs_port`` and 
