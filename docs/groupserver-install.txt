@@ -297,7 +297,7 @@ No harm will come if you try and upgrade but nothing needs to change.
 Next, run the  ``bootstrap.py`` script to download and install the 
 buildout system::
 
-  $ ./bin/python bootstrap.py
+  $ ./bin/python bootstrap.py -v 1.4.3
 
 Finally, run ``buildout``::
 
