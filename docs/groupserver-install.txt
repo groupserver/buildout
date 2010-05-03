@@ -55,8 +55,8 @@ are listed.
 +----------------------+---------------------------------+
 | System               | Ubuntu Package                  |
 +======================+=================================+
-| Python               | ``python2.4``                   |
-|                      +---------------------------------+
+| Python 2.4 (See the  | ``python2.4``                   |
+| note below.)         +---------------------------------+
 |                      | ``python2.4-dev``               |
 |                      +---------------------------------+
 |                      | ``python-virtualenv``           |
@@ -78,6 +78,18 @@ are listed.
 |                      | ``lib64z1-dev`` (from main)     |    
 +----------------------+---------------------------------+
 
+A Note on Python
+----------------
+
+We did not make a mistake, **GroupServer needs Python 2.4.** We are
+working on making GroupServer work with Python 2.6. However, this
+requires a major change with the version of `Zope 2 Application Server
+<http://zope2.zope.org/>`_ that is used to run GroupServer (from Zope
+2.10 to Zope 2.12), and we are not there yet.
+
+We are also aware that Ubuntu 10.04 does not have a Python 2.4 package.
+If you run Lucid then you will have to download an install `Python
+2.4.6 <http://python.org/download/releases/2.4.6/>`_. It is a pain.
 
 Configure PostgreSQL
 ====================
