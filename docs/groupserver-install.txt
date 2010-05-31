@@ -6,7 +6,7 @@ GroupServer Installation
 
 :Authors: Michael JasonSmith; Richard Waid; Alice Murphy; Dan Randow
 :Contact: Michael JasonSmith <mpj17@onlinegroups.net>
-:Date: 2010-04-23 (see `History`_)
+:Date: 2010-05-31 (see `History`_)
 :Organization: `GroupServer.org <http://groupserver.org>`_
 :Copyright: This document is licensed under a  
   `Creative Commons Attribution-Share Alike 3.0 New Zealand License
@@ -363,7 +363,7 @@ Change the Configuration
 ------------------------
 
 Postfix has to know to run two scripts when email messages come in for
-your GroupServer site. To do this two you will have to change some files
+your GroupServer site. To do this too, you will have to change some files
 in the Postfix configuration directory. For Ubuntu this directory is
 ``/etc/postfix``.
 
@@ -381,7 +381,7 @@ Copy the Configuration Files
   If you are not on Ubuntu, running the following will display the
   user-name of the Postfix user::
   
-    $ /usr/sbin/postconf | grep default_privs
+    $ /usr/sbin/postconf | grep default_privs | cut -f3 -d" "
 
 Change ``main.cf``
 ~~~~~~~~~~~~~~~~~~
@@ -467,6 +467,7 @@ History
 ======= ==========  ====================================================
 Version Date        Change
 ======= ==========  ====================================================
+1.0α    2010-05-31  Typo and minor improvement fixes.
 1.0α    2010-05-01  Fixes because upstream broke our buildout.
 1.0α    2010-04-29  Better automatic configuration, so the Configure
                     GroupServer section has been removed.
