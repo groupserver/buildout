@@ -30,7 +30,6 @@ Quick Start
    $ ./bin/easy_install -U setuptools
    $ ./bin/python bootstrap.py -v 1.4.3
    $ ./bin/buildout -v
-   $ ./bin/instance fg
 
 #. `Start Zope`_::
 
