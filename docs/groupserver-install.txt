@@ -6,7 +6,7 @@ GroupServer Installation
 
 :Authors: Michael JasonSmith; Richard Waid; Alice Murphy; Dan Randow
 :Contact: Michael JasonSmith <mpj17@onlinegroups.net>
-:Date: 2010-06-03 (see `History`_)
+:Date: 2010-06-04 (see `History`_)
 :Organization: `GroupServer.org <http://groupserver.org>`_
 :Copyright: This document is licensed under a  
   `Creative Commons Attribution-Share Alike 3.0 New Zealand License
@@ -458,7 +458,7 @@ database user, and the directory that contains the GroupServer install.
 
 2. Remove the directory that contains the GroupServer install::
 
-    $ rm -r groupserver-1.0
+    $ rm -r groupserver-1.0beta
 
 History
 =======
@@ -466,7 +466,7 @@ History
 ======= ==========  ====================================================
 Version Date        Change
 ======= ==========  ====================================================
-1.0     2010-06-03  Removed a duplicated instruction from the 
+1.0β    2010-06-04  Removed a duplicated instruction from the 
                     `Quick Start`_, and bumped the version number.
 1.0α    2010-05-31  Typo and minor improvement fixes.
 1.0α    2010-05-01  Fixes because upstream broke our buildout.
