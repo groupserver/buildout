@@ -26,9 +26,8 @@ Quick Start
 #. Edit ``instance.cfg`` (see `Configure Zope`_).
 #. Run the following (see `Run Buildout`_)::
 
-   $ virtualenv -p python2.4 --no-site-packages . 
-   $ ./bin/easy_install -U setuptools
-   $ ./bin/python bootstrap.py -v 1.4.3
+   $ virtualenv --no-site-packages --distribute -ppython2.6 .
+   $ ./bin/easy_install zc.buildout
    $ ./bin/buildout -v
 
 #. `Start Zope`_::
@@ -54,9 +53,9 @@ are listed.
 +----------------------+---------------------------------+
 | System               | Ubuntu Package                  |
 +======================+=================================+
-| Python 2.4 (See the  | ``python2.4``                   |
-| note on Python       +---------------------------------+
-| below.)              | ``python2.4-dev``               |
+| Python 2.6           | ``python2.6``                   |
+|                      +---------------------------------+
+|                      | ``python2.6-dev``               |
 |                      +---------------------------------+
 |                      | ``python-virtualenv``           |
 +----------------------+---------------------------------+
@@ -76,19 +75,6 @@ are listed.
 |                      +---------------------------------+
 |                      | ``lib64z1-dev`` (from main)     |    
 +----------------------+---------------------------------+
-
-A Note on Python
-----------------
-
-We did not make a mistake, **GroupServer needs Python 2.4.** We are
-working on making GroupServer work with Python 2.6. However, this
-requires a major change with the version of `Zope 2 Application Server
-<http://zope2.zope.org/>`_ that is used to run GroupServer (from Zope
-2.10 to Zope 2.12), and we are not there yet.
-
-We are also aware that Ubuntu 10.04 does not have a Python 2.4 package.
-If you run Lucid then you will have to download an install `Python
-2.4.6 <http://python.org/download/releases/2.4.6/>`_. It is a pain.
 
 Configure PostgreSQL
 ====================
@@ -291,24 +277,17 @@ libraries that they both require. To run buildout, first create
 a virtual Python installation in the directory that contains the
 GroupServer installation::
 
-  $ virtualenv -p python2.4 --no-site-packages .
+   $ virtualenv --no-site-packages --distribute -ppython2.6 .
 
-This creates a sandbox for buildout with its own version of Python 2.4, 
+This creates a sandbox for buildout with its own version of Python 2.6, 
 placed in ``./bin/``. When buildout runs it will install all the 
-packages in the sandbox. The version of Python 2.4 that is maintained by
+packages in the sandbox. The version of Python that is maintained by
 your Linux distribution will be untouched.
 
-You many need to upgrade ``setuptools`` from the version shipped
-with your distribution. To do this, run the local version of
-``easy_install``::
+Next, install the ``zc.buildout`` package. To do this, use the local 
+version of ``easy_install``::
 
-  $ ./bin/easy_install -U setuptools
-
-No harm will come if you try and upgrade but nothing needs to change.
-Next, run the  ``bootstrap.py`` script to download and install the 
-buildout system::
-
-  $ ./bin/python bootstrap.py -v 1.4.3
+   $ ./bin/easy_install zc.buildout
 
 Finally, run ``buildout``::
 
