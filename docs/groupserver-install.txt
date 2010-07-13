@@ -6,7 +6,7 @@ GroupServer Installation
 
 :Authors: Michael JasonSmith; Richard Waid; Alice Murphy; Dan Randow
 :Contact: Michael JasonSmith <mpj17@onlinegroups.net>
-:Date: 2010-06-04 (see `History`_)
+:Date: 2010-07-07 (see `History`_)
 :Organization: `GroupServer.org <http://groupserver.org>`_
 :Copyright: This document is licensed under a  
   `Creative Commons Attribution-Share Alike 3.0 New Zealand License
@@ -296,7 +296,7 @@ Finally, run ``buildout``::
 Buildout takes a while, as it will download and install all the 
 requirements for GroupServer (around 30MB of packages) including:
   
-* Zope 2.10.9 (7MB)
+* `Zope 2.13 <http://docs.zope.org/zope2/releases/2.13/>`_ (1.5MB)
 * `ReportLab <http://www.reportlab.com/>`_ (2MB)
 * `lxml <http://codespeak.net/lxml/>`_ (1.2MB)
 * `SQL Alchemy <http://www.sqlalchemy.org/>`_ (1MB)
@@ -445,6 +445,8 @@ History
 ======= ==========  ====================================================
 Version Date        Change
 ======= ==========  ====================================================
+1.0β²   2010-07-07  Changed the Zope 2.10 (Python 2.4) instructions to
+                    Zope 2.13 (Python 2.6) instructions.
 1.0β    2010-06-04  Removed a duplicated instruction from the 
                     `Quick Start`_, and bumped the version number.
 1.0α    2010-05-31  Typo and minor improvement fixes.
