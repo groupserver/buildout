@@ -6,12 +6,11 @@ GroupServer Installation
 
 :Authors: Michael JasonSmith; Richard Waid; Alice Murphy; Dan Randow
 :Contact: Michael JasonSmith <mpj17@onlinegroups.net>
-:Date: 2010-07-07 (see `History`_)
-:Organization: `GroupServer.org <http://groupserver.org>`_
-:Copyright: This document is licensed under a  
-  `Creative Commons Attribution-Share Alike 3.0 New Zealand License
-  <http://creativecommons.org/licenses/by-sa/3.0/nz/>`_ by 
-  `OnlineGroups.Net <http://onlinegroups.net>`_.
+:Date: 2010-07-14 (see `History`_)
+:Organization: `GroupServer.org`_
+:Copyright: This document is licensed under a
+  `Creative Commons Attribution-Share Alike 3.0 New Zealand License`_
+  by `OnlineGroups.Net`_.
 
 Quick Start
 ===========
@@ -26,8 +25,8 @@ Quick Start
 #. Edit ``instance.cfg`` (see `Configure Zope`_).
 #. Run the following (see `Run Buildout`_)::
 
-   $ virtualenv --no-site-packages --distribute -ppython2.6 .
-   $ ./bin/easy_install zc.buildout
+   $ virtualenv --no-site-packages -ppython2.6 .
+   $ ./bin/easy_install -U setuptools && ./bin/easy_install zc.buildout
    $ ./bin/buildout -v
 
 #. `Start Zope`_::
@@ -43,9 +42,9 @@ You can `remove GroupServer`_ in three steps.
 Requirements
 ============
 
-GroupServer is developed on `Ubuntu <http://ubuntu.com/>`_, and is know
-to run on `CentOS <http://centos.org/>`_. We will gladly accept any
-modifications you have that will make GroupServer run on more plaforms.
+GroupServer is developed on `Ubuntu`_, and is know to run on
+`CentOS`_. We will gladly accept any modifications you have that will
+make GroupServer run on more plaforms.
 
 Below the packages in Ubuntu that are required to install GroupServer
 are listed.
@@ -104,8 +103,7 @@ been modified::
 
 For those who value privacy, security and trust, and want to 
 understand more of PostgreSQL we recommend 
-`PostgreSQL User Administration by David Pashley 
-<http://www.davidpashley.com/articles/postgresql-user-administration.html>`_.
+`PostgreSQL User Administration by David Pashley`_.
 
 Set up Zope
 ===========
@@ -136,10 +134,9 @@ Configure Zope
 --------------
 
 The configuration of Zope is carried out by modifying ``instance.cfg``,
-which is located in the root of the GroupServer folder. The ``cfg`` file
-is interpreted by the Python `ConfigParser module
-<http://docs.python.org/library/configparser.html>`_, which accepts
-a syntax very similar to Windows INI files. 
+which is located in the root of the GroupServer folder. The ``cfg``
+file is interpreted by the Python `ConfigParser`_ module, which accepts
+a syntax very similar to Windows INI files.
 
 ``config``
 ~~~~~~~~~~
@@ -271,40 +268,39 @@ the setup of the initial GroupServer instance
 Run Buildout
 ------------
 
-`Buildout <http://www.buildout.org/>`_ is the python-based system
-that we use to download and installs Zope, GroupServer, and all the
-libraries that they both require. To run buildout, first create
-a virtual Python installation in the directory that contains the
-GroupServer installation::
+`Buildout`_ is the python-based system that we use to download and
+installs Zope, GroupServer, and all the libraries that they both
+require. To run buildout, first create a virtual Python installation
+in the directory that contains the GroupServer installation::
 
-   $ virtualenv --no-site-packages --distribute -ppython2.6 .
+   $ virtualenv --no-site-packages -ppython2.6 .
 
-This creates a sandbox for buildout with its own version of Python 2.6, 
-placed in ``./bin/``. When buildout runs it will install all the 
-packages in the sandbox. The version of Python that is maintained by
-your Linux distribution will be untouched.
+This creates a sandbox for buildout with its own version of Python 2.6,
+placed in ``./bin/``. When buildout runs it will install all the packages
+in the sandbox. The version of Python that is maintained by your Linux
+distribution will be untouched.
 
-Next, install the ``zc.buildout`` package. To do this, use the local 
-version of ``easy_install``::
+Next, update the `setuptools`_ and install the `zc.buildout`_
+package. To do this, use the local version of ``easy_install``::
 
-   $ ./bin/easy_install zc.buildout
+   $ ./bin/easy_install -U setuptools && ./bin/easy_install zc.buildout
 
 Finally, run ``buildout``::
 
   $ ./bin/buildout -v
 
-Buildout takes a while, as it will download and install all the 
+Buildout takes a while, as it will download and install all the
 requirements for GroupServer (around 30MB of packages) including:
   
-* `Zope 2.13 <http://docs.zope.org/zope2/releases/2.13/>`_ (1.5MB)
-* `ReportLab <http://www.reportlab.com/>`_ (2MB)
-* `lxml <http://codespeak.net/lxml/>`_ (1.2MB)
-* `SQL Alchemy <http://www.sqlalchemy.org/>`_ (1MB)
-* `PIL <http://www.pythonware.com/products/pil/>`_ (0.5MB)
-* `psycopg2 <http://initd.org/psycopg/>`_ (0.25MB)
+* `Zope 2.13`_ (1.5MB)
+* `ReportLab`_ (2MB)
+* `lxml`_ (1.2MB)
+* `SQL Alchemy`_ (1MB)
+* `PIL`_ (0.5MB)
+* `psycopg2`_ (0.25MB)
 
-It is a good idea to make a cup of coffee, or go to lunch, while 
-buildout processes. 
+It is a good idea to make a cup of coffee, or go to lunch, while
+buildout processes.
 
 Start Zope
 ----------
@@ -319,7 +315,7 @@ mode; to run Zope as a daemon replace ``fg`` with ``start``.
 
 You should be able to view your GroupServer site at
 `http://{host}:{zope_port}`. If you did not change the defaults, the
-address will be <http://gstest:8080>
+address will be <http://gstest:8080>.
   
 * The host is the one you picked earlier (see `Pick a Host Name`_).
 * The port is the one that Zope listens to (see `config`_).
@@ -389,7 +385,7 @@ To load the new configuration into Postfix run the following commands::
 Set up Scripts
 --------------
 
-The two scripts that are run by Postfix are stored in the ``utils`` 
+The two scripts that are run by Postfix are stored in the ``utils``
 directory of your GroupServer installation. To allow them to be run by
 Postfix the ownership will need to be changed to the same user and group
 as the configuration fixes (see `Copy the Configuration Files`_). For
@@ -401,8 +397,7 @@ Web Proxy
 =========
 
 A web proxy is not required to try GroupServer. However, for production
-sites it is a good idea to run a proxy to provide the following
-services:
+sites it is a good idea to run a proxy to provide the following services:
 
 * To mediate between the low level HTTP port (port 80) and the 
   high-port that Zope runs on (normally port 8080, see `Set up Zope`_).
@@ -445,6 +440,7 @@ History
 ======= ==========  ====================================================
 Version Date        Change
 ======= ==========  ====================================================
+1.0β²   2010-07-15  Improved the buildout instructions.
 1.0β²   2010-07-07  Changed the Zope 2.10 (Python 2.4) instructions to
                     Zope 2.13 (Python 2.6) instructions.
 1.0β    2010-06-04  Removed a duplicated instruction from the 
@@ -464,4 +460,26 @@ Version Date        Change
 1.0α    2010-03-25  Fixed the config options, added `Quick Start`_
 1.0α    2009-10-04  Updated to reflect the new egg-based system
 ======= ==========  ====================================================
+
+.. Resources
+
+.. _GroupServer.org: http://groupserver.org
+.. _Creative Commons Attribution-Share Alike 3.0 New Zealand License:
+   http://creativecommons.org/licenses/by-sa/3.0/nz/
+.. _OnlineGroups.Net: http://onlinegroups.net
+.. _Ubuntu: http://ubuntu.com/
+.. _CentOS: http://centos.org/
+.. _PostgreSQL User Administration by David Pashley:
+   http://www.davidpashley.com/articles/postgresql-user-administration.html
+.. _ConfigParser:
+   http://docs.python.org/library/configparser.html
+.. _Buildout: http://www.buildout.org/
+.. _setuptools: http://pypi.python.org/pypi/setuptools
+.. _zc.buildout: http://pypi.python.org/pypi/zc.buildout/
+.. _Zope 2.13: http://docs.zope.org/zope2/releases/2.13/
+.. _ReportLab: http://www.reportlab.com/
+.. _lxml: http://codespeak.net/lxml/
+.. _SQL Alchemy: http://www.sqlalchemy.org/
+.. _PIL: http://www.pythonware.com/products/pil/
+.. _psycopg2: http://initd.org/psycopg/
 
