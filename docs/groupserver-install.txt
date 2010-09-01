@@ -6,7 +6,7 @@ GroupServer Installation
 
 :Authors: Michael JasonSmith; Richard Waid; Alice Murphy; Dan Randow
 :Contact: Michael JasonSmith <mpj17@onlinegroups.net>
-:Date: 2010-07-14 (see `History`_)
+:Date: 2010-09-01 (see `History`_)
 :Organization: `GroupServer.org`_
 :Copyright: This document is licensed under a
   `Creative Commons Attribution-Share Alike 3.0 New Zealand License`_
@@ -138,10 +138,12 @@ which is located in the root of the GroupServer folder. The ``cfg``
 file is interpreted by the Python `ConfigParser`_ module, which accepts
 a syntax very similar to Windows INI files.
 
-``config``
-~~~~~~~~~~
+Postfix
+~~~~~~~
 
-The first set of user-configurable options are in the ``config`` section.
+All the user-configurable options are in the ``config`` section of 
+``instance.cfg``. The first set of options deals with configuring 
+Postfix.
 
 ``pgsql_host``
   The host that runs the PostgreSQL database. It defaults to the local
@@ -171,7 +173,13 @@ The first set of user-configurable options are in the ``config`` section.
   The password required to attach to the PostgreSQL database as the
   ``pgsql_user``. The default is blank, which means that no password
   is required.
-  
+
+Zope
+~~~~
+
+The ``zope`` options configure how you will access the Zope Management 
+Interface (ZMI).
+
 ``zope_host``
   The host that will run Zope. It defaults to the local machine.
   
@@ -190,39 +198,45 @@ The first set of user-configurable options are in the ``config`` section.
   password too, see `Set up Scripts`_; we realise that the passwords
   should not be stored in the scripts.)
 
-``setup-gs``
-~~~~~~~~~~~~
+SMTP
+~~~~
 
-The second set of options is in the ``setup-gs`` section. They control
-the setup of the initial GroupServer instance
+GroupServer sends email using SMTP. The four ``smtp`` options contain
+the information required to comminicate with the SMTP server.
 
-``gs_host``
-  The domain name used by your new GroupServer instance. It must be the
-  same as what you picked a host name earlier (see `Pick a Host Name`_).
-
-``gs_port``
-  The port that your new GroupServer instance will run on. By default
-  it is ``8080``, which is the same as the ``zope_port``. To run on
-  any other port you will need to set up a `web proxy`_.
-
-``gs_smtp_host``
+``smtp_host``
   The SMTP host that will be used to send notifications from
   GroupServer. It defaults to ``localhost``, assuming you will be
   running a local SMTP server.
 
-``gs_smtp_port``
+``smtp_port``
   The port that the SMTP host will be listening to. Defaults to the
   standard SMTP port, ``25``.
 
-``gs_smtp_user``
+``smtp_user``
   The user-name that the SMTP host requires to send email messages. It
   defaults to no user name.
 
-``gs_smtp_password``
+``smtp_password``
   The password the SMTP host requires to send email messages. It defaults
   to no password.
 
-``gs_admin_email``
+
+GroupServer
+~~~~~~~~~~~
+
+The final set of options the setup of the initial GroupServer instance.
+
+``host``
+  The domain name used by your new GroupServer instance. It must be the
+  same as what you picked a host name earlier (see `Pick a Host Name`_).
+
+``port``
+  The port that your new GroupServer instance will run on. By default
+  it is ``8080``, which is the same as the ``zope_port``. To run on
+  any other port you will need to set up a `web proxy`_.
+
+``admin_email``
   When GroupServer is installed, an example site and group are
   created. So you can use the administration functions you must
   log in as an administrator. This is the email address of that
@@ -230,12 +244,12 @@ the setup of the initial GroupServer instance
   administrator at this address. In addition, this email address will
   be used to log into the new site.
   
-``gs_admin_password``
+``admin_password``
   The password of the administrator of the new GroupServer site. The
   password will be used to log in, and can be changed after the site
   has been created.
   
-``gs_user_email``
+``user_email``
   The email address of the normal user that is created along with the
   new GroupServer site. The normal user is a member of the same group
   as the administrator, but the user has no permission to alter the
@@ -244,17 +258,17 @@ the setup of the initial GroupServer instance
   to the new site.  The email address for the normal user **must**
   be different to the email address for the administrator.
 
-``gs_user_password``
+``user_password``
   The password for the normal user of the new GroupServer site. The
   password will be used to log in, and can be changed after the site
   has been created.
   
-``gs_support_email``
+``support_email``
   The email address where support messages are sent, and were email
   notifications are send from. For testing this can be set to your own
   email address.
   
-``gs_timezone``
+``timezone``
   The timezone that will be used to represent dates and times. It
   defaults to Coordinated Universal Time (``UTC``) but can be set other
   zones including
@@ -318,7 +332,7 @@ You should be able to view your GroupServer site at
 address will be <http://gstest:8080>.
   
 * The host is the one you picked earlier (see `Pick a Host Name`_).
-* The port is the one that Zope listens to (see `config`_).
+* The port is the one that Zope listens to (see `Configure Zope`_).
     
 Email Server
 ============
@@ -422,7 +436,8 @@ database user, and the directory that contains the GroupServer install.
     $ dropuser gstest -U postgres
 
   ``gstestdb``
-    The name of the test database that you set earlier (see `config`_)
+    The name of the test database that you set earlier (see `Configure 
+    Zope`_)
     
   ``postgres``
     The name of the admin of PostgreSQL.
@@ -440,6 +455,7 @@ History
 ======= ==========  ====================================================
 Version Date        Change
 ======= ==========  ====================================================
+10.09   2010-09-01  Changed how the configuration options are set.
 1.0β²   2010-07-15  Improved the buildout instructions.
 1.0β²   2010-07-07  Changed the Zope 2.10 (Python 2.4) instructions to
                     Zope 2.13 (Python 2.6) instructions.
