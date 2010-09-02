@@ -26,7 +26,7 @@ Quick Start
 #. Run the following (see `Run Buildout`_)::
 
    $ virtualenv --no-site-packages -ppython2.6 .
-   $ ./bin/python bootstrap.py
+   $ ./bin/easy_install -U setuptools && ./bin/python bootstrap.py
    $ ./bin/buildout -v
 
 #. `Start Zope`_::
@@ -293,6 +293,11 @@ This creates a sandbox for buildout with its own version of Python 2.6,
 placed in ``./bin/``. When buildout runs it will install all the packages
 in the sandbox. The version of Python that is maintained by your Linux
 distribution will be untouched.
+
+Next, update the `setuptools`_ package. To do this, use the local
+version of ``easy_install``::
+
+  $ ./bin/easy_install -U setuptools
 
 The buildout system has to be initialised next::
 
