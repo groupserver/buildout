@@ -184,8 +184,8 @@ Interface (ZMI).
   The host that will run Zope. It defaults to the local machine.
   
 ``zope_port``
-  The IP port that Zope should listen to. It defaults to 8080. Zope will
-  have to run as ``root`` to use port 80, and this is not recommended.
+  The IP port that Zope should listen to. It defaults to 8080. Zope
+  will have to run as ``root`` to use port 80, and this is discouraged.
   
 ``zope_admin``
   The name of the user who will administer Zope.
