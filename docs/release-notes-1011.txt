@@ -45,19 +45,47 @@ such as popup help.
 Simplified Start a Group
 ========================
 
-The start a group system has been simplified to a one-step process. Rather than a separate Preview step the new system *dynamically* previews the URL and email address of the new group. It also 
+The start a group system has been simplified to a one-step process
+[#StartAGroup]_. Rather than a separate Preview step the new system
+dynamically previews the URL and email address of the new group. It
+also dynamically checks if the group identifier is unique.
+
+It is not possible to create *announcement* groups with the simplified
+system. However, announcement groups are still supported by GroupServer
+and will continue to be supported. To create an announcement group
+first create a discussion group. Then use the ZMI to change the
+``group_template`` property to ``announcement``.
 
 Group Homepage About Tab
 ========================
 
+The new group homepage about tab replaces the little-used Charter
+page [#AboutTab]_. The new tab provides a blank area where a site
+administrator is free write anything, using the WYMeditor [#WYMeditor]_.
+
 Easier Management of a Group Members
 ====================================
+
+A group administrator is now shown a *Manage Member* link when viewing
+the profile of a member [#ManageMember]_. This should make managing
+members even easier than before.
 
 Set Password Enhancements
 =========================
 
+The code used to set and reset passwords has been updated. Members
+will be shown better error messages when they follow password-reset
+links multiple times [#Password]. In addition all the Set Password
+pages have been updated to use a single text entries, rather than two
+password entries [#EnClearPasswords].
+
 Notification Updates
 ====================
+
+Some notifications that have been stored in the ZMI have been [#Notifications]_.
+
+SQL Update
+==========
 
 .. [#KulfiTickets] The tickets in 
    `GroupServer  10.11 — Kulfi Craved while Caving
@@ -73,4 +101,30 @@ Notification Updates
 .. [#PropertiesTopic] The GroupServer Development
    group hosted `a lively debate about topics
    <http://groupserver.org/r/topic/6ips13y2R228XK4dBYJTTl>`_
+
+.. [#StartAGroup] Simplifying the process used to start a group closes
+   `Ticket 304  <https://projects.iopen.net/groupserver/ticket/304>`_
+
+.. [#AboutTab] Creating the About Tab closes `Ticket 493
+   <https://projects.iopen.net/groupserver/ticket/493>`_
+
+.. [#WYMeditor] GroupServer uses the excellent `WYMeditor 
+   <http://www.wymeditor.org/>`_ as its standard HTML editor.
+
+.. [#ManageMember] Creating a link from the profile page to the manage
+   member page closes `Ticket 515
+   <https://projects.iopen.net/groupserver/ticket/515>`_
+   
+.. [#Password] Knowing when a password has been reset closes `Ticket 326
+   <https://projects.iopen.net/groupserver/ticket/326>`_
+   
+.. [#EnClearPasswords] Why text entries are used to set passwords is
+   explained in this `blog post
+   <http://blog.onlinegroups.net/2010/10/22/change-password/>`_
+
+.. [#Notifications] The clean up to notifications closes three tickets:
+
+   #. `Ticket 205 <https://projects.iopen.net/groupserver/ticket/205>`_
+   #. `Ticket 231 <https://projects.iopen.net/groupserver/ticket/231>`_
+   #. `Ticket 531 <https://projects.iopen.net/groupserver/ticket/531>`_
 
