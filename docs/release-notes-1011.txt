@@ -21,9 +21,12 @@ GroupServer [#KulfiTickets]_:
 * Enhancements to groups, including a `new group properties page`_,
   a `simplified start a group`_ process, and a new `group homepage
   about tab`_. 
-* `Easier management of group members`_
+* `Easier management of a group members`_
 * Finally, there have been some `set password enhancements`_ and
   `notification updates`_.
+
+All these enhancements will be available to new GroupServer
+installations, and those who `update an existing groupserver system`_.
   
 Work is now progressing on GroupServer 10.12 — Lemon Ice in the Cool
 of the Evening [#LemonIceTickets]_.
@@ -31,11 +34,12 @@ of the Evening [#LemonIceTickets]_.
 New Group Properties Page
 =========================
 
-The page used to set the group properties has been simplified [#GroupProperties]_,
-following a discussion about what properties a group should have
+The page used to set the group properties has been simplified
+[#GroupProperties]_, following a discussion about properties
 [#PropertiesTopic]_. There are fewer properties, as many properties
 have been replaced by the `group homepage about tab`_. The properties
-have also been given clearer names.
+that remain have been given clearer names.
+
 
 The new group properties page is now a standard ``zope.formlib`` form,
 rather than relying on the older GroupServer ``XForms`` code. This
@@ -61,7 +65,8 @@ Group Homepage About Tab
 
 The new group homepage about tab replaces the little-used Charter
 page [#AboutTab]_. The new tab provides a blank area where a site
-administrator is free write anything, using the WYMeditor [#WYMeditor]_.
+administrator is free to write any HTML. As usual, the WYMeditor is
+used to edit the HTML [#WYMeditorUse]_.
 
 Easier Management of a Group Members
 ====================================
@@ -75,17 +80,80 @@ Set Password Enhancements
 
 The code used to set and reset passwords has been updated. Members
 will be shown better error messages when they follow password-reset
-links multiple times [#Password]. In addition all the Set Password
+links multiple times [#Password]_. In addition all the Set Password
 pages have been updated to use a single text entries, rather than two
-password entries [#EnClearPasswords].
+password entries [#EnClearPasswords]_.
 
 Notification Updates
 ====================
 
-Some notifications that have been stored in the ZMI have been [#Notifications]_.
+Some notifications that have been stored in the ZMI have been updated. In
+addition better feedback is given for those who fail to change the
+group-delivery settings by email [#Notifications]_.
 
-SQL Update
-==========
+Update an Existing GroupServer System
+=====================================
+
+To update an existing GroupServer system to Kulfi you will have to
+`update the package versions`_, `update the SQL`_, and `update the
+ZODB`_.
+
+Update the Package Versions
+---------------------------
+
+Carry out the following steps to update the package versions.
+
+#. Download the Kulfi tar-ball from `the GroupServer download page 
+   <http://groupserver.org/downloads>`_
+
+#. Uncompress the tar-ball.
+   
+#. Copy the file ``groupserver-10.11/versions.cfg`` to your existing
+   GroupServer installation.
+   
+#. In your existing GroupServer installation run::
+
+      $ ./bin/buildout -N
+
+Update the SQL
+--------------
+
+The `set password enhancements`_ require an update to the relational
+database that stores GroupServer data. Carry out the following steps
+to update the database.
+
+#. In ``instance.cfg`` look up ``pgsql_dbname`` and the ``pgsql_user``,
+   and note their values.
+
+#. Run the following command::
+   
+      $ psql -U {psql_user} {psql_dbname} -c "ALTER TABLE "\
+        "password_reset ADD COLUMN reset TIMESTAMP WITH TIME ZONE "\
+        "DEFAULT NULL;"
+
+Older installations will also have to update the table used to record 
+invitations::
+      
+      $ psql -U {psql_user} {psql_dbname} -c "ALTER TABLE "\
+        "user_group_member_invitation ADD COLUMN initial_invite "\
+        "BOOLEAN DEFAULT FALSE, ADD COLUMN withdrawn_date TIMESTAMP "\
+        "WITH TIME ZONE, ADD COLUMN withdrawing_user_id TEXT;"
+
+Update the ZODB
+---------------
+
+To get the `notification updates`_ into an existing GroupServer
+system you will have to update the email-templates in the ZODB. Email
+<support@onlinegroups.net> or `GroupServer Development`_ if you need
+a hand with this.
+
+.. _GroupServer.org: http://groupserver.org/
+.. _OnlineGroups.Net: http://onlinegroups.net/
+.. _Creative Commons Attribution-Share Alike 3.0 New Zealand License:
+   http://creativecommons.org/licenses/by-sa/3.0/nz/
+.. _GroupServer Development: http://groupserver.org/groups/development
+.. _WYMeditor: http://www.wymeditor.org/
+.. _Zope 2: http://zope2.zope.org/
 
 .. [#KulfiTickets] The tickets in 
    `GroupServer  10.11 — Kulfi Craved while Caving
@@ -108,7 +176,7 @@ SQL Update
 .. [#AboutTab] Creating the About Tab closes `Ticket 493
    <https://projects.iopen.net/groupserver/ticket/493>`_
 
-.. [#WYMeditor] GroupServer uses the excellent `WYMeditor 
+.. [#WYMeditorUse] GroupServer uses the excellent `WYMeditor 
    <http://www.wymeditor.org/>`_ as its standard HTML editor.
 
 .. [#ManageMember] Creating a link from the profile page to the manage
@@ -127,4 +195,10 @@ SQL Update
    #. `Ticket 205 <https://projects.iopen.net/groupserver/ticket/205>`_
    #. `Ticket 231 <https://projects.iopen.net/groupserver/ticket/231>`_
    #. `Ticket 531 <https://projects.iopen.net/groupserver/ticket/531>`_
+
+.. _GroupServer.org: http://groupserver.org/
+.. _OnlineGroups.Net: http://onlinegroups.net/
+.. _Creative Commons Attribution-Share Alike 3.0 New Zealand License:
+   http://creativecommons.org/licenses/by-sa/3.0/nz/
+.. _GroupServer Development: http://groupserver.org/groups/development
 
