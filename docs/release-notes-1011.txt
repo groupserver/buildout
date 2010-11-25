@@ -16,92 +16,61 @@ GroupServer 10.11 — Kulfi Craved while Caving
   by `OnlineGroups.Net`_.
 
 The changes below form the bulk of what is new in the Kulfi release of
-GroupServer [#KulfiTickets]_. Work is now progressing on GroupServer
-10.12 — Lemon Ice in the Cool of the Evening [#LemonIceTickets]_.
+GroupServer [#KulfiTickets]_:
+
+* Enhancements to groups, including a `new group properties page`_,
+  a `simplified start a group`_ process, and a new `group homepage
+  about tab`_. 
+* `Easier management of group members`_
+* Finally, there have been some `set password enhancements`_ and
+  `notification updates`_.
+  
+Work is now progressing on GroupServer 10.12 — Lemon Ice in the Cool
+of the Evening [#LemonIceTickets]_.
 
 New Group Properties Page
 =========================
 
+The page used to set the group properties has been simplified [#GroupProperties]_,
+following a discussion about what properties a group should have
+[#PropertiesTopic]_. There are fewer properties, as many properties
+have been replaced by the `group homepage about tab`_. The properties
+have also been given clearer names.
+
+The new group properties page is now a standard ``zope.formlib`` form,
+rather than relying on the older GroupServer ``XForms`` code. This
+means that standard features of forms on GroupServer are present,
+such as popup help.
 
 Simplified Start a Group
 ========================
 
+The start a group system has been simplified to a one-step process. Rather than a separate Preview step the new system *dynamically* previews the URL and email address of the new group. It also 
 
 Group Homepage About Tab
 ========================
 
+Easier Management of a Group Members
+====================================
 
-Easier Management of a Group Member
-===================================
+Set Password Enhancements
+=========================
 
-Set Password Fixes
-==================
+Notification Updates
+====================
 
+.. [#KulfiTickets] The tickets in 
+   `GroupServer  10.11 — Kulfi Craved while Caving
+   <https://projects.iopen.net/groupserver/query?priority=!lowest&milestone=Groupserver+10.11+%E2%80%94+Kulfi+Craved+while+Caving&group=status&col=id&col=summary&col=owner&col=type&col=priority&col=component&col=version&order=priority>`_
 
-===============
+.. [#LemonIceTickets] The changes in GroupServer 10.12 — Lemon Ice in 
+   the Cool of the Evening are detailed in `the tickets 
+   <https://projects.iopen.net/groupserver/query?group=status&milestone=GroupServer+10.12+%E2%80%94+Lemon+Ice+in+the+Cool+of+the+Evening>`_
 
-The user manual and administration manuals are out of date and in
-need of work. To help with this a new help system has been introduced
-[#Manual]_. It allows for sections of the manuals to be more easily
-maintained, which will hopefully allow for better manuals in the future.
+.. [#GroupProperties] The new group properties page closes
+   `Ticket 292 <https://projects.iopen.net/groupserver/ticket/292>`_  
 
-Switch to Zope 2.13 Beta
-========================
-
-GroupServer now runs on the the latest version of `Zope 2`_. The new
-features in Zope are used for the `new group homepage`_, and the `new
-help system`_.
-
-.. [#GelatoTickets] The tickets in 
-   `GroupServer 10.10 — Gelato while Viewing the Sights
-   <https://projects.iopen.net/groupserver/query?group=status&milestone=GroupServer+10.10+%E2%80%94+Gelato+while+Viewing+the+Sights>`_ detail what has changed in this release.
-   
-.. [#KulfiTickets] The changes that are planned for GroupServer 
-   10.11 — Kulfi Craved while Caving are detailed in 
-   `the tickets 
-   <https://projects.iopen.net/groupserver/query?status=assigned&status=new&status=accepted&status=reopened&group=status&milestone=Groupserver+10.11+%E2%80%94+Kulfi+Craved+while+Caving>`_
-
-.. [#GroupHome] The details of the new group homepage is available in
-   `the Group Homepage Rebuild topic in GroupServer Development.
-   <http://groupserver.org/r/topic/1MqeURTRPJyYETkelmq1pk>`_ Deploying
-   the new homepage closes `Ticket 426
-   <https://projects.iopen.net/groupserver/ticket/426>`_ and a slew of
-   sub-tickets.
-
-.. [#Bouncing] Showing a log of the failed attempts to send a message
-   closes 
-   
-   * `Ticket 15!
-     <https://projects.iopen.net/groupserver/ticket/15>`_
-   * `Ticket 509
-     <https://projects.iopen.net/groupserver/ticket/509>`_
-
-.. [#ResendInvite] Allowing administrators to reissue an invitation
-   closes
-   `Ticket 489 <https://projects.iopen.net/groupserver/ticket/489>`_
-
-.. [#Notifications] Updating the notifications closes eight tickets
-
-   * `Ticket 163 <https://projects.iopen.net/groupserver/ticket/163>`_
-   * `Ticket 215 <https://projects.iopen.net/groupserver/ticket/215>`_
-   * `Ticket 216 <https://projects.iopen.net/groupserver/ticket/216>`_
-   * `Ticket 221 <https://projects.iopen.net/groupserver/ticket/221>`_
-   * `Ticket 222 <https://projects.iopen.net/groupserver/ticket/222>`_
-   * `Ticket 223 <https://projects.iopen.net/groupserver/ticket/223>`_
-   * `Ticket 466 <https://projects.iopen.net/groupserver/ticket/466>`_
-   * `Ticket 513 <https://projects.iopen.net/groupserver/ticket/513>`_
-
-.. [#Favicon] Creating the new favicon for GroupServer closes 
-   `Ticket 510 <https://projects.iopen.net/groupserver/ticket/510>`_
-
-.. [#Manual] Creating the new help pages closes 
-   `Ticket 485 <https://projects.iopen.net/groupserver/ticket/485>`_
-
-.. _GroupServer.org: http://groupserver.org/
-.. _OnlineGroups.Net: http://onlinegroups.net/
-.. _Creative Commons Attribution-Share Alike 3.0 New Zealand License:
-   http://creativecommons.org/licenses/by-sa/3.0/nz/
-.. _GroupServer Development: http://groupserver.org/groups/development
-.. _WYMeditor: http://www.wymeditor.org/
-.. _Zope 2: http://zope2.zope.org/
+.. [#PropertiesTopic] The GroupServer Development
+   group hosted `a lively debate about topics
+   <http://groupserver.org/r/topic/6ips13y2R228XK4dBYJTTl>`_
 
