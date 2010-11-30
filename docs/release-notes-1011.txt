@@ -9,7 +9,7 @@ GroupServer 10.11 — Kulfi Craved while Caving
 
 :Authors: Michael JasonSmith; Richard Waid; Alice Murphy; Dan Randow
 :Contact: Michael JasonSmith <mpj17@onlinegroups.net>
-:Date: 2010-11-25
+:Date: 2010-11-30
 :Organization: `GroupServer.org`_
 :Copyright: This document is licensed under a
   `Creative Commons Attribution-Share Alike 3.0 New Zealand License`_
@@ -22,8 +22,9 @@ GroupServer [#KulfiTickets]_:
   a more flexible `delivery settings page`_, a simplified `start a
   group`_ process, and a new `group homepage about tab`_.
 * `Management of a group member`_ is now easier.
-* Finally, there have been some `set password`_  enhancements and
-  `notification updates`_.
+* There have been some `set password`_  enhancements and `notification 
+  updates`_.
+* Finally, the `buildout`_ process has been improved.
 
 All these enhancements will be available to new GroupServer
 installations, and those who `update an existing groupserver system`_.
@@ -99,6 +100,21 @@ Notification Updates
 Some notifications that are stored in the ZMI have been updated. In
 addition better feedback is given for those who fail to change the
 group-delivery settings by email [#Notifications]_.
+
+Buildout
+========
+
+Buildout is the system that GroupServer uses to install the
+system. The buildout process has been improved in three ways. First,
+some issues with the environment relating to installing ``lxml`` have
+been resolved [#lxml]_. Second, the standard system is used to add
+the default administrator and user to the example group. This should
+reduce the chance of errors occurring in the future. Finally, summary
+information about the new GroupServer site is displayed at the end of
+the buildout process. This should make it easier to start and view the
+new GroupServer site.
+
+
 
 Update an Existing GroupServer System
 =====================================
@@ -210,6 +226,10 @@ a hand with this.
    #. `Ticket 205 <https://projects.iopen.net/groupserver/ticket/205>`_
    #. `Ticket 231 <https://projects.iopen.net/groupserver/ticket/231>`_
    #. `Ticket 531 <https://projects.iopen.net/groupserver/ticket/531>`_
+
+.. [#lxml] The ``lxml`` improvements should resolve `the issues that Tom
+   had when installing GroupServer 
+   <http://groupserver.org/r/post/QeQVi7Zt4SgkNdPpZSyQl>`_
 
 .. _GroupServer.org: http://groupserver.org/
 .. _OnlineGroups.Net: http://onlinegroups.net/
