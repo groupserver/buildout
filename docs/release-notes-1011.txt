@@ -18,11 +18,11 @@ GroupServer 10.11 — Kulfi Craved while Caving
 The changes below form the bulk of what is new in the Kulfi release of
 GroupServer [#KulfiTickets]_:
 
-* Enhancements to groups, including a `new group properties page`_,
-  a `simplified start a group`_ process, and a new `group homepage
-  about tab`_. 
-* `Easier management of a group members`_
-* Finally, there have been some `set password enhancements`_ and
+* Enhancements to groups, including a clearer `group properties page`_,
+  a more flexible `delivery settings page`_, a simplified `start a
+  group`_ process, and a new `group homepage about tab`_.
+* `Management of a group member`_ is now easier.
+* Finally, there have been some `set password`_  enhancements and
   `notification updates`_.
 
 All these enhancements will be available to new GroupServer
@@ -31,23 +31,32 @@ installations, and those who `update an existing groupserver system`_.
 Work is now progressing on GroupServer 10.12 — Lemon Ice in the Cool
 of the Evening [#LemonIceTickets]_.
 
-New Group Properties Page
-=========================
+Group Properties Page
+=====================
 
 The page used to set the group properties has been simplified
-[#GroupProperties]_, following a discussion about properties
+[#GroupProperties]_, following a discussion about the properties
 [#PropertiesTopic]_. There are fewer properties, as many properties
 have been replaced by the `group homepage about tab`_. The properties
 that remain have been given clearer names.
-
 
 The new group properties page is now a standard ``zope.formlib`` form,
 rather than relying on the older GroupServer ``XForms`` code. This
 means that standard features of forms on GroupServer are present,
 such as popup help.
 
-Simplified Start a Group
-========================
+Delivery Settings Page
+======================
+
+The page used to change the email delivery settings of a group member
+has been updated [#EmailSettings]_. The biggest advantage to the new
+page is that administrators can now change the delivery settings of
+group members.  For members the page looks and behaves much as it did
+before. However, the system has undergone a major rework behind the
+scenes. This will make the page easier to maintain, extend and change.
+
+Start a Group
+=============
 
 The start a group system has been simplified to a one-step process
 [#StartAGroup]_. Rather than a separate Preview step the new system
@@ -65,29 +74,29 @@ Group Homepage About Tab
 
 The new group homepage about tab replaces the little-used Charter
 page [#AboutTab]_. The new tab provides a blank area where a site
-administrator is free to write any HTML. As usual, the WYMeditor is
-used to edit the HTML [#WYMeditorUse]_.
+administrator is free to write any HTML. The WYMeditor is used to edit
+the contents of the tab [#WYMeditorUse]_.
 
-Easier Management of a Group Members
-====================================
+Management of a Group Member
+============================
 
 A group administrator is now shown a *Manage Member* link when viewing
 the profile of a member [#ManageMember]_. This should make managing
 members even easier than before.
 
-Set Password Enhancements
-=========================
+Set Password
+============
 
 The code used to set and reset passwords has been updated. Members
 will be shown better error messages when they follow password-reset
 links multiple times [#Password]_. In addition all the Set Password
-pages have been updated to use a single text entries, rather than two
+pages have been updated to use a single text entry, rather than two
 password entries [#EnClearPasswords]_.
 
 Notification Updates
 ====================
 
-Some notifications that have been stored in the ZMI have been updated. In
+Some notifications that are stored in the ZMI have been updated. In
 addition better feedback is given for those who fail to change the
 group-delivery settings by email [#Notifications]_.
 
@@ -118,7 +127,7 @@ Carry out the following steps to update the package versions.
 Update the SQL
 --------------
 
-The `set password enhancements`_ require an update to the relational
+The `set password`_  enhancements require an update to the relational
 database that stores GroupServer data. Carry out the following steps
 to update the database.
 
@@ -170,6 +179,9 @@ a hand with this.
    group hosted `a lively debate about topics
    <http://groupserver.org/r/topic/6ips13y2R228XK4dBYJTTl>`_
 
+.. [#EmailSettings] Creating a new email-settings page closes `Ticket 
+   371 <https://projects.iopen.net/groupserver/ticket/371>`_
+
 .. [#StartAGroup] Simplifying the process used to start a group closes
    `Ticket 304  <https://projects.iopen.net/groupserver/ticket/304>`_
 
@@ -177,7 +189,10 @@ a hand with this.
    <https://projects.iopen.net/groupserver/ticket/493>`_
 
 .. [#WYMeditorUse] GroupServer uses the excellent `WYMeditor 
-   <http://www.wymeditor.org/>`_ as its standard HTML editor.
+   <http://www.wymeditor.org/>`_ as its HTML editor. Pages that use the
+   editor include *Change Profile*, *Change Site Introduction* and all
+   pages that are editable with the Content Manager (such as *About*
+   and *Policies*.
 
 .. [#ManageMember] Creating a link from the profile page to the manage
    member page closes `Ticket 515
