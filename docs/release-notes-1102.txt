@@ -17,17 +17,19 @@ The Tartufo release of GroupServer mostly consists of enhancements so
 errors are handled better [#TartufoTickets]_.
 
 * A new *Unexpected Error* page provides more detail to the user.
-  More importantly, the pre-written message to support contains a
-  full stack-trace, which can be used to find and eliminate the error
-  [#UnexpectedError]_.  
+  In addition, the pre-written message to support contains a full
+  stack-trace. This information can be used to find and eliminate the
+  error [#UnexpectedError]_.
 * Many errors were generated when non-existent pages were accessed. 
   These errors have been fixed, primarily in the mailing-list
   code. This should make problems recorded in the error-log maintained
   by Zope easier to find, as there should be fewer items in the log
   [#Traversal]_.
 * Changes to email addresses are now better recorded [#EmailAudit]_.
+  This should help diagnose problems better if there is an error
+  subsequent to an address changing.
 * The jQuery code shipped with GroupServer has been updated to the
-  latest stable version.
+  latest stable version (1.4.4).
 * The code that generates the image, post, and topic pages has been
   refactored. This should make those pages easier to maintain.
   
@@ -59,13 +61,13 @@ Carry out the following steps to update the package versions.
    <http://groupserver.org/r/post/66XZLJkEax3zuXdFQhJ6zU>`_.
 .. [#Traversal] The *traversal* errors were those caused by not handling
    errors that were thrown by pages in the messages, profile, and files 
-   area. `The fixed tickets 
+   area. `The closed tickets 
    <https://projects.iopen.net/groupserver/query?keywords=~traversal&milestone=GroupServer+11.02+%E2%80%94+Tartufo+Nibbled+in+Polite+Company&group=status&col=id&col=summary&col=component&col=keywords&order=priority>`_
    all had the ``traversal`` keyword.
 .. [#EmailAudit] Recording more information about email addresses 
    changing closes `Ticket 432 <https://projects.iopen.net/groupserver/ticket/432>`_.
 .. [#PineappleSnowTickets] What will change in Pineapple Snow is detailed 
-   in `the tickets. <https://projects.iopen.net/groupserver/query?milestone=GroupServer+11.03+%E2%80%94+Pineapple+Snow+at+a+Child%27s+Party&group=status&order=priority>`_
+   in `the tickets. <https://projects.iopen.net/groupserver/query?milestone=GroupServer+11.03+%E2%80%94+Pineapple+Snow+at+a+Child%27s+Party&group=status&col=id&col=summary&col=owner&col=type&col=component&col=keywords&order=priority>`_
      
 .. _GroupServer.org: http://groupserver.org/
 .. _OnlineGroups.Net: http://onlinegroups.net/
