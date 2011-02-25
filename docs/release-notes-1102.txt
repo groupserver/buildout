@@ -1,0 +1,74 @@
+=============
+Release Notes
+=============
+-----------------------------------------------------
+GroupServer 11.02 — Tartufo Nibbled in Polite Company
+-----------------------------------------------------
+
+:Authors: Michael JasonSmith; Richard Waid; Alice Murphy; Dan Randow
+:Contact: Michael JasonSmith <mpj17@onlinegroups.net>
+:Date: 2011-02-28
+:Organization: `GroupServer.org`_
+:Copyright: This document is licensed under a
+  `Creative Commons Attribution-Share Alike 3.0 New Zealand License`_
+  by `OnlineGroups.Net`_.
+
+The Tartufo release of GroupServer mostly consists of enhancements so
+errors are handled better [#TartufoTickets]_.
+
+* A new *Unexpected Error* page provides more detail to the user.
+  More importantly, the pre-written message to support contains a
+  full stack-trace, which can be used to find and eliminate the error
+  [#UnexpectedError]_.  
+* Many errors were generated when non-existent pages were accessed. 
+  These errors have been fixed, primarily in the mailing-list
+  code. This should make problems recorded in the error-log maintained
+  by Zope easier to find, as there should be fewer items in the log
+  [#Traversal]_.
+* Changes to email addresses are now better recorded [#EmailAudit]_.
+* The jQuery code shipped with GroupServer has been updated to the
+  latest stable version.
+* The code that generates the image, post, and topic pages has been
+  refactored. This should make those pages easier to maintain.
+  
+Work is now starting on GroupServer 11.03 — Pineapple Snow at a
+Child's Party [#PineappleSnowTickets]_.
+
+Update an Existing GroupServer System
+=====================================
+
+Carry out the following steps to update the package versions.
+
+#. Download the Tartufo tar-ball from `the GroupServer download page
+   <http://groupserver.org/downloads>`_
+
+#. Uncompress the tar-ball.
+   
+#. Copy the file ``groupserver-11.02/versions.cfg`` to your existing
+   GroupServer installation.
+   
+#. In your existing GroupServer installation run::
+
+      $ ./bin/buildout -N
+
+.. [#TartufoTickets] `The tickets in Tartufo
+   <https://projects.iopen.net/groupserver/query?milestone=GroupServer+11.02+%E2%80%94+Tartufo+Nibbled+in+Polite+Company&group=status&col=id&col=summary&col=owner&col=component&col=keywords&order=priority>`_ detail
+   what changed in GroupServer 11.02.
+.. [#UnexpectedError] The new Unexpected Error page is detailed in
+   `a post to GroupServer Development
+   <http://groupserver.org/r/post/66XZLJkEax3zuXdFQhJ6zU>`_.
+.. [#Traversal] The *traversal* errors were those caused by not handling
+   errors that were thrown by pages in the messages, profile, and files 
+   area. `The fixed tickets 
+   <https://projects.iopen.net/groupserver/query?keywords=~traversal&milestone=GroupServer+11.02+%E2%80%94+Tartufo+Nibbled+in+Polite+Company&group=status&col=id&col=summary&col=component&col=keywords&order=priority>`_
+   all had the ``traversal`` keyword.
+.. [#EmailAudit] Recording more information about email addresses 
+   changing closes `Ticket 432 <https://projects.iopen.net/groupserver/ticket/432>`_.
+.. [#PineappleSnowTickets] What will change in Pineapple Snow is detailed 
+   in `the tickets. <https://projects.iopen.net/groupserver/query?milestone=GroupServer+11.03+%E2%80%94+Pineapple+Snow+at+a+Child%27s+Party&group=status&order=priority>`_
+     
+.. _GroupServer.org: http://groupserver.org/
+.. _OnlineGroups.Net: http://onlinegroups.net/
+.. _Creative Commons Attribution-Share Alike 3.0 New Zealand License:
+   http://creativecommons.org/licenses/by-sa/3.0/nz/
+
