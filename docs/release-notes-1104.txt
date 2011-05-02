@@ -13,19 +13,23 @@ GroupServer 11.04 — Slushy Followed by a Pounding Headache
   `Creative Commons Attribution-Share Alike 3.0 New Zealand License`_
   by `OnlineGroups.Net`_.
 
-The Slushy release of GroupServer contains two main enhancements
-[#SlushyTickets]_.
+The Slushy release of GroupServer contains two main `enhancements`_
+[#SlushyTickets]_. You can `get Slushy`_ immediately. Work is now
+starting on GroupServer 11.05 — Eskimo Pie with Middle-Class Guilt
+[#EskimoPie]_.
 
-* Posts can now be hidden (see `Hide a Post`_ below).
+Enhancements
+============
+
+The two main enhancements to GroupServer are
+
+* Posts can now be hidden (see `Hide a Post`_ below) and
 * `Full email addresses`_ can now be used to issue invitations.
 
 There are also some `minor fixes`_.
 
-You can `get Slushy`_ immediately. Work is now starting on
-GroupServer 11.05 — Eskimo Pie with Middle-Class Guilt [#EskimoPie]_.
-
 Hide a Post
-===========
+-----------
 
 The most significant change to GroupServer is the introduction of an
 interface to allow posts to be hidden [#HideAPost]_. Both administrators
@@ -36,25 +40,26 @@ as part of the post will see an error-page that states why the post
 was hidden.
 
 Full Email Addresses
-====================
+--------------------
 
-Prior to Slushy, GroupServer would only accept the portion of an email
+Prior to Slushy GroupServer would only accept the portion of an email
 address with an ``@`` in it — such as ``support@onlinegroups.net``. Now
-the *Invite a New Member* page can handle the full address,
-which can include a name, such as ``"OnlineGroups.Net Support"
+the *Invite a New Member* page can handle the full address. This
+address can include a name, such as ``"OnlineGroups.Net Support"
 <support@onlinegroups.net>`` [#FullAddress]_. Other pages will be
 converted to support full addresses over time.
 
 Minor Fixes
-===========
+-----------
 
 Minor fixes in Slushy include 
 
 * A fix to the *Join and Leave Log* so it now uses jQuery UI tabs
   [#LogTabs]_,
-* A fix to the *view* link in the content editor [#ViewLink]_, and
-* Resolving an issue with the *Change Email Settings* page when there
-  is no preferred email address [#EmailSettings]_.
+* A fix to the *view* link in the content editor so it works 
+  [#ViewLink]_, and
+* Resolving an error with the *Change Email Settings* page that occurred
+  when someone had no preferred email address set [#EmailSettings]_.
 
 Get Slushy
 ==========
@@ -137,8 +142,8 @@ Carry out the following steps to update the package versions.
    tickets that were related to hiding a post.
 .. [#FullAddress] Support a full email address closes `Ticket 445
    <https://projects.iopen.net/groupserver/ticket/445>`_.
-.. [#LogTabs] Switching the *Join and Leave Log* to use 
-   jQuery.UI Tabs closes `Ticket 641
+.. [#LogTabs] Switching the *Join and Leave Log* to use tabs from
+   jQuery.UI closes `Ticket 641
    <https://projects.iopen.net/groupserver/ticket/641>`_.
 .. [#ViewLink] Fixing the issue with the *view* link closes `Ticket 642
    <https://projects.iopen.net/groupserver/ticket/642>`_.
