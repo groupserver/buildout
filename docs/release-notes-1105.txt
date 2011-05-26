@@ -1,0 +1,142 @@
+=============
+Release Notes
+=============
+------------------------------------------------------
+GroupServer 11.05 — Eskimo Pie with Middle Class Guilt
+------------------------------------------------------
+
+:Authors: Michael JasonSmith; Richard Waid; Dan Randow
+:Contact: Michael JasonSmith <mpj17@onlinegroups.net>
+:Date: 2011-05-27
+:Organization: `GroupServer.org`_
+:Copyright: This document is licensed under a
+  `Creative Commons Attribution-Share Alike 3.0 New Zealand License`_
+  by `OnlineGroups.Net`_.
+
+The main update to GroupServer that is present in the Eskimo Pie release
+[#EskimoPie]_ is the new `request membership`_ system. However there
+are other `minor fixes`_ that have been made. You can `get Eskimo Pie`_
+immediately. Work is now starting on GroupServer 11.06 — Soft Serve
+from Mr Whippy [#SoftServe]_.
+
+Request Membership
+==================
+
+The Request Membership system [#RequestMembership]_ allows someone
+to request membership of a private group. The group administrator is
+informed when the request is made. The administrator can then accept
+or decline the request. Effectively the Request Membership system works
+like the Invitation system, but in reverse.
+
+Minor Fixes
+===========
+
+Minor fixes in Eskimo Pie include the following. 
+
+* An update to the Start a Group system, so the system administrator is 
+  made the group administrator [#StartAGroup]_.
+* When an email address is verified it is made the preferred delivery 
+  address if the user has no other preferred delivery addresses
+  [#Verify]_.
+* The list of files that are associated with a post are more clearly 
+  demarcated from the body of the message [#Files]_.
+* Long URLs no longer word-wrap in the body of posts [#URLs]_.
+* Zope has been updated to 2.3.6 [#Zope]_. This *may* cause problems
+  with some configurations, as IPv6 support is now present.
+
+Get Eskimo Pie
+==============
+
+To get Eskimo Pie go to `the Downloads page for GroupServer
+<http://groupserver.org/downloads>`_ and follow `the GroupServer
+Installation documentation <http://groupserver.org/downloads/install>`_.
+
+Those who already have a functioning installation can `update an existing
+GroupServer system`_.
+
+Update an Existing GroupServer System
+-------------------------------------
+
+To upgrade an existing GroupServer system to Eskimo Pie you must first
+`update the database`_ and then `update the packages`_.
+
+Update the Database
+~~~~~~~~~~~~~~~~~~~
+
+The `Request Membership`_ update requires the creation of a new table
+to record information about membership requests.
+
+Too update the database carry out the following steps.
+
+#. Log into the PostgreSQL database used GroupServer by using the
+   following command::
+
+     $ psql -Upgsql_user pgsql_dbname  
+
+   Note that ``pgsql_user`` and ``pgsql_dbname`` are the database user
+   and database name that was setup during installation. Both can be
+   found in the ``instance.cfg`` file in the installation directory
+   of GroupServer.
+   
+#. Run the following SQL to create the request membership table::
+
+     CREATE TABLE user_group_member_request (
+       request_id          TEXT                      PRIMARY KEY,
+       user_id             TEXT                      NOT NULL,
+       site_id             TEXT                      NOT NULL,
+       group_id            TEXT                      NOT NULL,
+       request_date        TIMESTAMP WITH TIME ZONE  NOT NULL,
+       message             TEXT,
+       responding_user_id  TEXT,
+       response_date       TIMESTAMP WITH TIME ZONE,
+       accepted            BOOLEAN
+     );
+
+Update the Packages
+~~~~~~~~~~~~~~~~~~~
+
+Carry out the following steps to update the package versions.
+
+#. Download the Eskimo Pie tar-ball from `the GroupServer download 
+   page <http://groupserver.org/downloads>`_
+
+#. Uncompress the tar-ball.
+   
+#. Copy the file ``groupserver-11.05/versions.cfg`` to your existing
+   GroupServer installation.
+   
+#. Copy the file ``groupserver-11.05/buildout.cfg`` to your existing
+   GroupServer installation.
+
+#. In your existing GroupServer installation run::
+
+      $ ./bin/buildout
+
+.. [#EskimoPie] `The tickets in Eskimo Pie
+   <https://projects.iopen.net/groupserver/query?milestone=GroupServer+11.05+%E2%80%94+Eskimo+Pie+with+Middle-Class+Guilt&group=status&col=id&col=summary&col=type&col=component&col=keywords&order=priority>`_
+   detail what changed in GroupServer 11.05.
+.. [#SoftServe] What will change in Soft Serve is detailed 
+   in `the tickets. <https://projects.iopen.net/groupserver/query?milestone=GroupServer+11.06+%E2%80%94+Soft+Serve+from+Mr+Whippy&group=status&col=id&col=summary&col=type&col=component&col=keywords&order=priority>`_
+.. [#RequestMembership] Adding the Request Membership system (finally) 
+   closes `Ticket 49. <https://projects.iopen.net/groupserver/ticket/49>`_
+.. [#StartAGroup] Setting the group administrator when the group is 
+   started closes `Ticket 611.
+   <https://projects.iopen.net/groupserver/ticket/611>`_
+.. [#Verify] Setting the verified address as the preferred delivery 
+   address closes `Ticket 661.
+   <https://projects.iopen.net/groupserver/ticket/661>`_
+.. [#Files] Enhancing the file notification area closes `Ticket 664
+   <https://projects.iopen.net/groupserver/ticket/664>`_
+.. [#URLs] Fixing the URLs so the do not break over multiple lines 
+   closes `Ticket 671.
+   <https://projects.iopen.net/groupserver/ticket/671>`_
+.. [#Zope] Updating to Zope 2.3.6 is something I am sure to regret, 
+   because it has the potential to make GroupServer installation even 
+   more tricky than before. However, it is done, and I have closed
+   `Ticket 672.
+   <https://projects.iopen.net/groupserver/ticket/672>`_
+.. _GroupServer.org: http://groupserver.org/
+.. _OnlineGroups.Net: http://onlinegroups.net/
+.. _Creative Commons Attribution-Share Alike 3.0 New Zealand License:
+   http://creativecommons.org/licenses/by-sa/3.0/nz/
+
