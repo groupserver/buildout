@@ -24,16 +24,17 @@ Request Membership
 
 The Request Membership system [#RequestMembership]_ allows someone
 to request membership of a private group. The group administrator is
-informed when the request is made. The administrator can then accept
-or decline the request. Effectively the Request Membership system works
-like the Invitation system, but in reverse.
+informed of the request by email. The administrator can then accept
+or decline the request using a Web interface. Effectively the Request
+Membership system works like the system that is used to invite people
+to join groups, but in reverse.
 
 Minor Fixes
 ===========
 
 Minor fixes in Eskimo Pie include the following. 
 
-* An update to the Start a Group system, so the system administrator is 
+* An update to the Start a Group system so the system administrator is 
   made the group administrator [#StartAGroup]_.
 * When an email address is verified it is made the preferred delivery 
   address if the user has no other preferred delivery addresses
@@ -64,9 +65,8 @@ Update the Database
 ~~~~~~~~~~~~~~~~~~~
 
 The `Request Membership`_ update requires the creation of a new table
-to record information about membership requests.
-
-Too update the database carry out the following steps.
+to record information about membership requests. To update the database
+carry out the following steps.
 
 #. Log into the PostgreSQL database used GroupServer by using the
    following command::
@@ -119,6 +119,9 @@ Carry out the following steps to update the package versions.
    in `the tickets. <https://projects.iopen.net/groupserver/query?milestone=GroupServer+11.06+%E2%80%94+Soft+Serve+from+Mr+Whippy&group=status&col=id&col=summary&col=type&col=component&col=keywords&order=priority>`_
 .. [#RequestMembership] Adding the Request Membership system (finally) 
    closes `Ticket 49. <https://projects.iopen.net/groupserver/ticket/49>`_
+   More information in the Request Membership system can be found in
+   `the Request Membership topic.
+   <http://groupserver.org/r/topic/1JdMOAD7VrlwnN7MQcgNhi>`_
 .. [#StartAGroup] Setting the group administrator when the group is 
    started closes `Ticket 611.
    <https://projects.iopen.net/groupserver/ticket/611>`_
