@@ -6,7 +6,7 @@ GroupServer Installation
 
 :Authors: Michael JasonSmith; Richard Waid; Alice Murphy; Dan Randow
 :Contact: Michael JasonSmith <mpj17@onlinegroups.net>
-:Date: 2010-09-01 (see `History`_)
+:Date: 2011-05-29 (see `History`_)
 :Organization: `GroupServer.org`_
 :Copyright: This document is licensed under a
   `Creative Commons Attribution-Share Alike 3.0 New Zealand License`_
@@ -158,17 +158,19 @@ Postfix.
   During installation a database will be created in PostgreSQL. The
   ``pgsql_dbname`` option defines the name of the database.
 
+``pgsql_user``
+  The name of the database user that will connect to the GroupServer
+  database and modify the data. The database user is separate from
+  the other users on the system, including those that log into the
+  computer and those in Zope. The value of this option can be set to
+  anything, but the default is usually good enough. **Note** that the
+  ``pgsql_user`` must be set to a value that is different to the value of
+  ``pgsql_admin``.
+
 ``pgsql_admin``
   The name of the admin of PostgreSQL, used to create the PostgreSQL
   user. The default is the name of the administrator under Ubuntu.
   
-``pgsql_user``
-  The name of the database user that will connect to the GroupServer
-  database and modify the data. The database user is separate from the
-  other users on the system, including those that log into the computer
-  and those in Zope. The value of this option can be set to anything,
-  but the default is usually good enough.
-
 ``pgsql_password``
   The password required to attach to the PostgreSQL database as the
   ``pgsql_user``. The default is blank, which means that no password
@@ -396,8 +398,8 @@ Update Postfix
 
 To load the new configuration into Postfix run the following commands::
 
-    # postalias /etc/postifx/groupserver.aliases
-    # postmap /etc/postifx/groupserver.virtual
+    # postalias /etc/postfix/groupserver.aliases
+    # postmap /etc/postfix/groupserver.virtual
     # postfix reload
 
 Set up Scripts
@@ -459,6 +461,9 @@ History
 ======= ==========  ====================================================
 Version Date        Change
 ======= ==========  ====================================================
+11.05   2011-05-26  Fixed a typing mistake, and mentioned that the 
+                    ``pgsql_dbname`` and ``pgsql_user`` had to be 
+                    different.
 10.09   2010-09-01  Changed how the configuration options are set.
 1.0β²   2010-07-15  Improved the buildout instructions.
 1.0β²   2010-07-07  Changed the Zope 2.10 (Python 2.4) instructions to
