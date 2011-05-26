@@ -3,4 +3,6 @@ syntax: glob
 *~
 *egg-info
 dist
+docs/*html
+docs/quote.sed
 
