@@ -138,8 +138,8 @@ which is located in the root of the GroupServer folder. The ``cfg``
 file is interpreted by the Python `ConfigParser`_ module, which accepts
 a syntax very similar to Windows INI files.
 
-Postfix
-~~~~~~~
+PostgreSQL
+~~~~~~~~~~
 
 All the user-configurable options are in the ``config`` section of 
 ``instance.cfg``. The first set of options deals with configuring 
