@@ -413,6 +413,20 @@ Ubuntu the command will be::
 
   # chown nobody.nogroup utils/*py
   
+Process the outgoing email queue
+--------------------------------
+
+In order to avoid outgoing email from causing a noticible delay to the user,
+GroupServer queues outgoing email by default. It is necessary to regularly
+request that GroupServer flush the outgoing queue. The easiest way to do that
+is to add an entry similar to this to ``/etc/crontab`` ::
+
+  
+  */3 * * * *  groupserver  wget -O/dev/null http://{host}:{zope_port}/example/ListManager/processSpool
+
+Change ``groupserver`` to the user you are using to run groupserver, or any
+other non-priviledged user.
+
 Web Proxy
 =========
 
