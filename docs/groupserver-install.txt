@@ -6,7 +6,7 @@ GroupServer Installation
 
 :Authors: Michael JasonSmith; Richard Waid; Alice Murphy; Dan Randow
 :Contact: Michael JasonSmith <mpj17@onlinegroups.net>
-:Date: 2011-05-29 (see `History`_)
+:Date: 2011-06-17 (see `History`_)
 :Organization: `GroupServer.org`_
 :Copyright: This document is licensed under a
   `Creative Commons Attribution-Share Alike 3.0 New Zealand License`_
@@ -486,7 +486,7 @@ History
 ======= ==========  ====================================================
 Version Date        Change
 ======= ==========  ====================================================
-11.06	2011-06-17  Added postfix configuration and spooling notes.
+11.06   2011-06-17  Added postfix configuration and spooling notes.
 11.05   2011-05-26  Fixed a typing mistake, and mentioned that the 
                     ``pgsql_dbname`` and ``pgsql_user`` had to be 
                     different.
