@@ -396,9 +396,9 @@ Change ``main.cf``
 
 * Find the ``mydestination`` parameter.
 * If the hostname specified as ``virtual`` in the
-``/etc/postfix/groupserver.virtual`` is listed as a destination, it will
-need to be removed from ``mydestination`` as it cannot be specified in both
-places.
+  ``/etc/postfix/groupserver.virtual`` is listed as a destination,
+  it will need to be removed from ``mydestination`` as it cannot be
+  specified in both places.
 * Add the following to the bottom, unless it is previously defined::
 
     smtpd_authorized_verp_clients = 127.0.0.1
