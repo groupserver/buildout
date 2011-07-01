@@ -1,0 +1,96 @@
+=============
+Release Notes
+=============
+---------------------------------------------
+GroupServer 11.06 — Soft Serve from Mr Whippy
+---------------------------------------------
+
+:Authors: `Michael JasonSmith`_; `Richard Waid`_; `Dan Randow`_
+:Contact: Michael JasonSmith <mpj17@onlinegroups.net>
+:Date: 2011-07-01
+:Organization: `GroupServer.org`_
+:Copyright: This document is licensed under a
+  `Creative Commons Attribution-Share Alike 3.0 New Zealand License`_
+  by `OnlineGroups.Net`_.
+
+Introduction
+============
+
+The two main update to GroupServer that is present in the Soft Serve
+release [#SoftServe]_ are an update to the code that determines if
+someone `can post`_, and a rebuild of the `site administration pages`_.
+In addition there are other `minor fixes`_ that have been made. You
+can `get Soft Serve`_ immediately. Work is now starting on GroupServer
+11.07 — Frozen Yoghurt Accompanied by Carols [#FrozenYoghurt]_.
+
+Acknowledgements
+----------------
+
+Thanks to `Le Coyote`_ and `DJS`_ for their very helpful suggestions,
+and testing early releases of Soft Serve.
+
+Can Post
+========
+
+Site Administration Pages
+=========================
+
+Minor Fixes
+===========
+
+Minor fixes in Soft Serve include the following. 
+
+
+Get Soft Serve
+==============
+
+To get Soft Serve go to `the Downloads page for GroupServer`_ and follow
+`the GroupServer Installation documentation`_. Those who already have
+a functioning installation can `update an existing GroupServer system`_.
+
+Update an Existing GroupServer System
+-------------------------------------
+
+To upgrade an existing GroupServer system to Soft Serve you must first
+`update the packages`_ and then `Update the ZMI`_.
+
+Update the Packages
+~~~~~~~~~~~~~~~~~~~
+
+Carry out the following steps to update the package versions.
+
+#. Download the Eskimo Pie tar-ball from `the GroupServer download 
+   page <http://groupserver.org/downloads>`_
+
+#. Uncompress the tar-ball.
+   
+#. Copy the file ``groupserver-11.06/versions.cfg`` to your existing
+   GroupServer installation.
+   
+#. Copy the file ``groupserver-11.06/buildout.cfg`` to your existing
+   GroupServer installation.
+
+#. In your existing GroupServer installation run::
+
+      $ ./bin/buildout
+
+Update the ZMI
+~~~~~~~~~~~~~~
+
+.. [#SoftServe] `The tickets in Soft Serve
+   <https://projects.iopen.net/groupserver/query?milestone=GroupServer+11.06+%E2%80%94+Soft+Serve+from+Mr+Whippy&group=status&col=id&col=summary&col=type&col=component&col=keywords&order=priority>`_
+   detail what changed in GroupServer 11.06
+.. [#FrozenYoghurt] What will change in Frozen Yoghurt is detailed in
+   `the tickets. <https://projects.iopen.net/groupserver/query?milestone=GroupServer+11.07+%E2%80%94+Frozen+Yoghurt+Accompanied+by+Carols&group=status&col=id&col=summary&col=type&col=component&col=keywords&order=priority>`_
+.. _GroupServer.org: http://groupserver.org/
+.. _OnlineGroups.Net: http://onlinegroups.net/
+.. _Creative Commons Attribution-Share Alike 3.0 New Zealand License:
+   http://creativecommons.org/licenses/by-sa/3.0/nz/
+.. _Michael JasonSmith: http://groupserver.org/p/mpj17
+.. _Richard Waid: http://groupserver.org/p/richard
+.. _Dan Randow: http://groupserver.org/p/danr
+.. _Le Coyote: http://groupserver.org/p/5wdOKPGCaEV8sDPbmN0Qnn
+.. _DJS: http://groupserver.org/p/2aHyPiiXulKwqIwXffSgBZ
+.. _The Downloads page for GroupServer: http://groupserver.org/downloads
+.. _The GroupServer Installation documentation: 
+    http://groupserver.org/downloads/install
