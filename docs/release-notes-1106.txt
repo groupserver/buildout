@@ -85,7 +85,7 @@ Update the Packages
 
 Carry out the following steps to update the package versions.
 
-#. Download the Eskimo Pie tar-ball from `the GroupServer download 
+#. Download the Soft Serve tar-ball from `the GroupServer download 
    page <http://groupserver.org/downloads>`_.
 
 #. Uncompress the tar-ball.
