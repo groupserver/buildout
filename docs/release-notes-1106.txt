@@ -7,7 +7,7 @@ GroupServer 11.06 — Soft Serve from Mr Whippy
 
 :Authors: `Michael JasonSmith`_; `Richard Waid`_; `Dan Randow`_
 :Contact: Michael JasonSmith <mpj17@onlinegroups.net>
-:Date: 2011-07-01
+:Date: 2011-07-04
 :Organization: `GroupServer.org`_
 :Copyright: This document is licensed under a
   `Creative Commons Attribution-Share Alike 3.0 New Zealand License`_
@@ -16,7 +16,7 @@ GroupServer 11.06 — Soft Serve from Mr Whippy
 Introduction
 ============
 
-The two main update to GroupServer that is present in the Soft Serve
+The two main updates to GroupServer that are present in the Soft Serve
 release [#SoftServe]_ are an update to the code that determines if
 someone `can post`_, and a rebuild of the `site administration pages`_.
 In addition there are other `minor fixes`_ that have been made. You
@@ -32,14 +32,40 @@ and testing early releases of Soft Serve.
 Can Post
 ========
 
+When someone posts to a group the system checks to see if the user has
+the correct permissions. The code that does this is known as the *can
+post* code. In Soft Serve this code has undergone two main changes.
+
+#.  Email addresses can be blocked from posting [#Blocking]_. This
+    mechanism, known as blacklisting, extends the existing system that
+    prevented addresses on the black-list from receiving posts. There
+    is no user-interface for this system.
+   
+#.  The code has been moved to its own product [#CanPostMove]_.
+
 Site Administration Pages
 =========================
+
+The site-administration pages did not work well. All the site
+administration pages have been updated [#SiteAdmin]_. In particular,
+the pages that allow an administrator to set the site timezone [#tz]_ and
+change the site name [#SiteName]_ have been fixed so they work correctly.
 
 Minor Fixes
 ===========
 
 Minor fixes in Soft Serve include the following. 
 
+* If a member with a single unverified address resets a password then
+  that address will become verified [#Verify]_.
+* The ``Reply-to`` address of an invitation is now set to the address 
+  of the administrator who issued the invitation [#ReplyTo]_.
+* Only posting members of an announcement group are shown a link to
+  start a topic [#StartTopic]_.
+* The name of the initial GroupServer instance and GroupServer site have
+  been changed [#GSName]_.
+* A coding error with the Members page has been fixed
+  [#PostingMembers]_.
 
 Get Soft Serve
 ==============
@@ -52,7 +78,7 @@ Update an Existing GroupServer System
 -------------------------------------
 
 To upgrade an existing GroupServer system to Soft Serve you must first
-`update the packages`_ and then `Update the ZMI`_.
+`update the packages`_ and then `update the ZMI`_.
 
 Update the Packages
 ~~~~~~~~~~~~~~~~~~~
@@ -60,7 +86,7 @@ Update the Packages
 Carry out the following steps to update the package versions.
 
 #. Download the Eskimo Pie tar-ball from `the GroupServer download 
-   page <http://groupserver.org/downloads>`_
+   page <http://groupserver.org/downloads>`_.
 
 #. Uncompress the tar-ball.
    
@@ -77,11 +103,78 @@ Carry out the following steps to update the package versions.
 Update the ZMI
 ~~~~~~~~~~~~~~
 
+The update to the `site administration pages`_ requires an instance
+to be deleted from the Zope Management Interface (*ZMI*) before it will
+work. To delete the instance carry out to the following tasks.
+
+#.  Start GroupServer::
+  
+      $ ./bin/instance fg
+    
+#.  View the ZMI. If you did not change the defaults the ZMI can
+    be accessed from <http://localhost:8080/manage/>.
+    
+#.  Enter the user-name and password of the ZMI administrator.
+    
+#.  Visit the ZMI page for the Example Site. This should be under
+    ``example``, ``Content``, ``example_site``.
+    
+#.  Select the check-box next to ``admindivision (Administer Site)``.
+
+#.  Click the Delete button. The ``adminidivision`` instance should
+    be deleted.
+    
+After deleting the ``admindivision`` instance you should be able to view
+the new site administration pages. To view these pages you must view
+the homepage for your site and click on the link to administer the site.
+
+Footnotes
+=========
+
 .. [#SoftServe] `The tickets in Soft Serve
    <https://projects.iopen.net/groupserver/query?milestone=GroupServer+11.06+%E2%80%94+Soft+Serve+from+Mr+Whippy&group=status&col=id&col=summary&col=type&col=component&col=keywords&order=priority>`_
-   detail what changed in GroupServer 11.06
+   detail what changed in GroupServer 11.06.
 .. [#FrozenYoghurt] What will change in Frozen Yoghurt is detailed in
    `the tickets. <https://projects.iopen.net/groupserver/query?milestone=GroupServer+11.07+%E2%80%94+Frozen+Yoghurt+Accompanied+by+Carols&group=status&col=id&col=summary&col=type&col=component&col=keywords&order=priority>`_
+.. [#Blocking] Adding the code for blocking a post closed `Ticket 
+   459 <https://projects.iopen.net/groupserver/ticket/459>`_. This
+   enhancement mostly helps Support groups, which otherwise lack a
+   way to prevent people from posting.
+.. [#CanPostMove] There is a long-running project to move code from the
+   large ``Products`` eggs to many more smaller ``gs`` eggs. The move
+   of the Can Post code to ``gs.group.member.canpost`` from the old
+   ``Products.GSGroupMember`` is part of this. Moving the code closes
+   `Ticket 423 <https://projects.iopen.net/groupserver/ticket/423>`_. 
+.. [#SiteAdmin] Updating the site administration pages closes 
+   `Ticket 620 <https://projects.iopen.net/groupserver/ticket/620>`_. 
+.. [#tz] Updating the site-timezone page closes
+   `Ticket 662 <https://projects.iopen.net/groupserver/ticket/662>`_. 
+.. [#SiteName] Updating the page that allows a site-name to be changed
+   closes `Ticket 607
+   <https://projects.iopen.net/groupserver/ticket/607>`_.
+.. [#Verify] Only the simple case of a single-address being verified 
+   is currently handled. Verifying an email address when the password is
+   reset closes
+   `Ticket 480 <https://projects.iopen.net/groupserver/ticket/480>`_.
+.. [#ReplyTo] Prior to Soft Serve, the ``Reply-to`` address was set to 
+   the email address of the site support. Setting the ``Reply-to`` to
+   the address of the administrator that issued the invitation closes
+   `Ticket 681 <https://projects.iopen.net/groupserver/ticket/681>`_.
+.. [#StartTopic] In an announcement group there is a distinction between
+   group members that post (*posting members*) and members that just
+   view posts (*normal members*). Prior to Soft Serve all group members
+   saw the link on the homepage to the *Start a Topic* page. A normal
+   member would see an error if he or she followed that link. Just
+   showing the link on the homepage to the posting members closes
+   `Ticket 530 <https://projects.iopen.net/groupserver/ticket/530>`_.
+.. [#GSName] Prior to Soft Serve the initial GroupServer instance,
+   site and group had names that contained ``example``. Now
+   the instance is called ``groupserver``, the initial site
+   is called ``initial_site``, and the initial group is called
+   ``example_group``. Renaming the instance and site `Ticket 690
+   <https://projects.iopen.net/groupserver/ticket/690>`_.
+.. [#PostingMembers] Fixing the coding error on the Members page closes
+   `Ticket 680 <https://projects.iopen.net/groupserver/ticket/680>`_.
 .. _GroupServer.org: http://groupserver.org/
 .. _OnlineGroups.Net: http://onlinegroups.net/
 .. _Creative Commons Attribution-Share Alike 3.0 New Zealand License:
@@ -94,3 +187,4 @@ Update the ZMI
 .. _The Downloads page for GroupServer: http://groupserver.org/downloads
 .. _The GroupServer Installation documentation: 
     http://groupserver.org/downloads/install
+
