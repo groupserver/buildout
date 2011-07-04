@@ -433,7 +433,7 @@ request that GroupServer flush the outgoing queue. The easiest way to do that
 is to add an entry similar to this to ``/etc/crontab`` ::
 
   
-  */3 * * * *  groupserver  wget -O/dev/null http://{host}:{zope_port}/example/ListManager/processSpool
+  */3 * * * *  groupserver  wget -O/dev/null http://{host}:{zope_port}/groupserver/ListManager/processSpool
 
 Change ``groupserver`` to the user you are using to run groupserver, or any
 other non-priviledged user.
@@ -486,6 +486,8 @@ History
 ======= ==========  ====================================================
 Version Date        Change
 ======= ==========  ====================================================
+11.06   2011-07-04  Updating the notes, because of a change to the 
+                    name of the initial GroupServer instance.
 11.06   2011-06-17  Added postfix configuration and spooling notes.
 11.05   2011-05-26  Fixed a typing mistake, and mentioned that the 
                     ``pgsql_dbname`` and ``pgsql_user`` had to be 
