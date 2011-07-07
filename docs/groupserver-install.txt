@@ -6,7 +6,7 @@ GroupServer Installation
 
 :Authors: Michael JasonSmith; Richard Waid; Alice Murphy; Dan Randow
 :Contact: Michael JasonSmith <mpj17@onlinegroups.net>
-:Date: 2011-06-17 (see `History`_)
+:Date: 2011-07-08 (see `History`_)
 :Organization: `GroupServer.org`_
 :Copyright: This document is licensed under a
   `Creative Commons Attribution-Share Alike 3.0 New Zealand License`_
@@ -66,6 +66,8 @@ are listed.
 +----------------------+---------------------------------+
 | GNU C++ Compiler     | ``g++``                         |
 +----------------------+---------------------------------+
+| Developer Tools      | ``build-essential``             |
++----------------------+---------------------------------+
 | PostgreSQL Database  | ``postgresql``                  |
 |                      +---------------------------------+
 |                      | ``postgresql-server-dev-8.4``   |
@@ -80,6 +82,14 @@ are listed.
 |                      +---------------------------------+
 |                      | ``lib64z1-dev`` (from main)     |    
 +----------------------+---------------------------------+
+
+To install all the above libraries under Ubuntu run the following 
+command::
+
+  $ sudo apt-get install python2.6 python2.6-dev python-virtualenv g++ \
+    build-essential postgresql postgresql-server-dev-8.4 libpq-dev \
+    postfix postfix-dev libzzip-dev lib64z1-dev 
+
 
 Configure PostgreSQL
 ====================
@@ -492,6 +502,8 @@ History
 ======= ==========  ====================================================
 Version Date        Change
 ======= ==========  ====================================================
+11.07   2011-07-08  Adding the ``build-essential`` depenency and the
+                    cut-n-paste ``apt-get`` block to the `Requirements`_.
 11.06   2011-07-05  Adding the prologue.
 11.06   2011-07-04  Updating the notes, because of a change to the 
                     name of the initial GroupServer instance.
