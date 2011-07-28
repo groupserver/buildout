@@ -1,0 +1,144 @@
+=============
+Release Notes
+=============
+--------------------------------------------------------
+GroupServer 11.07 — Frozen Yoghurt Accompanied by Carols
+--------------------------------------------------------
+
+:Authors: `Michael JasonSmith`_; `Richard Waid`_; `Dan Randow`_
+:Contact: Michael JasonSmith <mpj17@onlinegroups.net>
+:Date: 2011-07-28
+:Organization: `GroupServer.org`_
+:Copyright: This document is licensed under a
+  `Creative Commons Attribution-Share Alike 3.0 New Zealand License`_
+  by `OnlineGroups.Net`_.
+
+Introduction
+============
+
+The main update that is present in the Frozen Yoghurt [#FrozenYoghurt]_
+release of GroupServer  is a `new stylesheet`_ for devices with
+narrow displays. There is also a new converter for `HTML-formatted
+messages`_. In addition a number of `minor fixes`_ are part of this
+release. You can `get Frozen Yoghurt`_ immediately. Work is now starting
+on GroupServer 11.08 — Banana Split Eaten in a Comfortable Silence
+[#BananaSplit]_.
+
+Acknowledgements
+----------------
+
+Thanks to `Steven Clift`_ for his support with the `new stylesheet`_.
+
+New Stylesheet
+==============
+
+Devices with narrow displays, such as mobile phones and tablets, now have
+a dedicated stylesheet [#NewCSS]_. The system uses `CSS3 Media Queries`_
+to reformat the page when the browser window is narrow. Pages that have
+been specifically optimised for small-screen devices include
+
+* The site homepage, 
+* The group page, 
+* The topic page and 
+* The image page. 
+
+Many other pages work on small screens, including the post page and
+the topics page.
+
+HTML-Formatted Messages
+=======================
+
+Email messages can be in multiple formats, including plain text and HTML.
+Sometimes email messages are formatted in *just* HTML. When this occurs
+GroupServer converts the HTML version of the message into a plain-text
+version. It is this plain-text version of the post that is displayed on
+the Web pages. The code that converts the HTML-message into plain-text
+has been updated [#Converter]_. The new code uses `the standard Python
+HTML Parser library`_ to parse the message, and also handles URLs better.
+
+Minor Fixes
+===========
+
+Minor fixes in Frozen Yoghurt include the following.
+
+* The position of the Sticky form in a topic has been moved, so it is
+  visible when there is only one post [#Sticky]_.
+  
+* Files that are part of hidden posts are hidden from the index of files
+  at the top of the topic. (Files that were part of hidden posts were
+  never able to be viewed) [#Hidden]_.
+
+* A new configuration system for GroupServer is present, but not used. 
+  The ``gs.option`` product is part of an ongoing effort to move more
+  data out of the ZODB and into the `PostgreSQL`_ relational database.
+  The ``README`` in the base of the product has more details.
+
+* An error with the Can Post code was fixed.
+
+* The word *Home* has been dropped from the group page, as it added
+  nothing and took up valuable space.
+
+Get Frozen Yoghurt
+==================
+
+To get Frozen Yoghurt go to `the Downloads page for GroupServer`_ and
+follow `the GroupServer Installation documentation`_. Those who already
+have a functioning installation can `update an existing GroupServer
+system`_.
+
+Update an Existing GroupServer System
+-------------------------------------
+
+To upgrade an existing GroupServer system to Frozen Yoghurt carry out
+the following steps.
+
+#. Download the Frozen Yoghurt tar-ball from `the GroupServer download 
+   page <http://groupserver.org/downloads>`_.
+
+#. Uncompress the tar-ball.
+   
+#. Copy the file ``groupserver-11.07/versions.cfg`` to your existing
+   GroupServer installation.
+   
+#. Copy the file ``groupserver-11.07/buildout.cfg`` to your existing
+   GroupServer installation.
+
+#. In your existing GroupServer installation run::
+
+      $ ./bin/buildout
+
+Footnotes
+=========
+
+..  [#FrozenYoghurt] `The tickets in Frozen Yoghurt
+    <https://projects.iopen.net/groupserver/query?milestone=GroupServer+11.07+%E2%80%94+Frozen+Yoghurt+Accompanied+by+Carols&group=status&col=id&col=summary&col=type&col=component&col=keywords&order=priority>`_
+    detail what changed in GroupServer 11.06.
+..  [#BananaSplit] What will change in Banana Split is detailed in
+    `the tickets. <https://projects.iopen.net/groupserver/query?milestone=GroupServer+11.08+%E2%80%94+Banana+Split+Eaten+in+a+Comfortable+Silence&group=status&col=id&col=summary&col=type&col=component&col=keywords&order=priority>`_
+.. [#NewCSS] The new mobile CSS closes `Ticket 444 
+    <https://projects.iopen.net/groupserver/ticket/444>`_. More 
+    information on the mobile stylesheet can be found in `the topic in 
+    GroupServer Development
+    <http://groupserver.org/r/topic/2zZBPuapfn1wu9J6LgVCX>`_.
+..  [#Converter] Updating the converter closes 
+    `Ticket 596 <https://projects.iopen.net/groupserver/ticket/596>`_.
+..  [#Sticky] Fixing the position of the Sticky form in a topic closes
+    `Ticket 705 <https://projects.iopen.net/groupserver/ticket/705>`_.
+..  [#Hidden] Hiding posts that are part of hidden files closes 
+    `Ticket 692 <https://projects.iopen.net/groupserver/ticket/692>`_.
+..  _GroupServer.org: http://groupserver.org/
+..  _OnlineGroups.Net: http://onlinegroups.net/
+..  _Creative Commons Attribution-Share Alike 3.0 New Zealand License:
+    http://creativecommons.org/licenses/by-sa/3.0/nz/
+.. _Michael JasonSmith: http://groupserver.org/p/mpj17
+.. _Richard Waid: http://groupserver.org/p/richard
+.. _Dan Randow: http://groupserver.org/p/danr
+..  _Steven Clift: http://groupserver.org/p/stevenc
+..  _CSS3 Media Queries: http://www.w3.org/TR/css3-mediaqueries/
+..  _The standard Python HTML Parser library: 
+    http://docs.python.org/library/htmlparser.html
+..  _PostgreSQL: http://www.postgresql.org/
+..  _The Downloads page for GroupServer: http://groupserver.org/downloads
+..  _The GroupServer Installation documentation: 
+    http://groupserver.org/downloads/install
+
