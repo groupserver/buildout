@@ -1,0 +1,113 @@
+=============
+Release Notes
+=============
+---------------------------------------------------------------
+GroupServer 11.08 — Banana Split Eaten in a Comfortable Silence
+---------------------------------------------------------------
+
+:Authors: `Michael JasonSmith`_; `Richard Waid`_; `Dan Randow`_
+:Contact: Michael JasonSmith <mpj17@onlinegroups.net>
+:Date: 2011-08-31
+:Organization: `GroupServer.org`_
+:Copyright: This document is licensed under a
+  `Creative Commons Attribution-Share Alike 3.0 New Zealand License`_
+  by `OnlineGroups.Net`_.
+
+Introduction
+============
+
+The main update that is present in the Banana release of GroupServer is
+a `Facebook signup`_ system. You can `get Banana Split`_ immediately. 
+Work is now starting on GroupServer 11.09 — Bombe Glacée with Emphasis 
+on the Phonetics.
+
+Acknowledgements
+----------------
+
+Thanks to `Steven Clift`_ for his support for the `Facebook signup`_
+system.
+
+Facebook Signup
+===============
+
+Previously, new members had to provide all their profile information
+during signup. Now new members have the option of logging into Facebook
+to retrieve the profile information. Signing up using Facebook is 
+beneficial in two ways.
+
+#.  The email address of the new member does not have to be verified, as
+    Facebook has already verified the address.
+
+#.  Much of the profile information does not have to be added, as it
+    is copied in from Facebook.
+
+Get Banana Split
+================
+
+To get Banana Split go to `the Downloads page for GroupServer`_ and
+follow `the GroupServer Installation documentation`_. Those who already
+have a functioning installation can `update an existing GroupServer
+system`_.
+
+
+Update an Existing GroupServer System
+-------------------------------------
+
+To update an existing GroupServer system to Banana Split you must
+update the packages.
+
+To upgrade the packages in an existing GroupServer system to Banana 
+Split carry out the following steps.
+
+#.  Download the Banana Split tar-ball from `the GroupServer download 
+    page <http://groupserver.org/downloads>`_.
+
+#.  Uncompress the tar-ball.
+   
+#.  Copy the file ``groupserver-11.08/versions.cfg`` to your existing
+    GroupServer installation.
+   
+#.  Copy the file ``groupserver-11.08/buildout.cfg`` to your existing
+    GroupServer installation.
+
+#.  In your existing GroupServer installation run::
+
+      $ ./bin/buildout
+
+Footnotes
+=========
+
+..  [#FrozenYoghurt] `The tickets in Frozen Yoghurt
+    <https://projects.iopen.net/groupserver/query?milestone=GroupServer+11.07+%E2%80%94+Frozen+Yoghurt+Accompanied+by+Carols&group=status&col=id&col=summary&col=type&col=component&col=keywords&order=priority>`_
+    detail what changed in GroupServer 11.06.
+..  [#BananaSplit] What will change in Banana Split is detailed in
+    `the tickets. <https://projects.iopen.net/groupserver/query?milestone=GroupServer+11.08+%E2%80%94+Banana+Split+Eaten+in+a+Comfortable+Silence&group=status&col=id&col=summary&col=type&col=component&col=keywords&order=priority>`_
+.. [#NewCSS] The new mobile CSS closes `Ticket 444 
+    <https://projects.iopen.net/groupserver/ticket/444>`_. More 
+    information on the mobile stylesheet can be found in `the topic in 
+    GroupServer Development
+    <http://groupserver.org/r/topic/2zZBPuapfn1wu9J6LgVCX>`_.
+..  [#Converter] Updating the converter closes 
+    `Ticket 596 <https://projects.iopen.net/groupserver/ticket/596>`_.
+..  [#Sticky] Fixing the position of the Sticky form in a topic closes
+    `Ticket 705 <https://projects.iopen.net/groupserver/ticket/705>`_.
+..  [#Hidden] Hiding posts that are part of hidden files closes 
+    `Ticket 692 <https://projects.iopen.net/groupserver/ticket/692>`_.
+..  _GroupServer.org: http://groupserver.org/
+..  _OnlineGroups.Net: http://onlinegroups.net/
+..  _Creative Commons Attribution-Share Alike 3.0 New Zealand License:
+    http://creativecommons.org/licenses/by-sa/3.0/nz/
+.. _Michael JasonSmith: http://groupserver.org/p/mpj17
+.. _Richard Waid: http://groupserver.org/p/richard
+.. _Dan Randow: http://groupserver.org/p/danr
+..  _Steven Clift: http://groupserver.org/p/stevenc
+..  _Le Coyote: http://groupserver.org/p/5wdOKPGCaEV8sDPbmN0Qnn
+..  _Alice Murphy: http://groupserver.org/p/alice
+..  _CSS3 Media Queries: http://www.w3.org/TR/css3-mediaqueries/
+..  _The standard Python HTML Parser library: 
+    http://docs.python.org/library/htmlparser.html
+..  _PostgreSQL: http://www.postgresql.org/
+..  _The Downloads page for GroupServer: http://groupserver.org/downloads
+..  _The GroupServer Installation documentation: 
+    http://groupserver.org/downloads/install
+
