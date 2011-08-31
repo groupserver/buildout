@@ -37,25 +37,26 @@ Facebook is beneficial in two ways.
 
 #.  The email address of the new member does not have to be verified, as
     Facebook has already verified the address. This reduces the number
-    of steps required for sign-up is reduced from three to two.
+    of steps required for sign-up from three to two.
 
 #.  Much of the profile information does not have to be added, as it
     is copied in from Facebook.
 
-The new member has a choice to use the signup that just uses email, or
-the new Facebook signup. The latter is an option when the administrator 
-has configured signup.
+The new member has a choice to use the older signup system that
+just uses email, or the new Facebook signup. The latter option
+is automatically available after the administrator has `setup`_
+Facebook signup.
 
 Setup
 -----
 
-Two values have to be provided by Facebook for Facebook Signup to work.
+You must acquire two values from Facebook to enable Facebook Signup.
 
 Application ID Value
-  This is the identifier for the Facebook *application*.
+  This is the identifier for your Facebook *application*.
   
 Application Secret Value
-  This is the secret key that is passed from the site to Facebook.
+  This is the secret key that is passed from your site to Facebook.
   
 To get these values you will need to register your site as an
 *application* with Facebook. Do this by visiting
@@ -73,7 +74,8 @@ Once you have these you can carry out the following tasks.
     found in the ``instance.cfg`` file in the installation directory
     of GroupServer.
    
-#.  Run the following SQL to create the ``options`` table::
+#.  Run the following SQL to add the ``App ID`` and ``App Secret``
+    to the ``options`` table::
 
       INSERT INTO option 
       VALUES (
@@ -93,11 +95,11 @@ Once you have these you can carry out the following tasks.
         App Secret
       );
     
-    Note the ``App ID`` and ``App Secret`` are the values provided by
-    Facebook. Both will need to be in quotes.
+    Note the ``App ID`` and ``App Secret`` in the above SQL are the
+    values provided by Facebook. Both values will need to be in quotes.
 
 Once the data is in the ``options`` table the Sign Up page will 
-automatically add the Facebook option.
+automatically show the option to sign up using Facebook.
 
 Get Banana Split
 ================
