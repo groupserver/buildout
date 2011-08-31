@@ -154,96 +154,12 @@ which is located in the root of the GroupServer folder. The ``cfg``
 file is interpreted by the Python `ConfigParser`_ module, which accepts
 a syntax very similar to Windows INI files.
 
-PostgreSQL
-~~~~~~~~~~
-
-All the user-configurable options are in the ``config`` section of 
-``instance.cfg``. The first set of options deals with configuring 
-Postfix.
-
-``pgsql_host``
-  The host that runs the PostgreSQL database. It defaults to the local
-  machine, ``localhost``.
-  
-``pgsql_port``
-  The IP port that PosgtreSQL listens  to. It is set to the default
-  port for Ubuntu; it may be 5433 if multiple versions of PostgreSQL 
-  are installed.
-
-``pgsql_dbname``
-  During installation a database will be created in PostgreSQL. The
-  ``pgsql_dbname`` option defines the name of the database.
-
-``pgsql_user``
-  The name of the database user that will connect to the GroupServer
-  database and modify the data. The database user is separate from
-  the other users on the system, including those that log into the
-  computer and those in Zope. The value of this option can be set to
-  anything, but the default is usually good enough. **Note** that the
-  ``pgsql_user`` must be set to a value that is different to the value of
-  ``pgsql_admin``.
-
-``pgsql_admin``
-  The name of the admin of PostgreSQL, used to create the PostgreSQL
-  user. The default is the name of the administrator under Ubuntu.
-  
-``pgsql_password``
-  The password required to attach to the PostgreSQL database as the
-  ``pgsql_user``. The default is blank, which means that no password
-  is required.
-
-Zope
-~~~~
-
-The ``zope`` options configure how you will access the Zope Management 
-Interface (ZMI).
-
-``zope_host``
-  The host that will run Zope. It defaults to the local machine.
-  
-``zope_port``
-  The IP port that Zope should listen to. It defaults to 8080. Zope
-  will have to run as ``root`` to use port 80, and this is discouraged.
-  
-``zope_admin``
-  The name of the user who will administer Zope.
-  
-``zope_pass``
-  The password for the Zope administrator. It can (and should) be
-  changed after GroupServer has been set up. (However, if you change the
-  password after installation you will also have to change the scripts
-  that Postfix uses to communicate with GroupServer, as they store the
-  password too, see `Set up Scripts`_; we realise that the passwords
-  should not be stored in the scripts.)
-
-SMTP
-~~~~
-
-GroupServer sends email using SMTP. The four ``smtp`` options contain
-the information required to comminicate with the SMTP server.
-
-``smtp_host``
-  The SMTP host that will be used to send notifications from
-  GroupServer. It defaults to ``localhost``, assuming you will be
-  running a local SMTP server.
-
-``smtp_port``
-  The port that the SMTP host will be listening to. Defaults to the
-  standard SMTP port, ``25``.
-
-``smtp_user``
-  The user-name that the SMTP host requires to send email messages. It
-  defaults to no user name.
-
-``smtp_password``
-  The password the SMTP host requires to send email messages. It defaults
-  to no password.
-
-
 GroupServer
 ~~~~~~~~~~~
 
-The final set of options the setup of the initial GroupServer instance.
+All the user-configurable options are in the ``config`` section of
+``instance.cfg``. The first set of options the setup of the initial
+GroupServer instance.
 
 ``host``
   The domain name used by your new GroupServer instance. It must be the
@@ -296,6 +212,90 @@ The final set of options the setup of the initial GroupServer instance.
   - ``America/New_York``
   - ``America/Los_Angeles``
   - `…and others <http://en.wikipedia.org/wiki/List_of_tz_database_time_zones>`_.
+
+SMTP
+~~~~
+
+GroupServer sends email using SMTP. The four ``smtp`` options contain
+the information required to comminicate with the SMTP server.
+
+``smtp_host``
+  The SMTP host that will be used to send notifications from
+  GroupServer. It defaults to ``localhost``, assuming you will be
+  running a local SMTP server.
+
+``smtp_port``
+  The port that the SMTP host will be listening to. Defaults to the
+  standard SMTP port, ``25``.
+
+``smtp_user``
+  The user-name that the SMTP host requires to send email messages. It
+  defaults to no user name.
+
+``smtp_password``
+  The password the SMTP host requires to send email messages. It defaults
+  to no password.
+
+Zope
+~~~~
+
+The ``zope`` options configure how you will access the Zope Management 
+Interface (ZMI).
+
+``zope_host``
+  The host that will run Zope. It defaults to the local machine.
+  
+``zope_port``
+  The IP port that Zope should listen to. It defaults to 8080. Zope
+  will have to run as ``root`` to use port 80, and this is discouraged.
+  
+``zope_admin``
+  The name of the user who will administer Zope.
+  
+``zope_pass``
+  The password for the Zope administrator. It can (and should) be
+  changed after GroupServer has been set up. (However, if you change the
+  password after installation you will also have to change the scripts
+  that Postfix uses to communicate with GroupServer, as they store the
+  password too, see `Set up Scripts`_; we realise that the passwords
+  should not be stored in the scripts.)
+
+PostgreSQL
+~~~~~~~~~~
+
+The final set of options deals with configuring the connection to the
+PostgreSQL database.
+
+``pgsql_host``
+  The host that runs the PostgreSQL database. It defaults to the local
+  machine, ``localhost``.
+  
+``pgsql_port``
+  The IP port that PosgtreSQL listens  to. It is set to the default
+  port for Ubuntu; it may be 5433 if multiple versions of PostgreSQL 
+  are installed.
+
+``pgsql_dbname``
+  During installation a database will be created in PostgreSQL. The
+  ``pgsql_dbname`` option defines the name of the database.
+
+``pgsql_user``
+  The name of the database user that will connect to the GroupServer
+  database and modify the data. The database user is separate from
+  the other users on the system, including those that log into the
+  computer and those in Zope. The value of this option can be set to
+  anything, but the default is usually good enough. **Note** that the
+  ``pgsql_user`` must be set to a value that is different to the value of
+  ``pgsql_admin``.
+
+``pgsql_admin``
+  The name of the admin of PostgreSQL, used to create the PostgreSQL
+  user. The default is the name of the administrator under Ubuntu.
+  
+``pgsql_password``
+  The password required to attach to the PostgreSQL database as the
+  ``pgsql_user``. The default is blank, which means that no password
+  is required.
 
 Run Buildout
 ------------
@@ -502,6 +502,7 @@ History
 ======= ==========  ====================================================
 Version Date        Change
 ======= ==========  ====================================================
+11.08   2011-09-01  Reordering the subsections of `Configure Zope`_.
 11.07   2011-07-08  Adding the ``build-essential`` depenency and the
                     cut-n-paste ``apt-get`` block to the `Requirements`_.
 11.06   2011-07-05  Adding the prologue.
