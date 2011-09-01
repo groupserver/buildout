@@ -18,8 +18,6 @@ Introduction
 
 The main update that is present in the Banana release of GroupServer is
 a `Facebook signup`_ system. You can `get Banana Split`_ immediately. 
-Work is now starting on GroupServer 11.09 — Bombe Glacée with Emphasis 
-on the Phonetics [#BombeGlacee]_.
 
 Acknowledgements
 ----------------
@@ -131,11 +129,6 @@ the following steps.
 
       $ ./bin/buildout
 
-Footnotes
-=========
-
-..  [#BombeGlacee] What will change in Bombe Glacée is detailed in
-    `the tickets. <https://projects.iopen.net/groupserver/query?milestone=GroupServer+11.09+%E2%80%94+Bombe+Glac%C3%A9e+with+Emphasis+on+the+Phonetics&group=status&col=id&col=summary&col=type&col=component&col=keywords&order=priority>`_
 ..  _GroupServer.org: http://groupserver.org/
 ..  _OnlineGroups.Net: http://onlinegroups.net/
 ..  _Creative Commons Attribution-Share Alike 3.0 New Zealand License:
