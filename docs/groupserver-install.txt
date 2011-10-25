@@ -131,7 +131,7 @@ then `configure Zope`_, `run buildout`_ to install Zope, and finally
 Pick a Host Name
 ----------------
 
-Your new site needs its own hostname. The name needs to be know to to
+Your new site needs its own hostname. The name needs to be known to
 the *web browser* that you will use to access the site. It will pass
 the name to Zope so it knows which GroupServer site to serve. (Zope can
 serve multiple sites, as well as its web-based management system.) For
