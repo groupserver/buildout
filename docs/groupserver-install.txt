@@ -115,7 +115,7 @@ to modify it)::
 PosgreSQL will have to be restarted after the ``pg_hba.conf`` file has
 been modified::
   
-  $ sudo service postgresql-8.4 restart
+  $ sudo service postgresql restart
 
 For those who value privacy, security and trust, and want to 
 understand more of PostgreSQL we recommend 
