@@ -6,7 +6,7 @@ GroupServer Installation
 
 :Authors: Michael JasonSmith; Richard Waid; Alice Murphy; Dan Randow
 :Contact: Michael JasonSmith <mpj17@onlinegroups.net>
-:Date: 2011-07-08 (see `History`_)
+:Date: 2011-10-26 (see `History`_)
 :Organization: `GroupServer.org`_
 :Copyright: This document is licensed under a
   `Creative Commons Attribution-Share Alike 3.0 New Zealand License`_
@@ -515,6 +515,9 @@ History
 ======= ==========  ====================================================
 Version Date        Change
 ======= ==========  ====================================================
+11.08   2011-10-26  Correcting some mistakes, and clarifying the 
+                    documentation on `the advice of Ross Chesley
+                    <http://groupserver.org/r/topic/4PF50PHIWeYtaMMzwG3624>`_
 11.08   2011-09-01  Reordering the subsections of `Configure Zope`_.
 11.07   2011-07-08  Adding the ``build-essential`` depenency and the
                     cut-n-paste ``apt-get`` block to the `Requirements`_.
