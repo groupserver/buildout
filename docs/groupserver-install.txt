@@ -346,8 +346,7 @@ To start the Zope *instance* run the following command::
   $ ./bin/instance fg
 
 Zope will have started when the message ``Zope Ready to handle requests`` 
-is displayed in the terminal. The above command runs Zope in foreground
-mode; to run Zope as a daemon replace ``fg`` with ``start``.
+is displayed in the terminal.
 
 You should be able to view your GroupServer site at
 `http://{host}:{zope_port}`. If you did not change the defaults, the
@@ -355,6 +354,20 @@ address will be <http://gstest:8080>.
   
 * The host is the one you picked earlier (see `Pick a Host Name`_).
 * The port is the one that Zope listens to (see `Configure Zope`_).
+
+Use ``Control-c`` to stop Zope.
+
+Running Zope as a Daemon
+~~~~~~~~~~~~~~~~~~~~~~~~
+
+It may be more convenient to run Zope in the background, as a
+daemon. To run Zope as a daemon run the following command::
+
+  $ ./bin/instance start
+
+To stop the daemon run::
+
+  $ ./bin/instance start
     
 Email Server
 ============
