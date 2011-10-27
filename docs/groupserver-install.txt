@@ -6,42 +6,46 @@ GroupServer Installation
 
 :Authors: Michael JasonSmith; Richard Waid; Alice Murphy; Dan Randow
 :Contact: Michael JasonSmith <mpj17@onlinegroups.net>
-:Date: 2011-10-26 (see `History`_)
+:Date: 2011-10-27 (see `History`_)
 :Organization: `GroupServer.org`_
 :Copyright: This document is licensed under a
   `Creative Commons Attribution-Share Alike 3.0 New Zealand License`_
   by `OnlineGroups.Net`_.
-  
+
 We wrote this documentation for people with moderate experience in
-Linux system administration. Installation can be tricky, as you have
-to configure four servers to communicate with each other. If you get
-stuck, please ask us questions in `GroupServer Development`_. Other
-more detailed guides would be gratefully accepted.
+Linux system administration. Installation can be tricky; you have to
+configure at least email sending, the web interface, and persistent
+storage. All these systems to be working or installation will fail.
+
+If you get stuck, please ask us questions in `GroupServer
+Development`_. Other more detailed guides would be gratefully accepted.
 
 Quick Start
 ===========
 
-#. Download the latest version of GroupServer from 
-   <http://groupserver.org/downloads> and extract the archive.
-#. Install the required packages (see `Requirements`_).
-#. Ensure that the user that will run GroupServer can create databases
-   in PostgreSQL (see `Configure PostgreSQL`_).
-#. Create a new hostname for your GroupServer site. Yes, you will need 
-   a new one (see `Pick a Host Name`_).
-#. Edit ``instance.cfg`` (see `Configure Zope`_).
-#. Run the following (see `Run Buildout`_)::
+#.  Install the required packages (see `Requirements`_).
+#.  Download the latest version of GroupServer from 
+    <http://groupserver.org/downloads> and extract the archive
+    (see `Download`_).
+#.  Ensure that the user that will run GroupServer can create databases
+    in PostgreSQL (see `Configure PostgreSQL`_).
+#.  Create a new hostname for your GroupServer site. Yes, you will need 
+    a new one (see `Pick a Host Name`_).
+#.  Edit ``instance.cfg`` (see `Configure Zope`_).
+#.  Run the following (see `Run Buildout`_)::
 
-   $ virtualenv --no-site-packages -ppython2.6 .
-   $ ./bin/easy_install -U setuptools && ./bin/python bootstrap.py
-   $ ./bin/buildout -v
+      $ virtualenv --no-site-packages -ppython2.6 .
+      $ ./bin/easy_install -U setuptools && ./bin/python bootstrap.py
+      $ ./bin/buildout -v
 
-#. `Start Zope`_::
+#.  `Start Zope`_::
 
-   $ ./bin/instance fg
+      $ ./bin/instance fg
 
-#. Visit your new site.
+#.  Visit your new site.
 
-Later you can set up the `Email Server`_ and an optional `Web Proxy`_.
+Later you can further configure the `Email Server`_ and add an optional
+`Web Proxy`_.
 
 You can `remove GroupServer`_ in three steps.
 
@@ -50,7 +54,7 @@ Requirements
 
 GroupServer is developed on `Ubuntu`_, and is know to run on
 `CentOS`_. We will gladly accept any modifications you have that will
-make GroupServer run on more plaforms.
+make GroupServer run on more platforms.
 
 Below the packages in Ubuntu that are required to install GroupServer
 are listed.
@@ -90,11 +94,39 @@ command::
     build-essential postgresql postgresql-server-dev-8.4 libpq-dev \
     postfix postfix-dev libzzip-dev lib64z1-dev 
 
+Download
+========
+
+GroupServer is distributed as a tar-file. To download the latest
+version of GroupServer visit <http://groupserver.org/downloads>
+and click ``Download``. GroupServer then needs to be extracted from
+the tar-file.
+
+#.  In a terminal, change to the directory where you would
+    like GroupServer to reside (such as ``/opt``, ``/home`` or
+    ``/usr/local``).
+
+#.  The tar-file that contains GroupServer can then be extracted::
+
+      $ tar xfvz {file-name}
+    
+    Replace ``{file-name}``  with the name of the tar-file, including
+    the path.
+
+When the tar-file is extracted a new directory will be made.
+The installation process will download and install some dependencies
+into the new directory (see `Run Buildout`_) and GroupServer will be
+run from the same directory (see `Start Zope`_).
+
+**Note:** You may need to be the ``root`` user to extract the
+archive. If you do then you must change the ownership of the new
+GroupServer directory and all of its contents. GroupServer can
+only be run by users with normal privileges.
 
 Configure PostgreSQL
 ====================
 
-Database administrators who know what they are doing should ignore this
+Database administrators who know what they are doing can ignore this
 section. For humble administrators that just want to try GroupServer,
 life is easier if the excellent security in PostgreSQL is disabled, by
 making the authentication methods ``trust`` in all cases. To do this, 
@@ -246,7 +278,7 @@ Interface (ZMI).
   The host that will run Zope. It defaults to the local machine.
   
 ``zope_port``
-  The IP port that Zope should listen to. It defaults to 8080. Zope
+  The IP port that Zope will listen to. It defaults to 8080. Zope
   will have to run as ``root`` to use port 80, and this is discouraged.
   
 ``zope_admin``
@@ -349,8 +381,8 @@ Zope will have started when the message ``Zope Ready to handle requests``
 is displayed in the terminal.
 
 You should be able to view your GroupServer site at
-`http://{host}:{zope_port}`. If you did not change the defaults, the
-address will be <http://gstest:8080>.
+`http://{host}:{zope_port}`. If you kept the defaults, the address
+will be <http://gstest:8080>.
   
 * The host is the one you picked earlier (see `Pick a Host Name`_).
 * The port is the one that Zope listens to (see `Configure Zope`_).
@@ -401,8 +433,8 @@ Copy the Configuration Files
   
     # chown nobody.nogroup /etc/postfix/groupserver.*
 
-  If you are not on Ubuntu, running the following will display the
-  user-name of the Postfix user::
+  If you are on a system other than Ubuntu, running the following
+  will display the user-name of the Postfix user::
   
     $ /usr/sbin/postconf | grep default_privs | cut -f3 -d" "
 * Modify the host
@@ -456,10 +488,11 @@ Ubuntu the command will be::
 Process the outgoing email queue
 --------------------------------
 
-In order to avoid outgoing email from causing a noticible delay to the user,
-GroupServer queues outgoing email by default. It is necessary to regularly
-request that GroupServer flush the outgoing queue. The easiest way to do that
-is to add an entry similar to this to ``/etc/crontab`` ::
+In order to avoid outgoing email from causing a noticeable delay
+to the user, GroupServer queues outgoing email by default. It is
+necessary to regularly request that GroupServer flush the outgoing
+queue. The easiest way to do that is to add an entry similar to this to
+``/etc/crontab`` ::
 
   
   */3 * * * *  groupserver  wget -O/dev/null http://{host}:{zope_port}/groupserver/ListManager/processSpool
@@ -470,8 +503,9 @@ other non-priviledged user.
 Web Proxy
 =========
 
-A web proxy is not required to try GroupServer. However, for production
-sites it is a good idea to run a proxy to provide the following services:
+A web proxy is unnecessary if you only wish to try
+GroupServer. However, for production sites it is a good idea to run
+a proxy to provide the following services:
 
 * To mediate between the low level HTTP port (port 80) and the 
   high-port that Zope runs on (normally port 8080, see `Set up Zope`_).
