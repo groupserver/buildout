@@ -13,7 +13,7 @@ GroupServer Installation
   by `OnlineGroups.Net`_.
 
 We wrote this documentation for people with moderate experience in
-Linux system administration. Installation can be tricky; you have to
+Linux system administration. Installation can be tricky: you have to
 configure at least email sending, the web interface, and persistent
 storage. All these systems to be working or installation will fail.
 
@@ -98,25 +98,15 @@ Download
 ========
 
 GroupServer is distributed as a tar-file. To download the latest
-version of GroupServer visit <http://groupserver.org/downloads>
-and click ``Download``. GroupServer then needs to be extracted from
-the tar-file.
-
-#.  In a terminal, change to the directory where you would
-    like GroupServer to reside (such as ``/opt``, ``/home`` or
-    ``/usr/local``).
-
-#.  The tar-file that contains GroupServer can then be extracted::
-
-      $ tar xfvz {file-name}
-    
-    Replace ``{file-name}``  with the name of the tar-file, including
-    the path.
+version of GroupServer visit <http://groupserver.org/downloads> and
+click ``Download``. You must then extract GroupServer from the tar-file
+into a directory such as ``/opt``, ``/home`` or ``/usr/local``.
 
 When the tar-file is extracted a new directory will be made.
-The installation process will download and install some dependencies
-into the new directory (see `Run Buildout`_) and GroupServer will be
-run from the same directory (see `Start Zope`_).
+This directory contains the configuration files for GroupServer.
+In addition, the installation process will download and install
+some dependencies into the directory (see `Run Buildout`_). Finally,
+GroupServer will be run from the same directory (see `Start Zope`_).
 
 **Note:** You may need to be the ``root`` user to extract the
 archive. If you do then you must change the ownership of the new
@@ -549,6 +539,8 @@ History
 ======= ==========  ====================================================
 Version Date        Change
 ======= ==========  ====================================================
+11.08   2011-10-27  Adding the `Download`_ section, and clarifying some
+                    more of the documentation.
 11.08   2011-10-26  Correcting some mistakes, and clarifying the 
                     documentation on `the advice of Ross Chesley
                     <http://groupserver.org/r/topic/4PF50PHIWeYtaMMzwG3624>`_
