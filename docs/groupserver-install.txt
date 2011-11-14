@@ -6,7 +6,7 @@ GroupServer Installation
 
 :Authors: Michael JasonSmith; Richard Waid; Alice Murphy; Dan Randow
 :Contact: Michael JasonSmith <mpj17@onlinegroups.net>
-:Date: 2011-10-27 (see `History`_)
+:Date: 2011-11-15 (see `History`_)
 :Organization: `GroupServer.org`_
 :Copyright: This document is licensed under a
   `Creative Commons Attribution-Share Alike 3.0 New Zealand License`_
@@ -15,7 +15,7 @@ GroupServer Installation
 We wrote this documentation for people with moderate experience in
 Linux system administration. Installation can be tricky: you have to
 configure at least email sending, the web interface, and persistent
-storage. All these systems to be working or installation will fail.
+storage. All these systems must work or installation will fail.
 
 If you get stuck, please ask us questions in `GroupServer
 Development`_. Other more detailed guides would be gratefully accepted.
@@ -70,7 +70,7 @@ are listed.
 +----------------------+---------------------------------+
 | GNU C++ Compiler     | ``g++``                         |
 +----------------------+---------------------------------+
-| Developer Tools      | ``build-essential``             |
+| Make                 | ``make``                        |
 +----------------------+---------------------------------+
 | PostgreSQL Database  | ``postgresql``                  |
 |                      +---------------------------------+
@@ -539,6 +539,10 @@ History
 ======= ==========  ====================================================
 Version Date        Change
 ======= ==========  ====================================================
+11.08   2011-11-15  Altering the `requirements`_ to switch the 
+                    ``build-essential`` dependency to ``make`` on `the
+                    advice of David Sturman.
+                    <http://groupserver.org/r/post/1ezm2nM9kQHSJSOfn0Rsm0>`_
 11.08   2011-10-27  Adding the `Download`_ section, and clarifying some
                     more of the documentation.
 11.08   2011-10-26  Correcting some mistakes, and clarifying the 
