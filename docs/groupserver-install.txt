@@ -6,7 +6,7 @@ GroupServer Installation
 
 :Authors: Michael JasonSmith; Richard Waid; Alice Murphy; Dan Randow
 :Contact: Michael JasonSmith <mpj17@onlinegroups.net>
-:Date: 2011-11-15 (see `History`_)
+:Date: 2011-12-16 (see `History`_)
 :Organization: `GroupServer.org`_
 :Copyright: This document is licensed under a
   `Creative Commons Attribution-Share Alike 3.0 New Zealand License`_
@@ -56,36 +56,42 @@ GroupServer is developed on `Ubuntu`_, and is know to run on
 `CentOS`_. We will gladly accept any modifications you have that will
 make GroupServer run on more platforms.
 
-Below the packages in Ubuntu that are required to install GroupServer
-are listed.
+Below the packages that are required to install GroupServer are listed
+for Ubuntu, CentOS, and RedHat Enterprise Linux.
 
-+----------------------+---------------------------------+
-| System               | Ubuntu Package                  |
-+======================+=================================+
-| Python 2.6           | ``python2.6``                   |
-|                      +---------------------------------+
-|                      | ``python2.6-dev``               |
-|                      +---------------------------------+
-|                      | ``python-virtualenv``           |
-+----------------------+---------------------------------+
-| GNU C++ Compiler     | ``g++``                         |
-+----------------------+---------------------------------+
-| Make                 | ``make``                        |
-+----------------------+---------------------------------+
-| PostgreSQL Database  | ``postgresql``                  |
-|                      +---------------------------------+
-|                      | ``postgresql-server-dev-8.4``   |
-|                      +---------------------------------+
-|                      | ``libpq-dev``                   |
-+----------------------+---------------------------------+
-| Postfix Email Server | ``postfix``                     |
-|                      +---------------------------------+
-|                      | ``postfix-dev``                 |
-+----------------------+---------------------------------+
-| Compression          | ``libzzip-dev`` (from universe) |
-|                      +---------------------------------+
-|                      | ``lib64z1-dev`` (from main)     |    
-+----------------------+---------------------------------+
++-------------+--------------------------------------------------------+
+|             | Packages                                               |
++-------------+--------------------------------+-----------------------+
+| System      | Ubuntu                         | CentOS 6.1 or         |
+|             |                                | RHEL 6.1              |
++=============+================================+=======================+
+| Python 2.6  | ``python2.6``                  | ``python-devel``      |
+|             +--------------------------------+-----------------------+
+|             | ``python2.6-dev``              | ``python-setuptools`` |
+|             +--------------------------------+-----------------------+
+|             | ``python-virtualenv``          | See `Virtualenv on    |
+|             |                                | CentOS`_ below.       |
++-------------+--------------------------------+-----------------------+
+| GNU C++     | ``g++``                        | ``gcc-c++``           |
++-------------+--------------------------------+-----------------------+
+| Make        | ``make``                       | ``make``              |
++-------------+--------------------------------+-----------------------+
+| PostgreSQL  | ``postgresql``                 | ``postgresql``        |
+| Database    +--------------------------------+-----------------------+
+|             | ``postgresql-server-dev-8.4``  | ``postgresql-server`` |
+|             +--------------------------------+-----------------------+
+|             | ``libpq-dev``                  | ``postgresql-libs``   |
+|             +--------------------------------+-----------------------+
+|             |                                | ``postgresql-devel``  |
++-------------+--------------------------------+-----------------------+
+| Postfix     | ``postfix``                    | ``postfix``           |
+| Email       +--------------------------------+-----------------------+
+| Server      | ``postfix-dev``                |                       |
++-------------+--------------------------------+-----------------------+
+| Compression | ``libzzip-dev`` (from universe)| ``zlib``              |
+|             +--------------------------------+-----------------------+
+|             | ``lib64z1-dev`` (from main)    | ``zlib-devel``        |
++-------------+--------------------------------+-----------------------+
 
 To install all the above libraries under Ubuntu run the following 
 command::
@@ -93,6 +99,17 @@ command::
   $ sudo apt-get install python2.6 python2.6-dev python-virtualenv g++ \
     build-essential postgresql postgresql-server-dev-8.4 libpq-dev \
     postfix postfix-dev libzzip-dev lib64z1-dev 
+
+Virtualenv on CentOS
+--------------------
+
+To get ``virtualenv`` for CentOS or RHEL you will need to execute
+the following command after installing the above packages::
+
+  # easy_install virtualenv
+
+This command uses the ``easy_install`` system, which is part of Python,
+to download and install the virtualenv package.
 
 Download
 ========
@@ -539,6 +556,10 @@ History
 ======= ==========  ====================================================
 Version Date        Change
 ======= ==========  ====================================================
+11.08   2011-12-16  Added the CentOS packages to the list of
+                    `Requirements`_, with much thanks to  `Patrick 
+                    Leckey.
+                    <http://groupserver.org/r/post/6Jfujbedywmu6Wtahz1PeL>`_
 11.08   2011-11-15  Altering the `requirements`_ to switch the 
                     ``build-essential`` dependency to ``make`` on `the
                     advice of David Sturman.
