@@ -6,7 +6,7 @@ GroupServer Installation
 
 :Authors: Michael JasonSmith; Richard Waid; Alice Murphy; Dan Randow
 :Contact: Michael JasonSmith <mpj17@onlinegroups.net>
-:Date: 2011-12-16 (see `History`_)
+:Date: 2011-12-19 (see `History`_)
 :Organization: `GroupServer.org`_
 :Copyright: This document is licensed under a
   `Creative Commons Attribution-Share Alike 3.0 New Zealand License`_
@@ -91,6 +91,14 @@ for Ubuntu, CentOS, and RedHat Enterprise Linux.
 | Compression | ``libzzip-dev`` (from universe)| ``zlib``              |
 |             +--------------------------------+-----------------------+
 |             | ``lib64z1-dev`` (from main)    | ``zlib-devel``        |
++-------------+--------------------------------+-----------------------+
+| XML Support |                                | libxml2               |
+|             +--------------------------------+-----------------------+
+|             |                                | libxml2-devel         |
++-------------+--------------------------------+-----------------------+
+| XSLT        |                                | libxslt               |
+| Support     +--------------------------------+-----------------------+
+|             |                                | libxslt-devel         |
 +-------------+--------------------------------+-----------------------+
 
 To install all the above libraries under Ubuntu run the following 
@@ -556,6 +564,9 @@ History
 ======= ==========  ====================================================
 Version Date        Change
 ======= ==========  ====================================================
+11.08   2011-12-19  Adding the packages required for XML support and 
+                    XSLT support on RHEL and CentOS to the list of
+                    `Requirements`_.
 11.08   2011-12-16  Added the CentOS packages to the list of
                     `Requirements`_, with much thanks to  `Patrick 
                     Leckey.
