@@ -92,13 +92,13 @@ for Ubuntu, CentOS, and RedHat Enterprise Linux.
 |             +--------------------------------+-----------------------+
 |             | ``lib64z1-dev`` (from main)    | ``zlib-devel``        |
 +-------------+--------------------------------+-----------------------+
-| XML Support |                                | libxml2               |
+| XML Support |                                | ``libxml2``           |
 |             +--------------------------------+-----------------------+
-|             |                                | libxml2-devel         |
+|             |                                | ``libxml2-devel``     |
 +-------------+--------------------------------+-----------------------+
-| XSLT        |                                | libxslt               |
+| XSLT        |                                | ``libxslt``           |
 | Support     +--------------------------------+-----------------------+
-|             |                                | libxslt-devel         |
+|             |                                | ``libxslt-devel``     |
 +-------------+--------------------------------+-----------------------+
 
 To install all the above libraries under Ubuntu run the following 
