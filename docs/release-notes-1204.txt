@@ -1,0 +1,254 @@
+=============
+Release Notes
+=============
+------------------------------------------------------------
+GroupServer 12.02 — Faloodeh Consumed with an Eye on History
+------------------------------------------------------------
+
+:Authors: `Michael JasonSmith`_; `Richard Waid`_; `Dan Randow`_
+:Contact: Michael JasonSmith <mpj17@onlinegroups.net>
+:Date: 2012-04-24
+:Organization: `GroupServer.org`_
+:Copyright: This document is licensed under a
+  `Creative Commons Attribution-Share Alike 3.0 New Zealand License`_
+  by `OnlineGroups.Net`_.
+
+Introduction
+============
+
+Change notes
+------------
+
+Entirely New
+~~~~~~~~~~~~
+gs.content.base
+gs.content.base = 1.0-20120109052129-a140491d3cd9
+  * Base page (responsible for many minor coding improvements)
+  
+gs.group.messages.ratelimit
+gs.group.messages.ratelimit = 1.0-20120320010333-f42b4ca9dc56
+  * Page to allow group administrators to set the posting rate.
+
+gs.group.type.announcement
++gs.group.type.announcement = 1.0-20120309045313-e61f6bbeac5e
+  * New announcement-group type, and can-post rules
+
+gs.group.type.discussion
++gs.group.type.discussion = 1.0-20120413024432-9688a0f154ac
+  * New discussion-group type, and can-post rules
+
+gs.group.type.support
++gs.group.type.support = 1.0-20120301045541-a81bc84b752d
+   * New support-group type
+   
+gs.profile.view
++gs.profile.view = 1.0-20120216002148-370aa41df0a5
+  * Adding a new Welcome view of a profile, which appears on the site
+    homepage
+    
+gs.search.topic
++gs.search.topic = 1.0-20120216001300-6b74cd5693cf
+  * Adding a Latest Topics view to the site homepage.
+          
+gs.site.home
++gs.site.home = 1.0-20120214004308-4ea040c1176c
+  * Adding a new site homepage
+          
+gs.site.member
++gs.site.member = 1.0-20120413010036-e8830eeebca2
+  * Keeping track of the site membership.
+
+Changes
+~~~~~~~
+
+-gs.content.css = 1.0-20110725211755-e8fb4300fd6e
++gs.content.css = 1.0-20111205022047-798476e6725f
+Minor improvements to the styling of nested lists, and autocomplete.
+
++gs.content.form = 1.0-20111205040346-73081421f0b0
+-gs.content.form = 1.0-20110629022820-1f5857f91020
+Minor improvements to the core form code
+
+-gs.content.js.sharebox = 1.0-20110218045501-0bd9f32f8879
++gs.content.js.sharebox = 1.0-20110928005723-23d0d342e50b    
+Minor improvements
+
+-gs.group.base = 1.0-20110518070148-11baef884020
++gs.group.base = 1.0-20120227050054-f7e51a2fcd40
+Creating a generic group marker-interface
+
+-gs.group.member.canpost = 1.0-20110708032429-b98b8f97ceda
++gs.group.member.canpost = 1.0-20120328014225-92a0d06335ee
+  * Complete rewrite of the code that checks to see if a group member 
+    can post.
+  * New notifications that are sent when someone cannot post.
+
+-gs.group.member.invite = 1.0-20110606024804-e53ea7b263f0
++gs.group.member.invite = 1.0-20120308031850-a1360fc18b81
+  * A new notification, and default message, for the Invite New Member
+    system. 
+  * Added to the help.
+
+-gs.group.member.join = 1.0-20110523005557-f0ab9bdd8379
++gs.group.member.join = 1.0-20120224052005-622353bdbd35
+  * Adding a new message to be sent to the group administrator when 
+    someone joins.
+  * Adding a new Welcome message to be sent to the new member when he
+    or she joins the group.
+  * Raising a Zope event when someone joins the group, so it is more 
+    extensible
+
+-gs.group.member.leave = 1.0-20110701042236-f197b7c62c20
++gs.group.member.leave = 1.0-20120224053955-545eca947da4
+  * Raising a Zope event when someone leaves the group, so it is more 
+    extensible
+
+-gs.group.messages.post = 1.0-20110506012706-1fb6accd4a83
++gs.group.messages.post = 1.0-20110928005753-1d1630bc7b78
+  * Improving the Hide a Post and Rest of Post buttons
+  * Displaying "youtu.be" and "www." URLs better
+
+-gs.group.messages.topic = 1.0-20110711024938-7571eaef70e8
++gs.group.messages.topic = 1.0-20120309044508-c4525b9e612d
+  * Minor big fixes when all the posts in a topic are hidden.
+
+-gs.group.properties = 1.0-20110627042043-dd5434d1c820
++gs.group.properties = 1.0-20110629112436-edb69b9aa595
+  * Fixing a spelling error
+
+-gs.group.start = 1.0-20110524045601-e8f63423b770
++gs.group.start = 1.0-20120329024538-0cdba8a2eafe
+  * Changing what type of group is started by default
+
+-gs.help = 1.0-20101014030501-b6a9fef0feab
++gs.help = 1.0-20111202060126-d79001c3b924
+  * Minor improvements to the layout of the Help page.
+
+-gs.profile.base = 1.0-20110329231535-ea5b4b5509e7
++gs.profile.base = 1.0-20120111235816-bfc1ae3558d0
+  * Minor coding improvements
+
+-gs.profile.email.base = 1.0-20110427035451-5e24e3b06d62
++gs.profile.email.base = 1.0-20111103010036-d15041e97007
+  * Minor coding improvements
+  
+-gs.profile.email.settings = 1.0-20110602070354-a28b0ed78831
++gs.profile.email.settings = 1.0-20120209005042-c9294fc2f655
+  * Using the new "Verify Email Address" notification
+
+-gs.profile.email.verify = 1.0-20110616023817-2b8759519d3d
++gs.profile.email.verify = 1.0-20120209015325-49f9ffb83f61
+  * Creating a new "Verify Email Address" notification
+
+-gs.profile.invite = 1.0-20110223024704-d44fe8e282f7
++gs.profile.invite = 1.0-20120209010647-d178fd00ebbd
+  * Minor coding improvements
+
+-gs.profile.notify = 1.0-20110518041710-ce96315daeaf
++gs.profile.notify = 1.0-20120207002644-f7f52b2a0021
+  * Updating the documentation on how to write a notification
+
+-gs.profile.signup.base = 1.0-20110831021950-d214c27066d5
++gs.profile.signup.base = 1.0-20120112060153-fa3fc0f8fbed
+  * Using a new Verify Email Address notification
+
+-gs.site.change.base = 1.0-20110629022710-c636a86aca76
++gs.site.change.base = 1.0-20120322000349-8e8cef74e4c7
+  * Refactor of the Site Administration code, so links to it appears on
+    the site homepage as well as the ``/admindivision`` page
+
+-gs.site.change.greeting = 1.0-20110628235439-c9578354a1dd
++gs.site.change.greeting = 1.0-20111219002755-2ca122408dc4
+  * Adding a link to the new Site Administration page.
+  
+-gs.site.change.intro = 1.0-20100907031728-786811d9bf20
++gs.site.change.intro = 1.0-20111219002815-3be09b0b1f88
+  * Adding a link to the new Site Administration page.
+
+-gs.site.change.name = 1.0-20110629022741-347f546df504
++gs.site.change.name = 1.0-20111219002836-5cc064748d3f
+  * Adding a link to the new Site Administration page.
+
+-gs.site.change.tz = 1.0-20110628014650-cebf1f0797aa
++gs.site.change.tz = 1.0-20111219002858-41f07bc19367
+  * Adding a link to the new Site Administration page.
+
+-gs.viewlet = 1.0-20101020040742-2e03604a1078
++gs.viewlet = 1.0-20111130233240-1e21980e5433
+  * Minor coding improvements
+
+-Products.GSContent = 1.0-20110714021541-3e7eec71447e
++Products.GSContent = 1.0-20120213221810-2382a11992b7
+  * Minor coding improvements
+
+-Products.GSGroupMember = 1.0-20110606052458-69507a08a8de
++Products.GSGroupMember = 1.0-20120327051306-df1e4f21414c
+  * Minor coding improvements
+
+-Products.GSParticipationStats = 1.0-20101220013247-9d470e05b77f
++Products.GSParticipationStats = 1.0-20120215013359-e6655dfdba1f
+  * Adding a link to the new Site Administration page.
+  * Adding a site-statistics content provider
+  
+-Products.GSProfile = 1.0-20110428034224-2d8fef93f3cb
++Products.GSProfile = 1.0-20111012055551-98bd1cf92f03
+  * Allowing wsgi to work
+
+-Products.XWFFileLibrary2 = 1.0-20110505041211-2e026e5cbb40
++Products.XWFFileLibrary2 = 1.0-20110831073516-9b758cca7e49
+  * Changing the default public-access period for files to 72 hours
+
+-Products.XWFMailingListManager = 1.0-20110713004615-5f859f9980f4
++Products.XWFMailingListManager = 1.0-20120402052126-b29eadeaf8ff
+  * New Cannot Post notification
+
+-gs.recipe.setupgs = 1.0-20111026021441-7b5709697b98
++gs.recipe.setupgs = 1.0-20110729044852-d598ecc09697
+  * Improvements to smtp2zope.py
+
+Get Faloodeh
+============
+
+To get Faloodeh go to `the Downloads page for GroupServer`_ and
+follow `the GroupServer Installation documentation`_. Those who already
+have a functioning installation can `update an existing GroupServer
+system`_.
+
+
+Update an Existing GroupServer System
+-------------------------------------
+
+To update an existing GroupServer system to Faloodeh carry out the 
+following steps.
+
+#.  Download the Faloodeh tar-ball from `the GroupServer download page
+    <http://groupserver.org/downloads>`_.
+
+#.  Uncompress the tar-ball.
+   
+#.  Copy the file ``groupserver-12.04/versions.cfg`` to your existing
+    GroupServer installation.
+   
+#.  Copy the file ``groupserver-12.04/buildout.cfg`` to your existing
+    GroupServer installation.
+
+#.  In your existing GroupServer installation run::
+
+      $ ./bin/buildout
+
+Legacy Groups!
+--------------
+
+..  _GroupServer.org: http://groupserver.org/
+..  _OnlineGroups.Net: http://onlinegroups.net/
+..  _Creative Commons Attribution-Share Alike 3.0 New Zealand License:
+    http://creativecommons.org/licenses/by-sa/3.0/nz/
+..  _Michael JasonSmith: http://groupserver.org/p/mpj17
+..  _Richard Waid: http://groupserver.org/p/richard
+..  _Dan Randow: http://groupserver.org/p/danr
+..  _Steven Clift: http://groupserver.org/p/stevenc
+..  _Facebook: http://facebook.com/
+..  _The Downloads page for GroupServer: http://groupserver.org/downloads
+..  _The GroupServer Installation documentation: 
+    http://groupserver.org/downloads/install
+
