@@ -117,11 +117,32 @@ of the ``gs.profile.notify`` component.
 Site Homepage
 -------------
 
-* Looks the same
-* Easier to skin and update
+The site homepage has been completely rewritten, but it looks largely
+unchanged. Now the page — provided and documented by the new 
+``gs.site.home`` product — can be skinned easily. Extra components can 
+be easily added to it in the future.
 
 Minor changes
 -------------
+
+There have been three sets of minor changes to GroupServer in the 
+Faloodeh release: Zope events are better supported, ``wsgi`` is 
+supported, and there have been numerous coding improvements.
+
+An *event* in Zope is a signal that is raised when an action is carried 
+out. You can write code that subscribes to these events, and takes 
+additional action. (This extra code does not need to alter the original 
+code in any way.) Events are now raised when someone joins a group, 
+joins a site, leaves a group, and leaves a site. This should make these
+actions more extensible, and allow others to add extra functionality to
+GroupServer.
+
+WSGI is the method that most Python-based web applications use to 
+communicate to servers. GroupServer can now be served using WSGI, as
+the last problems with WSGI compatibility have been resolved.
+
+Finally, installation should be more reliable with the switch to 
+`Pillow`_ rather than `PIL`_
 
 * Zope events
 * wsgi support
