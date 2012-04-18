@@ -1,5 +1,5 @@
-Introduction
-============
+The primary documentation and copyright information is in the ``docs/``
+subdirectory.
 
 The ``cfg`` and ``py`` files here are the configuration and core of the
 *buildout* system for `GroupServer`_. Buildout is used to download the
@@ -7,11 +7,8 @@ components of GroupServer, to install them [#eggs]_, and to create the
 initial GroupServer site. The contents of this directory is bundled up
 and placed on `the downloads page for GroupServer`_.
 
-Further documentation and copyright information is in the ``docs/``
-directory.
-
 ..  [#eggs] The components are installed in a subdirectory called 
-    ``eggs``.
+    ``eggs/``.
 ..  _GroupServer: http://groupserver.org/
 ..  _The Downloads page for GroupServer: http://groupserver.org/downloads
 
