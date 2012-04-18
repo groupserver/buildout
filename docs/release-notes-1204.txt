@@ -16,9 +16,9 @@ GroupServer 12.02 — Faloodeh Consumed with an Eye on History
 Introduction
 ============
 
-The `changes to GroupServer`_ in the Faloodeh release cover site, groups
-and profiles. The system is also more extensible. You can `get 
-Faloodeh`_ immediately.
+The `changes to GroupServer`_ in the Faloodeh release cover sites, 
+groups and profiles — making them all more usable and extensible. You 
+can `get Faloodeh`_ immediately.
 
 Changes to GroupServer
 ======================
@@ -29,27 +29,90 @@ changes`_
 Group Improvements
 ------------------
 
-* New code to determine if a user can post
+The most visible change to groups in this release of GroupServer is to 
+the `notifications`_. However, the primary improvement is new code to 
+determine if someone `can post`_ to a group. Underlying this is a system
+for `more extensible groups`_.
 
-  + New notifications
-  
-* New group types
-* More extensible
-* Better links in posts
-* Improved UI in posts
-* New notifications
-  
-  + Welcome
-  + Invitation
-  + New Member
+Minor changes to groups include the following.
 
-* Public access period now set to 72 hours
+Better Links in Posts:
+  Now ``http://youtu.be`` links are turned into embedded YouTube 
+  videos, and ``www.`` "links" are turned into hypertext links.
+
+Rest of Post Button:
+  The button to show the *remainder* of a post (normally just 
+  bottom-quoted text) is now labelled "Rest of post".
+
+Public Access Period:
+  The default public access period for files is now set to 72 hours.
+  This is the period that no password is required to access a file, 
+  making it easier for users of email to access the files.
+
+Notifications
+~~~~~~~~~~~~~
+
+Four notifications have been rewritten. There are HTML versions of both  
+
+* The *Welcome* message, which is sent to new group members, and 
+* The *New Member* notification, which is sent to the administrator when
+  someone joins a group.
+
+The *Invitation* to join a group has undergone a rewrite too, along with
+a new default invitation-message from the group-administrator.
+
+Finally, the *Cannot Post* notification has undergone an extensive 
+change, along with the rest of the `can post`_ system. It now has a
+HTML variant, as well as a wording change to (hopefully) make it easer
+to understand.
+
+Can Post
+~~~~~~~~
+
+The biggest change to groups was a complete rewrite of the system that
+determines if a user can post. This system is used to 
+
+* Send an email to someone who tries to post but is disallowed, and
+* To tell someone using the web why he or she cannot post *before* they
+  try to post.
+
+The Can Post system is now self-documenting, and it allows for `more 
+extensible groups`_.
+
+More Extensible Groups
+~~~~~~~~~~~~~~~~~~~~~~
+
+Along with the new `can post`_ code, the definition of what 
+*constitutes* a group has been redefined. GroupServer has always 
+supported three different types of group: 
+
+Discussion Group:
+  A group where only group members can post.
+  
+Announcement Group:
+  A group where only certain group-members can post.
+
+Support Group:
+  A group where anyone can post, but only group-members can view the
+  posts.
+
+These group-types previously existed as a set of configuration options.
+Now there are specific marker-interfaces for each of these group-types.
+Currently only the `can post`_ system uses them extensively, but other
+systems will follow in the future.
 
 Profile Improvements
 --------------------
 
-* New Verify Email Address notification
-* Documentation on how to write notifications
+The primary improvements to profiles is a new *Verify Email Address*
+notification. Like the new `notifications`_ in the group, the new
+Verify email message has a HTML version, which is shown by default by
+most email clients. The wording of the Verify email has also been 
+changed, so it is hopefully easier to understand.
+
+All the notifications with an HTML component are possible because of a 
+new system for sending notifications. This system is documented as part
+of the ``gs.profile.notify`` component.
 
 Site Homepage
 -------------
