@@ -35,8 +35,7 @@ Quick Start
 #.  Run the following (see `Run Buildout`_)::
 
       $ virtualenv --no-site-packages -ppython2.6 .
-      $ ./bin/easy_install -U setuptools && ./bin/python bootstrap.py
-      $ ./bin/buildout -v
+      $ ./bin/pip install zc.buildout && ./bin/buildout -v
 
 #.  `Start Zope`_::
 
@@ -365,14 +364,9 @@ placed in ``./bin/``. When buildout runs it will install all the packages
 in the sandbox. The version of Python that is maintained by your Linux
 distribution will be untouched.
 
-Next, update the `setuptools`_ package. To do this, use the local
-version of ``easy_install``::
+Next, get the ``pip`` system to install ``buildout``::
 
-  $ ./bin/easy_install -U setuptools
-
-The buildout system has to be initialised next::
-
-  $ ./bin/python bootstrap.py
+  $ ./bin/pip install zc.buildout
 
 Finally, run ``buildout``::
 
@@ -383,9 +377,8 @@ requirements for GroupServer (around 30MB of packages) including:
   
 * `Zope 2.13`_ (1.5MB)
 * `ReportLab`_ (2MB)
-* `lxml`_ (1.2MB)
 * `SQL Alchemy`_ (1MB)
-* `PIL`_ (0.5MB)
+* `Pillow`_ (0.5MB)
 * `psycopg2`_ (0.25MB)
 
 It is a good idea to make a cup of coffee, or go to lunch, while
@@ -636,8 +629,7 @@ Version Date        Change
 .. _zc.buildout: http://pypi.python.org/pypi/zc.buildout/
 .. _Zope 2.13: http://docs.zope.org/zope2/releases/2.13/
 .. _ReportLab: http://www.reportlab.com/
-.. _lxml: http://codespeak.net/lxml/
 .. _SQL Alchemy: http://www.sqlalchemy.org/
-.. _PIL: http://www.pythonware.com/products/pil/
+..  _Pillow: http://pypi.python.org/pypi/Pillow/
 .. _psycopg2: http://initd.org/psycopg/
 
