@@ -37,8 +37,9 @@ for `more extensible groups`_.
 Minor changes to groups include the following.
 
 Better Links in Posts:
-  Now ``http://youtu.be`` links are turned into embedded YouTube 
-  videos, and ``www.`` "links" are turned into hypertext links.
+  Now ``http://youtu.be`` links are turned into embedded YouTube videos,
+  and ``www.`` "links" are turned into hypertext links. Thanks to 
+  `Steven Clift`_ at E-Democracy.Org for sponsoring this improvement.
 
 Rest of Post Button:
   The button to show the *remainder* of a post (normally just 
@@ -47,24 +48,26 @@ Rest of Post Button:
 Public Access Period:
   The default public access period for files is now set to 72 hours.
   This is the period that no password is required to access a file, 
-  making it easier for users of email to access the files.
+  making it easier for group members who follow conversations using
+  email to access the files that are posted to the group.
 
 Notifications
 ~~~~~~~~~~~~~
 
 Four notifications have been rewritten. There are HTML versions of both  
 
-* The *Welcome* message, which is sent to new group members, and 
+* The *Welcome* message [#Welcome]_, which is sent to new group members, 
+  and 
 * The *New Member* notification, which is sent to the administrator when
-  someone joins a group.
+  someone joins a group [#NewMember]_.
 
 The *Invitation* to join a group has undergone a rewrite too, along with
 a new default invitation-message from the group-administrator.
 
 Finally, the *Cannot Post* notification has undergone an extensive 
-change, along with the rest of the `can post`_ system. It now has a
-HTML variant, as well as a wording change to (hopefully) make it easer
-to understand.
+change, along with the rest of the `can post`_ system [#CannotPost]_. It
+now has a HTML variant, as well as a wording change to (hopefully) make 
+it easer to understand.
 
 Can Post
 ~~~~~~~~
@@ -76,8 +79,8 @@ determines if a user can post. This system is used to
 * To tell someone using the web why he or she cannot post *before* they
   try to post.
 
-The Can Post system is now self-documenting, and it allows for `more 
-extensible groups`_.
+The Can Post system is now self-documenting [#RulesList]_, and it allows
+for `more extensible groups`_.
 
 More Extensible Groups
 ~~~~~~~~~~~~~~~~~~~~~~
@@ -197,4 +200,19 @@ Legacy Groups!
 ..  _The Downloads page for GroupServer: http://groupserver.org/downloads
 ..  _The GroupServer Installation documentation: 
     http://groupserver.org/downloads/install
+..  _Viewlets: http://pypi.python.org/pypi/zope.viewlet
+..  _Pillow: http://pypi.python.org/pypi/Pillow/
+..  _PIL: http://www.pythonware.com/library/
+..  [#Welcome] A sample *Welcome* message can be viewed at
+    <http://groupserver.org/groups/development/new-member-msg.html>
+..  [#NewMember] A sample *New Member* message can be viewed at
+    <http://groupserver.org/groups/development/new-member-admin-msg.html>
+..  [#CannotPost] A sample *Cannot Post* message can be viewed at
+    <http://groupserver.org/groups/development/cannot-post.html>
+..  [#RulesList] The Can Post system now produces a *Rules List* that
+    shows the rules that are checked whenever someone posts to the 
+    group. Example lists can be seen for `the GroupSever Development
+    group <http://groupserver.org/groups/development/rules-list.html>`_
+    and `the GroupServer Announcement Group
+    <http://groupserver.org/groups/groupserver_announcements/rules-list.html>`_
 
