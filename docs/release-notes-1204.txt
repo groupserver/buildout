@@ -115,15 +115,15 @@ changed, so it is hopefully easier to understand.
 
 All the notifications with an HTML component are possible because of a 
 new system for sending notifications. This system is documented as part
-of the ``gs.profile.notify`` component.
+of the ``gs.profile.notify`` component [#Notify]_.
 
 Site Homepage
 -------------
 
 The site homepage has been completely rewritten, but it looks largely
-unchanged. Now the page — provided and documented by the new 
-``gs.site.home`` product — can be skinned easily. Extra components can 
-be easily added to it in the future.
+unchanged. Now the page — provided  by the new ``gs.site.home`` product
+[#SiteHome]_ — can be skinned easily. Extra components can be easily 
+added to it in the future.
 
 Minor changes
 -------------
@@ -134,21 +134,21 @@ supported, there have been numerous coding improvements, and
 installation should be much smoother.
 
 An *event* in Zope is a signal that is raised when an action is carried 
-out. You can write code that subscribes to these events, and takes 
-additional action. (This extra code does not need to alter the original 
-code in any way.) Events are now raised when someone joins a group, 
-joins a site, leaves a group, and leaves a site. This should make these
-actions more extensible, and allow others to add extra functionality to
-GroupServer.
+out [#ZopeEvents]_. You can write code that subscribes to these events, 
+and takes additional action. (This extra code does not need to alter the
+original code in any way.) Events are now raised when someone joins a 
+group, joins a site, leaves a group, and leaves a site. This should make 
+these actions more extensible, and allow others to add extra 
+functionality to GroupServer [#SiteMember]_.
 
 WSGI is the method that most Python-based web applications use to 
 communicate to servers. GroupServer can now be served using WSGI, as
 the last problems with WSGI compatibility have been resolved.
 
 There have been numerous coding improvements. Most have centred around 
-the use of ``zope.cachedescriptors``. In addition there are new base 
-classes for pages and `viewlets`_ with GroupServer sites, profiles, and
-groups.
+the use of `caching`_. In addition 
+there are new base classes for pages and `viewlets`_ with GroupServer 
+sites, profiles, and groups.
 
 Finally, installation should be more reliable with the switch to 
 `Pillow`_ rather than `PIL`_.  This removes the requirement to download
@@ -200,6 +200,7 @@ Legacy Groups!
 ..  _The Downloads page for GroupServer: http://groupserver.org/downloads
 ..  _The GroupServer Installation documentation: 
     http://groupserver.org/downloads/install
+..  _caching: http://docs.zope.org/zope.cachedescriptors
 ..  _Viewlets: http://pypi.python.org/pypi/zope.viewlet
 ..  _Pillow: http://pypi.python.org/pypi/Pillow/
 ..  _PIL: http://www.pythonware.com/library/
@@ -215,4 +216,16 @@ Legacy Groups!
     group <http://groupserver.org/groups/development/rules-list.html>`_
     and `the GroupServer Announcement Group
     <http://groupserver.org/groups/groupserver_announcements/rules-list.html>`_
+..  [#Notify] The documentation for how to write a notification is 
+    in `the product.
+    <https://source.iopen.net/groupserver/gs.profile.notify/summary>`_
+..  [#SiteHome] The documentation for how to add components to the new
+    site homepage is in `the site-homepage product.
+    <https://source.iopen.net/groupserver/gs.site.home/summary>`_
+..  [#ZopeEvents] The Zope events are provided by `the ZTK 
+    documentation. <http://docs.zope.org/zope.event/>`_
+..  [#SiteMember] `The site-member product 
+    <https://source.iopen.net/groupserver/gs.site.member/summary>`_
+    provides an example of code that both *subscribes* to an event and
+    *raises* an event.
 
