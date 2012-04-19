@@ -127,7 +127,8 @@ Minor changes
 
 There have been three sets of minor changes to GroupServer in the 
 Faloodeh release: Zope events are better supported, ``wsgi`` is 
-supported, and there have been numerous coding improvements.
+supported, there have been numerous coding improvements, and 
+installation should be much smoother.
 
 An *event* in Zope is a signal that is raised when an action is carried 
 out. You can write code that subscribes to these events, and takes 
@@ -141,12 +142,15 @@ WSGI is the method that most Python-based web applications use to
 communicate to servers. GroupServer can now be served using WSGI, as
 the last problems with WSGI compatibility have been resolved.
 
-Finally, installation should be more reliable with the switch to 
-`Pillow`_ rather than `PIL`_
+There have been numerous coding improvements. Most have centred around 
+the use of ``zope.cachedescriptors``. In addition there are new base 
+classes for pages and `viewlets`_ with GroupServer sites, profiles, and
+groups.
 
-* Zope events
-* wsgi support
-* Coding improvements
+Finally, installation should be more reliable with the switch to 
+`Pillow`_ rather than `PIL`_.  This removes the requirement to download
+and install both ``zlib`` and ``libjpeg``. The former caused a problem
+with a frequently-changing dependency.
 
 Get Faloodeh
 ============
