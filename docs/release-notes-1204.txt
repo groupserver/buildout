@@ -167,27 +167,191 @@ system`_.
 Update an Existing GroupServer System
 -------------------------------------
 
-To update an existing GroupServer system to Faloodeh carry out the 
-following steps.
+The update an existing GroupServer system to Faloodeh requires you to
+first `update the packages`_. Then there are two tasks to be carried out
+in the ZMI: first `update the site marker-interface`_, and then the 
+complex task to `update the group marker-interface`_
+
+Update the Packages
+~~~~~~~~~~~~~~~~~~~
+
+To update the packages carry out the following steps.
 
 #.  Download the Faloodeh tar-ball from `the GroupServer download page
     <http://groupserver.org/downloads>`_.
 
 #.  Uncompress the tar-ball.
    
-#.  Copy the file ``groupserver-12.04/versions.cfg`` to your existing
-    GroupServer installation.
+#.  Copy the file ``groupserver-12.04/update-versions.cfg`` to your 
+    existing GroupServer installation, under the name ``versions.cfg``.
    
-#.  Copy the file ``groupserver-12.04/buildout.cfg`` to your existing
-    GroupServer installation.
+#.  Copy the file ``groupserver-12.04/update-buildout.cfg`` to your 
+    existing GroupServer installation, under the name ``buildout.cfg``.
 
 #.  In your existing GroupServer installation run::
 
       $ ./bin/buildout
 
-Legacy Groups!
---------------
+#.  Restart your GroupServer instance.
 
+Update the Site Marker-Interface
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+The `site homepage`_ improvements require a modification to the sites in
+the ZMI before they can be seen. To update the sites, carry out the 
+following steps.
+
+#.  Log into the ZMI for your GroupServer Installation
+
+#.  Navigate to your GroupServer instance in the ZMI (called 
+    ``groupserver`` by default).
+
+#.  Add a script by selecting ``Script (Python)`` from the *Add* menu
+    near the top-right of the ZMI page.
+
+    * Give the new script the Id ``add_new_site_homepage``
+    * Click the *Add and edit* button.
+
+#.  Change the contents of the script to the following::
+
+      # --=mpj17=-- The new site home page in gs.site.home works of the single
+      # IGSSiteFolder marker. As such the old IGSFullPageContentFolder marker
+      # from the "paragmatic tempalates" code is not needed. Indeed, it gets
+      # in the way. This code removes the IGSFullPageContentFolder marker
+      # interface.
+      from Products.XWFCore.XWFUtils import remove_marker_interfaces
+
+      site_root = context.site_root()
+      folders = ['Folder', 'Folder (Ordered)']
+      isSite = lambda d: d.getProperty('is_division', False) and hasattr(d, 'groups')
+      interfaces = ('Products.GSContent.interfaces.IGSFullPageContentFolder',)
+      ignore = []
+
+      contentFolders = site_root.Content.objectValues(folders)
+      sites = [ s for s in contentFolders
+                if ((s.getId() not in ignore) and 
+                    (s.getProperty('is_division', False)) and 
+                    (hasattr(s, 'groups'))) ]
+
+      print '<html><head><title>Site update</title></head><body>'
+      for site in sites:
+          print '<hr/>'
+          print '<p>%s (<code>%s</code>)</p>' % (site.title_or_id(), site.getId())
+          remove_marker_interfaces(site, interfaces)
+          print '<p>Removed the content marker</p>'
+      print '</body></html>'
+      return printed
+
+#.  Click the *Save Changes* button.
+
+#.  Click the *Test* tab. The marker interfaces for all the sites
+    should be updated.
+
+Update the Group Marker-Interface
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Updating the marker-interfaces in a group is similar to how you 
+`update the site marker-interface`_.
+
+#.  Log into the ZMI for your GroupServer Installation
+
+#.  Navigate to your GroupServer instance in the ZMI (called 
+    ``groupserver`` by default).
+
+#.  Add a script by selecting ``Script (Python)`` from the *Add* menu
+    near the top-right of the ZMI page.
+
+    * Give the new script the Id ``remove_xwf_chat_group_marker``
+    * Click the *Add and edit* button.
+
+#.  Change the contents of the script to the following::
+
+      from Products.XWFCore.XWFUtils import remove_marker_interfaces, add_marker_interfaces,
+
+      site_root = context.site_root()
+      folders = ['Folder', 'Folder (Ordered)']
+      ignore = []
+
+      isSite = lambda d: d.getProperty('is_division', False) and hasattr(d, 'groups')
+
+      contentFolders = site_root.Content.objectValues(folders)
+      sites = [ s for s in contentFolders 
+                if ((s.getId() not in ignore) and  isSite(s)) ]
+
+      groups = []
+      isGroup = lambda g: g.getProperty('is_group', False)
+      for site in sites:
+          groupsFolder = getattr(site, 'groups')
+          groups += filter(isGroup, groupsFolder.objectValues(folders))
+          
+      oldInterfaces = ['Products.XWFChat.interfaces.IGSGroupFolder']
+      newInterfaces = ['gs.group.type.discussion.interfaces.IGSDiscussionGroup']
+      for group in groups:
+        print 'Remove the XWFChat marker from %s (%s)' % (group.title_or_id(), group.getId())
+        remove_marker_interfaces(group, oldInterfaces)
+        add_marker_interfaces(group, newInterfaces)
+      return printed
+
+#.  Click the *Save Changes* button.
+
+#.  Click the *Test* tab. The marker interfaces for all the groups
+    should be updated to *discussion* groups.
+
+#.  Change the *support* groups to the correct marker-interface by
+    carrying out the following for each group.
+    
+    #.  Navigate to the group.
+
+    #.  Click on the *Interfaces* tab.
+    
+    #.  Select ``gs.group.type.discussion.interfaces.IGSDiscussionGroup`` 
+        in the *Provided Interfaces* list.
+        
+    #.  Click the *Remove* button. The discussion-group marker interface
+        will be removed.
+    
+    #.  Select ``gs.group.type.support.interfaces.IGSSupportGroup``
+        in the *Available Marker Interfaces* list.
+    
+    #.  Click the *Add* button. The support-group marker interface
+        will be added.
+        
+#.  Change the *announcement* groups to the correct marker-interface by
+    carrying out the following for each group.
+    
+    #.  Navigate to the group.
+
+    #.  Click on the *Interfaces* tab.
+    
+    #.  Select ``gs.group.type.discussion.interfaces.IGSDiscussionGroup`` 
+        in the *Provided Interfaces* list.
+        
+    #.  Click the *Remove* button. The discussion-group marker interface
+        will be removed.
+    
+    #.  Select 
+        ``gs.group.type.announcement.interfaces.IGSAnnouncementGroup``
+        in the *Available Marker Interfaces* list.
+    
+    #.  Click the *Add* button. The announcement-group marker interface
+        will be added.
+
+#.  Finally, remove the legacy group-support from your site:
+
+    #.  Copy the file ``groupserver-12.04/versions.cfg`` to your 
+        existing GroupServer installation, under the name 
+        ``versions.cfg``.
+       
+    #.  Copy the file ``groupserver-12.04/buildout.cfg`` to your 
+        existing GroupServer installation, under the name 
+        ``buildout.cfg``.
+
+    #.  In your existing GroupServer installation run::
+
+          $ ./bin/buildout -N
+    
+    #.  Restart your GroupServer instance.    
+    
 ..  _GroupServer.org: http://groupserver.org/
 ..  _OnlineGroups.Net: http://onlinegroups.net/
 ..  _Creative Commons Attribution-Share Alike 3.0 New Zealand License:
@@ -204,6 +368,7 @@ Legacy Groups!
 ..  _Viewlets: http://pypi.python.org/pypi/zope.viewlet
 ..  _Pillow: http://pypi.python.org/pypi/Pillow/
 ..  _PIL: http://www.pythonware.com/library/
+..  _contact us: http://groupserver.org/groups/development/
 ..  [#Welcome] A sample *Welcome* message can be viewed at
     <http://groupserver.org/groups/development/new-member-msg.html>
 ..  [#NewMember] A sample *New Member* message can be viewed at
