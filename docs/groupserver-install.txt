@@ -6,7 +6,7 @@ GroupServer Installation
 
 :Authors: Michael JasonSmith; Richard Waid; Alice Murphy; Dan Randow
 :Contact: Michael JasonSmith <mpj17@onlinegroups.net>
-:Date: 2011-12-19 (see `History`_)
+:Date: 2012-04-24 (see `History`_)
 :Organization: `GroupServer.org`_
 :Copyright: This document is licensed under a
   `Creative Commons Attribution-Share Alike 3.0 New Zealand License`_
@@ -269,7 +269,7 @@ SMTP
 ~~~~
 
 GroupServer sends email using SMTP. The four ``smtp`` options contain
-the information required to comminicate with the SMTP server.
+the information required to communicate with the SMTP server.
 
 ``smtp_host``
   The SMTP host that will be used to send notifications from
@@ -563,6 +563,8 @@ History
 ======= ==========  ====================================================
 Version Date        Change
 ======= ==========  ====================================================
+12.04   2012-04-24  Removing unnecessary dependencies, and using 
+                    ``pip`` in the `Run Buildout`_ section. 
 11.08   2011-12-19  Adding the packages required for XML support and 
                     XSLT support on RHEL and CentOS to the list of
                     `Requirements`_.
