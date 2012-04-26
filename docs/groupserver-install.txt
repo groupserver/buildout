@@ -35,7 +35,7 @@ Quick Start
 #.  Run the following (see `Run Buildout`_)::
 
       $ virtualenv --no-site-packages -ppython2.6 .
-      $ ./bin/pip install zc.buildout && ./bin/buildout -v
+      $ ./bin/pip install zc.buildout==1.4.4 && ./bin/buildout -v
 
 #.  `Start Zope`_::
 
@@ -364,9 +364,10 @@ placed in ``./bin/``. When buildout runs it will install all the packages
 in the sandbox. The version of Python that is maintained by your Linux
 distribution will be untouched.
 
-Next, get the ``pip`` system to install ``buildout``::
+Next, get the ``pip`` system to install version 1.4.4 of the 
+``buildout`` system::
 
-  $ ./bin/pip install zc.buildout
+  $ ./bin/pip install zc.buildout==1.4.4
 
 Finally, run ``buildout``::
 
