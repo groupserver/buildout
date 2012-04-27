@@ -2,12 +2,12 @@
 Release Notes
 =============
 ------------------------------------------------------------
-GroupServer 12.02 — Faloodeh Consumed with an Eye on History
+GroupServer 12.04 — Faloodeh Consumed with an Eye on History
 ------------------------------------------------------------
 
 :Authors: `Michael JasonSmith`_; `Richard Waid`_; `Dan Randow`_
 :Contact: Michael JasonSmith <mpj17@onlinegroups.net>
-:Date: 2012-04-24
+:Date: 2012-04-30
 :Organization: `GroupServer.org`_
 :Copyright: This document is licensed under a
   `Creative Commons Attribution-Share Alike 3.0 New Zealand License`_
@@ -23,8 +23,10 @@ can `get Faloodeh`_ immediately.
 Changes to GroupServer
 ======================
 
-The changes in Faloodeh are mostly `group improvements`_, `profile improvements`_ and a new `site homepage`_. In addition there are `minor
-changes`_
+The changes in Faloodeh are mostly `group improvements`_, `profile 
+improvements`_ and a new `site homepage`_. In addition we have made 
+steps towards `easier installation`_, and there have been some `minor 
+changes`_.
 
 Group Improvements
 ------------------
@@ -125,35 +127,56 @@ unchanged. Now the page — provided  by the new ``gs.site.home`` product
 [#SiteHome]_ — can be skinned easily. Extra components can be easily 
 added to it in the future.
 
+Easier Installation
+-------------------
+
+Installation should be more reliable. The first reason is a change of
+dependencies. The second reason is a more tightly constrained set of
+sources.
+
+Three dependencies have changed. 
+
+* The least dramatic is to use `Pillow`_ rather than `PIL`_.  The former 
+  is a *friendly fork* of the latter, which works with the 
+  ``easy_install`` system that GroupServer uses. This change removes the
+  requirement to download and install both ``zlib`` and ``libjpeg``. The
+  ``zlib`` dependency in particular caused a problem with its frequent 
+  changes. 
+
+* The *eGenex mx Extension Series* is now available as an egg, which we 
+  now use.
+
+* Finally, the ``PyXML`` library is also provided by an egg [#xml]_.
+
+By default the eggs used by the GroupServer installation process now 
+come from only two sources. The eggs that make up GroupServer itself
+come from <http://eggs.iopen.net/groupserver/base/>. The third-party
+eggs come from <http://eggs.iopen.net/groupserver/cache/>. This should
+prove to be more reliable than using the canonical *upstream* servers.
+
 Minor changes
 -------------
 
 There have been three sets of minor changes to GroupServer in the 
 Faloodeh release: Zope events are better supported, ``wsgi`` is 
-supported, there have been numerous coding improvements, and 
-installation should be much smoother.
+supported, and there have been numerous coding improvements.
 
-An *event* in Zope is a signal that is raised when an action is carried 
-out [#ZopeEvents]_. You can write code that subscribes to these events, 
-and takes additional action. (This extra code does not need to alter the
-original code in any way.) Events are now raised when someone joins a 
-group, joins a site, leaves a group, and leaves a site. This should make 
-these actions more extensible, and allow others to add extra 
+An **event** in Zope is a signal that is raised when an action is 
+carried out [#ZopeEvents]_. You can write code that subscribes to these 
+events, and takes additional action. (This extra code does not need to 
+alter the original code in any way.) Events are now raised when someone 
+joins a group, joins a site, leaves a group, and leaves a site. This 
+should make these actions more extensible, and allow others to add extra 
 functionality to GroupServer [#SiteMember]_.
 
-WSGI is the method that most Python-based web applications use to 
+**WSGI** is the method that most Python-based web applications use to 
 communicate to servers. GroupServer can now be served using WSGI, as
 the last problems with WSGI compatibility have been resolved.
 
-There have been numerous coding improvements. Most have centred around 
-the use of `caching`_. In addition 
-there are new base classes for pages and `viewlets`_ with GroupServer 
-sites, profiles, and groups.
-
-Finally, installation should be more reliable with the switch to 
-`Pillow`_ rather than `PIL`_.  This removes the requirement to download
-and install both ``zlib`` and ``libjpeg``. The former caused a problem
-with a frequently-changing dependency.
+Finally, There have been numerous **coding improvements.** Most have 
+centred around the use of `caching`_. In addition there are new base 
+classes for pages and `viewlets`_ with GroupServer sites, profiles, and
+groups.
 
 Get Faloodeh
 ============
@@ -387,6 +410,11 @@ Updating the marker-interfaces in a group is similar to how you
 ..  [#SiteHome] The documentation for how to add components to the new
     site homepage is in `the site-homepage product.
     <https://source.iopen.net/groupserver/gs.site.home/summary>`_
+..  [#xml] Two other libraries, ``libxml2`` and ``libxslt``, are brought 
+    into the system  by a small script, which is part of the buildout
+    process. The global libraries *are* used, but they must be 
+    symbolically-linked (*symlinked*) because the ``virtualenv`` system
+    does not link to them.
 ..  [#ZopeEvents] The Zope events are provided by `the ZTK 
     documentation. <http://docs.zope.org/zope.event/>`_
 ..  [#SiteMember] `The site-member product 
