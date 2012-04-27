@@ -211,6 +211,12 @@ To update the packages carry out the following steps.
 #.  Copy the file ``groupserver-12.04/update-buildout.cfg`` to your 
     existing GroupServer installation, under the name ``buildout.cfg``.
 
+#.  Copy the file ``groupserver-12.04/zope2-2.13.13.cfg`` to your 
+    existing GroupServer installation.
+
+#.  Copy the file ``groupserver-12.04/ztk-versions-1.0.6.cfg`` to your 
+    existing GroupServer installation.
+
 #.  In your existing GroupServer installation run::
 
       $ ./bin/buildout
