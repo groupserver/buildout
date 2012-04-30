@@ -53,6 +53,12 @@ chmod 600 pgpass-tmp
 export PGPASSFILE=pgpass-tmp
 
 createlang -U${CFG__config__pgsql_user} -h${CFG__config__pgsql_host} -p${CFG__config__pgsql_port} plpgsql ${CFG__config__pgsql_dbname}
+
+# Update distribute
+./bin/easy_install --upgrade distribute
+
+# Start the buildout
 buildout -vN
 
 rm pgpass-tmp
+
