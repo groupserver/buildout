@@ -6,7 +6,7 @@ GroupServer Installation
 
 :Authors: Michael JasonSmith; Richard Waid; Alice Murphy; Dan Randow
 :Contact: Michael JasonSmith <mpj17@onlinegroups.net>
-:Date: 2012-04-24 (see `History`_)
+:Date: 2012-04-30 (see `History`_)
 :Organization: `GroupServer.org`_
 :Copyright: This document is licensed under a
   `Creative Commons Attribution-Share Alike 3.0 New Zealand License`_
@@ -474,7 +474,9 @@ History
 ======= ==========  ====================================================
 Version Date        Change
 ======= ==========  ====================================================
-12.04   2012-04-24  Removing unnecessary dependencies, and using 
+12.05   2012-04-30  Updating the `Configure GroupServer`_ and
+                    `Run the Installer`_ sections.
+12.05   2012-04-24  Removing unnecessary dependencies, and using 
                     ``pip`` in the *Run Buildout* section. 
 11.08   2011-12-19  Adding the packages required for XML support and 
                     XSLT support on RHEL and CentOS to the list of
