@@ -73,11 +73,11 @@ for Ubuntu, CentOS, and RedHat Enterprise Linux.
 +-------------+--------------------------------+-----------------------+
 | GNU C++     | ``g++``                        | ``gcc-c++``           |
 +-------------+--------------------------------+-----------------------+
-| Make        | ``make``                       | ``make``              |
+| Make        | ``build-essential``            | ``make``              |
 +-------------+--------------------------------+-----------------------+
 | PostgreSQL  | ``postgresql``                 | ``postgresql``        |
 | Database    +--------------------------------+-----------------------+
-|             | ``postgresql-server-dev-8.4``  | ``postgresql-server`` |
+|             | ``postgresql-server-dev-9.1``  | ``postgresql-server`` |
 |             +--------------------------------+-----------------------+
 |             | ``libpq-dev``                  | ``postgresql-libs``   |
 |             +--------------------------------+-----------------------+
@@ -87,31 +87,30 @@ for Ubuntu, CentOS, and RedHat Enterprise Linux.
 | Email       +--------------------------------+-----------------------+
 | Server      | ``postfix-dev``                |                       |
 +-------------+--------------------------------+-----------------------+
-| Compression | ``libzzip-dev`` (from universe)|                       |
-|             +--------------------------------+-----------------------+
-|             | ``lib64z1-dev`` (from main)    |                       |
-+-------------+--------------------------------+-----------------------+
 | JPEG Support| ``libjpeg62-dev``              | ``libjpeg-devel``     |
 +-------------+--------------------------------+-----------------------+
 | zlib (PNG)  | ``zlib1g-dev``                 | ``zlib``              |
 | Support     |                                +-----------------------+
 |             |                                | ``zlib-devel``        |
 +-------------+--------------------------------+-----------------------+
-| XML Support |                                | ``libxml2``           |
+| XML Support | ``libxml2``                    | ``libxml2``           |
 |             +--------------------------------+-----------------------+
-|             |                                | ``libxml2-devel``     |
+|             | ``libxml2-dev``                | ``libxml2-devel``     |
 +-------------+--------------------------------+-----------------------+
-| XSLT        |                                | ``libxslt``           |
+| XSLT        | ``libxslt1.1``                 | ``libxslt``           |
 | Support     +--------------------------------+-----------------------+
-|             |                                | ``libxslt-devel``     |
+|             | ``libxslt1.1-dev``             | ``libxslt-devel``     |
++-------------+--------------------------------+-----------------------+
+| SMTP Test   | ``swaks``                      | ``swaks``             |
 +-------------+--------------------------------+-----------------------+
 
 To install all the above libraries under Ubuntu run the following 
 command::
 
   $ sudo apt-get install python2.6 python2.6-dev python-virtualenv g++ \
-    build-essential postgresql postgresql-server-dev-8.4 libpq-dev \
-    postfix postfix-dev libzzip-dev lib64z1-dev 
+    build-essential postgresql postgresql-server-dev-9.1 libpq-dev \
+    postfix postfix-dev libzzip-dev libjpeg62-dev zlib1g-dev libxml2 \
+    libxml2-dev libxslt1.1 libxslt1.1-dev sqaks
 
 Virtualenv on CentOS
 --------------------
