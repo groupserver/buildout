@@ -1,50 +1,30 @@
 #!/bin/bash
 
-DBNAME="test123"
-DBUSER="test123"
-DBPASS="test123"
-DBHOST="localhost"
-DBPORT="5432"
+. read_ini.sh
 
-RELSTORAGEDBNAME="${DBNAME}zodb"
-RELSTORAGEDBUSER="${DBUSER}"
-RELSTORAGEDBPASS="${DBPASS}"
-RELSTORAGEDBHOST="${DBHOST}"
-RELSTORAGEDBPORT="${DBPORT}"
-
-# The support email address for the new sites.
-SUPPORTEMAILFROM="support@iopen.net"
-ADMINEMAILTO="richard@iopen.net"
-USEREMAILTO="test12@iopen.net"
-
-# The SMTP connection settings, used for notification delivery. By
-#   default, the localhost is used with no authentication.
-SMTPHOST="smtp.iopen.net"
-SMTPPORT="25"
-SMTPUSER="richard"
-SMTPPASS="diawrt1"
-
-echo "Testing mail setup:\n"
-if [ "${SMTPUSER}" != "" ];
-then
-  swaks -S -s ${SMTPHOST} -p ${SMTPPORT} --from ${SUPPORTEMAILFROM} --to ${ADMINEMAILTO} --auth-user ${SMTPUSER} --auth-pass ${SMTPPASS}
-else
-  swaks -S -s ${SMTPHOST} -p ${SMTPPORT} --from ${SUPPORTEMAILFROM} --to ${ADMINEMAILTO}
-fi
-
-if [ $? -eq 0 ];
-then
-  echo "Mail setup looks good. Expect email!"
-else
-  echo "\nThere was a problem with the mail configuration. This must be fixed before proceeding with the installation."
-fi
-
-exit
-
-CONFIG_TEMPLATE="config.template"
+read_ini config.cfg config --prefix CFG
 
 # install packages
 sudo apt-get install -y python python-virtualenv python-dev build-essential postgresql libpq-dev libxslt1-dev libxml2-dev python-libxslt1 swaks
+
+echo "Testing mail setup..."
+echo
+for tmail in ${CFG__config__admin_email} ${CFG__config__user_email}
+do
+    if [ "${CFG__config__smtp_user}" != "" ]; then
+        swaks -S -s ${CFG__config__smtp_host} -p ${CFG__config__smtp_port} --from ${CFG__config__support_email} --to ${tmail} --auth-user ${CFG__config__smtp_user}  --auth-pass ${CFG__config__smtp_pass}
+    else
+        swaks -S -s ${CFG__config__smtp_host} -p ${CFG__config__smtp_port} --from ${CFG__config__support_email} --to ${tmail}
+    fi
+
+    if [ $? -eq 0 ]; then
+        echo "Expect an email at ${tmail} from ${CFG__config__support_email}!"
+    else
+        echo
+        echo "There was a problem with the mail configuration. This must be fixed before proceeding with the installation."
+        exit
+    fi
+done
 
 virtualenv --no-site-packages . 
 
@@ -54,28 +34,25 @@ virtualenv --no-site-packages .
 # fetch build here
 pip install zc.buildout==1.5.2
 
-# fill the config template
-echo "$(eval "echo \"$(cat ${CONFIG_TEMPLATE})\"")" > config.cfg
-
 # initialise PostgreSQL database
-sudo su -l -c"createuser -D -S -R -l ${DBUSER}" postgres
-sudo su -l -c"createuser -D -S -R -l ${RELSTORAGEDBUSER}" postgres
+sudo su -l -c"createuser -D -S -R -l ${CFG__config__pgsql_user}" postgres
+sudo su -l -c"createuser -D -S -R -l ${CFG__config__relstorage_user}" postgres
 
-sudo su -l -c"createdb -Ttemplate0 -EUTF-8 ${DBNAME}" postgres
-sudo su -l -c"createdb -Ttemplate0 -EUTF-8 ${RELSTORAGEDBNAME}" postgres
+sudo su -l -c"createdb -Ttemplate0 -EUTF-8 ${CFG__config__pgsql_dbname}" postgres
+sudo su -l -c"createdb -Ttemplate0 -EUTF-8 ${CFG__config__relstorage_dbname}" postgres
 
-sudo su -l -c"echo \"alter user ${DBUSER} with encrypted password '${DBPASS}';\" | psql" postgres
-sudo su -l -c"echo \"alter user ${RELSTORAGEDBUSER} with encrypted password '${RELSTORAGEDBPASS}';\" | psql" postgres
+sudo su -l -c"echo \"alter user ${CFG__config__pgsql_user} with encrypted password '${CFG__config__pgsql_password}';\" | psql" postgres
+sudo su -l -c"echo \"alter user ${CFG__config__relstorage_user} with encrypted password '${CFG__config__relstorage_password}';\" | psql" postgres
 
-sudo su -l -c"echo \"grant all privileges on database ${DBNAME} to ${DBUSER};\" | psql" postgres
-sudo su -l -c"echo \"grant all privileges on database ${RELSTORAGEDBNAME} to ${RELSTORAGEDBUSER};\" | psql" postgres
+sudo su -l -c"echo \"grant all privileges on database ${CFG__config__pgsql_dbname} to ${CFG__config__pgsql_user};\" | psql" postgres
+sudo su -l -c"echo \"grant all privileges on database ${CFG__config__relstorage_dbname} to ${CFG__config__relstorage_user};\" | psql" postgres
 
-echo "${DBHOST}:${DBPORT}:${DBNAME}:${DBUSER}:${DBPASS}" > pgpass-tmp
+echo "${CFG__config__pgsql_host}:${CFG__config__pgsql_port}:${CFG__config__pgsql_dbname}:${CFG__config__pgsql_user}:${CFG__config__pgsql_password}" > pgpass-tmp
 chmod 600 pgpass-tmp
 
 export PGPASSFILE=pgpass-tmp
 
-createlang -U${DBUSER} -h${DBHOST} -p ${DBPORT} plpgsql ${DBNAME}
+createlang -U${CFG__config__pgsql_user} -h${CFG__config__pgsql_host} -p${CFG__config__pgsql_port} plpgsql ${CFG__config__pgsql_dbname}
 buildout -vN
 
 rm pgpass-tmp
