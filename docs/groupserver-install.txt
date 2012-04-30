@@ -30,10 +30,9 @@ Quick Start
 #.  Create a new hostname for your GroupServer site. Yes, you will need 
     a new one (see `Pick a Host Name`_).
 #.  Edit ``config.cfg`` (see `Configure GroupServer`_).
-#.  Run the following (see `Run Buildout`_)::
+#.  Run the following (see `Run the Installer`_)::
 
-      $ virtualenv --no-site-packages -ppython2.6 .
-      $ ./bin/pip install zc.buildout && ./bin/buildout -v
+      $ ./gs_install_ubuntu.sh
 
 #.  `Start Zope`_::
 
@@ -102,13 +101,8 @@ for Ubuntu, CentOS, and RedHat Enterprise Linux.
 | SMTP Test   | ``swaks``                      | ``swaks``             |
 +-------------+--------------------------------+-----------------------+
 
-To install all the above libraries under Ubuntu run the following 
-command::
-
-  $ sudo apt-get install python2.6 python2.6-dev python-virtualenv g++ \
-    build-essential postgresql postgresql-server-dev-9.1 libpq-dev \
-    postfix postfix-dev libzzip-dev libjpeg62-dev zlib1g-dev libxml2 \
-    libxml2-dev libxslt1.1 libxslt1.1-dev sqaks
+The installation script for Ubuntu will install all the above libraries
+(see `Run the Installer`_).
 
 Virtualenv on CentOS
 --------------------
@@ -132,8 +126,9 @@ into a directory such as ``/opt``, ``/home`` or ``/usr/local``.
 When the tar-file is extracted a new directory will be made.
 This directory contains the configuration files for GroupServer.
 In addition, the installation process will download and install
-some dependencies into the directory (see `Run Buildout`_). Finally,
-GroupServer will be run from the same directory (see `Start Zope`_).
+some dependencies into the directory (see `Run the Installer`_). 
+Finally, GroupServer will be run from the same directory (see `Start 
+Zope`_).
 
 **Note:** You may need to be the ``root`` user to extract the
 archive. If you do then you must change the ownership of the new
@@ -144,8 +139,8 @@ Set Up
 ======
 
 Setting up GroupServer is done in four steps: first `pick a host name`_,
-then `configure GroupServer`_, `run buildout`_ to install the system, 
-and finally `start Zope`_.
+then `configure GroupServer`_, `run the Installer`_ to install the 
+system, and finally `start Zope`_.
 
 Pick a Host Name
 ----------------
@@ -269,32 +264,26 @@ to be set by you to protect this data.
   `The RelStorage system`_ will store data in a PostgreSQL database for
   Zope. This data is protected by the ``relstorage_password``.
 
-Run Buildout
-------------
+Run the Installer
+-----------------
 
-`Buildout`_ is the python-based system that we use to download and
-installs Zope, GroupServer, and all the libraries that they both
-require. To run buildout, first create a virtual Python installation
-in the directory that contains the GroupServer installation::
+The installer is a Bash script. To run the GroupServer installer enter
+the following command::
 
-  $ virtualenv --no-site-packages -ppython2.6 .
+  $ ./gs_install_ubuntu.sh
 
-This creates a sandbox for buildout with its own version of Python 2.6,
-placed in ``./bin/``. When buildout runs it will install all the packages
-in the sandbox. The version of Python that is maintained by your Linux
-distribution will be untouched.
+You will be prompted for your password. This is required to check that
+your Ubuntu system has met all the `requirements`_. Next the installer 
+ensures that the `set up`_ is correct. 
 
-Next, get the ``pip`` system to install version 1.4.4 of the 
-``buildout`` system::
+The rest of the installation process should be completely automatic.
+The system will create a *sandbox* for your GroupServer site, with its 
+own version of Python 2.6, placed in ``./bin/``. It will then configure
+the PostgreSQL databases that store the data for your site.
 
-  $ ./bin/pip install zc.buildout==1.4.4
-
-Finally, run ``buildout``::
-
-  $ ./bin/buildout -v
-
-Buildout takes a while, as it will download and install all the
-requirements for GroupServer (around 30MB of packages) including:
+Finally, it will start the  `buildout`_ system that will download and 
+install all the requirements for GroupServer (around 30MB of packages)
+including:
   
 * `Zope 2.13`_ (1.5MB)
 * `ReportLab`_ (2MB)
@@ -308,7 +297,8 @@ buildout processes.
 Start Zope
 ----------
 
-To start the Zope *instance* run the following command::
+Your GroupServer site is supported by Zope. To start the Zope run the
+following command::
 
   $ ./bin/instance fg
 
@@ -485,7 +475,7 @@ History
 Version Date        Change
 ======= ==========  ====================================================
 12.04   2012-04-24  Removing unnecessary dependencies, and using 
-                    ``pip`` in the `Run Buildout`_ section. 
+                    ``pip`` in the *Run Buildout* section. 
 11.08   2011-12-19  Adding the packages required for XML support and 
                     XSLT support on RHEL and CentOS to the list of
                     `Requirements`_.
