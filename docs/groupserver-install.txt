@@ -29,11 +29,11 @@ Quick Start
     (see `Download`_).
 #.  Create a new hostname for your GroupServer site. Yes, you will need 
     a new one (see `Pick a Host Name`_).
-#.  Edit ``instance.cfg`` (see `Configure Zope`_).
+#.  Edit ``config.cfg`` (see `Configure GroupServer`_).
 #.  Run the following (see `Run Buildout`_)::
 
       $ virtualenv --no-site-packages -ppython2.6 .
-      $ ./bin/pip install zc.buildout==1.4.4 && ./bin/buildout -v
+      $ ./bin/pip install zc.buildout && ./bin/buildout -v
 
 #.  `Start Zope`_::
 
@@ -140,21 +140,21 @@ archive. If you do then you must change the ownership of the new
 GroupServer directory and all of its contents. GroupServer can
 only be run by users with normal privileges.
 
-Set up Zope
-===========
+Set Up
+======
 
-Installing Zope is done in four steps: first `pick a host name`_,
-then `configure Zope`_, `run buildout`_ to install Zope, and finally
-`start Zope`_.
+Setting up GroupServer is done in four steps: first `pick a host name`_,
+then `configure GroupServer`_, `run buildout`_ to install the system, 
+and finally `start Zope`_.
 
 Pick a Host Name
 ----------------
 
 Your new site needs its own hostname. The name needs to be known to
 the *web browser* that you will use to access the site. It will pass
-the name to Zope so it knows which GroupServer site to serve. (Zope can
-serve multiple sites, as well as its web-based management system.) For
-a trial system, the name can be set up in the ``hosts(5)`` file.
+the name to the Zope system that runs GroupServer. (Zope can serve
+multiple sites, as well as its web-based management system.) For a trial
+system, the name can be set up in the ``hosts(5)`` file.
 
 * Edit ``/etc/hosts`` as ``root``.
 * Add the new host name to the ``localhost`` entry, which is normally
@@ -165,20 +165,21 @@ a trial system, the name can be set up in the ``hosts(5)`` file.
 
 * Save the ``hosts`` file.
 
-Configure Zope
---------------
+Configure GroupServer
+---------------------
 
-The configuration of Zope is carried out by modifying ``instance.cfg``,
-which is located in the root of the GroupServer folder. The ``cfg``
-file is interpreted by the Python `ConfigParser`_ module, which accepts
-a syntax very similar to Windows INI files.
+The configuration of GroupServer is mostly carried out by modifying the
+``config.cfg`` file, which is located in the root of the GroupServer 
+folder [#cfgFile]_. First you must configure the `GroupServer Site`_
+itself. Next the `Zope`_ system, which will run your GroupServer site, 
+needs to be configured, before the `database storage`_.
 
-GroupServer
-~~~~~~~~~~~
+GroupServer Site
+~~~~~~~~~~~~~~~~
 
-All the user-configurable options are in the ``config`` section of
-``instance.cfg``. The first set of options the setup of the initial
-GroupServer instance.
+You will need to change all the configuration for your initial site —
+except for the ``port``, which will probably stay the same as the
+default.
 
 ``host``
   The domain name used by your new GroupServer instance. It must be the
@@ -194,13 +195,14 @@ GroupServer instance.
   created. So you can use the administration functions you must
   log in as an administrator. This is the email address of that
   administrator. Posts to the example group will be sent to the
-  administrator at this address. In addition, this email address will
-  be used to log into the new site.
+  administrator at this address. In addition, this email address
+  will be used to log into the new site.
   
 ``admin_password``
   The password of the administrator of the new GroupServer site. The
   password will be used to log in, and can be changed after the site
   has been created.
+
   
 ``user_email``
   The email address of the normal user that is created along with the
@@ -215,51 +217,24 @@ GroupServer instance.
   The password for the normal user of the new GroupServer site. The
   password will be used to log in, and can be changed after the site
   has been created.
-  
+
 ``support_email``
   The email address where support messages are sent, and were email
   notifications are send from. For testing this can be set to your own
   email address.
-  
-``timezone``
-  The timezone that will be used to represent dates and times. It
-  defaults to Coordinated Universal Time (``UTC``) but can be set other
-  zones including
-  
-  - ``Pacific/Auckland``
-  - ``Europe/London``
-  - ``America/New_York``
-  - ``America/Los_Angeles``
-  - `…and others <http://en.wikipedia.org/wiki/List_of_tz_database_time_zones>`_.
-
-SMTP
-~~~~
-
-GroupServer sends email using SMTP. The four ``smtp`` options contain
-the information required to communicate with the SMTP server.
 
 ``smtp_host``
   The SMTP host that will be used to send notifications from
   GroupServer. It defaults to ``localhost``, assuming you will be
   running a local SMTP server.
 
-``smtp_port``
-  The port that the SMTP host will be listening to. Defaults to the
-  standard SMTP port, ``25``.
-
-``smtp_user``
-  The user-name that the SMTP host requires to send email messages. It
-  defaults to no user name.
-
-``smtp_password``
-  The password the SMTP host requires to send email messages. It defaults
-  to no password.
-
 Zope
 ~~~~
 
-The ``zope`` options configure how you will access the Zope Management 
-Interface (ZMI).
+Your site will run on the Zope_ system. This system must also be 
+configured. The default values for ``zope_host`` and ``zope_port`` are
+probably correct. However, for security we recommend you change the
+name and password of the Zope administrator.
 
 ``zope_host``
   The host that will run Zope. It defaults to the local machine.
@@ -271,7 +246,7 @@ Interface (ZMI).
 ``zope_admin``
   The name of the user who will administer Zope.
   
-``zope_pass``
+``zope_password``
   The password for the Zope administrator. It can (and should) be
   changed after GroupServer has been set up. (However, if you change the
   password after installation you will also have to change the scripts
@@ -279,42 +254,20 @@ Interface (ZMI).
   password too, see `Set up Scripts`_; we realise that the passwords
   should not be stored in the scripts.)
 
-PostgreSQL
-~~~~~~~~~~
+Database Storage
+~~~~~~~~~~~~~~~~
 
-The final set of options deals with configuring the connection to the
-PostgreSQL database.
+GroupServer stores most of its data in PostgreSQL. Two passwords need
+to be set by you to protect this data.
 
-``pgsql_host``
-  The host that runs the PostgreSQL database. It defaults to the local
-  machine, ``localhost``.
-  
-``pgsql_port``
-  The IP port that PosgtreSQL listens  to. It is set to the default
-  port for Ubuntu; it may be 5433 if multiple versions of PostgreSQL 
-  are installed.
-
-``pgsql_dbname``
-  During installation a database will be created in PostgreSQL. The
-  ``pgsql_dbname`` option defines the name of the database.
-
-``pgsql_user``
-  The name of the database user that will connect to the GroupServer
-  database and modify the data. The database user is separate from
-  the other users on the system, including those that log into the
-  computer and those in Zope. The value of this option can be set to
-  anything, but the default is usually good enough. **Note** that the
-  ``pgsql_user`` must be set to a value that is different to the value of
-  ``pgsql_admin``.
-
-``pgsql_admin``
-  The name of the admin of PostgreSQL, used to create the PostgreSQL
-  user. The default is the name of the administrator under Ubuntu.
-  
 ``pgsql_password``
-  The password required to attach to the PostgreSQL database as the
-  ``pgsql_user``. The default is blank, which means that no password
-  is required.
+  The password required to attach to the PostgreSQL database. The
+  install system will create a PostgreSQL database, and protect it with 
+  this ``pgsql_password``.
+  
+``relstorage_password``
+  `The RelStorage system`_ will store data in a PostgreSQL database for
+  Zope. This data is protected by the ``relstorage_password``.
 
 Run Buildout
 ------------
@@ -367,7 +320,7 @@ You should be able to view your GroupServer site at
 will be <http://gstest:8080>.
   
 * The host is the one you picked earlier (see `Pick a Host Name`_).
-* The port is the one that Zope listens to (see `Configure Zope`_).
+* The port is the one that site listens to (see `Configure GroupServer`_).
 
 Use ``Control-c`` to stop Zope.
 
@@ -490,7 +443,8 @@ GroupServer. However, for production sites it is a good idea to run
 a proxy to provide the following services:
 
 * To mediate between the low level HTTP port (port 80) and the 
-  high-port that Zope runs on (normally port 8080, see `Set up Zope`_).
+  high-port that Zope runs on (normally port 8080, see `Configure
+  GroupServer`_).
 * To rewrite the URL to include a skin directive.
 * To rewrite the URL to support virtual hosting.
 * To provide caching.
@@ -512,8 +466,7 @@ database user, and the directory that contains the GroupServer install.
     $ dropuser gstest -U postgres
 
   ``gstestdb``
-    The name of the test database that you set earlier (see `Configure 
-    Zope`_)
+    The name of the test database.
     
   ``postgres``
     The name of the admin of PostgreSQL.
@@ -549,7 +502,7 @@ Version Date        Change
 11.08   2011-10-26  Correcting some mistakes, and clarifying the 
                     documentation on `the advice of Ross Chesley
                     <http://groupserver.org/r/topic/4PF50PHIWeYtaMMzwG3624>`_
-11.08   2011-09-01  Reordering the subsections of `Configure Zope`_.
+11.08   2011-09-01  Reordering the subsections of *Configure Zope*.
 11.07   2011-07-08  Adding the ``build-essential`` depenency and the
                     cut-n-paste ``apt-get`` block to the `Requirements`_.
 11.06   2011-07-05  Adding the prologue.
@@ -583,6 +536,9 @@ Version Date        Change
 
 .. Resources
 
+.. [#cfgFile] The ``cfg`` files are interpreted by the Python 
+   `ConfigParser`_ module, which accepts a syntax very similar to 
+   Windows INI files.
 .. _GroupServer.org: http://groupserver.org
 .. _Creative Commons Attribution-Share Alike 3.0 New Zealand License:
    http://creativecommons.org/licenses/by-sa/3.0/nz/
@@ -597,6 +553,8 @@ Version Date        Change
 .. _Buildout: http://www.buildout.org/
 .. _setuptools: http://pypi.python.org/pypi/setuptools
 .. _zc.buildout: http://pypi.python.org/pypi/zc.buildout/
+.. _Zope: http://zope.org
+.. _the RelStorage system: http://pypi.python.org/pypi/RelStorage
 .. _Zope 2.13: http://docs.zope.org/zope2/releases/2.13/
 .. _ReportLab: http://www.reportlab.com/
 .. _SQL Alchemy: http://www.sqlalchemy.org/
