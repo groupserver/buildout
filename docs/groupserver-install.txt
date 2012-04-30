@@ -27,8 +27,6 @@ Quick Start
 #.  Download the latest version of GroupServer from 
     <http://groupserver.org/downloads> and extract the archive
     (see `Download`_).
-#.  Ensure that the user that will run GroupServer can create databases
-    in PostgreSQL (see `Configure PostgreSQL`_).
 #.  Create a new hostname for your GroupServer site. Yes, you will need 
     a new one (see `Pick a Host Name`_).
 #.  Edit ``instance.cfg`` (see `Configure Zope`_).
@@ -141,36 +139,6 @@ GroupServer will be run from the same directory (see `Start Zope`_).
 archive. If you do then you must change the ownership of the new
 GroupServer directory and all of its contents. GroupServer can
 only be run by users with normal privileges.
-
-Configure PostgreSQL
-====================
-
-Database administrators who know what they are doing can ignore this
-section. For humble administrators that just want to try GroupServer,
-life is easier if the excellent security in PostgreSQL is disabled, by
-making the authentication methods ``trust`` in all cases. To do this, 
-change the bottom few lines in the 
-``/etc/postgresql/8.4/main/pg_hba.conf`` file (you will have to be root
-to modify it)::
-
-  # Database administrative login by UNIX sockets
-  local   all         postgres                          trust
-  # TYPE  DATABASE    USER        CIDR-ADDRESS          METHOD
-  # "local" is for Unix domain socket connections only
-  local   all         all                               trust
-  # IPv4 local connections:
-  host    all         all         127.0.0.1/32          trust
-  # IPv6 local connections:
-  host    all         all         ::1/128               trust
-
-PosgreSQL will have to be restarted after the ``pg_hba.conf`` file has
-been modified::
-  
-  $ sudo service postgresql restart
-
-For those who value privacy, security and trust, and want to 
-understand more of PostgreSQL we recommend 
-`PostgreSQL User Administration by David Pashley`_.
 
 Set up Zope
 ===========
