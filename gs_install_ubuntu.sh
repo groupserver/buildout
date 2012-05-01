@@ -13,7 +13,7 @@ echo
 for tmail in ${CFG__config__admin_email} ${CFG__config__user_email}
 do
     if [ "${CFG__config__smtp_user}" != "" ]; then
-        swaks -S -s ${CFG__config__smtp_host} -p ${CFG__config__smtp_port} --from ${CFG__config__support_email} --to ${tmail} --auth-user ${CFG__config__smtp_user}  --auth-pass ${CFG__config__smtp_pass}
+        swaks -S -s ${CFG__config__smtp_host} -p ${CFG__config__smtp_port} --from ${CFG__config__support_email} --to ${tmail} --auth-user ${CFG__config__smtp_user}  --auth-pass ${CFG__config__smtp_password}
     else
         swaks -S -s ${CFG__config__smtp_host} -p ${CFG__config__smtp_port} --from ${CFG__config__support_email} --to ${tmail}
     fi
