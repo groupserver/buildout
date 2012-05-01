@@ -2,12 +2,12 @@
 Release Notes
 =============
 ------------------------------------------------------------
-GroupServer 12.04 — Faloodeh Consumed with an Eye on History
+GroupServer 12.05 — Faloodeh Consumed with an Eye on History
 ------------------------------------------------------------
 
 :Authors: `Michael JasonSmith`_; `Richard Waid`_; `Dan Randow`_
 :Contact: Michael JasonSmith <mpj17@onlinegroups.net>
-:Date: 2012-04-30
+:Date: 2012-05-02
 :Organization: `GroupServer.org`_
 :Copyright: This document is licensed under a
   `Creative Commons Attribution-Share Alike 3.0 New Zealand License`_
@@ -205,16 +205,16 @@ To update the packages carry out the following steps.
 
 #.  Uncompress the tar-ball.
    
-#.  Copy the file ``groupserver-12.04/update-versions.cfg`` to your 
+#.  Copy the file ``groupserver-12.05/update-versions.cfg`` to your 
     existing GroupServer installation, under the name ``versions.cfg``.
    
-#.  Copy the file ``groupserver-12.04/update-buildout.cfg`` to your 
+#.  Copy the file ``groupserver-12.05/update-buildout.cfg`` to your 
     existing GroupServer installation, under the name ``buildout.cfg``.
 
-#.  Copy the file ``groupserver-12.04/zope2-2.13.13.cfg`` to your 
+#.  Copy the file ``groupserver-12.05/zope2-2.13.13.cfg`` to your 
     existing GroupServer installation.
 
-#.  Copy the file ``groupserver-12.04/ztk-versions-1.0.6.cfg`` to your 
+#.  Copy the file ``groupserver-12.05/ztk-versions-1.0.6.cfg`` to your 
     existing GroupServer installation.
 
 #.  In your existing GroupServer installation run::
@@ -367,11 +367,11 @@ Updating the marker-interfaces in a group is similar to how you
 
 #.  Finally, remove the legacy group-support from your site:
 
-    #.  Copy the file ``groupserver-12.04/versions.cfg`` to your 
+    #.  Copy the file ``groupserver-12.05/versions.cfg`` to your 
         existing GroupServer installation, under the name 
         ``versions.cfg``.
        
-    #.  Copy the file ``groupserver-12.04/buildout.cfg`` to your 
+    #.  Copy the file ``groupserver-12.05/buildout.cfg`` to your 
         existing GroupServer installation, under the name 
         ``buildout.cfg``.
 
