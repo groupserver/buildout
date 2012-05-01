@@ -130,23 +130,23 @@ added to it in the future.
 Easier Installation
 -------------------
 
-Installation should be more reliable. The first reason is a change of
-dependencies. The second reason is a more tightly constrained set of
-sources.
+Installation should be more reliable for three reasons. The first is a
+change of dependencies. The second reason is a more tightly constrained 
+set of software-sources. Finally, there is a new installation script.
 
 Three dependencies have changed. 
 
-* The least dramatic is to use `Pillow`_ rather than `PIL`_.  The former 
-  is a *friendly fork* of the latter, which works with the 
-  ``easy_install`` system that GroupServer uses. This change removes the
-  requirement to download and install both ``zlib`` and ``libjpeg``. The
-  ``zlib`` dependency in particular caused a problem with its frequent 
-  changes. 
+#.  The least dramatic is to use `Pillow`_ rather than `PIL`_.  The
+    former is a *friendly fork* of the latter, which works with the 
+    ``easy_install`` system that GroupServer uses. This change removes
+    the requirement to download and install both ``zlib`` and
+    ``libjpeg``. The ``zlib`` dependency in particular was a problem
+    with its frequent  changes. 
 
-* The *eGenex mx Extension Series* is now available as an egg, which we 
-  now use.
+#.  The *eGenex mx Extension Series* is now available as an egg, which 
+    we now use.
 
-* Finally, the ``PyXML`` library is also provided by an egg [#xml]_.
+#.  Finally, the ``PyXML`` library is also provided by an egg [#xml]_.
 
 By default the eggs used by the GroupServer installation process now 
 come from only two sources. The eggs that make up GroupServer itself
@@ -154,11 +154,16 @@ come from <http://eggs.iopen.net/groupserver/base/>. The third-party
 eggs come from <http://eggs.iopen.net/groupserver/cache/>. This should
 prove to be more reliable than using the canonical *upstream* servers.
 
+Finally, there is a new installer, the ``gs_install_ubuntu.sh`` script.
+For an `Ubuntu`_ system, the new script installs the dependencies,
+creates the databases in a secure maner, sets up a Python environment,
+and installs all the GroupServer components.
+
 Minor changes
 -------------
 
-There have been three sets of minor changes to GroupServer in the 
-Faloodeh release: Zope events are better supported, ``wsgi`` is 
+There have been three sets of minor changes to GroupServer in the
+Faloodeh release: Zope events are better supported, ``wsgi`` is
 supported, and there have been numerous coding improvements.
 
 An **event** in Zope is a signal that is raised when an action is 
@@ -397,6 +402,7 @@ Updating the marker-interfaces in a group is similar to how you
 ..  _Viewlets: http://pypi.python.org/pypi/zope.viewlet
 ..  _Pillow: http://pypi.python.org/pypi/Pillow/
 ..  _PIL: http://www.pythonware.com/library/
+..  _Ubuntu: http://www.ubuntu.com/
 ..  _contact us: http://groupserver.org/groups/development/
 ..  [#Welcome] A sample *Welcome* message can be viewed at
     <http://groupserver.org/groups/development/new-member-msg.html>
