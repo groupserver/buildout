@@ -67,7 +67,7 @@ echo "Python setup complete."
 echo
 echo "Installing GroupServer"
 echo
-buildout -vN
+buildout -N
 # Buildout has its own "completed" message.
 
 rm pgpass-tmp
