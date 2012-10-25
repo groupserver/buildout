@@ -5,7 +5,7 @@ read_ini config.cfg config --prefix CFG
 
 echo "Installing dependencies"
 echo
-sudo apt-get install -y python python-virtualenv python-dev build-essential postgresql libpq-dev libxslt1-dev libxml2-dev python-libxslt1 swaks
+sudo apt-get install -y python python-virtualenv python-dev build-essential postgresql libpq-dev swaks
 
 echo
 echo "Testing mail setup..."
@@ -71,4 +71,3 @@ buildout -N
 # Buildout has its own "completed" message.
 
 rm pgpass-tmp
-
