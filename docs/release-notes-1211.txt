@@ -1,0 +1,247 @@
+.. sectnum::
+
+=============
+Release Notes
+=============
+-------------------------------------------------
+GroupServer 12.06 — Absinthe Acquired Arbitrarily
+-------------------------------------------------
+
+:Authors: `Michael JasonSmith`_; `Richard Waid`_; `Dan Randow`_
+:Contact: Michael JasonSmith <mpj17@onlinegroups.net>
+:Date: 2012-11-05
+:Organization: `GroupServer.org`_
+:Copyright: This document is licensed under a
+  `Creative Commons Attribution-Share Alike 3.0 New Zealand License`_
+  by `OnlineGroups.Net`_.
+
+.. contents::
+
+Introduction
+============
+
+There are sixteen major `changes to GroupServer`_ in the Absinthe release —
+making the system more useful, usable and extensible for both group
+members, administrators, and developers. You can `get Absinthe`_
+immediately.
+
+Acknowledgements
+----------------
+
+Changes to GroupServer
+======================
+
+The `changes visible to participants`_ are mostly improvements to existing
+features, rather than new features. In contrast, the `changes to the
+underlying system`_ are complex and extensive.
+
+Changes Visible to Participants
+--------------------------------
+
+The most visible change that is visible to the participants is a `new
+search system`_.  Some `better error pages`_ for when things go wrong have
+also been created. To help participants and administrators there is a `new
+help system`_, while `an in-context administration guide`_ will help
+administrators get their new group going more easily. Administrators now
+have the ability to create `closed groups`_, and the new `profile search`_
+will help administrators fine participant's profiles.
+
+New Search System
+~~~~~~~~~~~~~~~~~
+..  * A new full-text retrieval system, taking full advantage of PostgreSQL.
+..  * A new keyword generation system that is faster and better.
+
+The new search system is the most visible change in Absinthe. 
+
+* The *Topics* tab on both the site homepage and the group page have a
+  *Search* entry [#noSearch]_.
+* The *Posts* tab in a group has as *Search* entry also, allowing posts to
+  be searched [#postSearch]_.
+* Clicking on a topic keyword with search for other topics with that
+  keyword [#clickableKW]_.
+* Searching now uses *stems*; for example, searching for ``search`` will
+  match topics that contain the words ``searches``, ``searching`` or
+  ``searched``.
+* Searching is now much faster, as the full-text retrieval features of
+  PostgreSQL_ are used [#FTR]_.
+* The display of topics in a site or group is much faster, as the keywords
+  are now generated when someone posts, rather than when the topic is
+  loaded.
+* Non-ASCII characters can now be searched [#nonAscii]_
+
+Better Error Pages
+~~~~~~~~~~~~~~~~~~
+..  * Better error pages.
+
+The *Permission Denied* page has been improved to add some suggestions
+about what the participant should do [#forbidden]_. In addition the
+``mailto`` that is embedded in the page now includes the URL of the problem
+page in the body of the email message to the Support address.
+
+New Help System
+~~~~~~~~~~~~~~~
+..  * New help pages 
+
+The old monolithic manuals have been replaced. The new more dynamic system
+will automatically show help for the features that are installed in
+GroupServer, including the custom features. Some of the old pages have been
+retained and updated.
+
+An In-Context Administration Guide
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+..  * An in-context guide to group administrators to make it easier to get
+..    started.
+
+To help get groups started there is a new system to encourage the group
+administrator along the way [#encouragement]_. The current advice includes:
+
+* Start a topic
+* Invite people, 
+* Write some text in the *About* tab, and
+* Make a group Private (rather than Secret).
+
+
+Closed Groups
+~~~~~~~~~~~~~
+..  * The ability to close a group.
+
+Administrators can now close groups [#closed]_. There are two reasons for this. 
+
+#. The group may be *starting*, and the administrator does not want the
+   members to post until everyone is in the group.
+#. The group may be *finished*, and the administrator does not want any
+   more posts to be made, but he or she still wants the archive available.
+
+While there is no front-end user interface that allows the group-type to be
+changed, an administrator can change the type of the group by making a
+change in the ZMI.
+
+Profile Search
+~~~~~~~~~~~~~~
+..  * A new (basic) profile-search system.
+
+A simple profile search has been added [#profileSearch]_. A more complex
+search system has not been added because the privacy issues are still being
+resolved.
+
+SVG Thumbnails
+~~~~~~~~~~~~~~
+
+Thanks to Bill Bushey, GroupServer now correctly displays the thumbnail of
+SVG images [#svg]_.
+
+Changes to the Underlying System
+--------------------------------
+
+Configuration System
+~~~~~~~~~~~~~~~~~~~~
+..  * A new configuration system, to make email and database setup easier.
+
+Relstorage
+~~~~~~~~~~
+..  * Using relstorage as the default storage system for the ZMI.
+
+Redis
+~~~~~
+..  * Optionally using the redis cache-server to improve performance.
+
+SQL Alchemy Update
+~~~~~~~~~~~~~~~~~~
+..  * Switching to the *latest* version of sqlalchemy, rather than the
+..    ancient version we were stuck on.
+
+Bug 203 https://redmine.iopen.net/issues/203
+
+New Site Homepage
+~~~~~~~~~~~~~~~~~
+..  * A new flexible site homepage.
+
+Feature 3457 https://redmine.iopen.net/issues/3457
+
+More Flexible Group Page
+~~~~~~~~~~~~~~~~~~~~~~~~
+..  * A more flexible group page.
+
+Feature 419 https://redmine.iopen.net/issues/419
+
+Improved Email Handling
+~~~~~~~~~~~~~~~~~~~~~~~
+..  * A new email-sending system.
+..  * A new Postfix-to-GroupServer gateway script that is comparatively easy
+..    to use.
+..  * Better (XVERP) bounce-handling.
+
+Bug 365 https://redmine.iopen.net/issues/365
+Feature 678 https://redmine.iopen.net/issues/687
+Feature 3536 https://redmine.iopen.net/issues/3536
+
+New Authentication System
+~~~~~~~~~~~~~~~~~~~~~~~~~
+..  * A new authentication system for server-side scripts.
+
+Bug 3416  https://redmine.iopen.net/issues/3416
+
+Performance Improvements
+~~~~~~~~~~~~~~~~~~~~~~~~
+..  * A stack of performance improvements and code-cleanups.
+
+Feature 279 https://redmine.iopen.net/issues/279
+Bug 3659 https://redmine.iopen.net/issues/3659
+
+Get Absinthe
+============
+
+To get Banana Split go to `the Downloads page for GroupServer`_ and
+follow `the GroupServer Installation documentation`_. Those who already
+have a functioning installation can `update an existing GroupServer
+system`_.
+
+
+Update an Existing GroupServer System
+-------------------------------------
+
+Resources
+=========
+
+- Code repository: https://source.iopen.net/groupserver/
+- Questions and comments to http://groupserver.org/groups/development
+- Report bugs at https://redmine.iopen.net/projects/groupserver
+
+.. [#noSearch] The *Search* box that used to appear on every page has now
+               been removed, as it is easier to use the *Search* entry in
+               the *Topics* tab. This closes `Bug 3434`_.
+.. _Bug 3434: https://redmine.iopen.net/issues/3434
+.. [#postSearch] Searching in posts closes `Feature 3497`_.
+.. _Feature 3497: https://redmine.iopen.net/issues/3497
+.. [#clickableKW] Creating topic keywords that can be clicked closes
+                  `Feature 878`_.
+.. _Feature 878: https://redmine.iopen.net/issues/878
+.. [#FTR] Using the full-text retrieval feature of PostgreSQL_ closes
+          `Feature 224`_.
+.. _Feature 224: https://redmine.iopen.net/issues/224
+.. [#nonAscii] Being able to search for non-ASCII characters closes `Bug 603`_.
+.. _Bug 603: https://redmine.iopen.net/issues/603
+.. [#forbidden] Updating the *Permission Denied* page closes `Bug 646`_.
+.. _Bug 646: https://redmine.iopen.net/issues/646
+.. [#encouragement] Creating the encouragement closes `Feature 3501`_ and
+                    `Feature 177`_.
+.. _Feature 3501: https://redmine.iopen.net/issues/3501
+.. _Feature 177: https://redmine.iopen.net/issues/177
+.. [#closed] Creating the closed-group closes `Feature 449`_.
+.. _Feature 449: https://redmine.iopen.net/issues/449
+.. [#profileSearch] The creation of a basic profile search closes `Feature
+                    3486`_.
+.. _Feature 3486: https://redmine.iopen.net/issues/3486
+.. [#svg] Handling SVG Thumbnails closes `Bug 635`_.
+.. _Bug 635: https://redmine.iopen.net/issues/635
+..  _GroupServer.org: http://groupserver.org/
+..  _OnlineGroups.Net: http://onlinegroups.net/
+..  _Creative Commons Attribution-Share Alike 3.0 New Zealand License:
+    http://creativecommons.org/licenses/by-sa/3.0/nz/
+..  _Michael JasonSmith: http://groupserver.org/p/mpj17
+..  _Richard Waid: http://groupserver.org/p/richard
+..  _Dan Randow: http://groupserver.org/p/danr
+..  _The Downloads page for GroupServer: http://groupserver.org/downloads
+..  _The GroupServer Installation documentation: 
+    http://groupserver.org/downloads/install
+.. _PostgreSQL: http://postgresql.org
