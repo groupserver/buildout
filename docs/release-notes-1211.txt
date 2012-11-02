@@ -4,7 +4,7 @@
 Release Notes
 =============
 -------------------------------------------------
-GroupServer 12.06 — Absinthe Acquired Arbitrarily
+GroupServer 12.11 — Absinthe Acquired Arbitrarily
 -------------------------------------------------
 
 :Authors: `Michael JasonSmith`_; `Richard Waid`_; `Dan Randow`_
@@ -20,8 +20,8 @@ GroupServer 12.06 — Absinthe Acquired Arbitrarily
 Introduction
 ============
 
-There are sixteen major `changes to GroupServer`_ in the Absinthe release —
-making the system more useful, usable and extensible for both group
+There are fourteen major `changes to GroupServer`_ in the Absinthe release
+— making the system more useful, usable and extensible for both group
 members, administrators, and developers. You can `get Absinthe`_
 immediately.
 
@@ -41,7 +41,7 @@ Changes Visible to Participants
 The most visible change that is visible to the participants is a `new
 search system`_.  Some `better error pages`_ for when things go wrong have
 also been created. To help participants and administrators there is a `new
-help system`_, while `an in-context administration guide`_ will help
+help system`_, while an `in-context administration guide`_ will help
 administrators get their new group going more easily. Administrators now
 have the ability to create `closed groups`_, and the new `profile search`_
 will help administrators fine participant's profiles.
@@ -87,8 +87,8 @@ will automatically show help for the features that are installed in
 GroupServer, including the custom features. Some of the old pages have been
 retained and updated.
 
-An In-Context Administration Guide
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+In-Context Administration Guide
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 ..  * An in-context guide to group administrators to make it easier to get
 ..    started.
 
@@ -127,42 +127,40 @@ resolved.
 SVG Thumbnails
 ~~~~~~~~~~~~~~
 
-Thanks to Bill Bushey, GroupServer now correctly displays the thumbnail of
+Thanks to `Bill Bushey`_, GroupServer now correctly displays the thumbnail of
 SVG images [#svg]_.
 
 Changes to the Underlying System
 --------------------------------
 
+We have made significant changes to the underlying GroupServer system in
+the Absinthe release. The system will be easier to maintain because of a
+new `configuration system`_, `improved email handling`_, and a `new
+authentication system`_. Installation is simpler because `relstorage`_ is
+used by default. There have also been some significant `performance
+improvements`_. Developers will notice the `SQLAlchemy update`_, and a
+`more flexible group page`_.
+
+The changes to the underlying system have been so extensive that we have
+decided to change the naming scheme for the GroupServer releases. The new
+releases belong to the **Awesome Aperitifs** series. Hence this *Absinthe
+Acquired Arbitrarily* release. Internally, the eggs in this series are
+given the version 2.0 (which you can see by looking at the ``versions.cfg``
+file in the build directory). The version-number of the *release* will
+continue to use the ``month.day`` format. The old series was known as
+**Frozen Treats**; *Faloodeh Consumed with an Eye on History* was the
+aptly-named last release in that series. (Eggs in the Frozen Treats series
+were given the 1.0 version.)
+
 Configuration System
 ~~~~~~~~~~~~~~~~~~~~
 ..  * A new configuration system, to make email and database setup easier.
 
-Relstorage
-~~~~~~~~~~
-..  * Using relstorage as the default storage system for the ZMI.
-
-Redis
-~~~~~
-..  * Optionally using the redis cache-server to improve performance.
-
-SQL Alchemy Update
-~~~~~~~~~~~~~~~~~~
-..  * Switching to the *latest* version of sqlalchemy, rather than the
-..    ancient version we were stuck on.
-
-Bug 203 https://redmine.iopen.net/issues/203
-
-New Site Homepage
-~~~~~~~~~~~~~~~~~
-..  * A new flexible site homepage.
-
-Feature 3457 https://redmine.iopen.net/issues/3457
-
-More Flexible Group Page
-~~~~~~~~~~~~~~~~~~~~~~~~
-..  * A more flexible group page.
-
-Feature 419 https://redmine.iopen.net/issues/419
+A new configuration system is now used for systems including the database,
+`improved email handling`_, and `new authentication system`_ settings. It
+is based on a INI file, located in ``parts/instance/gsconfig.ini``. By
+placing the configuration in a file that is external to the ZODB it is
+hoped to make administration simpler, especially for production systems.
 
 Improved Email Handling
 ~~~~~~~~~~~~~~~~~~~~~~~
@@ -171,34 +169,88 @@ Improved Email Handling
 ..    to use.
 ..  * Better (XVERP) bounce-handling.
 
-Bug 365 https://redmine.iopen.net/issues/365
-Feature 678 https://redmine.iopen.net/issues/687
-Feature 3536 https://redmine.iopen.net/issues/3536
+With the new `configuration system`_ the setup for the *outgoing* SMTP
+system has moved from the ZMI to an INI file [#mailhost]_. Documentation
+for the new outgoing SMTP system can be found in `the README for the
+gs.email product`_.
+
+The script that is used to add email messages to a group, the *incoming*
+SMTP system, has been rewritten [#smtp2gs]_. It is now easier to use,
+better documented, and works. Documentation for the new script can be found
+by running ``./bin/smtp2gs -h`` or reading `the README for the
+gs.group.messages.add.smtp2gs product`_.
 
 New Authentication System
 ~~~~~~~~~~~~~~~~~~~~~~~~~
 ..  * A new authentication system for server-side scripts.
 
-Bug 3416  https://redmine.iopen.net/issues/3416
+A new authentication system has been created, for the server-side scripts
+[#auth]_. These scripts, such as the those involved in the `improved email
+handling`_, now pass a *token* to the server when they carry out
+tasks. This eliminates the need to store the password of the administrator
+in various plain-text files.
+
+Relstorage
+~~~~~~~~~~
+..  * Using relstorage as the default storage system for the ZMI.
+
+By default `Relstorage`_ is now used to store the ZODB. This system stores
+the pickled objects in a relational database, rather than in the
+file-system. This allows greater scalability, without the need to
+separately install Zope Enterprise Objects (ZEO).
 
 Performance Improvements
 ~~~~~~~~~~~~~~~~~~~~~~~~
 ..  * A stack of performance improvements and code-cleanups.
+..  * Optionally using the redis cache-server to improve performance.
 
-Feature 279 https://redmine.iopen.net/issues/279
-Bug 3659 https://redmine.iopen.net/issues/3659
+There have been some major performance improvements made to GroupServer in
+the Absinthe release. This includes the removal of some old poorly
+performing code [#divisionObject]_, and altering some of the member
+management code [#members]_.
+
+SQLAlchemy Update
+~~~~~~~~~~~~~~~~~~
+..  * Switching to the *latest* version of sqlalchemy, rather than the
+..    ancient version we were stuck on.
+
+The entire interface between GroupServer and the PostgreSQL_ relational
+database has been rewritten [#dbError]_. This has allowed GroupServer to
+update its SQLAlchemy_ dependency from the ancient 0.3 release to the
+current 0.7 release.
+
+
+More Flexible Group Page
+~~~~~~~~~~~~~~~~~~~~~~~~
+..  * A more flexible group page.
+
+The group page was refactored to make it more flexible [#groupHome]_. This
+allows the addition of the `in-context administration guide`_, and for
+other features to be added by skins.
 
 Get Absinthe
 ============
 
-To get Banana Split go to `the Downloads page for GroupServer`_ and
-follow `the GroupServer Installation documentation`_. Those who already
-have a functioning installation can `update an existing GroupServer
-system`_.
+To get Absinthe go to `the Downloads page for GroupServer`_ and follow `the
+GroupServer Installation documentation`_. Those who already have a
+functioning installation can `update an existing GroupServer system`_.
 
 
 Update an Existing GroupServer System
 -------------------------------------
+
+Updating a system running the Faloodeh release of GroupServer (12.06) to
+Absinthe is a three-step process, which includes updating the `relational
+database`_, the `products`_, and the `scripts`_.
+
+Relational Database
+~~~~~~~~~~~~~~~~~~~
+
+Products
+~~~~~~~~
+
+Scripts
+~~~~~~~
 
 Resources
 =========
@@ -234,6 +286,34 @@ Resources
 .. _Feature 3486: https://redmine.iopen.net/issues/3486
 .. [#svg] Handling SVG Thumbnails closes `Bug 635`_.
 .. _Bug 635: https://redmine.iopen.net/issues/635
+.. [#mailhost] Moving the SMTP configuration to an INI file means that the
+               two ``MailHost`` instances from the ZODB can be removed,
+               which closes `Bug 365`_.
+.. _Bug 365: https://redmine.iopen.net/issues/365
+.. _The README for the gs.email product:
+   https://source.iopen.net/groupserver/gs.email/
+.. [#smtp2gs] Rewriting the script that is used to add email messages to a
+              group closes `Feature 687`_ and `Feature 3536`_.
+.. _Feature 687: https://redmine.iopen.net/issues/687
+.. _Feature 3536: https://redmine.iopen.net/issues/3536
+.. _The README for the gs.group.messages.add.smtp2gs product:
+   https://source.iopen.net/groupserver/gs.group.messages.add.smtp2gs/
+.. [#auth] The creation of a new authentication system closes `Bug 3416`_.
+.. _Bug 3416:  https://redmine.iopen.net/issues/3416
+.. _Feature 279: https://redmine.iopen.net/issues/279
+.. [#divisionObject] The removal of the old ``division_object`` getter
+                     closes `Bug 279`_.
+.. _Bug 279: https://redmine.iopen.net/issues/279
+.. [#members] The optimisation of the member-handling code closes `Bug
+              3659`_.
+.. _Bug 3659: https://redmine.iopen.net/issues/3659
+.. [#dbError] An unintentional site-effect of rewriting the database
+             interface was a fix for `Bug 203`_.
+.. _Bug 203: https://redmine.iopen.net/issues/203
+.. [#groupHome] As part of the update to the group, `Feature 419`_ was
+                closed.
+.. _Feature 419: https://redmine.iopen.net/issues/419
+
 ..  _GroupServer.org: http://groupserver.org/
 ..  _OnlineGroups.Net: http://onlinegroups.net/
 ..  _Creative Commons Attribution-Share Alike 3.0 New Zealand License:
@@ -241,7 +321,10 @@ Resources
 ..  _Michael JasonSmith: http://groupserver.org/p/mpj17
 ..  _Richard Waid: http://groupserver.org/p/richard
 ..  _Dan Randow: http://groupserver.org/p/danr
+..  _Bill Bushey: http://groupserver.org/p/wbushey
 ..  _The Downloads page for GroupServer: http://groupserver.org/downloads
 ..  _The GroupServer Installation documentation: 
     http://groupserver.org/downloads/install
+.. _Relstorage: http://pypi.python.org/pypi/RelStorage
 .. _PostgreSQL: http://postgresql.org
+.. _SQLAlchemy: http://www.sqlalchemy.org/
