@@ -31,20 +31,19 @@ Acknowledgements
 Changes to GroupServer
 ======================
 
-The `changes visible to participants`_ are mostly improvements to existing
-features, rather than new features. In contrast, the `changes to the
-underlying system`_ are complex and extensive.
+The `changes visible to participants`_ are mostly subtle improvements to
+existing features, rather than new features. In contrast, the `changes to
+the underlying system`_ are complex and extensive.
 
 Changes Visible to Participants
 --------------------------------
-
 The most visible change that is visible to the participants is a `new
-search system`_.  Some `better error pages`_ for when things go wrong have
-also been created. To help participants and administrators there is a `new
-help system`_, while an `in-context administration guide`_ will help
-administrators get their new group going more easily. Administrators now
-have the ability to create `closed groups`_, and the new `profile search`_
-will help administrators fine participant's profiles.
+search system`_.  Some `better error pages`_ have also been created. To
+help participants and administrators there is a `new help system`_, while
+an `in-context administration guide`_ will help administrators get their
+new group going more easily. Administrators now have the ability to create
+`closed groups`_, and the new `profile search`_ will help administrators
+find participant's profiles. Finally, `SVG thumbnails`_ are now shown.
 
 New Search System
 ~~~~~~~~~~~~~~~~~
@@ -57,17 +56,17 @@ The new search system is the most visible change in Absinthe.
   *Search* entry [#noSearch]_.
 * The *Posts* tab in a group has as *Search* entry also, allowing posts to
   be searched [#postSearch]_.
-* Clicking on a topic keyword with search for other topics with that
-  keyword [#clickableKW]_.
-* Searching now uses *stems*; for example, searching for ``search`` will
-  match topics that contain the words ``searches``, ``searching`` or
-  ``searched``.
-* Searching is now much faster, as the full-text retrieval features of
-  PostgreSQL_ are used [#FTR]_.
+* Clicking a topic keyword will search for other topics with that keyword
+  [#clickableKW]_.
+* Searching now uses *stems*; searching for ``search`` will match topics
+  that contain the words ``searches``, ``searching`` or ``searched``, for
+  example.
+* Searching is faster, as the full-text retrieval features of PostgreSQL_
+  are used [#FTR]_.
 * The display of topics in a site or group is much faster, as the keywords
   are now generated when someone posts, rather than when the topic is
   loaded.
-* Non-ASCII characters can now be searched [#nonAscii]_
+* Searching using non-ASCII characters now works [#nonAscii]_.
 
 Better Error Pages
 ~~~~~~~~~~~~~~~~~~
@@ -127,8 +126,8 @@ resolved.
 SVG Thumbnails
 ~~~~~~~~~~~~~~
 
-Thanks to `Bill Bushey`_, GroupServer now correctly displays the thumbnail of
-SVG images [#svg]_.
+Thanks to `Bill Bushey`_, GroupServer now correctly displays a thumbnail of
+an SVG image [#svg]_.
 
 Changes to the Underlying System
 --------------------------------
@@ -156,11 +155,11 @@ Configuration System
 ~~~~~~~~~~~~~~~~~~~~
 ..  * A new configuration system, to make email and database setup easier.
 
-A new configuration system is now used for systems including the database,
-`improved email handling`_, and `new authentication system`_ settings. It
-is based on a INI file, located in ``parts/instance/gsconfig.ini``. By
-placing the configuration in a file that is external to the ZODB it is
-hoped to make administration simpler, especially for production systems.
+Administration is now simpler, especially for production systems, as the
+configuration for important parts of GroupServer are now in a file that is
+external to the ZODB. The new configuration system handles the database,
+the `improved email handling`_, and the `new authentication system`_. It is
+based on a INI file, located in ``parts/instance/gsconfig.ini``.
 
 Improved Email Handling
 ~~~~~~~~~~~~~~~~~~~~~~~
@@ -169,12 +168,16 @@ Improved Email Handling
 ..    to use.
 ..  * Better (XVERP) bounce-handling.
 
-With the new `configuration system`_ the setup for the *outgoing* SMTP
-system has moved from the ZMI to an INI file [#mailhost]_. Documentation
-for the new outgoing SMTP system can be found in `the README for the
-gs.email product`_.
+The email-handling subsystem of GroupServer has been completely
+rewritten. Changes have been made to both the handling of outgoing mail and
+incoming mail.
 
-The script that is used to add email messages to a group, the *incoming*
+The setup for the **outgoing** SMTP system has moved from the ZODB
+(accessed through the ZMI) to an INI file [#mailhost]_, thanks to the new
+`configuration system`_. Documentation for the new outgoing SMTP system can
+be found in `the README for the gs.email product`_.
+
+The script that is used to add email messages to a group, the **incoming**
 SMTP system, has been rewritten [#smtp2gs]_. It is now easier to use,
 better documented, and works. Documentation for the new script can be found
 by running ``./bin/smtp2gs -h`` or reading `the README for the
@@ -194,10 +197,11 @@ Relstorage
 ~~~~~~~~~~
 ..  * Using relstorage as the default storage system for the ZMI.
 
-By default `Relstorage`_ is now used to store the ZODB. This system stores
-the pickled objects in a relational database, rather than in the
-file-system. This allows greater scalability, without the need to
-separately install Zope Enterprise Objects (ZEO).
+By default `the Relstorage product`_ is now used to store the ZODB. This
+system stores the pickled objects in a relational database, rather than in
+the file-system. (The PostgreSQL_ database is used by GroupServer.) This
+allows greater scalability, without the need to separately install Zope
+Enterprise Objects (ZEO).
 
 Performance Improvements
 ~~~~~~~~~~~~~~~~~~~~~~~~
@@ -325,6 +329,6 @@ Resources
 ..  _The Downloads page for GroupServer: http://groupserver.org/downloads
 ..  _The GroupServer Installation documentation: 
     http://groupserver.org/downloads/install
-.. _Relstorage: http://pypi.python.org/pypi/RelStorage
+.. _the Relstorage product: http://pypi.python.org/pypi/RelStorage
 .. _PostgreSQL: http://postgresql.org
 .. _SQLAlchemy: http://www.sqlalchemy.org/
