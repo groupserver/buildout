@@ -47,8 +47,6 @@ find participant's profiles. Finally, `SVG thumbnails`_ are now shown.
 
 New Search System
 ~~~~~~~~~~~~~~~~~
-..  * A new full-text retrieval system, taking full advantage of PostgreSQL.
-..  * A new keyword generation system that is faster and better.
 
 The new search system is the most visible change in Absinthe. 
 
@@ -70,7 +68,6 @@ The new search system is the most visible change in Absinthe.
 
 Better Error Pages
 ~~~~~~~~~~~~~~~~~~
-..  * Better error pages.
 
 The *Permission Denied* page has been improved to add some suggestions
 about what the participant should do [#forbidden]_. In addition the
@@ -79,7 +76,6 @@ page in the body of the email message to the Support address.
 
 New Help System
 ~~~~~~~~~~~~~~~
-..  * New help pages 
 
 The old monolithic manuals have been replaced. The new more dynamic system
 will automatically show help for the features that are installed in
@@ -88,8 +84,6 @@ retained and updated.
 
 In-Context Administration Guide
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-..  * An in-context guide to group administrators to make it easier to get
-..    started.
 
 To help get groups started there is a new system to encourage the group
 administrator along the way [#encouragement]_. The current advice includes:
@@ -102,7 +96,6 @@ administrator along the way [#encouragement]_. The current advice includes:
 
 Closed Groups
 ~~~~~~~~~~~~~
-..  * The ability to close a group.
 
 Administrators can now close groups [#closed]_. There are two reasons for this. 
 
@@ -117,7 +110,6 @@ change in the ZMI.
 
 Profile Search
 ~~~~~~~~~~~~~~
-..  * A new (basic) profile-search system.
 
 A simple profile search has been added [#profileSearch]_. A more complex
 search system has not been added because the privacy issues are still being
@@ -153,7 +145,6 @@ were given the 1.0 version.)
 
 Configuration System
 ~~~~~~~~~~~~~~~~~~~~
-..  * A new configuration system, to make email and database setup easier.
 
 Administration is now simpler, especially for production systems, as the
 configuration for important parts of GroupServer are now in a file that is
@@ -163,10 +154,6 @@ based on a INI file, located in ``parts/instance/gsconfig.ini``.
 
 Improved Email Handling
 ~~~~~~~~~~~~~~~~~~~~~~~
-..  * A new email-sending system.
-..  * A new Postfix-to-GroupServer gateway script that is comparatively easy
-..    to use.
-..  * Better (XVERP) bounce-handling.
 
 The email-handling subsystem of GroupServer has been completely
 rewritten. Changes have been made to both the handling of outgoing mail and
@@ -185,7 +172,6 @@ gs.group.messages.add.smtp2gs product`_.
 
 New Authentication System
 ~~~~~~~~~~~~~~~~~~~~~~~~~
-..  * A new authentication system for server-side scripts.
 
 A new authentication system has been created, for the server-side scripts
 [#auth]_. These scripts, such as the those involved in the `improved email
@@ -195,7 +181,6 @@ in various plain-text files.
 
 Relstorage
 ~~~~~~~~~~
-..  * Using relstorage as the default storage system for the ZMI.
 
 By default `the Relstorage product`_ is now used to store the ZODB. This
 system stores the pickled objects in a relational database, rather than in
@@ -205,8 +190,6 @@ Enterprise Objects (ZEO).
 
 Performance Improvements
 ~~~~~~~~~~~~~~~~~~~~~~~~
-..  * A stack of performance improvements and code-cleanups.
-..  * Optionally using the redis cache-server to improve performance.
 
 There have been some major performance improvements made to GroupServer in
 the Absinthe release. This includes the removal of some old poorly
@@ -215,8 +198,6 @@ management code [#members]_.
 
 SQLAlchemy Update
 ~~~~~~~~~~~~~~~~~~
-..  * Switching to the *latest* version of sqlalchemy, rather than the
-..    ancient version we were stuck on.
 
 The entire interface between GroupServer and the PostgreSQL_ relational
 database has been rewritten [#dbError]_. This has allowed GroupServer to
@@ -226,7 +207,6 @@ current 0.7 release.
 
 More Flexible Group Page
 ~~~~~~~~~~~~~~~~~~~~~~~~
-..  * A more flexible group page.
 
 The group page was refactored to make it more flexible [#groupHome]_. This
 allows the addition of the `in-context administration guide`_, and for
