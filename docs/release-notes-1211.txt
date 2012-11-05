@@ -29,6 +29,10 @@ immediately.
 Acknowledgements
 ================
 
+Thanks to `Bill Bushey`_, with the support of `E-Democracy.org`_, for the
+improvements to the `SVG thumbnails`_. Thanks to `Marek Kuziel`_ for
+testing some early versions of Absinthe.
+
 ----------------------
 Changes to GroupServer
 ----------------------
@@ -121,8 +125,10 @@ resolved.
 SVG Thumbnails
 --------------
 
-Thanks to `Bill Bushey`_, GroupServer now correctly displays a thumbnail of
-an SVG image [#svg]_.
+GroupServer now correctly displays a thumbnail of an SVG image at the
+bottom of each post [#svg]_. This item was picked from the list of `low
+hanging fruit`_, where there are other (relatively) strait forward tasks
+listed.
 
 Changes to the Underlying System
 ================================
@@ -289,6 +295,8 @@ be present in both tables.
 
       ALTER TABLE topic ADD COLUMN fts_vectors tsvector;
 
+.. Drop the old trigger-functions
+
 #.  Drop the old tables that were used for searching::
 
       DROP TABLE topic_word_count;
@@ -426,8 +434,155 @@ topics was displayed.
 Products
 --------
 
+To update an existing GroupServer installation to Absinthe carry out the
+following steps.
+
+#.  Download the Absinthe tar-ball from `the GroupServer download page
+    <http://groupserver.org/downloads>`_.
+
+#.  Uncompress the tar-ball.
+   
+#.  Copy the file ``groupserver-12.11/update-versions.cfg`` to your 
+    existing GroupServer installation, under the name ``versions.cfg``.
+   
+#.  Copy the file ``groupserver-12.11/update-buildout.cfg`` to your 
+    existing GroupServer installation, under the name ``buildout.cfg``.
+
+#.  In your existing GroupServer installation run::
+
+      $ ./bin/buildout
+
+#.  Restart your GroupServer instance.
+
 Scripts
 -------
+
+Two scripts in the ZMI have to be replaced to gain some of the significant
+`performance improvements`_. 
+
+#.  Visit the ZMI for your site. By default it is at
+    <http://localhost:8080/manage>.
+
+#.  Go to the folder ``/example/ListManager``.
+
+#.  Select the ``xwf_email_header`` script.
+
+#.  Replace the contents of the script with the following::
+
+      groupId = list_object.listId()
+      siteId = list_object.siteId
+      site = getattr(context.Content, siteId)
+      group_object = getattr(site.groups, groupId)
+      
+      # we copy the propertysheet, because we won't be able to access it
+      # in the lower layer
+      group_properties = {}
+      for p in group_object.propertyItems():
+          group_properties[p[0]] = p[1]
+      group_properties['id'] = group_object.getId()
+
+      xmailer = getValueFor('xmailer')
+      mailto = getValueFor('mailto')
+      replyToProp = list_object.getProperty('replyto','')
+      if replyToProp == 'sender':
+          replyto = None
+      else:
+          replyto = getValueFor('mailto') 
+
+      try:
+          group_properties['division_id'] = site.aq_explicit.getId()
+          group_properties['division_title'] = site.aq_explicit.title
+      except:
+          group_properties['division_id'] = ''
+          group_properties['division_title'] = ''
+
+      files = []
+      try:
+          storage = context.FileLibrary2.get_fileStorage()
+          for file_id in file_ids:
+              file = storage.get_file(file_id)
+              if file:
+            files.append(file)
+      except:
+          pass
+
+      return context.email_header(REQUEST, list_object=list_object, 
+                            group_properties=group_properties,
+                            getValueFor=getValueFor, title=title, mail=mail, 
+                            body=body, files=files, post_id=post_id, 
+                            mailto=mailto, replyto=replyto, 
+                            xmailer=xmailer).strip()
+
+#.  Click the ``Save Changes`` button.
+
+#.  Click ``ListManager`` (at the top of the page) to return to the List
+    Manager folder.
+
+#.  Select the ``xwf_email_footer`` script.
+
+#.  Replace the contents of the script with the following::
+
+      groupId = list_object.listId()
+      siteId = list_object.siteId
+      site = getattr(context.Content, siteId)
+      group_object = getattr(site.groups, groupId)
+
+      # we copy the propertysheet, because we won't be able to access it
+      # in the lower layer
+      group_properties = {}
+      for p in group_object.propertyItems():
+          group_properties[p[0]] = p[1]
+      group_properties['id'] = group_object.getId()
+
+      try:
+          group_properties['division_id'] = site.aq_explicit.getId()
+          group_properties['division_title'] = site.aq_explicit.title
+      except:
+          group_properties['division_id'] = ''
+          group_properties['division_title'] = ''
+
+      # group_properties['canonical_host'] = \
+      #   group_object.Scripts.get.option('canonicalHost')
+      divConfig = site.DivisionConfiguration
+      group_properties['canonical_host'] = divConfig.getProperty('canonicalHost', '')
+
+      try:
+          from_addr = context.parseaddr(mail.get('from',''))[1]
+      except:
+          from_addr = ''
+
+      if from_addr:
+          user = context.acl_users.get_userByEmail(from_addr)
+      else:
+          user = None
+
+      files = []
+      try:
+          storage = context.FileLibrary2.get_fileStorage()
+          for file_id in file_ids:
+              file = storage.get_file(file_id)
+              if file:
+                  files.append(file)
+      except:
+          pass
+
+      # Get the virtual file folder "files" from the group.
+
+      # Get the public_access_period from "files"
+      pap = int(getattr(group_object.files, 'public_access_period', 0))
+      # Turn the public_access_period to a Boolean
+      pap_set = bool(pap)
+      # Pass the Boolean to the "email_footer" template
+      mailto = getValueFor('mailto')
+
+      return context.email_footer(REQUEST, list_object=list_object, 
+                            group_properties=group_properties,
+                            getValueFor=getValueFor, title=title, 
+                            mailto=mailto, mail=mail, body=body, 
+                            user_object=user, from_addr=from_addr,
+                            files=files, post_id=post_id, pap_set=pap_set)
+
+#.  Click the ``Save Changes`` button.
 
 ---------
 Resources
@@ -500,6 +655,9 @@ Resources
 ..  _Richard Waid: http://groupserver.org/p/richard
 ..  _Dan Randow: http://groupserver.org/p/danr
 ..  _Bill Bushey: http://groupserver.org/p/wbushey
+..  _E-Democracy.org: http://e-democracy.org/
+..  _Marek Kuziel: https://onlinegroups.net/p/marek
+..  _low hanging fruit: https://redmine.iopen.net/projects/groupserver/wiki/LowHangingFruit
 ..  _The Downloads page for GroupServer: http://groupserver.org/downloads
 ..  _The GroupServer Installation documentation: 
     http://groupserver.org/downloads/install
