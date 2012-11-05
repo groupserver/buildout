@@ -3,13 +3,13 @@
 =============
 Release Notes
 =============
--------------------------------------------------
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 GroupServer 12.11 — Absinthe Acquired Arbitrarily
--------------------------------------------------
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 :Authors: `Michael JasonSmith`_; `Richard Waid`_; `Dan Randow`_
 :Contact: Michael JasonSmith <mpj17@onlinegroups.net>
-:Date: 2012-11-05
+:Date: 2012-11-12
 :Organization: `GroupServer.org`_
 :Copyright: This document is licensed under a
   `Creative Commons Attribution-Share Alike 3.0 New Zealand License`_
@@ -236,25 +236,30 @@ Relational Database
 
 The biggest change that is needed to update GroupServer to the Absinthe
 release is to update the rational database, to support the `new search
-system`_.. The tables that are used to store the `posts`_, `topics`_ and
-`topic keywords`_ all need to be updated.
+system`_ and some of the `performance improvements`_. The tables that are
+used to store the `posts`_, `topics`_ and `topic keywords`_ all need to be
+updated.
 
 Posts
 ~~~~~
 
-Begin by updating the code that stores the **posts**.
+Begin by updating the table that stores the posts.
 
 #.  Log in to the PostgreSQL_ command line::
    
-      $ psql -h locahlost -Ugsadmin groupserver
+      $ psql -hlocahlost -Ugsadmin groupserver
 
-#.  Add the full-text retrieval (FTR, or full-text search, FTS) column to
-    the ``post`` table by executing the following SQL::
+    Where ``gsadmin`` is the PostgreSQL user that you set up when
+    installing GroupServer, and ``groupserver`` is the name of the
+    database.
+
+#.  Alter the ``post`` table to add the full-text retrieval (FTR, or
+    full-text search, FTS) column, by executing the following SQL::
 
      ALTER TABLE post ADD COLUMN fts_vectors tsvector;
 
-#.  Update the rows of the ``post`` table, to add the FTR data, based on the
-    message body and title. This will take some time::
+#.  Update the rows of the ``post`` table to add the FTR data. This will
+    take some time::
 
      UPDATE post 
      SET fts_vectors = to_tsvector('english', left(coalesce(subject,'') || ' ' || coalesce(body, ''), 1048575));
@@ -277,8 +282,8 @@ Begin by updating the code that stores the **posts**.
 Topics
 ~~~~~~
 
-Because people search **topics** as well as posts the FTR information needs
-to be present in both tables.
+Because people search topics as well as posts the FTR information needs to
+be present in both tables.
 
 #.  Add the FTR column to the ``topic`` table::
 
@@ -288,6 +293,9 @@ to be present in both tables.
 
       DROP TABLE topic_word_count;
       DROP TABLE word_count;
+
+    Even with the FTR data duplicated in the ``post`` and ``topic`` table,
+    there is a nett saving of space once these two tables are dropped.
 
 #.  Add the function that is used to create the *body* of the topic::
 
@@ -309,7 +317,7 @@ to be present in both tables.
         END;
       $$ LANGUAGE 'plpgsql';
 
-#.  Populate the ``topic`` table with FTR data. This will take some time::
+#.  Create the function that will ``topic`` table with FTR data::
 
       CREATE OR REPLACE FUNCTION topic_ftr_populate () 
         RETURNS void AS $$ 
@@ -334,6 +342,10 @@ to be present in both tables.
             END LOOP;
           END;
       $$ LANGUAGE 'plpgsql';
+
+#.  Populate the ``topic`` table with FTR data. This will take some time::
+
+      SELECT topic_ftr_populate();
 
 #.  Create an index for the FTR data. This will take some time::
 
@@ -362,16 +374,54 @@ to be present in both tables.
 Topic Keywords
 ~~~~~~~~~~~~~~
 
-Finally, the *topic keywords* have been completely changed. They are now
-calculated when someone posts, and are stored in the relational
-database. Previously they were calculated when the list of topics was
-displayed. 
+Finally, the system that displays the topic keywords has been changed. The
+keywords are now calculated when someone posts, and are stored in the
+``topic_keywords`` table. Previously they were calculated when the list of
+topics was displayed.
 
-#.  Download the file `03-keywords.sql <https://source.iopen.net/groupserver/gs.group.messages.topic/rawfile/78cf038e3c86b6df0a7dbf2f4950f8438ac72e8e/gs/group/messages/topic/sql/03-keywords.sql>`_
+#.  Download the file `03-keywords.sql
+    <https://source.iopen.net/groupserver/gs.group.messages.topic/rawfile/78cf038e3c86b6df0a7dbf2f4950f8438ac72e8e/gs/group/messages/topic/sql/03-keywords.sql>`_.
+    This contains the SQL that is normally executed when Absinthe is
+    installed.
 
 #.  Interpret (execute) the file in PostgreSQL::
 
       \i /path/to/the/download/03-keywords.sql
+
+    Where ``/path/to/the/download`` is the full path to where the file
+    ``03-keywords.sql`` is stored.
+
+#.  Create the function to populate the new ``topic_keywords`` table::
+
+      CREATE OR REPLACE FUNCTION topic_keywords_populate () 
+        RETURNS void AS $$ 
+          DECLARE
+            total_topics REAL;
+            trecord RECORD;
+            topic_text TEXT;
+            new_keywords TEXT[];
+            i REAL DEFAULT 0;
+            p REAL;
+          BEGIN
+            SELECT CAST(total_rows AS REAL) INTO total_topics
+              FROM rowcount WHERE table_name = 'topic';
+            FOR trecord IN SELECT * FROM topic LOOP
+              RAISE NOTICE 'Topic %', trecord.topic_id;
+              topic_text = topic_body(trecord.topic_id);
+              SELECT ARRAY(SELECT word 
+                             FROM topic_keywords(trecord.topic_id, topic_text))
+                INTO new_keywords;
+              INSERT INTO topic_keywords VALUES(NEW.topic_id, new_keywords);
+              i := i + 1;
+              p := (i / total_topics) * 100;
+              RAISE NOTICE '  Progress % %%', p;
+            END LOOP;
+          END;
+      $$ LANGUAGE 'plpgsql';
+
+#.  Populate the ``topic_keywords`` table. This will take some time::
+
+      SELECT topic_keywords_populate();
 
 Products
 --------
