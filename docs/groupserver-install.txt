@@ -276,13 +276,14 @@ own version of Python 2.6, placed in ``./bin/``. It will then configure
 the PostgreSQL databases that store the data for your site.
 
 Finally, it will start the  `buildout`_ system that will download and 
-install all the requirements for GroupServer (around 30MB of packages)
+install all the requirements for GroupServer (around 32MB of packages)
 including:
   
-* `Zope 2.13`_ (1.5MB)
-* `SQL Alchemy`_ (1MB)
-* `Pillow`_ (0.5MB)
-* `psycopg2`_ (0.25MB)
+* `eGenix.com mx Base`_ (4.4MB)
+* `SQL Alchemy`_ (2.6MB)
+* `jQuery`_ (1.9MB)
+* `Zope 2.13`_ (1.4MB)
+* `feedparser`_ (1.2MB)
 
 It is a good idea to make a cup of coffee, or go to lunch, while
 buildout processes.
@@ -516,4 +517,6 @@ Version Date        Change
 .. _SQL Alchemy: http://www.sqlalchemy.org/
 ..  _Pillow: http://pypi.python.org/pypi/Pillow/
 .. _psycopg2: http://initd.org/psycopg/
-
+.. _eGenix.com mx Base: http://www.egenix.com/products/python/mxBase
+.. _jQuery: https://source.iopen.net/groupserver/gs.content.js.jquery/summary
+.. _feedparser: http://code.google.com/p/feedparser/
