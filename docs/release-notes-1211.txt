@@ -50,7 +50,8 @@ help participants and administrators there is a `new help system`_, while
 an `in-context administration guide`_ will help administrators get their
 new group going more easily. Administrators now have the ability to create
 `closed groups`_, and the new `profile search`_ will help administrators
-find participant's profiles. Finally, `SVG thumbnails`_ are now shown.
+find the profiles of participants. Finally, `SVG thumbnails`_ are now
+shown.
 
 New Search System
 -----------------
@@ -93,7 +94,7 @@ In-Context Administration Guide
 -------------------------------
 
 To help get groups started there is a new system to encourage the group
-administrator along the way [#encouragement]_. The current advice includes:
+administrator [#encouragement]_. The current advice includes:
 
 * Start a topic
 * Invite people, 
@@ -295,7 +296,9 @@ be present in both tables.
 
       ALTER TABLE topic ADD COLUMN fts_vectors tsvector;
 
-.. Drop the old trigger-functions
+#.  Drop the old trigger::
+
+      DROP TRIGGER count_word_count_rows ON word_count;
 
 #.  Drop the old tables that were used for searching::
 
@@ -448,14 +451,43 @@ following steps.
 #.  Copy the file ``groupserver-12.11/update-buildout.cfg`` to your 
     existing GroupServer installation, under the name ``buildout.cfg``.
 
+#.  Disable the creation of the database tables::
+    
+      $ echo 1 > var/create-tables.cfg
+
 #.  In your existing GroupServer installation run::
 
-      $ ./bin/buildout
+      $ ./bin/buildout -n
 
 #.  Restart your GroupServer instance.
 
 Scripts
 -------
+
+Some `external scripts`_ have changed in the Absinthe release of
+GroupServer, and need to be changed. In addition some `ZMI scripts`_ should
+also be updated.
+
+External Scripts
+~~~~~~~~~~~~~~~~
+
+The script ``smtp2zope`` used to be used to marshal an email message from
+Postfix into GroupServer. With the `improved email handling`_ this script
+should be deleted. The replacement script is called ``smtp2gs``. It will be
+created when you update the products_. The command is simpler to use than
+the old script; the options for the script are shown by running::
+
+  $ ./bin/smtp2gs --help
+
+Alternatively, `the README for the gs.group.messages.add.smtp2gs product`_
+documents the options.
+
+The directory ``potfix_config`` in your GroupServer installation will
+contain an example aliases file for Postfix that uses ``smtp2gs``. This can
+be used to replace the old calls to GroupServer from Postfix.
+
+ZMI Scripts
+~~~~~~~~~~~
 
 Two scripts in the ZMI have to be replaced to gain some of the significant
 `performance improvements`_. 
