@@ -82,6 +82,10 @@ about what the participant should do [#forbidden]_. In addition the
 ``mailto`` that is embedded in the page now includes the URL of the problem
 page in the body of the email message to the Support address.
 
+The Unexpected Error (500) page and the Not Found (404) page now work with
+``infrae.wsgi``, for systems that run GroupServer behind a WSGI
+front-end. These error-pages no longer redirect to display the error.
+
 New Help System
 ---------------
 
@@ -100,7 +104,6 @@ administrator [#encouragement]_. The current advice includes:
 * Invite people, 
 * Write some text in the *About* tab, and
 * Make a group Private (rather than Secret).
-
 
 Closed Groups
 -------------
@@ -214,7 +217,6 @@ database has been rewritten [#dbError]_. This has allowed GroupServer to
 update its SQLAlchemy_ dependency from the ancient 0.3 release to the
 current 0.7 release.
 
-
 More Flexible Group Page
 ------------------------
 
@@ -229,7 +231,6 @@ Get Absinthe
 To get Absinthe go to `the Downloads page for GroupServer`_ and follow `the
 GroupServer Installation documentation`_. Those who already have a
 functioning installation can `update an existing GroupServer system`_.
-
 
 Update an Existing GroupServer System
 =====================================
