@@ -423,7 +423,7 @@ topics was displayed.
               SELECT ARRAY(SELECT word 
                              FROM topic_keywords(trecord.topic_id, topic_text))
                 INTO new_keywords;
-              INSERT INTO topic_keywords VALUES(NEW.topic_id, new_keywords);
+              INSERT INTO topic_keywords VALUES(trecord.topic_id, new_keywords);
               i := i + 1;
               p := (i / total_topics) * 100;
               RAISE NOTICE '  Progress % %%', p;
