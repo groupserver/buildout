@@ -24,8 +24,11 @@ do
         echo
     else
         echo
-        echo "There was a problem with the mail configuration. This "
-        echo "must be fixed before proceeding with the installation."
+        echo
+        echo "There was a problem with the mail configuration. Either install"
+        echo "Postfix:"
+        echo "    sudo apt-get install postfix"
+        echo "Or specify a remote SMTP server in the 'config.cfg' file."
         exit
     fi
 done
