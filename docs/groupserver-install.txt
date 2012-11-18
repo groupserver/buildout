@@ -12,13 +12,18 @@ GroupServer Installation
   `Creative Commons Attribution-Share Alike 3.0 New Zealand License`_
   by `OnlineGroups.Net`_.
 
+.. _Creative Commons Attribution-Share Alike 3.0 New Zealand License:
+   http://creativecommons.org/licenses/by-sa/3.0/nz/
+
 We wrote this documentation for people with moderate experience in
 Linux system administration. Installation can be tricky: you have to
 configure at least email sending, the web interface, and persistent
 storage. All these systems must work or installation will fail.
 
-If you get stuck, please ask us questions in `GroupServer
+If you get stuck, please ask us questions in `GroupServer 
 Development`_. Other more detailed guides would be gratefully accepted.
+
+.. _GroupServer Development: http://groupserver.org/groups/development
 
 Quick Start
 ===========
@@ -254,6 +259,8 @@ to be set by you to protect this data.
   `The RelStorage system`_ will store data in a PostgreSQL database for
   Zope. This data is protected by the ``relstorage_password``.
 
+.. _the RelStorage system: http://pypi.python.org/pypi/RelStorage
+
 Run the Installer
 -----------------
 
@@ -280,6 +287,13 @@ including:
 * `jQuery`_ (1.9MB)
 * `Zope 2.13`_ (1.4MB)
 * `feedparser`_ (1.2MB)
+
+.. _eGenix.com mx Base: http://www.egenix.com/products/python/mxBase
+.. _SQL Alchemy: http://www.sqlalchemy.org/
+.. _jQuery: https://source.iopen.net/groupserver/gs.content.js.jquery/summary
+.. _Zope 2.13: http://docs.zope.org/zope2/releases/2.13/
+.. _feedparser: http://code.google.com/p/feedparser/
+
 
 It is a good idea to make a cup of coffee, or go to lunch, while
 buildout processes.
@@ -439,7 +453,9 @@ History
 ======= ==========  ====================================================
 Version Date        Change
 ======= ==========  ====================================================
-12.10   2012-10-25  Removing some odd dependencies.
+12.11   2012-11-19  Adding a link to the Postfix documentation for 
+                    Ubuntu.
+12.11   2012-10-25  Removing some odd dependencies.
 12.05   2012-04-30  Updating the `Configure GroupServer`_ and
                     `Run the Installer`_ sections.
 12.05   2012-04-24  Removing unnecessary dependencies, and using 
@@ -498,27 +514,10 @@ Version Date        Change
    `ConfigParser`_ module, which accepts a syntax very similar to 
    Windows INI files.
 .. _GroupServer.org: http://groupserver.org
-.. _Creative Commons Attribution-Share Alike 3.0 New Zealand License:
-   http://creativecommons.org/licenses/by-sa/3.0/nz/
 .. _OnlineGroups.Net: http://onlinegroups.net
-.. _GroupServer Development: http://groupserver.org/groups/development
 .. _Ubuntu: http://ubuntu.com/
 .. _CentOS: http://centos.org/
-.. _PostgreSQL User Administration by David Pashley:
-   http://www.davidpashley.com/articles/postgresql-user-administration.html
+.. _Buildout: http://www.buildout.org/
+.. _Zope: http://zope.org
 .. _ConfigParser:
    http://docs.python.org/library/configparser.html
-.. _Buildout: http://www.buildout.org/
-.. _setuptools: http://pypi.python.org/pypi/setuptools
-.. _zc.buildout: http://pypi.python.org/pypi/zc.buildout/
-.. _Zope: http://zope.org
-.. _the RelStorage system: http://pypi.python.org/pypi/RelStorage
-.. _Zope 2.13: http://docs.zope.org/zope2/releases/2.13/
-.. _ReportLab: http://www.reportlab.com/
-.. _SQL Alchemy: http://www.sqlalchemy.org/
-..  _Pillow: http://pypi.python.org/pypi/Pillow/
-.. _psycopg2: http://initd.org/psycopg/
-.. _eGenix.com mx Base: http://www.egenix.com/products/python/mxBase
-.. _jQuery: https://source.iopen.net/groupserver/gs.content.js.jquery/summary
-.. _feedparser: http://code.google.com/p/feedparser/
-
