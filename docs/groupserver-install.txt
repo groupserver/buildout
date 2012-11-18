@@ -237,11 +237,7 @@ name and password of the Zope administrator.
   
 ``zope_password``
   The password for the Zope administrator. It can (and should) be
-  changed after GroupServer has been set up. (However, if you change the
-  password after installation you will also have to change the scripts
-  that Postfix uses to communicate with GroupServer, as they store the
-  password too, see `Set up Scripts`_; we realise that the passwords
-  should not be stored in the scripts.)
+  changed after GroupServer has been set up.
 
 Database Storage
 ~~~~~~~~~~~~~~~~
@@ -330,7 +326,12 @@ uses Postfix to:
 
 * Queue email that is delivered to groups, and
 * Pass the email messages to GroupServer.
-  
+
+If you are new to administering Postfix you may find the `Ubuntu Community
+Postfix Documentation`_ useful.
+
+.. _Ubuntu Community Postfix Documentation: https://help.ubuntu.com/community/Postfix
+
 Postfix has to know to run two scripts when email messages come in for your
 GroupServer site. To do this you will have to change some files in the
 Postfix configuration directory. For Ubuntu this directory is
@@ -520,3 +521,4 @@ Version Date        Change
 .. _eGenix.com mx Base: http://www.egenix.com/products/python/mxBase
 .. _jQuery: https://source.iopen.net/groupserver/gs.content.js.jquery/summary
 .. _feedparser: http://code.google.com/p/feedparser/
+
