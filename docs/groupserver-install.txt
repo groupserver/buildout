@@ -6,7 +6,7 @@ GroupServer Installation
 
 :Authors: Michael JasonSmith; Richard Waid; Marek Kuzek; Alice Murphy; Dan Randow
 :Contact: Michael JasonSmith <mpj17@onlinegroups.net>
-:Date: 2012-10-25 (see `History`_)
+:Date: 2012-11-19 (see `History`_)
 :Organization: `GroupServer.org`_
 :Copyright: This document is licensed under a
   `Creative Commons Attribution-Share Alike 3.0 New Zealand License`_
@@ -278,7 +278,7 @@ The system will create a *sandbox* for your GroupServer site, with its
 own version of Python 2.6, placed in ``./bin/``. It will then configure
 the PostgreSQL databases that store the data for your site.
 
-Finally, it will start the  `buildout`_ system that will download and 
+Finally, it will start the `buildout`_ system that will **download** and
 install all the requirements for GroupServer (around 32MB of packages)
 including:
   
@@ -294,6 +294,7 @@ including:
 .. _Zope 2.13: http://docs.zope.org/zope2/releases/2.13/
 .. _feedparser: http://code.google.com/p/feedparser/
 
+:Note: You need a functioning network connection for this step to work.
 
 It is a good idea to make a cup of coffee, or go to lunch, while
 buildout processes.
@@ -445,7 +446,7 @@ database user, and the directory that contains the GroupServer install.
 
 2. Remove the directory that contains the GroupServer install::
 
-    $ rm -r groupserver-1.0beta
+    $ rm -r groupserver-12.11
 
 History
 =======
