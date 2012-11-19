@@ -33,6 +33,19 @@ do
     fi
 done
 
+echo
+echo "Testing the network..."
+echo
+ping -q -c1 eggs.iopen.net
+if [ $? -eq 0 ]; then
+    echo "Can reach the GroupServer repository."
+    echo
+else
+    echo "The repository eggs.iopen.net could not be found. Please fix your "
+    echo "network settings and try again."
+    exit
+fi
+
 # initialise PostgreSQL database
 echo "Setting up the databases"
 sudo su -l -c"createuser -D -S -R -l ${CFG__config__pgsql_user}" postgres
