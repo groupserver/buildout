@@ -444,13 +444,25 @@ following steps.
 #.  Download the Absinthe tar-ball from `the GroupServer download page
     <http://groupserver.org/downloads>`_.
 
-#.  Uncompress the tar-ball.
+#.  Uncompress the tar-ball::
+
+      $ tar cfz groupserver-12.11.tar.gz
+
+#.  Change to the directory that contains your existing GroupServer
+    installation.
+
+#.  Make a backup of your custom configuration::
+
+      $ cp custom.cfg custom-bk.cfg
+
+#.  Copy the new configuration files to your existing GroupServer
+    installation::
+
+      $ cp ../groupserver-12.11/*.cfg .
    
-#.  Copy the file ``groupserver-12.11/update-versions.cfg`` to your 
-    existing GroupServer installation, under the name ``versions.cfg``.
-   
-#.  Copy the file ``groupserver-12.11/update-buildout.cfg`` to your 
-    existing GroupServer installation, under the name ``buildout.cfg``.
+#.  Restore your custom configuration::
+
+      $ mv custom-bk.cfg custom.cfg
 
 #.  Disable the creation of the database tables::
     
