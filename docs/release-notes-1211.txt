@@ -30,8 +30,8 @@ Acknowledgements
 ================
 
 Thanks to `Bill Bushey`_, with the support of `E-Democracy.org`_, for the
-improvements to the `SVG thumbnails`_. Thanks to `Marek Kuziel`_ for
-testing some early versions of Absinthe.
+improvements to the `SVG thumbnails`_. Thanks to Bill and `Marek Kuziel`_
+for testing some early versions of Absinthe.
 
 ----------------------
 Changes to GroupServer
