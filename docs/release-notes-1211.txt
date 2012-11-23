@@ -44,14 +44,13 @@ the underlying system`_ are complex and extensive.
 Changes Visible to Participants
 ===============================
 
-The most visible change that is visible to the participants is a `new
-search system`_.  Some `better error pages`_ have also been created. To
-help participants and administrators there is a `new help system`_, while
-an `in-context administration guide`_ will help administrators get their
-new group going more easily. Administrators now have the ability to create
-`closed groups`_, and the new `profile search`_ will help administrators
-find the profiles of participants. Finally, `SVG thumbnails`_ are now
-shown.
+The most visible change for the participants is a `new search system`_.
+Some `better error pages`_ have also been created. To help participants and
+administrators there is a `new help system`_, while an `in-context
+administration guide`_ will help administrators get their new group going
+more easily. Administrators now have the ability to create `closed
+groups`_, and the new `profile search`_ will help administrators find the
+profiles of participants. Finally, `SVG thumbnails`_ are now shown.
 
 New Search System
 -----------------
@@ -84,7 +83,7 @@ page in the body of the email message to the Support address.
 
 The Unexpected Error (500) page and the Not Found (404) page now work with
 ``infrae.wsgi``, for systems that run GroupServer behind a WSGI
-front-end. These error-pages no longer redirect to display the error.
+front-end. Neither of these error-pages redirect to display the error.
 
 New Help System
 ---------------
@@ -108,7 +107,8 @@ administrator [#encouragement]_. The current advice includes:
 Closed Groups
 -------------
 
-Administrators can now close groups [#closed]_. There are two reasons for this. 
+Administrators can now close groups [#closed]_. There are two reasons for
+needing to do this.
 
 #. The group may be *starting*, and the administrator does not want the
    members to post until everyone is in the group.
@@ -116,8 +116,8 @@ Administrators can now close groups [#closed]_. There are two reasons for this.
    more posts to be made, but he or she still wants the archive available.
 
 While there is no front-end user interface that allows the group-type to be
-changed, an administrator can change the type of the group by making a
-change in the ZMI.
+changed [#select]_, an administrator can change the type of the group by
+making a change in the ZMI.
 
 Profile Search
 --------------
@@ -649,7 +649,8 @@ Resources
 .. [#FTR] Using the full-text retrieval feature of PostgreSQL_ closes
           `Feature 224`_.
 .. _Feature 224: https://redmine.iopen.net/issues/224
-.. [#nonAscii] Being able to search for non-ASCII characters closes `Bug 603`_.
+.. [#nonAscii] Being able to search for non-ASCII characters closes `Bug
+               603`_.
 .. _Bug 603: https://redmine.iopen.net/issues/603
 .. [#forbidden] Updating the *Permission Denied* page closes `Bug 646`_.
 .. _Bug 646: https://redmine.iopen.net/issues/646
@@ -659,6 +660,9 @@ Resources
 .. _Feature 177: https://redmine.iopen.net/issues/177
 .. [#closed] Creating the closed-group closes `Feature 449`_.
 .. _Feature 449: https://redmine.iopen.net/issues/449
+.. [#select] The issue for creating a selectable group type is `Feature
+             702`_.
+.. _Feature 702: https://redmine.iopen.net/issues/702
 .. [#profileSearch] The creation of a basic profile search closes `Feature
                     3486`_.
 .. _Feature 3486: https://redmine.iopen.net/issues/3486
