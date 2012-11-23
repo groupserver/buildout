@@ -66,9 +66,9 @@ for Ubuntu, CentOS, and RedHat Enterprise Linux.
 | System      | Ubuntu                         | CentOS 6.1 or         |
 |             |                                | RHEL 6.1              |
 +=============+================================+=======================+
-| Python 2.6  | ``python2.6``                  | ``python-devel``      |
+| Python      | ``python``                     | ``python-devel``      |
 |             +--------------------------------+-----------------------+
-|             | ``python2.6-dev``              | ``python-setuptools`` |
+|             | ``python-dev``                 | ``python-setuptools`` |
 |             +--------------------------------+-----------------------+
 |             | ``python-virtualenv``          | See `Virtualenv on    |
 |             |                                | CentOS`_ below.       |
@@ -273,7 +273,7 @@ that the `set up`_ is correct.
 
 The rest of the installation process should be completely automatic. The
 system will create a *sandbox* for your GroupServer site, with its own
-version of Python 2.6, placed in ``./bin/``. It will then configure the
+version of Python, placed in ``./bin/``. It will then configure the
 PostgreSQL databases that store the data for your site.
 
 Finally, it will start the `buildout`_ system that will **download** and
