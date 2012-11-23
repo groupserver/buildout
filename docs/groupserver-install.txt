@@ -348,6 +348,10 @@ GroupServer site. To do this you will have to change some files in the
 Postfix configuration directory. For Ubuntu this directory is
 ``/etc/postfix``.
 
+:Note: Commands that have to be run as ``root`` are shown on lines that
+       begin with a ``#``. Commands that can be run as a normal user are
+       shown on lines that begin with a ``$``.
+
 Copy the Configuration Files
 ----------------------------
 
