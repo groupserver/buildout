@@ -274,11 +274,9 @@ that the `set up`_ is correct.
 The rest of the installation process should be completely automatic. The
 system will create a *sandbox* for your GroupServer site, with its own
 version of Python, placed in ``./bin/``. It will then configure the
-PostgreSQL databases that store the data for your site.
-
-Finally, it will start the `buildout`_ system that will **download** and
-install all the requirements for GroupServer (around 32MB of packages)
-including:
+PostgreSQL databases that store the data for your site. Finally, it will
+start the `buildout`_ system that will **download** and install all the
+requirements for GroupServer (around 32MB of packages) including:
   
 * `eGenix.com mx Base`_ (4.4MB)
 * `SQL Alchemy`_ (2.6MB)
@@ -292,7 +290,7 @@ including:
 .. _Zope 2.13: http://docs.zope.org/zope2/releases/2.13/
 .. _feedparser: http://code.google.com/p/feedparser/
 
-:Note: You need a functioning network connection for this step to work.
+:Note: You need a functioning network connection to download the packages.
 
 It is a good idea to make a cup of coffee, or go to lunch, while buildout
 processes.
@@ -327,7 +325,7 @@ run Zope as a daemon run the following command::
 
 To stop the daemon run::
 
-  $ ./bin/instance start
+  $ ./bin/instance stop
     
 Email Server
 ============
