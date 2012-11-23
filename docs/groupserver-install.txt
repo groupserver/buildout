@@ -20,7 +20,7 @@ Linux system administration. Installation can be tricky: you have to
 configure at least email sending, the web interface, and persistent
 storage. All these systems must work or installation will fail.
 
-If you get stuck, please ask us questions in `GroupServer 
+If you get stuck, please ask us questions in `GroupServer
 Development`_. Other more detailed guides would be gratefully accepted.
 
 .. _GroupServer Development: http://groupserver.org/groups/development
@@ -129,10 +129,10 @@ some dependencies into the directory (see `Run the Installer`_).
 Finally, GroupServer will be run from the same directory (see `Start 
 Zope`_).
 
-**Note:** You may need to be the ``root`` user to extract the
-archive. If you do then you must change the ownership of the new
-GroupServer directory and all of its contents. GroupServer can
-only be run by users with normal privileges.
+:Note: You may need to be the ``root`` user to extract the archive. If you
+       do then you must change the ownership of the new GroupServer
+       directory and all of its contents. GroupServer can only be run by
+       users with normal privileges.
 
 Set Up
 ======
