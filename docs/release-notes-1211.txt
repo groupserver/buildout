@@ -270,7 +270,9 @@ Begin by updating the table that stores the posts.
     take some time::
 
      UPDATE post 
-     SET fts_vectors = to_tsvector('english', left(coalesce(subject,'') || ' ' || coalesce(body, ''), 1048575));
+     SET fts_vectors = to_tsvector('english', 
+                                   left(coalesce(subject,'') || ' ' || coalesce(body, ''), 
+                                        1048575));
 
 #.  Create an index for the FTR data. This will take some time::
 
@@ -285,7 +287,8 @@ Begin by updating the table that stores the posts.
       CREATE TRIGGER fts_vectors_update 
         BEFORE INSERT or UPDATE ON post 
         FOR EACH ROW EXECUTE PROCEDURE 
-          tsvector_update_trigger(fts_vectors, 'pg_catalog.english', subject, body);
+          tsvector_update_trigger(fts_vectors, 'pg_catalog.english', subject, 
+                                  body);
 
 Topics
 ~~~~~~
@@ -367,7 +370,7 @@ be present in both tables.
 
       CREATE INDEX topic_last_post_date_idx ON topic (last_post_date DESC);
 
-#.  Create a trigger to update the FTR data whenever a new *post* is made::
+#.  Create a trigger to update the FTR data::
 
       CREATE OR REPLACE FUNCTION topic_fts_update ()
         RETURNS TRIGGER AS $$
@@ -454,6 +457,7 @@ following steps.
 #.  Make a backup of your custom configuration::
 
       $ cp custom.cfg custom-bk.cfg
+      $ cp config.cfg config-bk.cfg
 
 #.  Copy the new configuration files to your existing GroupServer
     installation::
@@ -463,6 +467,7 @@ following steps.
 #.  Restore your custom configuration::
 
       $ mv custom-bk.cfg custom.cfg
+      $ mv config-bk.cfg config.cfg
 
 #.  Disable the creation of the database tables::
     
