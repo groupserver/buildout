@@ -278,7 +278,7 @@ Begin by updating the table that stores the posts.
 
      ALTER TABLE post ADD COLUMN fts_vectors tsvector;
 
-#.  Update the rows of the ``post`` table to add the FTR data. This will
+#.  Update the rows of the ``post`` table to add the FTR data. This may
     take some time::
 
      UPDATE post 
@@ -286,7 +286,7 @@ Begin by updating the table that stores the posts.
                                    left(coalesce(subject,'') || ' ' || coalesce(body, ''), 
                                         1048575));
 
-#.  Create an index for the FTR data. This will take some time::
+#.  Create an index for the FTR data. This may take some time::
 
       CREATE INDEX post_fts_vectors ON post USING gin(fts_vectors);
 
@@ -370,11 +370,11 @@ be present in both tables.
           END;
       $$ LANGUAGE 'plpgsql';
 
-#.  Populate the ``topic`` table with FTR data. This will take some time::
+#.  Populate the ``topic`` table with FTR data. This may take some time::
 
       SELECT topic_ftr_populate();
 
-#.  Create an index for the FTR data. This will take some time::
+#.  Create an index for the FTR data. This may take some time::
 
       CREATE INDEX topic_fts_vectors ON topic USING gin(fts_vectors);
 
@@ -446,7 +446,7 @@ topics was displayed.
           END;
       $$ LANGUAGE 'plpgsql';
 
-#.  Populate the ``topic_keywords`` table. This will take some time::
+#.  Populate the ``topic_keywords`` table. This may take some time::
 
       SELECT topic_keywords_populate();
 
