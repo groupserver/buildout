@@ -140,7 +140,7 @@ Changes to the Underlying System
 We have made significant changes to the underlying GroupServer system in
 the Absinthe release. The system will be easier to maintain because of a
 new `configuration system`_, `improved email handling`_, and a `new
-authentication system`_. Installation is simpler because `relstorage`_ is
+authentication system`_. Installation is simpler because relstorage_ is
 used by default. There have also been some significant `performance
 improvements`_. Developers will notice the `SQLAlchemy update`_, and a
 `more flexible group page`_.
@@ -253,15 +253,26 @@ Create a Backup
 
 While every effort has been made to crate a upgrade path that is smooth and
 with low risk, there is still a chance that something can go wrong. As such
-it is prudent to **create a backup**::
+it is prudent to **create a backup**. First, **create a backup** of the
+relational database::
 
   $ pg_dump -U gsadmin groupserver > gs-backup.sql
 
 Where ``gsadmin`` is the PostgreSQL user that you set up when installing
 GroupServer, and ``groupserver`` is the name of the database.
 
+If you use relstorage_, **create a backup** of the ZODB::
+
+  $ pg_dump -U gszodbadmin groupserverzodb > gs-zodb-backup.sql
+
+Where ``gszodbadmin`` is the PostgreSQL user for ``relstorage`` that you
+set up when installing GroupServer, and ``groupserverzodb`` is the name of
+the database.
+
 Posts
 ~~~~~
+
+:Note: Update the ``posts`` table **after** you `create a backup`_. 
 
 Begin by updating the table that stores the posts.
 
@@ -406,8 +417,10 @@ keywords are now calculated when someone posts, and are stored in the
 ``topic_keywords`` table. Previously they were calculated when the list of
 topics was displayed.
 
-#.  Download the file `03-keywords.sql
-    <https://source.iopen.net/groupserver/gs.group.messages.topic/rawfile/78cf038e3c86b6df0a7dbf2f4950f8438ac72e8e/gs/group/messages/topic/sql/03-keywords.sql>`_.
+#.  Download the file ``03-keywords.sql``::
+
+      wget --no-check-certificate https://source.iopen.net/groupserver/gs.group.messages.topic/rawfile/tip/gs/group/messages/topic/sql/03-keywords.sql
+
     This contains the SQL that is normally executed when Absinthe is
     installed.
 
