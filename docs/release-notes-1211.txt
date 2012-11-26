@@ -498,6 +498,10 @@ following steps.
     
       $ echo 1 > var/create-tables.cfg
 
+#.  Disable the creation of a new GroupServer site::
+    
+      $ echo 1 > var/setup-gs.cfg
+
 #.  In your existing GroupServer installation run::
 
       $ ./bin/buildout -n
