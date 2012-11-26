@@ -245,8 +245,20 @@ Relational Database
 The biggest change that is needed to update GroupServer to the Absinthe
 release is to update the rational database, to support the `new search
 system`_ and some of the `performance improvements`_. The tables that are
-used to store the `posts`_, `topics`_ and `topic keywords`_ all need to be
-updated.
+used to store the posts_, topics_ and `topic keywords`_ all need to be
+updated. However, **first**, `create a backup`_.
+
+Create a Backup
+~~~~~~~~~~~~~~~
+
+While every effort has been made to crate a upgrade path that is smooth and
+with low risk, there is still a chance that something can go wrong. As such
+it is prudent to **create a backup**::
+
+  $ pg_dump -U gsadmin groupserver > gs-backup.sql
+
+Where ``gsadmin`` is the PostgreSQL user that you set up when installing
+GroupServer, and ``groupserver`` is the name of the database.
 
 Posts
 ~~~~~
