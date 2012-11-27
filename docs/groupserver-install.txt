@@ -4,9 +4,9 @@
 GroupServer Installation
 ========================
 
-:Authors: Michael JasonSmith; Richard Waid; Marek Kuzek; Alice Murphy; Dan Randow
+:Authors: Michael JasonSmith; Richard Waid; Marek Kuzel; Alice Murphy; Dan Randow
 :Contact: Michael JasonSmith <mpj17@onlinegroups.net>
-:Date: 2012-11-19 (see `History`_)
+:Date: 2012-11-27 (see `History`_)
 :Organization: `GroupServer.org`_
 :Copyright: This document is licensed under a
   `Creative Commons Attribution-Share Alike 3.0 New Zealand License`_
@@ -35,6 +35,8 @@ Quick Start
 #.  Create a new hostname for your GroupServer site. Yes, you will need 
     a new one (see `Pick a Host Name`_).
 #.  Edit ``config.cfg`` (see `Configure GroupServer`_).
+#.  Enable prepared transaction support in PostgreSQL (see `Configure
+    PostgreSQL`_).
 #.  Run the following (see `Run the Installer`_)::
 
       $ ./gs_install_ubuntu.sh
@@ -70,8 +72,8 @@ for Ubuntu, CentOS, and RedHat Enterprise Linux.
 |             +--------------------------------+-----------------------+
 |             | ``python-dev``                 | ``python-setuptools`` |
 |             +--------------------------------+-----------------------+
-|             | ``python-virtualenv``          | See `Virtualenv on    |
-|             |                                | CentOS`_ below.       |
+|             | ``python-virtualenv``          | See `CentOS and RHEL  |
+|             |                                | Buildout`_ below.     |
 +-------------+--------------------------------+-----------------------+
 | GNU C++     | ``g++``                        | ``gcc-c++``           |
 +-------------+--------------------------------+-----------------------+
@@ -102,17 +104,6 @@ for Ubuntu, CentOS, and RedHat Enterprise Linux.
 
 The installation script for Ubuntu will install all the above libraries
 (see `Run the Installer`_).
-
-Virtualenv on CentOS
---------------------
-
-To get ``virtualenv`` for CentOS or RHEL you will need to execute
-the following command after installing the above packages::
-
-  # easy_install virtualenv
-
-This command uses the ``easy_install`` system, which is part of Python,
-to download and install the virtualenv package.
 
 Download
 ========
@@ -259,6 +250,29 @@ set by you to protect this data.
 
 .. _the RelStorage system: http://pypi.python.org/pypi/RelStorage
 
+Configure PostgreSQL
+--------------------
+
+`The RelStorage system`_ that is used by GroupServer requires *prepared
+transaction* support to be enabled in PostgreSQL. To enable prepared
+transaction support carry out the following steps.
+
+#. Edit the PostgreSQL configuration file. On Ubuntu you must be ``root``
+   to edit this file, which is located at
+   ``/etc/postgresql/9.1/main/postgresql.conf``.
+
+#. Find the line that reads::
+
+     max_prepared_transactions = 0
+
+#. Change the line to read::
+
+     max_prepared_transactions = 1
+
+#. Restart PostgreSQL. On Ubuntu this is done using the following command::
+
+     $ sudo service postgresql restart
+
 Run the Installer
 -----------------
 
@@ -294,6 +308,50 @@ requirements for GroupServer (around 32MB of packages) including:
 
 It is a good idea to make a cup of coffee, or go to lunch, while buildout
 processes.
+
+CentOS and RHEL Buildout
+~~~~~~~~~~~~~~~~~~~~~~~~
+
+The process to install GroupServer on CentOS or RedHat Enterprise Linux is
+manual. The basic idea is as follows, but it lacks testing.
+
+:Note: Commands that have to be run as ``root`` are shown on lines that
+       begin with a ``#``. Commands that must be run as a normal user are
+       shown on lines that begin with a ``$``.
+
+#. Install the requirements_.
+
+#. Create the two database users specified in ``config.cfg``, using
+   ``createuser``::
+
+     # createuser -D -S -R -l gsadmin
+     # createuser -D -S -R -l gszodbadmin
+
+#. Create the two databases specified in ``config.cfg`` using
+   ``createdb``::
+
+     # createdb -Ttemplate0 -O gsadmin -EUTF-8 groupserver
+     # createdb -Ttemplate0 -O gszodbadmin -EUTF-8 groupserverzodb
+
+#. Get the Python ``virtualenv`` package::
+
+     # easy_install virtualenv
+
+#. Set up a virtual Python environment for GroupServer::
+
+     $ virtualenv --no-site-packages .
+
+#. Grab the ``argparse`` module::
+
+     $ ./bin/easy_install argparse==1.1
+
+#. Fetch the system that builds GroupServer::
+
+     $ ./bin/easy_install zc.buildout==1.5.2
+
+#. Run the ``buildout`` process::
+
+     $ ./bin/buildout -N
 
 Start Zope
 ----------
@@ -454,6 +512,8 @@ History
 ======= ==========  ====================================================
 Version Date        Change
 ======= ==========  ====================================================
+12.11   2012-11-27  Adding the sections `CentOS and RHEL Buildout`_ and
+                    `Configure PostgreSQL`_.
 12.11   2012-11-19  Adding a link to the Postfix documentation for 
                     Ubuntu.
 12.11   2012-10-25  Removing some odd dependencies.
