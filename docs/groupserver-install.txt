@@ -4,7 +4,7 @@
 GroupServer Installation
 ========================
 
-:Authors: Michael JasonSmith; Richard Waid; Marek Kuzel; Alice Murphy; Dan Randow
+:Authors: Michael JasonSmith; Richard Waid; Marek Kuziel; Alice Murphy; Dan Randow
 :Contact: Michael JasonSmith <mpj17@onlinegroups.net>
 :Date: 2012-11-27 (see `History`_)
 :Organization: `GroupServer.org`_
