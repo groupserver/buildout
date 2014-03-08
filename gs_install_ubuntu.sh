@@ -5,7 +5,7 @@ read_ini config.cfg config --prefix CFG
 
 echo "Installing dependencies"
 echo
-sudo apt-get install -y python python-virtualenv python-dev build-essential postgresql libpq-dev swaks redis-server
+sudo apt-get install -y python python-virtualenv python-dev build-essential postfix postgresql libpq-dev swaks redis-server libxslt-dev
 
 echo
 echo "Testing mail setup..."
