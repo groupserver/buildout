@@ -5,7 +5,7 @@ read_ini config.cfg config --prefix CFG
 
 echo "Installing dependencies"
 echo
-sudo apt-get install -y python python-virtualenv python-dev build-essential postfix postgresql libpq-dev swaks redis-server libxslt-dev
+sudo apt-get install -y sed python python-virtualenv python-dev build-essential postfix postgresql libpq-dev swaks redis-server libxslt-dev
 
 echo
 echo "Testing mail setup..."
@@ -48,17 +48,29 @@ fi
 
 # initialise PostgreSQL database
 echo "Setting up the databases"
-sudo su -l -c"createuser -D -S -R -l ${CFG__config__pgsql_user}" postgres
-sudo su -l -c"createuser -D -S -R -l ${CFG__config__relstorage_user}" postgres
+sudo su -l -c"createuser -p ${CFG__config__pgsql_port} -D -S -R -l ${CFG__config__pgsql_user}" postgres
+sudo su -l -c"createuser -p ${CFG__config__relstorage_port}-D -S -R -l ${CFG__config__relstorage_user}" postgres
 
-sudo su -l -c"createdb -Ttemplate0 -O ${CFG__config__pgsql_user} -EUTF-8 ${CFG__config__pgsql_dbname}" postgres
-sudo su -l -c"createdb -Ttemplate0 -O ${CFG__config__relstorage_user} -EUTF-8 ${CFG__config__relstorage_dbname}" postgres
+sudo su -l -c"createdb -p ${CFG__config__pgsql_port} -Ttemplate0 -O ${CFG__config__pgsql_user} -EUTF-8 ${CFG__config__pgsql_dbname}" postgres
+sudo su -l -c"createdb -p ${CFG__config__relstorage_port}-Ttemplate0 -O ${CFG__config__relstorage_user} -EUTF-8 ${CFG__config__relstorage_dbname}" postgres
 
-sudo su -l -c"echo \"alter user ${CFG__config__pgsql_user} with encrypted password '${CFG__config__pgsql_password}';\" | psql" postgres
-sudo su -l -c"echo \"alter user ${CFG__config__relstorage_user} with encrypted password '${CFG__config__relstorage_password}';\" | psql" postgres
+sudo su -l -c"echo \"alter user ${CFG__config__pgsql_user} with encrypted password '${CFG__config__pgsql_password}';\" | psql -p ${CFG__config__pgsql_port}" postgres
+sudo su -l -c"echo \"alter user ${CFG__config__relstorage_user} with encrypted password '${CFG__config__relstorage_password}';\" | psql -p ${CFG__config__relstorage_port}" postgres
 
-sudo su -l -c"echo \"grant all privileges on database ${CFG__config__pgsql_dbname} to ${CFG__config__pgsql_user};\" | psql" postgres
-sudo su -l -c"echo \"grant all privileges on database ${CFG__config__relstorage_dbname} to ${CFG__config__relstorage_user};\" | psql" postgres
+sudo su -l -c"echo \"grant all privileges on database ${CFG__config__pgsql_dbname} to ${CFG__config__pgsql_user};\" | psql -p ${CFG__config__pgsql_port}" postgres
+sudo su -l -c"echo \"grant all privileges on database ${CFG__config__relstorage_dbname} to ${CFG__config__relstorage_user};\" | psql -p ${CFG__config__relstorage_port}" postgres
+
+echo -n "Checking max_prepared_transactions database setting... "
+MAX_PREPARED_TRANSACTIONS=`sudo su -l -c "psql -p ${CFG__config__pgsql_port} -c 'SHOW max_prepared_transactions;'" postgres | sed -n -r -e 's/^\s*([[:digit:]]+).*$/\1/p'`
+POSTGRES_CONFIG_FILE=`sudo su -l -c "psql -p ${CFG__config__pgsql_port} -c 'SHOW config_file;'" postgres | sed -n -r -e '3p' | tr -d ' '`
+if [ $MAX_PREPARED_TRANSACTIONS -eq 0 ]; then
+    echo "Prepared Transactions not enabled"
+    echo "Enabling Prepared Transactions in database"
+    sudo sed -i -e 's/^.*max_prepared_transactions = .*$/max_prepared_transactions = 10 \t\t# Set by GroupServer install script/' $POSTGRES_CONFIG_FILE
+    sudo service postgresql restart
+else
+    echo "Prepared Transactions already enabled"
+fi
 
 # This is not the work of angels, but...
 echo "${CFG__config__pgsql_host}:${CFG__config__pgsql_port}:${CFG__config__pgsql_dbname}:${CFG__config__pgsql_user}:${CFG__config__pgsql_password}" > pgpass-tmp
