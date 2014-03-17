@@ -15,7 +15,7 @@ GroupServer 14.04 — Ouzo utilised as an unguent
   `Creative Commons Attribution-Share Alike 4.0 International License`_
   by `OnlineGroups.net`_.
 
-.. contents::
+.. contents:: :depth: 3
 
 ------------
 Introduction
@@ -206,8 +206,14 @@ share the same code (`Issue 3507`_). In addition the lists are only loaded
 when the corresponding tab is visible. Combined this greatly reduces the
 number of requests required to load the page.
 
+`Strict mode`_ has been enabled for all the core JavaScript modules, and
+some of the other modules. This has the combined effect of reducing the
+number of errors, and improving performance by allowing the browser to
+optimise the code.
+
 .. _Issue 344: https://redmine.iopen.net/issues/344
 .. _Issue 3507: https://redmine.iopen.net/issues/3507
+.. _Strict mode: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions_and_function_scope/Strict_mode
 
 Image compression
 ~~~~~~~~~~~~~~~~~
