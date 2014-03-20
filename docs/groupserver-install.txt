@@ -4,16 +4,17 @@
 GroupServer Installation
 ========================
 
-:Authors: Michael JasonSmith; Richard Waid; Marek Kuziel; Alice Murphy; Dan Randow
+:Authors: `Michael JasonSmith`_; `Richard Waid`_; `Marek Kuziel`_; 
+          `Alice Murphy`_; `Dan Randow`_
 :Contact: Michael JasonSmith <mpj17@onlinegroups.net>
-:Date: 2012-11-27 (see `History`_)
+:Date: 2014-03-20 (see `History`_)
 :Organization: `GroupServer.org`_
 :Copyright: This document is licensed under a
-  `Creative Commons Attribution-Share Alike 3.0 New Zealand License`_
-  by `OnlineGroups.Net`_.
+  `Creative Commons Attribution-Share Alike 4.0 International License`_
+  by `OnlineGroups.net`_.
 
-.. _Creative Commons Attribution-Share Alike 3.0 New Zealand License:
-   http://creativecommons.org/licenses/by-sa/3.0/nz/
+..  _Creative Commons Attribution-Share Alike 4.0 International License:
+    http://creativecommons.org/licenses/by-sa/4.0/
 
 We wrote this documentation for people with moderate experience in
 Linux system administration. Installation can be tricky: you have to
@@ -185,7 +186,6 @@ particular the email addresses for your first two users **must** be set.
   The password of the administrator of the new GroupServer site. The
   password will be used to log in, and can be changed after the site has
   been created.
-
   
 ``user_email``
   The email address of the normal user that is created along with the new
@@ -290,19 +290,19 @@ system will create a *sandbox* for your GroupServer site, with its own
 version of Python, placed in ``./bin/``. It will then configure the
 PostgreSQL databases that store the data for your site. Finally, it will
 start the `buildout`_ system that will **download** and install all the
-requirements for GroupServer (around 32MB of packages) including:
+requirements for GroupServer (around 44MB of packages) including:
   
 * `eGenix.com mx Base`_ (4.4MB)
-* `SQL Alchemy`_ (2.6MB)
-* jQuery_ (1.9MB)
+* `SQL Alchemy`_ (4.3MB)
+* lxml_ (2.8MB)
+* Pillow_ (2.4MB)
 * `Zope 2.13`_ (1.4MB)
-* feedparser_ (1.2MB)
 
 .. _eGenix.com mx Base: http://www.egenix.com/products/python/mxBase
 .. _SQL Alchemy: http://www.sqlalchemy.org/
-.. _jQuery: https://source.iopen.net/groupserver/gs.content.js.jquery/summary
+.. _lxml: http://lxml.de/
+.. _Pillow: https://pypi.python.org/pypi/Pillow/2.3.1
 .. _Zope 2.13: http://docs.zope.org/zope2/releases/2.13/
-.. _feedparser: http://code.google.com/p/feedparser/
 
 :Note: You need a functioning network connection to download the packages.
 
@@ -504,7 +504,7 @@ database user, and the directory that contains the GroupServer install.
 
 2. Remove the directory that contains the GroupServer install::
 
-    $ rm -r groupserver-12.11
+    $ rm -r groupserver-14.03
 
 History
 =======
@@ -512,6 +512,7 @@ History
 ======= ==========  ====================================================
 Version Date        Change
 ======= ==========  ====================================================
+14.03   2014-03-20  Updating to Ouzo.
 12.11   2012-11-27  Adding the sections `CentOS and RHEL Buildout`_ and
                     `Configure PostgreSQL`_.
 12.11   2012-11-19  Adding a link to the Postfix documentation for 
@@ -569,16 +570,27 @@ Version Date        Change
 1.0α    2009-10-04  Updated to reflect the new egg-based system
 ======= ==========  ====================================================
 
-.. Resources
+Resources
+=========
+
+- Code repository: https://source.iopen.net/groupserver/
+- Questions and comments to http://groupserver.org/groups/development
+- Report bugs at https://redmine.iopen.net/projects/groupserver
 
 .. [#cfgFile] The ``cfg`` files are interpreted by the Python 
    `ConfigParser`_ module, which accepts a syntax very similar to 
    Windows INI files.
-.. _GroupServer.org: http://groupserver.org
-.. _OnlineGroups.Net: http://onlinegroups.net
+.. _ConfigParser:
+   http://docs.python.org/library/configparser.html
+
+.. _GroupServer.org: http://groupserver.org/
+.. _OnlineGroups.net: http://onlinegroups.net/
 .. _Ubuntu: http://ubuntu.com/
 .. _CentOS: http://centos.org/
 .. _Buildout: http://www.buildout.org/
 .. _Zope: http://zope.org
-.. _ConfigParser:
-   http://docs.python.org/library/configparser.html
+..  _Michael JasonSmith: http://groupserver.org/p/mpj17
+..  _Richard Waid: http://groupserver.org/p/richard
+..  _Marek Kuziel: http://groupserver.org/p/marek
+..  _Alice Murphy: http://groupserver.org/p/alice
+..  _Dan Randow: http://groupserver.org/p/danr
