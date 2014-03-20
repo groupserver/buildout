@@ -69,9 +69,9 @@ for Ubuntu, CentOS, and RedHat Enterprise Linux.
 | System      | Ubuntu                         | CentOS 6.1 or         |
 |             |                                | RHEL 6.1              |
 +=============+================================+=======================+
-| Python      | ``python``                     | ``python-devel``      |
+| Python      | ``python2.7``                  | ``python-devel``      |
 |             +--------------------------------+-----------------------+
-|             | ``python-dev``                 | ``python-setuptools`` |
+|             | ``python2.7-dev``              | ``python-setuptools`` |
 |             +--------------------------------+-----------------------+
 |             | ``python-virtualenv``          | See `CentOS and RHEL  |
 |             |                                | Buildout`_ below.     |
