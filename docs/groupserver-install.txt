@@ -1,13 +1,13 @@
 .. sectnum::
 
 ========================
-GroupServer Installation
+GroupServer installation
 ========================
 
 :Authors: `Michael JasonSmith`_; `Richard Waid`_; `Marek Kuziel`_; 
           `Alice Murphy`_; `Dan Randow`_
 :Contact: Michael JasonSmith <mpj17@onlinegroups.net>
-:Date: 2014-03-20 (see `History`_)
+:Date: 2014-03-25 (see `History`_)
 :Organization: `GroupServer.org`_
 :Copyright: This document is licensed under a
   `Creative Commons Attribution-Share Alike 4.0 International License`_
@@ -26,7 +26,7 @@ Development`_. Other more detailed guides would be gratefully accepted.
 
 .. _GroupServer Development: http://groupserver.org/groups/development
 
-Quick Start
+Quick start
 ===========
 
 #.  Install the required packages (see `Requirements`_).
@@ -57,11 +57,13 @@ Requirements
 ============
 
 GroupServer is developed on `Ubuntu`_, and is know to run on
-`CentOS`_. We will gladly accept any modifications you have that will
-make GroupServer run on more platforms.
+`CentOS`_. We will gladly accept any modifications you have that
+will make GroupServer run on more platforms.
 
-Below the packages that are required to install GroupServer are listed
-for Ubuntu, CentOS, and RedHat Enterprise Linux.
+The packages that are required to install GroupServer are listed
+for Ubuntu, CentOS, and RedHat Enterprise Linux. The installation
+script for Ubuntu will install all the libraries listed below
+(see `Run the Installer`_).
 
 +-------------+--------------------------------------------------------+
 |             | Packages                                               |
@@ -73,8 +75,8 @@ for Ubuntu, CentOS, and RedHat Enterprise Linux.
 |             +--------------------------------+-----------------------+
 |             | ``python2.7-dev``              | ``python-setuptools`` |
 |             +--------------------------------+-----------------------+
-|             | ``python-virtualenv``          | See `CentOS and RHEL  |
-|             |                                | Buildout`_ below.     |
+|             | ``python-virtualenv``          | See `CentOS and       |
+|             |                                | RHEL`_ below    .     |
 +-------------+--------------------------------+-----------------------+
 | GNU C++     | ``g++``                        | ``gcc-c++``           |
 +-------------+--------------------------------+-----------------------+
@@ -103,37 +105,36 @@ for Ubuntu, CentOS, and RedHat Enterprise Linux.
 | SMTP Test   | ``swaks``                      | ``swaks``             |
 +-------------+--------------------------------+-----------------------+
 
-The installation script for Ubuntu will install all the above libraries
-(see `Run the Installer`_).
-
 Download
 ========
 
 GroupServer is distributed as a tar-file. To download the latest
-version of GroupServer visit <http://groupserver.org/downloads> and
-click ``Download``. You must then extract GroupServer from the tar-file
-into a directory such as ``/opt``, ``/home`` or ``/usr/local``.
+version of GroupServer visit <http://groupserver.org/downloads>
+and click ``Download``. You must then extract GroupServer from
+the tar-file into a directory such as ``/opt``, ``/home`` or
+``/usr/local``.
 
 When the tar-file is extracted a new directory will be made.
 This directory contains the configuration files for GroupServer.
 In addition, the installation process will download and install
-some dependencies into the directory (see `Run the Installer`_). 
-Finally, GroupServer will be run from the same directory (see `Start 
-Zope`_).
+some dependencies into the directory (see `Run the Installer`_).
+Finally, GroupServer will be run from the same directory (see
+`Start Zope`_).
 
-:Note: You may need to be the ``root`` user to extract the archive. If you
-       do then you must change the ownership of the new GroupServer
-       directory and all of its contents. GroupServer can only be run by
-       users with normal privileges.
+:Permissions: You may need to be the ``root`` user to extract the
+       archive. If you do then you **must** change the ownership
+       of the new GroupServer directory and all of its
+       contents. GroupServer can only be run by users with normal
+       privileges.
 
-Set Up
+Set up
 ======
 
 Setting up GroupServer is done in four steps: first `pick a host name`_,
 then `configure GroupServer`_, `run the Installer`_ to install the 
 system, and finally `start Zope`_.
 
-Pick a Host Name
+Pick a host name
 ----------------
 
 Your new site needs its own hostname. The name needs to be known to
@@ -160,7 +161,7 @@ folder [#cfgFile]_. First you must configure the `GroupServer Site`_
 itself. Next the `Zope`_ system, which will run your GroupServer site, 
 needs to be configured, before the `database storage`_.
 
-GroupServer Site
+GroupServer site
 ~~~~~~~~~~~~~~~~
 
 You will need to check all the configuration for your initial site. In
@@ -233,7 +234,7 @@ and password of the Zope administrator.
   The password for the Zope administrator. It can (and should) be changed
   after GroupServer has been set up.
 
-Database Storage
+Database storage
 ~~~~~~~~~~~~~~~~
 
 GroupServer stores most of its data in PostgreSQL. Two passwords need to be
@@ -273,7 +274,7 @@ transaction support carry out the following steps.
 
      $ sudo service postgresql restart
 
-Run the Installer
+Run the installer
 -----------------
 
 The installer is a Bash script. To run the GroupServer installer enter the
@@ -309,8 +310,8 @@ requirements for GroupServer (around 44MB of packages) including:
 It is a good idea to make a cup of coffee, or go to lunch, while buildout
 processes.
 
-CentOS and RHEL Buildout
-~~~~~~~~~~~~~~~~~~~~~~~~
+CentOS and RHEL
+~~~~~~~~~~~~~~~
 
 The process to install GroupServer on CentOS or RedHat Enterprise Linux is
 manual. The basic idea is as follows, but it lacks testing.
@@ -373,7 +374,7 @@ You should be able to view your GroupServer site at
 
 Use ``Control-c`` to stop Zope.
 
-Running Zope as a Daemon
+Running Zope as a daemon
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
 It may be more convenient to run Zope in the background, as a daemon. To
@@ -385,7 +386,7 @@ To stop the daemon run::
 
   $ ./bin/instance stop
     
-Email Server
+Email server
 ============
 
 Postfix provides the email interface for GroupServer. Configuring Postfix
@@ -410,7 +411,7 @@ Postfix configuration directory. For Ubuntu this directory is
        begin with a ``#``. Commands that can be run as a normal user are
        shown on lines that begin with a ``$``.
 
-Copy the Configuration Files
+Copy the configuration files
 ----------------------------
 
 * Copy the files ``postfix_config/groupserver.*`` from the GroupServer
@@ -463,7 +464,7 @@ To load the new configuration into Postfix run the following commands::
     # postfix reload
 
 
-Web Proxy
+Web proxy
 =========
 
 A web proxy is unnecessary if you only wish to try GroupServer. However,
@@ -512,8 +513,9 @@ History
 ======= ==========  ====================================================
 Version Date        Change
 ======= ==========  ====================================================
+14.03   2014-03-25  Clarifying the Requirements_ wording.
 14.03   2014-03-20  Updating to Ouzo.
-12.11   2012-11-27  Adding the sections `CentOS and RHEL Buildout`_ and
+12.11   2012-11-27  Adding the sections `CentOS and RHEL`_ and
                     `Configure PostgreSQL`_.
 12.11   2012-11-19  Adding a link to the Postfix documentation for 
                     Ubuntu.
