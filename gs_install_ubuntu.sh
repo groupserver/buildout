@@ -46,21 +46,21 @@ fi
 echo
 echo "Setting up the databases"
 echo
-sudo su -l -c"createuser -h ${CFG__config__pgsql_host} -p ${CFG__config__pgsql_port} -d -S -R -l ${CFG__config__pgsql_user}" postgres
-sudo su -l -c"createuser -h ${CFG__config__pgsql_host} -p ${CFG__config__relstorage_port} -d -S -R -l ${CFG__config__relstorage_user}" postgres
+sudo su -l -c"createuser -p ${CFG__config__pgsql_port} -d -S -R -l ${CFG__config__pgsql_user}" postgres
+sudo su -l -c"createuser -p ${CFG__config__relstorage_port} -d -S -R -l ${CFG__config__relstorage_user}" postgres
 
-sudo su -l -c"createdb -h ${CFG__config__pgsql_host} -p ${CFG__config__pgsql_port} -Ttemplate0 -O ${CFG__config__pgsql_user} -EUTF-8 ${CFG__config__pgsql_dbname}" postgres
-sudo su -l -c"createdb -h ${CFG__config__pgsql_host} -p ${CFG__config__relstorage_port}-Ttemplate0 -O ${CFG__config__relstorage_user} -EUTF-8 ${CFG__config__relstorage_dbname}" postgres
+sudo su -l -c"createdb -p ${CFG__config__pgsql_port} -Ttemplate0 -O ${CFG__config__pgsql_user} -EUTF-8 ${CFG__config__pgsql_dbname}" postgres
+sudo su -l -c"createdb -p ${CFG__config__relstorage_port}-Ttemplate0 -O ${CFG__config__relstorage_user} -EUTF-8 ${CFG__config__relstorage_dbname}" postgres
 
-sudo su -l -c"echo \"alter user ${CFG__config__pgsql_user} with encrypted password '${CFG__config__pgsql_password}';\" | psql -h ${CFG__config__pgsql_host} -p ${CFG__config__pgsql_port}" postgres
-sudo su -l -c"echo \"alter user ${CFG__config__relstorage_user} with encrypted password '${CFG__config__relstorage_password}';\" | psql -h ${CFG__config__pgsql_host} -p ${CFG__config__relstorage_port}" postgres
+sudo su -l -c"echo \"alter user ${CFG__config__pgsql_user} with encrypted password '${CFG__config__pgsql_password}';\" | psql -p ${CFG__config__pgsql_port}" postgres
+sudo su -l -c"echo \"alter user ${CFG__config__relstorage_user} with encrypted password '${CFG__config__relstorage_password}';\" | psql -p ${CFG__config__relstorage_port}" postgres
 
-sudo su -l -c"echo \"grant all privileges on database ${CFG__config__pgsql_dbname} to ${CFG__config__pgsql_user};\" | psql -h ${CFG__config__pgsql_host} -p ${CFG__config__pgsql_port}" postgres
-sudo su -l -c"echo \"grant all privileges on database ${CFG__config__relstorage_dbname} to ${CFG__config__relstorage_user};\" | psql -h ${CFG__config__pgsql_host} -p ${CFG__config__relstorage_port}" postgres
+sudo su -l -c"echo \"grant all privileges on database ${CFG__config__pgsql_dbname} to ${CFG__config__pgsql_user};\" | psql -p ${CFG__config__pgsql_port}" postgres
+sudo su -l -c"echo \"grant all privileges on database ${CFG__config__relstorage_dbname} to ${CFG__config__relstorage_user};\" | psql -p ${CFG__config__relstorage_port}" postgres
 
 echo -n "Checking max_prepared_transactions database setting... "
-MAX_PREPARED_TRANSACTIONS=`sudo su -l -c "psql -h ${CFG__config__pgsql_host} -p ${CFG__config__pgsql_port} -c 'SHOW max_prepared_transactions;'" postgres | sed -n -r -e 's/^\s*([[:digit:]]+).*$/\1/p'`
-POSTGRES_CONFIG_FILE=`sudo su -l -c "psql -h ${CFG__config__pgsql_host} -p ${CFG__config__pgsql_port} -c 'SHOW config_file;'" postgres | sed -n -r -e '3p' | tr -d ' '`
+MAX_PREPARED_TRANSACTIONS=`sudo su -l -c "psql -p ${CFG__config__pgsql_port} -c 'SHOW max_prepared_transactions;'" postgres | sed -n -r -e 's/^\s*([[:digit:]]+).*$/\1/p'`
+POSTGRES_CONFIG_FILE=`sudo su -l -c "psql -p ${CFG__config__pgsql_port} -c 'SHOW config_file;'" postgres | sed -n -r -e '3p' | tr -d ' '`
 if [ $MAX_PREPARED_TRANSACTIONS -eq 0 ]; then
     echo "Prepared Transactions not enabled"
     echo "Enabling Prepared Transactions in database"
