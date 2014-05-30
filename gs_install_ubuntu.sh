@@ -3,7 +3,8 @@
 . read_ini.sh
 read_ini config.cfg config --prefix CFG
 
-echo "Installing dependencies"
+echo "Installing dependencies:"
+echo "You will need to authenticate so this script can do this."
 echo
 sudo apt-get install -y sed python python-virtualenv python-dev build-essential postfix postgresql libpq-dev swaks redis-server libxslt-dev
 
