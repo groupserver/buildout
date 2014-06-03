@@ -1,0 +1,176 @@
+.. sectnum::
+
+==============
+ Release Notes
+==============
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+GroupServer 14.06 — Slivovica shots at sunset
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+:Authors: `Michael JasonSmith`_; 
+:Contact: Michael JasonSmith <mpj17@onlinegroups.net>
+:Date: 2014-06-02
+:Organization: `GroupServer.org`_
+:Copyright: This document is licensed under a
+  `Creative Commons Attribution-Share Alike 4.0 International License`_
+  by `OnlineGroups.net`_.
+
+.. contents:: :depth: 3
+
+------------
+Introduction
+------------
+
+There are three major `changes to GroupServer`_ in the Slivovica
+release — making the system easier to install, better at handling
+email, and generally better. You can `get Slivovica`_
+immediately.
+
+----------------------
+Changes to GroupServer
+----------------------
+
+For new installations of GroupServer_ the most important change
+is the `updated buildout recipes`_, that should make the process
+of installing GroupServer more robust. For existing systems
+`DMARC support`_ has been added, as well as improvements to how
+`incoming SMTP`_ is handled. Finally there have been many other
+`minor code improvements`_.
+
+Updated buildout recipes
+========================
+
+GroupServer itself is installed using four *recipes* that are
+used by Buildout_. All four recipes have been improved. There is
+now a base recipe *class* that is shared by the recipes, and
+unit-tests have been added to ensure the recipes work as
+expected. Specific improvements include the following.
+
+* The recipe that creates the Postfix configuration has been
+  update, fixing `a problem that Bill found`_.
+
+* The recipe that crates the PostgreSQL tables now uses the
+  `setuptools`_ package to extract the SQL files from the
+  different modules. The modules are now passed into the recipe
+  from Buildout, rather than being written in the recipe.
+
+* The creation of the GroupServer site is now simpler, as only
+  the site-administrator is created during the install. This
+  solves many issues with the email-address of the normal
+  group-member conflicting with the email address of the site
+  administrator.
+
+.. _Buildout: <http://buildout.org/>
+.. _a problem that Bill found: <http://groupserver.org/r/post/3mqbXmGwp6CqQWBkCjPXQI>
+.. _setuptools: <https://pypi.python.org/pypi/setuptools/>
+
+DMARC Support
+=============
+
+With the Slivovica release of GroupServer messages are more
+likely to be received by people whose email is provided by hosts
+that implement `strict DMARC`_. 
+
+With strict DMARC messages are checked to ensure that message was
+actually sent from the host listed in the ``From`` address. All
+mailing-lists (including GNU Mailman, Google Groups, and Yahoo!
+Groups) cause the DMARC checks to fail because they modify the
+message.
+
+GroupServer now rewrites the ``From`` address if the group member
+uses an email provider the implements strict DMARC. The new
+address includes the name of the sender, and the ID of his or her
+profile (see `Feature 4108`_). This ensures that the person who
+sent the message can still be identified, and email message will
+still get through.
+
+.. _strict DMARC: <http://groupserver.org/r/topic/3x4yEy0lBQnHuROtR4Kwnx>
+.. _Feature 4108: <https://redmine.iopen.net/issues/4108>
+
+Incoming SMTP
+=============
+
+With the Slivovica release of GroupServer email messages are
+correctly sent to GroupServer when it is running on a
+non-standard port. Messages are received by Postfix, which then
+uses the ``smtp2gs`` programme to add the message to
+GroupServer. Previously manual intervention was needed if
+GroupServer was listening to a non-standard port.
+
+Now all components of GroupServer correctly handle the port that
+is set in the configuration file when GroupServer is first
+set-up. This includes the *recipe* that creates the alias file
+for Postfix, the ``smtp2gs`` script that uploads the email
+message, and the ``gs.form`` library that ``smtp2gs`` uses to
+connect to GroupServer.
+
+Minor code improvements
+=======================
+
+Four components have undergone minor updates for Slivovica.
+
+Add member:
+  Fixed an error with the dependencies of the product that added
+  a member to a group.
+
+Site style:
+  Fixed errors in the CSS
+
+``mbox`` importing:
+  The code that imports ``mbox`` files has been updated, and it
+  now uses the same core code as the ``smtp2gs`` script.
+
+Starting public groups:
+   Public groups are now visible on the homepage of the site as
+   soon as they are started, closing `Bug 4105`_
+
+.. _Bug 4105: https://redmine.iopen.net/issues/4105
+
+In addition the following general changes have been made to
+GroupServer.
+
+* *Unit tests* have been added to many of the *products* that
+  make up GroupServer. These tests make it more likely that
+  GroupServer will work correctly now and in the future.
+* Where possible Python 3 support has been added to the products
+  that make up GroupServer. The main change has been to switch to
+  Unicode-text by default. While not all *products* have been
+  updated, many have.
+* *Strict mode* has been turned on in more of the JavaScript
+  modules that support the GroupServer interface. Code written
+  with strict-mode turned on is more likely to be correct, and is
+  executed more quickly in modern browsers.
+* Finally, more code now raises errors, rather than relying on
+  ``assert`` statements. As these errors should never happen
+  hopefully no-one will notice a difference.
+
+-------------
+Get Slivovica
+-------------
+
+
+Update an Existing GroupServer System
+=====================================
+
+
+---------
+Resources
+---------
+
+- Code repository: https://source.iopen.net/groupserver/
+- Questions and comments to http://groupserver.org/groups/development
+- Report bugs at https://redmine.iopen.net/projects/groupserver
+
+..  _GroupServer: http://groupserver.org/
+..  _GroupServer.org: http://groupserver.org/
+..  _OnlineGroups.Net: http://onlinegroups.net/
+..  _Creative Commons Attribution-Share Alike 4.0 International License:
+    http://creativecommons.org/licenses/by-sa/4.0/
+..  _Michael JasonSmith: http://groupserver.org/p/mpj17
+..  _Dan Randow: http://groupserver.org/p/danr
+..  _Bill Bushey: http://groupserver.org/p/wbushey
+..  _E-Democracy.org: http://e-democracy.org/
+
+..  LocalWords:  refactored iopen JPEG redmine jQuery jquery async
+..  LocalWords:  Randow Organization sectnum Slivovica DMARC CSS
+..  LocalWords:  SMTP smtp
