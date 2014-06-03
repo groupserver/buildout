@@ -9,7 +9,7 @@ GroupServer 14.06 — Slivovica shots at sunset
 
 :Authors: `Michael JasonSmith`_; 
 :Contact: Michael JasonSmith <mpj17@onlinegroups.net>
-:Date: 2014-06-02
+:Date: 2014-06-03
 :Organization: `GroupServer.org`_
 :Copyright: This document is licensed under a
   `Creative Commons Attribution-Share Alike 4.0 International License`_
@@ -21,9 +21,9 @@ GroupServer 14.06 — Slivovica shots at sunset
 Introduction
 ------------
 
-There are three major `changes to GroupServer`_ in the Slivovica
-release — making the system easier to install, better at handling
-email, and generally better. You can `get Slivovica`_
+The major `changes to GroupServer`_ in the Slivovica release
+include making the system easier to install, better at handling
+email, and improving the reliability. You can `get Slivovica`_
 immediately.
 
 ----------------------
@@ -47,45 +47,42 @@ unit-tests have been added to ensure the recipes work as
 expected. Specific improvements include the following.
 
 * The recipe that creates the Postfix configuration has been
-  update, fixing `a problem that Bill found`_.
-
+  updated, fixing `a problem that Bill found`_.
 * The recipe that crates the PostgreSQL tables now uses the
   `setuptools`_ package to extract the SQL files from the
   different modules. The modules are now passed into the recipe
   from Buildout, rather than being written in the recipe.
-
 * The creation of the GroupServer site is now simpler, as only
-  the site-administrator is created during the install. This
+  the site-administrator is created during installation. This
   solves many issues with the email-address of the normal
   group-member conflicting with the email address of the site
   administrator.
 
-.. _Buildout: <http://buildout.org/>
-.. _a problem that Bill found: <http://groupserver.org/r/post/3mqbXmGwp6CqQWBkCjPXQI>
-.. _setuptools: <https://pypi.python.org/pypi/setuptools/>
+.. _Buildout: http://buildout.org/
+.. _a problem that Bill found: http://groupserver.org/r/post/3mqbXmGwp6CqQWBkCjPXQI
+.. _setuptools: https://pypi.python.org/pypi/setuptools/
 
 DMARC Support
 =============
 
 With the Slivovica release of GroupServer messages are more
 likely to be received by people whose email is provided by hosts
-that implement `strict DMARC`_. 
+that implement `strict DMARC`_. With strict DMARC messages are
+checked to ensure that message was actually sent from the host
+listed in the ``From`` address. All mailing-lists (including GNU
+Mailman, Google Groups, and Yahoo!  Groups) modify the message
+before sending it out, and this would cause the DMARC check to
+fail.
 
-With strict DMARC messages are checked to ensure that message was
-actually sent from the host listed in the ``From`` address. All
-mailing-lists (including GNU Mailman, Google Groups, and Yahoo!
-Groups) cause the DMARC checks to fail because they modify the
-message.
+Like most other mailing lists, GroupServer now rewrites the
+``From`` address if the group member uses an email provider that
+implements strict DMARC. The new address includes the name of the
+sender, and the ID of his or her profile (see `Feature
+4108`_). This ensures that the person who sent the message can
+still be identified, and email message will still get through.
 
-GroupServer now rewrites the ``From`` address if the group member
-uses an email provider the implements strict DMARC. The new
-address includes the name of the sender, and the ID of his or her
-profile (see `Feature 4108`_). This ensures that the person who
-sent the message can still be identified, and email message will
-still get through.
-
-.. _strict DMARC: <http://groupserver.org/r/topic/3x4yEy0lBQnHuROtR4Kwnx>
-.. _Feature 4108: <https://redmine.iopen.net/issues/4108>
+.. _strict DMARC: http://groupserver.org/r/topic/3x4yEy0lBQnHuROtR4Kwnx
+.. _Feature 4108: https://redmine.iopen.net/issues/4108
 
 Incoming SMTP
 =============
@@ -114,7 +111,7 @@ Add member:
   a member to a group.
 
 Site style:
-  Fixed errors in the CSS
+  Some errors in the CSS have been fixed.
 
 ``mbox`` importing:
   The code that imports ``mbox`` files has been updated, and it
@@ -122,21 +119,27 @@ Site style:
 
 Starting public groups:
    Public groups are now visible on the homepage of the site as
-   soon as they are started, closing `Bug 4105`_
+   soon as they are started, closing `Bug 4105`_.
 
 .. _Bug 4105: https://redmine.iopen.net/issues/4105
 
 In addition the following general changes have been made to
 GroupServer.
 
-* *Unit tests* have been added to many of the *products* that
-  make up GroupServer. These tests make it more likely that
-  GroupServer will work correctly now and in the future.
-* Where possible Python 3 support has been added to the products
-  that make up GroupServer. The main change has been to switch to
-  Unicode-text by default. While not all *products* have been
-  updated, many have.
-* *Strict mode* has been turned on in more of the JavaScript
+* Three fundamental *products* — `gs.core`_, `gs.dmarc`_, and
+  `gs.form`_ — have been **published** to PyPI.
+* Sphinx_ is now used to generate the **documentation** for
+  ``gs.config``, ``gs.core``, ``gs.database``, ``gs.dmarc``,
+  ``gs.form``, and ``gs.group.messages.add.smtp2gs``.
+* **Unit tests** have been added to many of the products that
+  make up GroupServer. These tests make it more likely that these
+  components that make up GroupServer will work correctly now and
+  in the future.
+* Where possible **Python 3 support** has been added to the
+  products that make up GroupServer. The main change has been to
+  switch to Unicode-text by default. While not all products have
+  been updated, many have.
+* **Strict mode** has been turned on in more of the JavaScript
   modules that support the GroupServer interface. Code written
   with strict-mode turned on is more likely to be correct, and is
   executed more quickly in modern browsers.
@@ -144,14 +147,49 @@ GroupServer.
   ``assert`` statements. As these errors should never happen
   hopefully no-one will notice a difference.
 
+.. _Sphinx: http://sphinx-doc.org/
+.. _gs.core: https://pypi.python.org/pypi/gs.core/
+.. _gs.dmarc: https://pypi.python.org/pypi/gs.dmarc/
+.. _gs.form: https://pypi.python.org/pypi/gs.form/
+
 -------------
 Get Slivovica
 -------------
 
+To get Slivovica go to `the Downloads page for GroupServer`_ and
+follow `the GroupServer Installation documentation`_. Those who
+already have a functioning installation can `update an existing
+GroupServer system`_.
+
+..  _The Downloads page for GroupServer: http://groupserver.org/downloads
+..  _The GroupServer Installation documentation: http://groupserver.org/downloads/install
 
 Update an Existing GroupServer System
 =====================================
 
+To update a system running the Ouzo release of GroupServer
+(14.03) to Slivovica (14.06) carry out the following steps.
+
+#.  Download the Slivovica tar-ball from `the GroupServer
+    download page <http://groupserver.org/downloads>`_.
+
+#.  Uncompress the tar-ball::
+
+      $ tar cfz groupserver-14.06.tar.gz
+
+#.  Change to the directory that contains your existing
+    GroupServer installation.
+
+#.  Copy the new version-configuration files to your existing
+    GroupServer installation::
+
+      $ cp ../groupserver-14.06/[vz]*cfg  .
+
+#.  In your existing GroupServer installation run::
+
+      $ ./bin/buildout -n
+
+#.  Restart your GroupServer instance.
 
 ---------
 Resources
