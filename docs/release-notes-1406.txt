@@ -1,11 +1,6 @@
-.. sectnum::
-
-==============
- Release Notes
-==============
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+=============================================
 GroupServer 14.06 — Slivovica shots at sunset
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+=============================================
 
 :Authors: `Michael JasonSmith`_; 
 :Contact: Michael JasonSmith <mpj17@onlinegroups.net>
