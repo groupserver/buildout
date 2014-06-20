@@ -1,9 +1,6 @@
 =================================
 Starting and stopping GroupServer
 =================================
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-Simple, but more than a paragraph
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 :Authors: `Michael JasonSmith`_; `Richard Waid`_; 
 :Contact: Michael JasonSmith <mpj17@onlinegroups.net>
