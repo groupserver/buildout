@@ -1,11 +1,6 @@
-.. sectnum::
-
-==============
- Release Notes
-==============
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+===============================================
 GroupServer 14.03 — Ouzo utilised as an unguent
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+===============================================
 
 :Authors: `Michael JasonSmith`_; `Bill Bushey`_; `Dan Randow`_
 :Contact: Michael JasonSmith <mpj17@onlinegroups.net>

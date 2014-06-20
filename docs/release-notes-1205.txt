@@ -1,9 +1,6 @@
-=============
-Release Notes
-=============
-------------------------------------------------------------
+============================================================
 GroupServer 12.05 — Faloodeh Consumed with an Eye on History
-------------------------------------------------------------
+============================================================
 
 :Authors: `Michael JasonSmith`_; `Richard Waid`_; `Dan Randow`_
 :Contact: Michael JasonSmith <mpj17@onlinegroups.net>

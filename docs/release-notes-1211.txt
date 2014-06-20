@@ -1,11 +1,6 @@
-.. sectnum::
-
-=============
-Release Notes
-=============
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+=================================================
 GroupServer 12.11 — Absinthe Acquired Arbitrarily
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+=================================================
 
 :Authors: `Michael JasonSmith`_; `Richard Waid`_; `Dan Randow`_
 :Contact: Michael JasonSmith <mpj17@onlinegroups.net>

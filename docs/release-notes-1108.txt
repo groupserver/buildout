@@ -1,9 +1,6 @@
-=============
-Release Notes
-=============
----------------------------------------------------------------
+===============================================================
 GroupServer 11.08 — Banana Split Eaten in a Comfortable Silence
----------------------------------------------------------------
+===============================================================
 
 :Authors: `Michael JasonSmith`_; `Richard Waid`_; `Dan Randow`_
 :Contact: Michael JasonSmith <mpj17@onlinegroups.net>
