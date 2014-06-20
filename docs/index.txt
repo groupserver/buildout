@@ -7,6 +7,7 @@ GroupServer Documentation
 
    groupserver-install
    groupserver-start
+   postfix-configure
    release-notes
 
 Indices and tables

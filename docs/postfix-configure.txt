@@ -1,0 +1,54 @@
+===================
+Configuring Postfix
+===================
+
+:Authors: `Michael JasonSmith`_; `Fabien Hespul`_
+:Contact: Michael JasonSmith <mpj17@onlinegroups.net>
+:Date: 2014-06-20
+:Organization: `GroupServer.org`_
+:Copyright: This document is licensed under a
+  `Creative Commons Attribution-Share Alike 4.0 International License`_
+  by `OnlineGroups.net`_.
+
+Configuration files for the Postfix_ mail server are created when
+GroupServer_ is installed. However, it is necessary to change
+some configuration files so Postfix will send email messages on
+to GroupServer.
+
+Below are the steps for configuring Postfix for either Debian or
+Ubuntu.
+
+#.  Copy the configuration files from the GroupServer
+    installation into the Postfix configuration directory::
+
+      # cp postfix_config/groupserver.* /etc/postfix
+
+#.  Open the file ``/etc/postfix/main.cf`` in a text editor.
+
+#.  Find the line that begins with ``alias_maps`` and add the
+    item ``hash:/etc/postfix/groupserver.virtual`` to the
+    end. Use a comma to separate the new item from the existing
+    items.
+
+#.  Find the line that begins with ``alias_database`` and add the
+    item ``hash:/etc/postfix/groupserver.virtual`` to the
+    end. Use a comma to separate the new item from the existing
+    items.
+
+#.  Generate the Postfix hashes::
+
+    # postmap /etc/postfix/groupserver.virtual
+    # postalias /etc/postfix/groupserver.aliases
+
+#.  Restart Postfix::
+
+    # service postfix restart
+
+.. _GroupServer: http://groupserver.org/
+.. _GroupServer.org: http://groupserver.org/
+.. _OnlineGroups.net: http://onlinegroups.net/
+..  _Postfix: http://www.postfix.org/
+..  _Michael JasonSmith: http://groupserver.org/p/mpj17
+..  _Creative Commons Attribution-Share Alike 4.0 International License:
+    http://creativecommons.org/licenses/by-sa/4.0/
+..  _Fabien Hespul: http://groupserver.org/p/1e38zikXDqFgXFkmCjqC31
