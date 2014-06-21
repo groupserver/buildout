@@ -153,7 +153,7 @@ case of nginx the rewrite rule will look like the following::
 
 In the case of Apache the rewrite rule would look like the following::
 
-  RewriteRule ^/(.*) http://localhost:8080/groupserver/Content/initial_site/++skin++green/VirtualHostBase/http/%{HTTP_HOST}:80/VirtualHostRoot/$1 [L,P]
+  RewriteRule ^/(.*) http://localhost:8080/++skin++green/groupserver/Content/initial_site/VirtualHostBase/http/%{HTTP_HOST}:80/VirtualHostRoot/$1 [L,P]
 
 
 .. [#domain] Acquiring and configuring a new domain is out of the
