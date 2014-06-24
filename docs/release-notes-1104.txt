@@ -135,20 +135,20 @@ Carry out the following steps to update the package versions.
 .. [#EskimoPie] What will change in Eskimo Pie is detailed 
    in `the tickets. <https://projects.iopen.net/groupserver/query?milestone=GroupServer+11.05+%E2%80%94+Eskimo+Pie+with+Middle-Class+Guilt&group=status&col=id&col=summary&col=type&col=component&col=keywords&order=priority>`_
 .. [#HideAPost] The new Hide a Post interface closes `Ticket 316
-   <https://projects.iopen.net/groupserver/ticket/316>`_ and many minor
+   <https://redmine.iopen.net/issues/316>`_ and many minor
    tickets that were related to hiding a post.
 .. [#FullAddress] Support a full email address closes `Ticket 445
-   <https://projects.iopen.net/groupserver/ticket/445>`_.
+   <https://redmine.iopen.net/issues/445>`_.
 .. [#LogTabs] Switching the *Join and Leave Log* to use tabs from
    jQuery.UI closes `Ticket 641
-   <https://projects.iopen.net/groupserver/ticket/641>`_.
+   <https://redmine.iopen.net/issues/641>`_.
 .. [#ViewLink] Fixing the issue with the *view* link closes `Ticket 642
-   <https://projects.iopen.net/groupserver/ticket/642>`_.
+   <https://redmine.iopen.net/issues/642>`_.
 .. [#EmailSettings] Fixing the coding error on with the *Change Email 
     Settings* page closes `Ticket 660
-    <https://projects.iopen.net/groupserver/ticket/660>`_   
+    <https://redmine.iopen.net/issues/660>`_   
 .. _GroupServer.org: http://groupserver.org/
-.. _OnlineGroups.Net: http://onlinegroups.net/
+.. _OnlineGroups.Net: https://onlinegroups.net/
 .. _Creative Commons Attribution-Share Alike 3.0 New Zealand License:
    http://creativecommons.org/licenses/by-sa/3.0/nz/
 

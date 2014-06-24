@@ -136,7 +136,7 @@ a hosted Web service, such as GroupServer.
 .. _the gsdevel IRC channel on Freenode: irc://irc.freenode.net/#gsdevel
 .. _GroupServer: http://groupserver.org/
 .. _GroupServer.org: http://groupserver.org/
-.. _OnlineGroups.net: http://onlinegroups.net/
+.. _OnlineGroups.net: https://onlinegroups.net/
 .. _Zope: http://zope.org
 ..  _Michael JasonSmith: http://groupserver.org/p/mpj17
 ..  _Richard Waid: http://groupserver.org/p/richard

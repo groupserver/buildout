@@ -178,16 +178,16 @@ or just as a URL.
 
 .. [#FromAddress] Setting the ``From`` address in invitations correctly
    will close `Ticket 290
-   <https://projects.iopen.net/groupserver/ticket/290>`_.
+   <https://redmine.iopen.net/issues/290>`_.
 
 .. [#AddressEntry] Being strict about what can be entered as an email 
    address fixes `Ticket 325
-   <https://projects.iopen.net/groupserver/ticket/325>`_. The fix also
+   <https://redmine.iopen.net/issues/325>`_. The fix also
    corrects the same error with the sign up page.
 
 .. [#FlexibleFormat] More tolerant email address handling will hopefully
    come in `Baked Alaska
-   <https://projects.iopen.net/groupserver/ticket/445>`_.
+   <https://redmine.iopen.net/issues/445>`_.
 
 .. [#CSVInvitation] `OnlineGroups.Net`_ could not ship an *Invite by CSV*
    page with an editable message as it is an invitation to spam
@@ -199,35 +199,35 @@ or just as a URL.
    <http://groupserver.org/r/img/2207-2010-04-23T073912Z>`_.
 
 .. [#Welcome] Sending a welcome message when joining a group will close
-   `Ticket 303 <https://projects.iopen.net/groupserver/ticket/303>`_.
+   `Ticket 303 <https://redmine.iopen.net/issues/303>`_.
    Previously new members only saw a welcome message when signing up
    or joining a group themselves. The same fix also removed `a rather
-   nasty hack <https://projects.iopen.net/groupserver/ticket/346>`_.
+   nasty hack <https://redmine.iopen.net/issues/346>`_.
 
 .. [#Declined] Logging the declined invitations closes `Ticket 278
-   <https://projects.iopen.net/groupserver/ticket/278>`_. It is also
+   <https://redmine.iopen.net/issues/278>`_. It is also
    what allows people to be redurected if they follow invitations that
    have had a response. It will also add another entry in the ongoing
    saga “Why Physical Deletes are the Work of the Devil”.
 
 .. [#DeleteProfiles] A simple Cron-job would probably be fine at cleaning
    up the unwanted profiles (see `Ticket 446
-   <https://projects.iopen.net/groupserver/ticket/446>`_).
+   <https://redmine.iopen.net/issues/446>`_).
 
 .. [#NewMemberEmail] Telling all group administrators that a new
    member has joined a group will close `an irritating issue with
-   GroupServer <https://projects.iopen.net/groupserver/ticket/410>`_.
+   GroupServer <https://redmine.iopen.net/issues/100>`_.
 
 .. [#InviteList] Adding the list of invitations to the profile page
    will close `Ticket 347
-   <https://projects.iopen.net/groupserver/ticket/347>`_.
+   <https://redmine.iopen.net/issues/347>`_.
 
 .. [#Moderation] Administrators being moderated only effects
    administrators of sites with moderated groups; regardless `Ticket
-   235 <https://projects.iopen.net/groupserver/ticket/235>`_ is closed.
+   235 <https://redmine.iopen.net/issues/235>`_ is closed.
 
 .. [#JoinAudit] Auditing when people join and leave a group closes
-   `Ticket 341 <https://projects.iopen.net/groupserver/ticket/341>`_.
+   `Ticket 341 <https://redmine.iopen.net/issues/341>`_.
 
 .. [#LeaveAlt] The alternatives to leaving are shown in `an example 
    leave page <http://groupserver.org/r/img/7966-2010-07-08T142944Z>`_
@@ -237,11 +237,11 @@ or just as a URL.
    examples of `what the *Join and Leave Log* looks like to different
    people <http://groupserver.org/r/post/74SlGaFBc9QORJDsGSgKrP>`_.
    Creating the log closes `Ticket 341
-   <https://projects.iopen.net/groupserver/ticket/341>`_.
+   <https://redmine.iopen.net/issues/341>`_.
 
 .. [#ManageMembers] Neither `Ticket 420
-   <https://projects.iopen.net/groupserver/ticket/420>`_, `Ticket
-   442 <https://projects.iopen.net/groupserver/ticket/442>`_
+   <https://redmine.iopen.net/issues/420>`_, `Ticket
+   442 <https://redmine.iopen.net/issues/442>`_
    or `the appearance of the page
    <http://groupserver.org/r/img/8507-2010-07-26T054129Z>`_ convey what
    a monumental task it was to rewrite the Manage Members page. It is
@@ -250,19 +250,19 @@ or just as a URL.
 .. [#WithdrawingInvites] It would be best if I kept hacks that *used*
    to exist around invitations to myself. Invitations
    now work well, closing `Ticket 435
-   <https://projects.iopen.net/groupserver/ticket/435>`_.
+   <https://redmine.iopen.net/issues/435>`_.
 
 .. [#ChangeHomepage] The fix so the `WYMeditor`_ on the *Change the
    Site Introduction* page closes `Ticket 357
-   <https://projects.iopen.net/groupserver/ticket/357>`_. 
+   <https://redmine.iopen.net/issues/357>`_. 
 
 .. [#ShareBox] Originally the share-box was slated for Pineapple Snow,
    but Richard completed the short-link improvements early on the
    request of a client, closing `Ticket 378
-   <https://projects.iopen.net/groupserver/ticket/378>`_.
+   <https://redmine.iopen.net/issues/378>`_.
    
 .. _GroupServer.org: http://groupserver.org/
-.. _OnlineGroups.Net: http://onlinegroups.net/
+.. _OnlineGroups.Net: https://onlinegroups.net/
 .. _Creative Commons Attribution-Share Alike 3.0 New Zealand License:
    http://creativecommons.org/licenses/by-sa/3.0/nz/
 .. _GroupServer Development: http://groupserver.org/groups/development

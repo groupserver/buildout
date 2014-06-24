@@ -52,7 +52,7 @@ Carry out the following steps to update the package versions.
    <https://projects.iopen.net/groupserver/query?milestone=GroupServer+11.02+%E2%80%94+Tartufo+Nibbled+in+Polite+Company&group=status&col=id&col=summary&col=owner&col=component&col=keywords&order=priority>`_
      
 .. _GroupServer.org: http://groupserver.org/
-.. _OnlineGroups.Net: http://onlinegroups.net/
+.. _OnlineGroups.Net: https://onlinegroups.net/
 .. _Creative Commons Attribution-Share Alike 3.0 New Zealand License:
    http://creativecommons.org/licenses/by-sa/3.0/nz/
 

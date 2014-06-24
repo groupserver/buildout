@@ -726,19 +726,19 @@ Resources
 .. _Feature 419: https://redmine.iopen.net/issues/419
 
 ..  _GroupServer.org: http://groupserver.org/
-..  _OnlineGroups.Net: http://onlinegroups.net/
+..  _OnlineGroups.Net: https://onlinegroups.net/
 ..  _Creative Commons Attribution-Share Alike 3.0 New Zealand License:
     http://creativecommons.org/licenses/by-sa/3.0/nz/
 ..  _Michael JasonSmith: http://groupserver.org/p/mpj17
 ..  _Richard Waid: http://groupserver.org/p/richard
 ..  _Dan Randow: http://groupserver.org/p/danr
 ..  _Bill Bushey: http://groupserver.org/p/wbushey
-..  _E-Democracy.org: http://e-democracy.org/
+..  _E-Democracy.org: https://forums.e-democracy.org/
 ..  _Marek Kuziel: https://onlinegroups.net/p/marek
 ..  _low hanging fruit: https://redmine.iopen.net/projects/groupserver/wiki/LowHangingFruit
 ..  _The Downloads page for GroupServer: http://groupserver.org/downloads
 ..  _The GroupServer Installation documentation: 
     http://groupserver.org/downloads/install
-.. _the Relstorage product: http://pypi.python.org/pypi/RelStorage
-.. _PostgreSQL: http://postgresql.org
+.. _the Relstorage product: https://pypi.python.org/pypi/RelStorage
+.. _PostgreSQL: http://www.postgresql.org
 .. _SQLAlchemy: http://www.sqlalchemy.org/

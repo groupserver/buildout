@@ -168,7 +168,7 @@ system you will have to update the email-templates in the ZODB. Email
 a hand with this.
 
 .. _GroupServer.org: http://groupserver.org/
-.. _OnlineGroups.Net: http://onlinegroups.net/
+.. _OnlineGroups.Net: https://onlinegroups.net/
 .. _Creative Commons Attribution-Share Alike 3.0 New Zealand License:
    http://creativecommons.org/licenses/by-sa/3.0/nz/
 .. _GroupServer Development: http://groupserver.org/groups/development
@@ -184,20 +184,20 @@ a hand with this.
    <https://projects.iopen.net/groupserver/query?group=status&milestone=GroupServer+10.12+%E2%80%94+Lemon+Ice+in+the+Cool+of+the+Evening>`_
 
 .. [#GroupProperties] The new group properties page closes
-   `Ticket 292 <https://projects.iopen.net/groupserver/ticket/292>`_  
+   `Ticket 292 <https://redmine.iopen.net/issues/292>`_  
 
 .. [#PropertiesTopic] The GroupServer Development
    group hosted `a lively debate about topics
    <http://groupserver.org/r/topic/6ips13y2R228XK4dBYJTTl>`_
 
 .. [#EmailSettings] Creating a new email-settings page closes `Ticket 
-   371 <https://projects.iopen.net/groupserver/ticket/371>`_
+   371 <https://redmine.iopen.net/issues/371>`_
 
 .. [#StartAGroup] Simplifying the process used to start a group closes
-   `Ticket 304  <https://projects.iopen.net/groupserver/ticket/304>`_
+   `Ticket 304  <https://redmine.iopen.net/issues/304>`_
 
 .. [#AboutTab] Creating the About Tab closes `Ticket 493
-   <https://projects.iopen.net/groupserver/ticket/493>`_
+   <https://redmine.iopen.net/issues/493>`_
 
 .. [#WYMeditorUse] GroupServer uses the excellent `WYMeditor 
    <http://www.wymeditor.org/>`_ as its HTML editor. Pages that use the
@@ -207,27 +207,27 @@ a hand with this.
 
 .. [#ManageMember] Creating a link from the profile page to the manage
    member page closes `Ticket 515
-   <https://projects.iopen.net/groupserver/ticket/515>`_
+   <https://redmine.iopen.net/issues/515>`_
    
 .. [#Password] Knowing when a password has been reset closes `Ticket 326
-   <https://projects.iopen.net/groupserver/ticket/326>`_
+   <https://redmine.iopen.net/issues/326>`_
    
 .. [#EnClearPasswords] Why text entries are used to set passwords is
    explained in this `blog post
-   <http://blog.onlinegroups.net/2010/10/22/change-password/>`_
+   <http://onlinegroups.net/blog//2010/10/22/change-password/>`_
 
 .. [#Notifications] The clean up to notifications closes three tickets:
 
-   #. `Ticket 205 <https://projects.iopen.net/groupserver/ticket/205>`_
-   #. `Ticket 231 <https://projects.iopen.net/groupserver/ticket/231>`_
-   #. `Ticket 531 <https://projects.iopen.net/groupserver/ticket/531>`_
+   #. `Ticket 205 <https://redmine.iopen.net/issues/205>`_
+   #. `Ticket 231 <https://redmine.iopen.net/issues/231>`_
+   #. `Ticket 531 <https://redmine.iopen.net/issues/531>`_
 
 .. [#lxml] The ``lxml`` improvements should resolve `the issues that Tom
    had when installing GroupServer 
    <http://groupserver.org/r/post/QeQVi7Zt4SgkNdPpZSyQl>`_
 
 .. _GroupServer.org: http://groupserver.org/
-.. _OnlineGroups.Net: http://onlinegroups.net/
+.. _OnlineGroups.Net: https://onlinegroups.net/
 .. _Creative Commons Attribution-Share Alike 3.0 New Zealand License:
    http://creativecommons.org/licenses/by-sa/3.0/nz/
 .. _GroupServer Development: http://groupserver.org/groups/development

@@ -384,20 +384,20 @@ Updating the marker-interfaces in a group is similar to how you
     #.  Restart your GroupServer instance.    
     
 ..  _GroupServer.org: http://groupserver.org/
-..  _OnlineGroups.Net: http://onlinegroups.net/
+..  _OnlineGroups.Net: https://onlinegroups.net/
 ..  _Creative Commons Attribution-Share Alike 3.0 New Zealand License:
     http://creativecommons.org/licenses/by-sa/3.0/nz/
 ..  _Michael JasonSmith: http://groupserver.org/p/mpj17
 ..  _Richard Waid: http://groupserver.org/p/richard
 ..  _Dan Randow: http://groupserver.org/p/danr
 ..  _Steven Clift: http://groupserver.org/p/stevenc
-..  _Facebook: http://facebook.com/
+..  _Facebook: https://facebook.com/
 ..  _The Downloads page for GroupServer: http://groupserver.org/downloads
 ..  _The GroupServer Installation documentation: 
     http://groupserver.org/downloads/install
 ..  _caching: http://docs.zope.org/zope.cachedescriptors
-..  _Viewlets: http://pypi.python.org/pypi/zope.viewlet
-..  _Pillow: http://pypi.python.org/pypi/Pillow/
+..  _Viewlets: https://pypi.python.org/pypi/zope.viewlet
+..  _Pillow: https://pypi.python.org/pypi/Pillow/
 ..  _PIL: http://www.pythonware.com/library/
 ..  _Ubuntu: http://www.ubuntu.com/
 ..  _contact us: http://groupserver.org/groups/development/

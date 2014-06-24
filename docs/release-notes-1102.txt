@@ -62,12 +62,12 @@ Carry out the following steps to update the package versions.
    <https://projects.iopen.net/groupserver/query?keywords=~traversal&milestone=GroupServer+11.02+%E2%80%94+Tartufo+Nibbled+in+Polite+Company&group=status&col=id&col=summary&col=component&col=keywords&order=priority>`_
    all had the ``traversal`` keyword.
 .. [#EmailAudit] Recording more information about email addresses 
-   changing closes `Ticket 432 <https://projects.iopen.net/groupserver/ticket/432>`_.
+   changing closes `Ticket 432 <https://redmine.iopen.net/issues/432>`_.
 .. [#PineappleSnowTickets] What will change in Pineapple Snow is detailed 
    in `the tickets. <https://projects.iopen.net/groupserver/query?milestone=GroupServer+11.03+%E2%80%94+Pineapple+Snow+at+a+Child%27s+Party&group=status&col=id&col=summary&col=owner&col=type&col=component&col=keywords&order=priority>`_
      
 .. _GroupServer.org: http://groupserver.org/
-.. _OnlineGroups.Net: http://onlinegroups.net/
+.. _OnlineGroups.Net: https://onlinegroups.net/
 .. _Creative Commons Attribution-Share Alike 3.0 New Zealand License:
    http://creativecommons.org/licenses/by-sa/3.0/nz/
 

@@ -115,28 +115,28 @@ Carry out the following steps to update the package versions.
 .. [#SoftServe] What will change in Soft Serve is detailed 
    in `the tickets. <https://projects.iopen.net/groupserver/query?milestone=GroupServer+11.06+%E2%80%94+Soft+Serve+from+Mr+Whippy&group=status&col=id&col=summary&col=type&col=component&col=keywords&order=priority>`_
 .. [#RequestMembership] Adding the Request Membership system (finally) 
-   closes `Ticket 49. <https://projects.iopen.net/groupserver/ticket/49>`_
+   closes `Ticket 49. <https://redmine.iopen.net/issues/49>`_
    More information in the Request Membership system can be found in
    `the Request Membership topic.
    <http://groupserver.org/r/topic/1JdMOAD7VrlwnN7MQcgNhi>`_
 .. [#StartAGroup] Setting the group administrator when the group is 
    started closes `Ticket 611.
-   <https://projects.iopen.net/groupserver/ticket/611>`_
+   <https://redmine.iopen.net/issues/611>`_
 .. [#Verify] Setting the verified address as the preferred delivery 
    address closes `Ticket 661.
-   <https://projects.iopen.net/groupserver/ticket/661>`_
+   <https://redmine.iopen.net/issues/661>`_
 .. [#Files] Enhancing the file notification area closes `Ticket 664
-   <https://projects.iopen.net/groupserver/ticket/664>`_
+   <https://redmine.iopen.net/issues/664>`_
 .. [#URLs] Fixing the URLs so the do not break over multiple lines 
    closes `Ticket 671.
-   <https://projects.iopen.net/groupserver/ticket/671>`_
+   <https://redmine.iopen.net/issues/671>`_
 .. [#Zope] Updating to Zope 2.3.6 is something I am sure to regret, 
    because it has the potential to make GroupServer installation even 
    more tricky than before. However, it is done, and I have closed
    `Ticket 672.
-   <https://projects.iopen.net/groupserver/ticket/672>`_
+   <https://redmine.iopen.net/issues/672>`_
 .. _GroupServer.org: http://groupserver.org/
-.. _OnlineGroups.Net: http://onlinegroups.net/
+.. _OnlineGroups.Net: https://onlinegroups.net/
 .. _Creative Commons Attribution-Share Alike 3.0 New Zealand License:
    http://creativecommons.org/licenses/by-sa/3.0/nz/
 

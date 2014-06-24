@@ -188,7 +188,7 @@ In the case of Apache the rewrite rule would look like the following
 
 ..  _GroupServer: http://groupserver.org/
 ..  _GroupServer.org: http://groupserver.org/
-..  _OnlineGroups.net: http://onlinegroups.net/
+..  _OnlineGroups.net: https://onlinegroups.net/
 ..  _Apache: http://httpd.apache.org/
 ..  _nginx: http://nginx.org/
 ..  _Michael JasonSmith: http://groupserver.org/p/mpj17

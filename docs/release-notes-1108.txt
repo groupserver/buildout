@@ -55,7 +55,7 @@ Application Secret Value
   
 To get these values you will need to register your site as an
 *application* with Facebook. Do this by visiting
-<http://developer.facebook.com/> and following the instructions. 
+<https://developers.facebook.com/> and following the instructions. 
 Facebook will then supply you with an ``App ID`` and ``App Secret``. 
 Once you have these you can carry out the following tasks.
 
@@ -127,14 +127,14 @@ the following steps.
       $ ./bin/buildout
 
 ..  _GroupServer.org: http://groupserver.org/
-..  _OnlineGroups.Net: http://onlinegroups.net/
+..  _OnlineGroups.Net: https://onlinegroups.net/
 ..  _Creative Commons Attribution-Share Alike 3.0 New Zealand License:
     http://creativecommons.org/licenses/by-sa/3.0/nz/
 ..  _Michael JasonSmith: http://groupserver.org/p/mpj17
 ..  _Richard Waid: http://groupserver.org/p/richard
 ..  _Dan Randow: http://groupserver.org/p/danr
 ..  _Steven Clift: http://groupserver.org/p/stevenc
-..  _Facebook: http://facebook.com/
+..  _Facebook: https://www.facebook.com/
 ..  _The Downloads page for GroupServer: http://groupserver.org/downloads
 ..  _The GroupServer Installation documentation: 
     http://groupserver.org/downloads/install

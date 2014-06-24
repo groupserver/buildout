@@ -81,7 +81,7 @@ be the root user to carry out most of these tasks.)
 
 .. _GroupServer: http://groupserver.org/
 .. _GroupServer.org: http://groupserver.org/
-.. _OnlineGroups.net: http://onlinegroups.net/
+.. _OnlineGroups.net: https://onlinegroups.net/
 ..  _Postfix: http://www.postfix.org/
 ..  _Michael JasonSmith: http://groupserver.org/p/mpj17
 ..  _Creative Commons Attribution-Share Alike 4.0 International License:

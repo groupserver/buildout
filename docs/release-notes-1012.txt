@@ -75,7 +75,7 @@ skins. Without the new skins the default black-and-white color scheme will be sh
    <https://projects.iopen.net/groupserver/query?status=assigned&status=new&status=accepted&status=reopened&group=status&milestone=GroupServer+11.01+%E2%80%94+Baked+Alaska+Eaten+with+an+Eye+on+the+Soviets>`_ detail
    the planned changes in GroupServer 11.01.
 .. _GroupServer.org: http://groupserver.org/
-.. _OnlineGroups.Net: http://onlinegroups.net/
+.. _OnlineGroups.Net: https://onlinegroups.net/
 .. _Creative Commons Attribution-Share Alike 3.0 New Zealand License:
    http://creativecommons.org/licenses/by-sa/3.0/nz/
 .. _GroupServer Development: http://groupserver.org/groups/development

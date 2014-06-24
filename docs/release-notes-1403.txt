@@ -437,8 +437,7 @@ Resources
             by <https://source.iopen.net/groupserver/gs.content.js.loader/>
 .. [#compress] The code for determining how images should be displayed is
                provided by
-               <https://source.iopen.net/groupserver/gs.image.base> and
-               <https://source.iopen.net/groupserver/gs.image.square>
+               <https://source.iopen.net/groupserver/gs.image>
 .. [#inviteCSV] The code for inviting people by uploading a CSV file is
                 provided by
                 <https://source.iopen.net/groupserver/gs.group.member.invite.csv>
@@ -458,7 +457,7 @@ Resources
                   provided by
                   <https://source.iopen.net/groupserver/gs.content.email.layout>
 .. [#digests] The system for generating the topic digests is provided by
-              <https://source.iopen.net/groupserver/gs.group.messages.topicdigest>
+              <https://source.iopen.net/groupserver/gs.group.messages.topicsdigest>
 
 .. [#sendDigest] The system for sending the topic digests is provided by
                   <https://source.iopen.net/groupserver/gs.group.messages.senddigest>
@@ -471,12 +470,12 @@ Resources
 
 
 ..  _GroupServer.org: http://groupserver.org/
-..  _OnlineGroups.Net: http://onlinegroups.net/
+..  _OnlineGroups.Net: https://onlinegroups.net/
 ..  _Creative Commons Attribution-Share Alike 4.0 International License:
     http://creativecommons.org/licenses/by-sa/4.0/
 ..  _Michael JasonSmith: http://groupserver.org/p/mpj17
 ..  _Dan Randow: http://groupserver.org/p/danr
 ..  _Bill Bushey: http://groupserver.org/p/wbushey
-..  _E-Democracy.org: http://e-democracy.org/
+..  _E-Democracy.org: https://forums.e-democracy.org/
 
 ..  LocalWords:  refactored iopen JPEG redmine jQuery jquery async

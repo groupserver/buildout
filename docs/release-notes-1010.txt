@@ -79,40 +79,40 @@ help system`_.
    `the Group Homepage Rebuild topic in GroupServer Development.
    <http://groupserver.org/r/topic/1MqeURTRPJyYETkelmq1pk>`_ Deploying
    the new homepage closes `Ticket 426
-   <https://projects.iopen.net/groupserver/ticket/426>`_ and a slew of
+   <https://redmine.iopen.net/issues/426>`_ and a slew of
    sub-tickets.
 
 .. [#Bouncing] Showing a log of the failed attempts to send a message
    closes 
    
    * `Ticket 15!
-     <https://projects.iopen.net/groupserver/ticket/15>`_
+     <https://redmine.iopen.net/issues/15>`_
    * `Ticket 509
-     <https://projects.iopen.net/groupserver/ticket/509>`_
+     <https://redmine.iopen.net/issues/509>`_
 
 .. [#ResendInvite] Allowing administrators to reissue an invitation
    closes
-   `Ticket 489 <https://projects.iopen.net/groupserver/ticket/489>`_
+   `Ticket 489 <https://redmine.iopen.net/issues/489>`_
 
 .. [#Notifications] Updating the notifications closes eight tickets
 
-   * `Ticket 163 <https://projects.iopen.net/groupserver/ticket/163>`_
-   * `Ticket 215 <https://projects.iopen.net/groupserver/ticket/215>`_
-   * `Ticket 216 <https://projects.iopen.net/groupserver/ticket/216>`_
-   * `Ticket 221 <https://projects.iopen.net/groupserver/ticket/221>`_
-   * `Ticket 222 <https://projects.iopen.net/groupserver/ticket/222>`_
-   * `Ticket 223 <https://projects.iopen.net/groupserver/ticket/223>`_
-   * `Ticket 466 <https://projects.iopen.net/groupserver/ticket/466>`_
-   * `Ticket 513 <https://projects.iopen.net/groupserver/ticket/513>`_
+   * `Ticket 163 <https://redmine.iopen.net/issues/163>`_
+   * `Ticket 215 <https://redmine.iopen.net/issues/215>`_
+   * `Ticket 216 <https://redmine.iopen.net/issues/216>`_
+   * `Ticket 221 <https://redmine.iopen.net/issues/221>`_
+   * `Ticket 222 <https://redmine.iopen.net/issues/222>`_
+   * `Ticket 223 <https://redmine.iopen.net/issues/223>`_
+   * `Ticket 466 <https://redmine.iopen.net/issues/466>`_
+   * `Ticket 513 <https://redmine.iopen.net/issues/513>`_
 
 .. [#Favicon] Creating the new favicon for GroupServer closes 
-   `Ticket 510 <https://projects.iopen.net/groupserver/ticket/510>`_
+   `Ticket 510 <https://redmine.iopen.net/issues/510>`_
 
 .. [#Manual] Creating the new help pages closes 
-   `Ticket 485 <https://projects.iopen.net/groupserver/ticket/485>`_
+   `Ticket 485 <https://redmine.iopen.net/issues/485>`_
 
 .. _GroupServer.org: http://groupserver.org/
-.. _OnlineGroups.Net: http://onlinegroups.net/
+.. _OnlineGroups.Net: https://onlinegroups.net/
 .. _Creative Commons Attribution-Share Alike 3.0 New Zealand License:
    http://creativecommons.org/licenses/by-sa/3.0/nz/
 .. _GroupServer Development: http://groupserver.org/groups/development

@@ -234,7 +234,7 @@ set by you to protect this data.
   `The RelStorage system`_ will store data in a PostgreSQL database for
   Zope. This data is protected by the ``relstorage_password``.
 
-.. _the RelStorage system: http://pypi.python.org/pypi/RelStorage
+.. _the RelStorage system: https://pypi.python.org/pypi/RelStorage
 
 Configure PostgreSQL
 --------------------
@@ -480,13 +480,13 @@ Resources
    `ConfigParser`_ module, which accepts a syntax very similar to 
    Windows INI files.
 .. _ConfigParser:
-   http://docs.python.org/library/configparser.html
+   https://docs.python.org/2/library/configparser.html
 
 .. _GroupServer.org: http://groupserver.org/
-.. _OnlineGroups.net: http://onlinegroups.net/
-.. _Ubuntu: http://ubuntu.com/
+.. _OnlineGroups.net: https://onlinegroups.net/
+.. _Ubuntu: http://www.ubuntu.com/
 .. _CentOS: http://centos.org/
-.. _Buildout: http://www.buildout.org/
+.. _Buildout: http://www.buildout.org/en/latest/
 .. _Zope: http://zope.org
 ..  _Michael JasonSmith: http://groupserver.org/p/mpj17
 ..  _Richard Waid: http://groupserver.org/p/richard
