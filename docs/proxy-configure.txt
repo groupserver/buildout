@@ -10,6 +10,8 @@ Configuring a web proxy
   `Creative Commons Attribution-Share Alike 4.0 International License`_
   by `OnlineGroups.net`_.
 
+.. highlight:: shell-session
+
 Introduction
 ============
 
@@ -18,8 +20,7 @@ While GroupServer_ *can* run as a stand-alone web-server, it is
 available to the public to provide the following services:
 
 * To mediate between the low level HTTP port (port 80) and the
-  high-port that Zope runs on (normally port 8080, see `Configure
-  GroupServer`_).
+  high-port that Zope runs on (normally port 8080).
 * To rewrite the URL to include a skin directive.
 * To rewrite the URL to support virtual hosting.
 * To provide caching.
@@ -59,10 +60,19 @@ Add a virtual host to Apache
 
 To add a virtual host to Apache carry out the following steps.
 
+#.  Ensure the ``rewrite``, ``proxy``, and ``proxy_httpd``
+    modules are enabled in Apache::
+
+      # a2enmod rewrite proxy proxy_http
+      # service apache2 restart
+
 #.  Open ``/etc/apache2/sites-available/groupserver`` in a
     text-editor.
 
-#.  Add the following to the file::
+
+#.  Add the following to the file
+
+    .. code-block:: apacheconf
 
       <VirtualHost *:80>
         ServerAdmin support@example.com
@@ -93,7 +103,7 @@ To add a virtual host to Apache carry out the following steps.
 #.  Link the configuration for your host::
 
     # cd /etc/apache2/sites-enabled/
-    # ln -s 100-groupserver ../groupserver
+    # ln -s ../groupserver 100-groupserver 
 
 #.  Restart Apache::
 
@@ -104,7 +114,9 @@ Add a virtual host to nginx
 
 Open ``/etc/nginx/sites-avaliable/groupserver`` in a text-editor.
 
-#.  Add the following to the file::
+#.  Add the following to the file
+
+    .. code-block:: nginx
 
       upstream gs {
         server localhost:8080;
@@ -153,11 +165,15 @@ Change the skin
 One of the advantages of adding a proxy is it allows the skin to
 be easily changed. GroupServer ships with two skins: green and
 blue. To change the skin you must alter the rewrite rule. In the
-case of nginx the rewrite rule will look like the following::
+case of nginx the rewrite rule will look like the following
+
+.. code-block:: nginx
 
   rewrite /(.*) /++skin++blue/VirtualHostBase/http/$host:80/groupserver/Content/initial_site/VirtualHostRoot/$1 break;
 
-In the case of Apache the rewrite rule would look like the following::
+In the case of Apache the rewrite rule would look like the following
+
+.. code-block:: apache
 
   RewriteRule ^/(.*) http://localhost:8080/++skin++green/groupserver/Content/initial_site/VirtualHostBase/http/%{HTTP_HOST}:80/VirtualHostRoot/$1 [L,P]
 

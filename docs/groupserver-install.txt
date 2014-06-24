@@ -13,6 +13,7 @@ GroupServer installation
 
 ..  _Creative Commons Attribution-Share Alike 4.0 International License:
     http://creativecommons.org/licenses/by-sa/4.0/
+.. highlight:: shell-session
 
 We wrote this documentation for people with moderate experience in
 Linux system administration. Installation can be tricky: you have to

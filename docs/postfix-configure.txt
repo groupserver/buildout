@@ -10,6 +10,8 @@ Configuring Postfix
   `Creative Commons Attribution-Share Alike 4.0 International License`_
   by `OnlineGroups.net`_.
 
+.. highlight:: shell-session
+
 Postfix provides the email interface for GroupServer. GroupServer
 uses Postfix to:
 
@@ -56,7 +58,9 @@ be the root user to carry out most of these tasks.)
     the new item from the existing items.
 
 #.  Add the following to the bottom, unless it is previously
-    defined::
+    defined
+
+    .. code-block:: cfg
 
       smtpd_authorized_verp_clients = 127.0.0.1
 
