@@ -13,12 +13,13 @@ GroupServer 11.06 — Soft Serve from Mr Whippy
 Introduction
 ============
 
-The two main updates to GroupServer that are present in the Soft Serve
-release [#SoftServe]_ are an update to the code that determines if
-someone `can post`_, and a rebuild of the `site administration pages`_.
-In addition there are other `minor fixes`_ that have been made. You
-can `get Soft Serve`_ immediately. Work is now starting on GroupServer
-11.07 — Frozen Yoghurt Accompanied by Carols [#FrozenYoghurt]_.
+The two main updates to GroupServer that are present in the Soft
+Serve release are an update to the code that determines if
+someone `can post`_, and a rebuild of the `site administration
+pages`_.  In addition there are other `minor fixes`_ that have
+been made. You can `get Soft Serve`_ immediately. Work is now
+starting on GroupServer 11.07 — Frozen Yoghurt Accompanied by
+Carols.
 
 Acknowledgements
 ----------------
@@ -128,11 +129,6 @@ the homepage for your site and click on the link to administer the site.
 Footnotes
 =========
 
-.. [#SoftServe] `The tickets in Soft Serve
-   <https://projects.iopen.net/groupserver/query?milestone=GroupServer+11.06+%E2%80%94+Soft+Serve+from+Mr+Whippy&group=status&col=id&col=summary&col=type&col=component&col=keywords&order=priority>`_
-   detail what changed in GroupServer 11.06.
-.. [#FrozenYoghurt] What will change in Frozen Yoghurt is detailed in
-   `the tickets. <https://projects.iopen.net/groupserver/query?milestone=GroupServer+11.07+%E2%80%94+Frozen+Yoghurt+Accompanied+by+Carols&group=status&col=id&col=summary&col=type&col=component&col=keywords&order=priority>`_
 .. [#Blocking] Adding the code for blocking a post closed `Ticket 
    459 <https://redmine.iopen.net/issues/459>`_. This
    enhancement mostly helps Support groups, which otherwise lack a

@@ -11,7 +11,7 @@ GroupServer 11.03 — Pineapple Snow at a Child's Party
   by `OnlineGroups.Net`_.
 
 The Pineapple Snow release of GroupServer contains four main enhancements
-and corrections [#PineappleSnowTickets]_.
+and corrections.
 
 * There is an `Updated Change Email Settings Page`_.
 * Searching will now search the topic and post titles [#SearchIssue]_.
@@ -20,7 +20,7 @@ and corrections [#PineappleSnowTickets]_.
 * The *Accept Invitation* page looks a lot better [#Accept]_.
 
 You can `get Pineapple Snow`_ immediately. Work is now starting on
-GroupServer 11.04 — Slushy followed by a Pounding Headache [#Slushy]_.
+GroupServer 11.04 — Slushy followed by a Pounding Headache.
 
 Updated Change Email Settings Page
 ==================================
@@ -63,9 +63,6 @@ Carry out the following steps to update the package versions.
 
       $ ./bin/buildout -N
 
-.. [#PineappleSnowTickets] `The tickets in Pineapple Snow
-   <https://projects.iopen.net/groupserver/query?milestone=GroupServer+11.03+%E2%80%94+Pineapple+Snow+at+a+Child%27s+Party&group=status&col=id&col=summary&col=type&col=component&col=keywords&order=priority>`_
-   detail what changed in GroupServer 11.03.
 .. [#SearchIssue] Updating search closes `Ticket 227
    <https://redmine.iopen.net/issues/227>`_
 .. [#Edit] The *Edit this page* link is only shown to the Anonymous
@@ -75,8 +72,6 @@ Carry out the following steps to update the package versions.
     by a CSS error. Fixing the error closes `Ticket 618
     <https://redmine.iopen.net/issues/618>`_ and fixes a
     related error on other pages with radio buttons and check buttons.
-.. [#Slushy] What will change in Slushy is detailed 
-   in `the tickets. <https://projects.iopen.net/groupserver/query?milestone=GroupServer+11.04+%E2%80%94+Slushy+Followed+by+a+Pounding+Headache&group=status&col=id&col=summary&col=type&col=component&col=keywords&order=priority>`_
 .. [#Redesign] The redesign of the *Change Email Settings* page closes
    `Ticket 478 <https://redmine.iopen.net/issues/478>`_ and
    `Ticket 472 <https://redmine.iopen.net/issues/472>`_. The
@@ -87,8 +82,8 @@ Carry out the following steps to update the package versions.
    Settings* page when an address is verified closes `Ticket 276
    <https://redmine.iopen.net/issues/276>`_.
 .. [#jQuery] The new *Change Email Settings* page uses `the sortable
-   widgets <http://jqueryui.com/demos/sortable/>`_ and the `dialog
-   widget <http://jqueryui.com/demos/dialog/>`_ from jQuery UI.
+   widgets <http://jqueryui.com/sortable/>`_ and the `dialog
+   widget <http://jqueryui.com/dialog/>`_ from jQuery UI.
 .. _GroupServer.org: http://groupserver.org/
 .. _OnlineGroups.Net: https://onlinegroups.net/
 .. _Creative Commons Attribution-Share Alike 3.0 New Zealand License:

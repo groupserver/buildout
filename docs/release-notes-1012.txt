@@ -11,7 +11,7 @@ GroupServer 10.12 — Lemon Ice in the Cool of the Evening
   by `OnlineGroups.Net`_.
 
 The Lemon Ice release of GroupServer mostly consists of changes to the
-CSS [#LemonIceTickets]_. 
+CSS. 
 
 * New layout, based on the layout of `OnlineGroups.net`_.
 * Two new color schemes (skins):
@@ -23,7 +23,7 @@ CSS [#LemonIceTickets]_.
 * Integration of the jQuery.UI code into the default CSS.
 
 Work is now starting on GroupServer 11.01 — Baked Alaska with an Eye
-on the Soviets [#BakedAlaskaTickets]_.
+on the Soviets.
 
 Update an Existing GroupServer System
 =====================================
@@ -68,12 +68,6 @@ skins. Without the new skins the default black-and-white color scheme will be sh
 #. Reload the page. You may need to hold down ``Shift`` when clicking 
    the Reload button to ensure you reload the CSS.
 
-.. [#LemonIceTickets] The changes in GroupServer 10.12 — Lemon Ice in 
-   the Cool of the Evening are detailed in `the tickets 
-   <https://projects.iopen.net/groupserver/query?group=status&milestone=GroupServer+10.12+%E2%80%94+Lemon+Ice+in+the+Cool+of+the+Evening>`_
-.. [#BakedAlaskaTickets] `The tickets in Baked Alaska
-   <https://projects.iopen.net/groupserver/query?status=assigned&status=new&status=accepted&status=reopened&group=status&milestone=GroupServer+11.01+%E2%80%94+Baked+Alaska+Eaten+with+an+Eye+on+the+Soviets>`_ detail
-   the planned changes in GroupServer 11.01.
 .. _GroupServer.org: http://groupserver.org/
 .. _OnlineGroups.Net: https://onlinegroups.net/
 .. _Creative Commons Attribution-Share Alike 3.0 New Zealand License:

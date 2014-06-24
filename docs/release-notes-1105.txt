@@ -10,11 +10,11 @@ GroupServer 11.05 — Eskimo Pie with Middle Class Guilt
   `Creative Commons Attribution-Share Alike 3.0 New Zealand License`_
   by `OnlineGroups.Net`_.
 
-The main update to GroupServer that is present in the Eskimo Pie release
-[#EskimoPie]_ is the new `request membership`_ system. However there
-are other `minor fixes`_ that have been made. You can `get Eskimo Pie`_
-immediately. Work is now starting on GroupServer 11.06 — Soft Serve
-from Mr Whippy [#SoftServe]_.
+The main update to GroupServer that is present in the Eskimo Pie
+release is the new `request membership`_ system. However there
+are other `minor fixes`_ that have been made. You can `get Eskimo
+Pie`_ immediately. Work is now starting on GroupServer 11.06 —
+Soft Serve from Mr Whippy.
 
 Request Membership
 ==================
@@ -109,11 +109,6 @@ Carry out the following steps to update the package versions.
 
       $ ./bin/buildout
 
-.. [#EskimoPie] `The tickets in Eskimo Pie
-   <https://projects.iopen.net/groupserver/query?milestone=GroupServer+11.05+%E2%80%94+Eskimo+Pie+with+Middle-Class+Guilt&group=status&col=id&col=summary&col=type&col=component&col=keywords&order=priority>`_
-   detail what changed in GroupServer 11.05.
-.. [#SoftServe] What will change in Soft Serve is detailed 
-   in `the tickets. <https://projects.iopen.net/groupserver/query?milestone=GroupServer+11.06+%E2%80%94+Soft+Serve+from+Mr+Whippy&group=status&col=id&col=summary&col=type&col=component&col=keywords&order=priority>`_
 .. [#RequestMembership] Adding the Request Membership system (finally) 
    closes `Ticket 49. <https://redmine.iopen.net/issues/49>`_
    More information in the Request Membership system can be found in

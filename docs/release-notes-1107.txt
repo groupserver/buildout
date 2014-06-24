@@ -14,12 +14,12 @@ Introduction
 ============
 
 The main update that is present in the Frozen Yoghurt release of
-GroupServer  is a `new stylesheet`_ for devices with narrow displays
-[#FrozenYoghurt]_. There is also a new converter for `HTML-formatted
-messages`_. In addition a number of `minor fixes`_ are part of this
-release. You can `get Frozen Yoghurt`_ immediately. Work is now starting
-on GroupServer 11.08 — Banana Split Eaten in a Comfortable Silence
-[#BananaSplit]_.
+GroupServer is a `new stylesheet`_ for devices with narrow
+displays . There is also a new converter for `HTML-formatted
+messages`_. In addition a number of `minor fixes`_ are part of
+this release. You can `get Frozen Yoghurt`_ immediately. Work is
+now starting on GroupServer 11.08 — Banana Split Eaten in a
+Comfortable Silence.
 
 Acknowledgements
 ----------------
@@ -154,11 +154,6 @@ carry out the following steps.
 Footnotes
 =========
 
-..  [#FrozenYoghurt] `The tickets in Frozen Yoghurt
-    <https://projects.iopen.net/groupserver/query?milestone=GroupServer+11.07+%E2%80%94+Frozen+Yoghurt+Accompanied+by+Carols&group=status&col=id&col=summary&col=type&col=component&col=keywords&order=priority>`_
-    detail what changed in GroupServer 11.06.
-..  [#BananaSplit] What will change in Banana Split is detailed in
-    `the tickets. <https://projects.iopen.net/groupserver/query?milestone=GroupServer+11.08+%E2%80%94+Banana+Split+Eaten+in+a+Comfortable+Silence&group=status&col=id&col=summary&col=type&col=component&col=keywords&order=priority>`_
 .. [#NewCSS] The new mobile CSS closes `Ticket 444 
     <https://redmine.iopen.net/issues/444>`_. More 
     information on the mobile stylesheet can be found in `the topic in 

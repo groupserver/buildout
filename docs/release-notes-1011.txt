@@ -11,7 +11,7 @@ GroupServer 10.11 — Kulfi Craved while Caving
   by `OnlineGroups.Net`_.
 
 The changes below form the bulk of what is new in the Kulfi release of
-GroupServer [#KulfiTickets]_:
+GroupServer:
 
 * Enhancements to groups, including a clearer `group properties page`_,
   a more flexible `delivery settings page`_, a simplified `start a
@@ -25,7 +25,7 @@ All these enhancements will be available to new GroupServer
 installations, and those who `update an existing groupserver system`_.
   
 Work is now progressing on GroupServer 10.12 — Lemon Ice in the Cool
-of the Evening [#LemonIceTickets]_.
+of the Evening.
 
 Group Properties Page
 =====================
@@ -175,14 +175,6 @@ a hand with this.
 .. _WYMeditor: http://www.wymeditor.org/
 .. _Zope 2: http://zope2.zope.org/
 
-.. [#KulfiTickets] The tickets in 
-   `GroupServer  10.11 — Kulfi Craved while Caving
-   <https://projects.iopen.net/groupserver/query?priority=!lowest&milestone=Groupserver+10.11+%E2%80%94+Kulfi+Craved+while+Caving&group=status&col=id&col=summary&col=owner&col=type&col=priority&col=component&col=version&order=priority>`_
-
-.. [#LemonIceTickets] The changes in GroupServer 10.12 — Lemon Ice in 
-   the Cool of the Evening are detailed in `the tickets 
-   <https://projects.iopen.net/groupserver/query?group=status&milestone=GroupServer+10.12+%E2%80%94+Lemon+Ice+in+the+Cool+of+the+Evening>`_
-
 .. [#GroupProperties] The new group properties page closes
    `Ticket 292 <https://redmine.iopen.net/issues/292>`_  
 
@@ -214,7 +206,7 @@ a hand with this.
    
 .. [#EnClearPasswords] Why text entries are used to set passwords is
    explained in this `blog post
-   <http://onlinegroups.net/blog//2010/10/22/change-password/>`_
+   <http://onlinegroups.net/blog/2010/10/22/change-password/>`_
 
 .. [#Notifications] The clean up to notifications closes three tickets:
 

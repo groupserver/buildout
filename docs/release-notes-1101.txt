@@ -11,7 +11,7 @@ GroupServer 11.01 — Baked Alaska with and Eye on the Soviets
   by `OnlineGroups.Net`_.
 
 The Baked Alaska release of GroupServer mostly consists of changes to
-the email verification system [#BakedAlaskaTickets]_.
+the email verification system.
 
 * Error handling is improved. Following an old verification link will
   show a suggestion to view your profile, rather than an Unexpected
@@ -26,7 +26,7 @@ profile image of a logged in user are shown. This should make groups
 easier to find.
 
 Work is now starting on GroupServer 11.02 — Tartufo Nibbled in Polite
-Company [#TartufoTickets]_.
+Company.
 
 Update an Existing GroupServer System
 =====================================
@@ -45,12 +45,6 @@ Carry out the following steps to update the package versions.
 
       $ ./bin/buildout -N
 
-.. [#BakedAlaskaTickets] `The tickets in Baked Alaska
-   <https://projects.iopen.net/groupserver/query?status=closed&milestone=GroupServer+11.01+%E2%80%94+Baked+Alaska+Eaten+with+an+Eye+on+the+Soviets&group=status&col=id&col=summary&col=owner&col=component&col=keywords&order=priority>`_ detail
-   what changed in GroupServer 11.01.
-.. [#TartufoTickets] What will change in Tartufo is detailed in `the tickets. 
-   <https://projects.iopen.net/groupserver/query?milestone=GroupServer+11.02+%E2%80%94+Tartufo+Nibbled+in+Polite+Company&group=status&col=id&col=summary&col=owner&col=component&col=keywords&order=priority>`_
-     
 .. _GroupServer.org: http://groupserver.org/
 .. _OnlineGroups.Net: https://onlinegroups.net/
 .. _Creative Commons Attribution-Share Alike 3.0 New Zealand License:

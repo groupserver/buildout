@@ -202,7 +202,7 @@ Resources
 ..  _Michael JasonSmith: http://groupserver.org/p/mpj17
 ..  _Dan Randow: http://groupserver.org/p/danr
 ..  _Bill Bushey: http://groupserver.org/p/wbushey
-..  _E-Democracy.org: https://forums.e-democracy.org/
+..  _E-Democracy.org: http://forums.e-democracy.org/
 
 ..  LocalWords:  refactored iopen JPEG redmine jQuery jquery async
 ..  LocalWords:  Randow Organization sectnum Slivovica DMARC CSS

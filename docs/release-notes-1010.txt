@@ -11,8 +11,8 @@ GroupServer 10.10 — Gelato while Viewing the Sights
   by `OnlineGroups.Net`_.
 
 The changes below form the bulk of what is new in the Gelato release of
-GroupServer [#GelatoTickets]_. Work is now progressing on GroupServer
-10.11 — Kulfi Craved while Caving [#KulfiTickets]_.
+GroupServer. Work is now progressing on GroupServer
+10.11 — Kulfi Craved while Caving.
 
 New Group Homepage
 ==================
@@ -65,15 +65,6 @@ Switch to Zope 2.13 Beta
 GroupServer now runs on the the latest version of `Zope 2`_. The new
 features in Zope are used for the `new group homepage`_, and the `new
 help system`_.
-
-.. [#GelatoTickets] The tickets in 
-   `GroupServer 10.10 — Gelato while Viewing the Sights
-   <https://projects.iopen.net/groupserver/query?group=status&milestone=GroupServer+10.10+%E2%80%94+Gelato+while+Viewing+the+Sights>`_ detail what has changed in this release.
-   
-.. [#KulfiTickets] The changes that are planned for GroupServer 
-   10.11 — Kulfi Craved while Caving are detailed in 
-   `the tickets 
-   <https://projects.iopen.net/groupserver/query?status=assigned&status=new&status=accepted&status=reopened&group=status&milestone=Groupserver+10.11+%E2%80%94+Kulfi+Craved+while+Caving>`_
 
 .. [#GroupHome] The details of the new group homepage is available in
    `the Group Homepage Rebuild topic in GroupServer Development.

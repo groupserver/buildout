@@ -10,10 +10,10 @@ GroupServer 11.04 — Slushy Followed by a Pounding Headache
   `Creative Commons Attribution-Share Alike 3.0 New Zealand License`_
   by `OnlineGroups.Net`_.
 
-The Slushy release of GroupServer contains two main `enhancements`_
-[#SlushyTickets]_. You can `get Slushy`_ immediately. Work is now
-starting on GroupServer 11.05 — Eskimo Pie with Middle-Class Guilt
-[#EskimoPie]_.
+The Slushy release of GroupServer contains two main
+`enhancements`_. You can `get Slushy`_ immediately. Work is now
+starting on GroupServer 11.05 — Eskimo Pie with Middle-Class
+Guilt.
 
 Enhancements
 ============
@@ -129,11 +129,6 @@ Carry out the following steps to update the package versions.
 
       $ ./bin/buildout -N
 
-.. [#SlushyTickets] `The tickets in Slushy
-   <https://projects.iopen.net/groupserver/query?milestone=GroupServer+11.04+%E2%80%94+Slushy+Followed+by+a+Pounding+Headache&group=status&col=id&col=summary&col=type&col=component&col=keywords&order=priority>`_
-   detail what changed in GroupServer 11.04.
-.. [#EskimoPie] What will change in Eskimo Pie is detailed 
-   in `the tickets. <https://projects.iopen.net/groupserver/query?milestone=GroupServer+11.05+%E2%80%94+Eskimo+Pie+with+Middle-Class+Guilt&group=status&col=id&col=summary&col=type&col=component&col=keywords&order=priority>`_
 .. [#HideAPost] The new Hide a Post interface closes `Ticket 316
    <https://redmine.iopen.net/issues/316>`_ and many minor
    tickets that were related to hiding a post.

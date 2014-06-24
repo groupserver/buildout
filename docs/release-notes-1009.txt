@@ -10,10 +10,9 @@ GroupServer 10.09 —  Spaghettieis with a Wafer of Confusion
   `Creative Commons Attribution-Share Alike 3.0 New Zealand License`_
   by `OnlineGroups.Net`_.
 
-The changes below form the bulk of what is new in the Spaghettieis
-release of GroupServer [#SpaghettieisTickets]_. Work is now
-progressing on GroupServer 10.10 — Gelato while Viewing the Sights
-[#GelatoTickets]_.
+The changes below form the bulk of what is new in the
+Spaghettieis release of GroupServer. Work is now progressing on
+GroupServer 10.10 — Gelato while Viewing the Sights.
 
 Invitations
 ============
@@ -158,16 +157,6 @@ JavaScript-based **share box** [#ShareBox]_. The share box provides
 a quick and easy way to share a post or topic on Facebook, Twitter,
 or just as a URL.
  
-.. [#SpaghettieisTickets] The tickets in
-   `GroupServer 10.09 — Spaghettieis with a Wafer of Confusion
-   <https://projects.iopen.net/groupserver/query?group=status&milestone=GroupServer+10.09+%E2%80%94+Spaghettieis+with+a+Wafer+of+Confusion>`_
-   detail what has changed in this release.
-
-.. [#GelatoTickets] The changes that are planned for **GroupServer 
-   10.10 — Gelato while Viewing the Sights** are detailed in `the
-   tickets
-   <https://projects.iopen.net/groupserver/query?group=status&milestone=GroupServer+10.10+%E2%80%94+Gelato+while+Viewing+the+Sights>`_.
-
 .. [#MessagePreview] The `GroupServer Development`_ online group contains
    examples of
    
