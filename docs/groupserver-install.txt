@@ -13,7 +13,7 @@ GroupServer installation
 
 ..  _Creative Commons Attribution-Share Alike 4.0 International License:
     http://creativecommons.org/licenses/by-sa/4.0/
-.. highlight:: shell-session
+.. highlight:: console
 
 We wrote this documentation for people with moderate experience in
 Linux system administration. Installation can be tricky: you have to
@@ -247,11 +247,15 @@ transaction support carry out the following steps.
    to edit this file, which is located at
    ``/etc/postgresql/9.1/main/postgresql.conf``.
 
-#. Find the line that reads::
+#. Find the line that reads
+
+   .. code-block:: cfg
 
      max_prepared_transactions = 0
 
-#. Change the line to read::
+#. Change the line to read
+
+   .. code-block:: cfg
 
      max_prepared_transactions = 1
 

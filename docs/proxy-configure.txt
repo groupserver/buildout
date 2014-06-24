@@ -10,7 +10,7 @@ Configuring a web proxy
   `Creative Commons Attribution-Share Alike 4.0 International License`_
   by `OnlineGroups.net`_.
 
-.. highlight:: shell-session
+.. highlight:: console
 
 Introduction
 ============

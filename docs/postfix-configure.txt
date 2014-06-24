@@ -10,7 +10,7 @@ Configuring Postfix
   `Creative Commons Attribution-Share Alike 4.0 International License`_
   by `OnlineGroups.net`_.
 
-.. highlight:: shell-session
+.. highlight:: console
 
 Postfix provides the email interface for GroupServer. GroupServer
 uses Postfix to:

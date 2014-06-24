@@ -10,6 +10,8 @@ Starting and stopping GroupServer
   `Creative Commons Attribution-Share Alike 4.0 International License`_
   by `OnlineGroups.net`_.
 
+.. highlight:: console
+
 Introduction
 ============
 
