@@ -10,7 +10,7 @@ GroupServer 14.06 — Slivovica shots at sunset
   `Creative Commons Attribution-Share Alike 4.0 International License`_
   by `OnlineGroups.net`_.
 
-.. contents:: :depth: 3
+.. highlight:: console
 
 ------------
 Introduction
