@@ -5,7 +5,7 @@ GroupServer installation
 :Authors: `Michael JasonSmith`_; `Richard Waid`_; `Marek Kuziel`_; 
           `Alice Murphy`_; `Dan Randow`_
 :Contact: Michael JasonSmith <mpj17@onlinegroups.net>
-:Date: 2014-06-20 (see `History`_)
+:Date: 2014-06-23 (see `History`_)
 :Organization: `GroupServer.org`_
 :Copyright: This document is licensed under a
   `Creative Commons Attribution-Share Alike 4.0 International License`_
@@ -23,6 +23,10 @@ If you get stuck, please ask us questions in `GroupServer
 Development`_. Other more detailed guides would be gratefully accepted.
 
 .. _GroupServer Development: http://groupserver.org/groups/development
+
+:Note: GroupServer is developed on `Ubuntu`_, and is know to run
+       on `CentOS`_. We will gladly accept any modifications you
+       have that will make GroupServer run on more platforms.
 
 Quick start
 ===========
@@ -46,9 +50,6 @@ Quick start
 
 #.  Visit your new site.
 
-Later you can further configure the `Email Server`_ and add an optional
-`Web Proxy`_.
-
 You can `remove GroupServer`_ in three steps.
 
 Requirements
@@ -58,10 +59,6 @@ The installation script for Ubuntu will install all the libraries
 listed below (see `Run the Installer`_). The packages that are
 required to install GroupServer are listed for Ubuntu, CentOS,
 and RedHat Enterprise Linux.
-
-GroupServer is developed on `Ubuntu`_, and is know to run on
-`CentOS`_. We will gladly accept any modifications you have that
-will make GroupServer run on more platforms.
 
 +-------------+--------------------------------------------------------+
 |             | Packages                                               |
@@ -135,20 +132,21 @@ system, and finally `start Zope`_.
 Pick a host name
 ----------------
 
-Your new site needs its own hostname. The name needs to be known to
-the *web browser* that you will use to access the site. It will pass
-the name to the Zope system that runs GroupServer. (Zope can serve
-multiple sites, as well as its web-based management system.) For a trial
-system, the name can be set up in the ``hosts(5)`` file.
+Your new site needs its own hostname. The name needs to be known
+to the *web browser* that you will use to access the site. It
+will pass the name to the Zope system that runs
+GroupServer. (Zope can serve multiple sites, as well as its
+web-based management system.) For a trial system, the name can be
+set up in the ``hosts(5)`` file.
 
-* Edit ``/etc/hosts`` as ``root``.
-* Add the new host name to the ``localhost`` entry, which is normally
-  the first one. For example, to add the name ``gstest`` change the
-  line to the following::
+#.  Edit ``/etc/hosts`` as ``root``.
+#.  Add the new host name to the ``localhost`` entry, which is
+    normally the first one. For example, to add the name
+    ``gstest`` change the line to the following::
 
-    127.0.0.1    localhost gstest
+      127.0.0.1    localhost gstest
 
-* Save the ``hosts`` file.
+#. Save the ``hosts`` file.
 
 Configure GroupServer
 ---------------------
@@ -162,24 +160,26 @@ needs to be configured, before the `database storage`_.
 GroupServer site
 ~~~~~~~~~~~~~~~~
 
-You will need to check all the configuration for your initial site. In
-particular the email addresses for your first two users **must** be set.
+You will need to check all the configuration for your initial site.
 
 ``host``
-  The domain name used by your new GroupServer instance. It must be the
-  same as what you picked a host name earlier (see `Pick a Host Name`_).
+  The domain name used by your new GroupServer instance. It must
+  be the same as what you picked a host name earlier (see `Pick a
+  Host Name`_).
 
 ``port``
-  The port that your new GroupServer instance will run on. By default it is
-  ``8080``, which is the same as the ``zope_port``. To run on any other
-  port you will need to set up a `web proxy`_.
+  The port that your new GroupServer instance will run on. By
+  default it is ``8080``, which is the same as the ``zope_port``
+  (see Zope_ below). (To run on any other port you will need to
+  set up a web proxy.)
 
 ``admin_email``
-  When GroupServer is installed, an example site and group are created. So
-  you can use the administration functions you must log in as an
-  administrator. This is the email address of that administrator. Posts to
-  the example group will be sent to the administrator at this address. This
-  email address **must** work.
+  When GroupServer is installed, an example site and group are
+  created. So you can use the administration functions you must
+  log in as an administrator. This is the email address of that
+  administrator. Posts to the example group will be sent to the
+  administrator at this address. This email address **must**
+  work.
   
 ``admin_password``
   The password of the administrator of the new GroupServer site. The
@@ -259,23 +259,25 @@ transaction support carry out the following steps.
      $ sudo service postgresql restart
 
 Run the installer
------------------
+=================
 
-The installer is a Bash script. To run the GroupServer installer enter the
-following command::
+The installer for Ubuntu is a Bash script. (For `CentOS and
+RHEL`_ you will have to carry out the steps by hand.) To run the
+GroupServer installer enter the following command::
 
   $ ./gs_install_ubuntu.sh
 
-You will be prompted for your password. This is required to check that your
-Ubuntu system has met all the `requirements`_. Next the installer ensures
-that the `set up`_ is correct.
+You will be prompted for your password. This is required to check
+that your Ubuntu system has met all the `requirements`_. Next the
+installer ensures that the `set up`_ is correct.
 
-The rest of the installation process should be completely automatic. The
-system will create a *sandbox* for your GroupServer site, with its own
-version of Python, placed in ``./bin/``. It will then configure the
-PostgreSQL databases that store the data for your site. Finally, it will
-start the `buildout`_ system that will **download** and install all the
-requirements for GroupServer (around 44MB of packages) including:
+The rest of the installation process should be completely
+automatic. The system will create a *sandbox* for your
+GroupServer site, with its own version of Python, placed in
+``./bin/``. It will then configure the PostgreSQL databases that
+store the data for your site. Finally, it will start the
+`buildout`_ system that will **download** and install all the
+requirements for GroupServer (around 43MB of packages) including:
   
 * `eGenix.com mx Base`_ (4.4MB)
 * `SQL Alchemy`_ (4.3MB)
@@ -289,25 +291,28 @@ requirements for GroupServer (around 44MB of packages) including:
 .. _Pillow: https://pypi.python.org/pypi/Pillow/2.3.1
 .. _Zope 2.13: http://docs.zope.org/zope2/releases/2.13/
 
-:Note: You need a functioning network connection to download the packages.
+:Note: You need a functioning network connection to download the
+       packages.
 
-It is a good idea to make a cup of coffee, or go to lunch, while buildout
-processes.
+It is a good idea to make a cup of coffee, or go to lunch, while
+buildout processes.
 
 CentOS and RHEL
-~~~~~~~~~~~~~~~
+---------------
 
-The process to install GroupServer on CentOS or RedHat Enterprise Linux is
-manual. The basic idea is as follows, but it lacks testing.
+The process to install GroupServer on CentOS or RedHat Enterprise
+Linux is manual. The basic idea is as follows, but it lacks
+testing.
 
-:Note: Commands that have to be run as ``root`` are shown on lines that
-       begin with a ``#``. Commands that must be run as a normal user are
-       shown on lines that begin with a ``$``.
+:Note: Commands that have to be run as ``root`` are shown on
+       lines that begin with a ``#``. Commands that must be run
+       as a normal user are shown on lines that begin with a
+       ``$``.
 
 #. Install the requirements_.
 
-#. Create the two database users specified in ``config.cfg``, using
-   ``createuser``::
+#. Create the two database users specified in ``config.cfg``,
+   using ``createuser``::
 
      # createuser -D -S -R -l gsadmin
      # createuser -D -S -R -l gszodbadmin
@@ -341,137 +346,38 @@ manual. The basic idea is as follows, but it lacks testing.
 Start Zope
 ----------
 
-Your GroupServer site is supported by Zope. To start the Zope run the
+Your GroupServer site is supported by Zope. To start Zope run the
 following command::
 
   $ ./bin/instance fg
 
-Zope will have started when the message ``Zope Ready to handle requests``
-is displayed in the terminal.
+Zope will have started when the message ``Zope Ready to handle
+requests`` is displayed in the terminal.
 
 You should be able to view your GroupServer site at
-`http://{host}:{zope_port}`. If you kept the defaults, the address will be
-<http://gstest:8080>.
+`http://{host}:{zope_port}`. If you kept the defaults, the
+address will be <http://gstest:8080>.
   
-* The host is the one you picked earlier (see `Pick a Host Name`_).
-* The port is the one that site listens to (see `Configure GroupServer`_).
+* The host is the one you picked earlier (see `Pick a Host
+  Name`_).
+* The port is the one that site listens to (see `Configure
+  GroupServer`_).
 
 Use ``Control-c`` to stop Zope.
 
-Running Zope as a daemon
-~~~~~~~~~~~~~~~~~~~~~~~~
-
-It may be more convenient to run Zope in the background, as a daemon. To
-run Zope as a daemon run the following command::
-
-  $ ./bin/instance start
-
-To stop the daemon run::
-
-  $ ./bin/instance stop
-    
-Email server
-============
-
-Postfix provides the email interface for GroupServer. Configuring Postfix
-is tricky, and is optional: you can use the Web interface to GroupServer
-without configuring the email server.  However, GroupServer uses Postfix
-to:
-
-* Queue email that is delivered to groups, and
-* Pass the email messages to GroupServer.
-
-If you are new to administering Postfix you may find the `Ubuntu Community
-Postfix Documentation`_ useful.
-
-.. _Ubuntu Community Postfix Documentation: https://help.ubuntu.com/community/Postfix
-
-Postfix has to know to run two scripts when email messages come in for your
-GroupServer site. To do this you will have to change some files in the
-Postfix configuration directory. For Ubuntu this directory is
-``/etc/postfix``.
-
-:Note: Commands that have to be run as ``root`` are shown on lines that
-       begin with a ``#``. Commands that can be run as a normal user are
-       shown on lines that begin with a ``$``.
-
-Copy the configuration files
-----------------------------
-
-* Copy the files ``postfix_config/groupserver.*`` from the GroupServer
-  installation directory to the Postfix configuration directory
-  ``/etc/postfix``.
-* Change the ownership of the files to the Postfix user and group. For
-  Ubuntu this would be::
-  
-    # chown nobody.nogroup /etc/postfix/groupserver.*
-
-  If you are on a system other than Ubuntu, running the following
-  will display the user-name of the Postfix user::
-  
-    $ /usr/sbin/postconf | grep default_privs | cut -f3 -d" "
-* Modify the host
-
-Change ``main.cf``
-------------------
-
-* Edit ``/etc/postfix/main.cf``.
-* Find the ``alias_maps`` parameter.
-* Add the following on a line below the existing value of
-  ``alias_maps``::
-
-    hash:/etc/postfix/groupserver.aliases
-
-* Find the ``virtual_alias_maps`` parameter.
-* Add the following on a line below the existing value of 
-  ``virtual_alias_maps`` ::
-
-    hash:/etc/postfix/groupserver.virtual     
-
-* Find the ``mydestination`` parameter.
-* If the hostname specified as ``virtual`` in the
-  ``/etc/postfix/groupserver.virtual`` is listed as a destination,
-  it will need to be removed from ``mydestination`` as it cannot be
-  specified in both places.
-* Add the following to the bottom, unless it is previously defined::
-
-    smtpd_authorized_verp_clients = 127.0.0.1
-
-
-Update Postfix
---------------
-
-To load the new configuration into Postfix run the following commands::
-
-    # postalias /etc/postfix/groupserver.aliases
-    # postmap /etc/postfix/groupserver.virtual
-    # postfix reload
-
-
-Web proxy
-=========
-
-A web proxy is unnecessary if you only wish to try GroupServer. However,
-for production sites it is a good idea to run a proxy to provide the
-following services:
-
-* To mediate between the low level HTTP port (port 80) and the 
-  high-port that Zope runs on (normally port 8080, see `Configure
-  GroupServer`_).
-* To rewrite the URL to include a skin directive.
-* To rewrite the URL to support virtual hosting.
-* To provide caching.
-
-GroupServer is known to work with many Web proxies including Varnish,
-``NGINX``, ``ha_proxy``, and Apache. For Apache a rewrite rule that is
-required to provide the mapping looks like the one in the example file
-``apache-groupserver``.
+:See also: The documentation *Starting and stopping GroupServer*
+           has more information on running GroupServer, including
+           running it as a daemon. We document the setup required
+           to receive email with GroupServer in *Configuring
+           Postifx*. Finally the steps required to configure a
+           proxy is documented in *Configuring a web proxy*.
 
 Remove Groupserver
 ==================
 
-To remove GroupServer, you must remove the database, the associated
-database user, and the directory that contains the GroupServer install.
+To remove GroupServer, you must remove the database, the
+associated database user, and the directory that contains the
+GroupServer install.
 
 1. To remove the database, run the following commands::
   
@@ -497,6 +403,8 @@ History
 ======= ==========  ====================================================
 Version Date        Change
 ======= ==========  ====================================================
+14.06   2014-06-23  Moving the sections for configuring the proxy and
+                    Postfix to their own documents.
 14.03   2014-03-25  Clarifying the Requirements_ wording.
 14.03   2014-03-20  Updating to Ouzo.
 12.11   2012-11-27  Adding the sections `CentOS and RHEL`_ and

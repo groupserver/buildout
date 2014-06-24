@@ -4,7 +4,7 @@ Configuring a web proxy
 
 :Authors: `Michael JasonSmith`_; `Fabien Hespul`_
 :Contact: Michael JasonSmith <mpj17@onlinegroups.net>
-:Date: 2014-06-20
+:Date: 2014-06-23
 :Organization: `GroupServer.org`_
 :Copyright: This document is licensed under a
   `Creative Commons Attribution-Share Alike 4.0 International License`_
@@ -15,8 +15,14 @@ Introduction
 
 While GroupServer_ *can* run as a stand-alone web-server, it is
 **highly recommended** that a proxy is used when making the site
-available to the public. The proxy handles security and caching,
-while GroupServer generates the content.
+available to the public to provide the following services:
+
+* To mediate between the low level HTTP port (port 80) and the
+  high-port that Zope runs on (normally port 8080, see `Configure
+  GroupServer`_).
+* To rewrite the URL to include a skin directive.
+* To rewrite the URL to support virtual hosting.
+* To provide caching.
 
 In this document we explain how to `add a virtual host`_ to
 either Apache_ or nginx_. Then we explain how to `change the
