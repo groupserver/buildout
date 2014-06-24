@@ -5,4 +5,4 @@ syntax: glob
 dist
 docs/*html
 docs/quote.sed
-
+docs/_build/
