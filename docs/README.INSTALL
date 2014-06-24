@@ -12,6 +12,6 @@ GroupServer was packaged is in the file
 If you have Sphinx installed then the complete documentation for
 GroupServer can be generated my running::
   
-  # make html
+  $ make html
 
-The HTML documentation will be written to the _build/html folder
+The HTML documentation will be written to the _build/html folder.
