@@ -1,5 +1,13 @@
 #!/bin/bash
 
+# First ensure we are *NOT* *ROOT*
+if [[ $(whoami) == 'root' ]]
+then
+  echo "The installation should be done as a normal user,"
+  echo "any user other than root."
+  exit
+fi
+
 . read_ini.sh
 read_ini config.cfg config --prefix CFG
 
