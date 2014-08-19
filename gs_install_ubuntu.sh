@@ -59,7 +59,7 @@ sudo su -l -c"createuser -p ${CFG__config__pgsql_port} -d -S -R -l ${CFG__config
 sudo su -l -c"createuser -p ${CFG__config__relstorage_port} -d -S -R -l ${CFG__config__relstorage_user}" postgres
 
 sudo su -l -c"createdb -p ${CFG__config__pgsql_port} -Ttemplate0 -O ${CFG__config__pgsql_user} -EUTF-8 ${CFG__config__pgsql_dbname}" postgres
-sudo su -l -c"createdb -p ${CFG__config__relstorage_port}-Ttemplate0 -O ${CFG__config__relstorage_user} -EUTF-8 ${CFG__config__relstorage_dbname}" postgres
+sudo su -l -c"createdb -p ${CFG__config__relstorage_port} -Ttemplate0 -O ${CFG__config__relstorage_user} -EUTF-8 ${CFG__config__relstorage_dbname}" postgres
 
 sudo su -l -c"echo \"alter user ${CFG__config__pgsql_user} with encrypted password '${CFG__config__pgsql_password}';\" | psql -p ${CFG__config__pgsql_port}" postgres
 sudo su -l -c"echo \"alter user ${CFG__config__relstorage_user} with encrypted password '${CFG__config__relstorage_password}';\" | psql -p ${CFG__config__relstorage_port}" postgres
