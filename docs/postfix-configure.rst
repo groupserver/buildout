@@ -39,9 +39,14 @@ be the root user to carry out most of these tasks.)
       # cp postfix_config/groupserver.* /etc/postfix
 
 #.  Change the ownership of the files to the Postfix user and
-    group. For Ubuntu [#otherOwner]_ this would be::
+    group. For Ubuntu this would be::
 
       # chown nobody.nogroup /etc/postfix/groupserver.*
+
+    If you are on a system other than Ubuntu, running the
+    following will display the user-name of the Postfix user::
+  
+      $ /usr/sbin/postconf | grep default_privs | cut -f3 -d" "
 
 #.  Open the file ``/etc/postfix/main.cf`` in a text editor.
 
@@ -72,12 +77,6 @@ be the root user to carry out most of these tasks.)
 #.  Restart Postfix::
 
     # service postfix restart
-
-.. [#otherOwner] If you are on a system other than Ubuntu,
-                 running the following will display the user-name
-                 of the Postfix user::
-  
-                   $ /usr/sbin/postconf | grep default_privs | cut -f3 -d" "
 
 .. _GroupServer: http://groupserver.org/
 .. _GroupServer.org: http://groupserver.org/

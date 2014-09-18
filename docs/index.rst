@@ -3,7 +3,6 @@ GroupServer Documentation
 
 .. toctree::
    :maxdepth: 2
-   :numbered:
 
    groupserver-install
    groupserver-start

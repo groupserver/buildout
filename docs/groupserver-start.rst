@@ -120,8 +120,8 @@ Issues, and problems
 Should something go wrong, there is a log files are written to
 the ``var/log/`` directory within the GroupServer_ directory. You
 can ask questions and make comments in `the GroupServer
-Development group`_, or in `the gsdevel IRC channel on
-Freenode`_.
+Development group`_, or in the gsdevel IRC channel on
+Freenode (``irc://irc.freenode.net/#gsdevel``).
 
 Virtual machines
 ----------------
@@ -133,7 +133,6 @@ environment should cover how to expose the network interface for
 a hosted Web service, such as GroupServer.
 
 .. _the GroupServer Development group: http://groupserver.org/groups/development
-.. _the gsdevel IRC channel on Freenode: irc://irc.freenode.net/#gsdevel
 .. _GroupServer: http://groupserver.org/
 .. _GroupServer.org: http://groupserver.org/
 .. _OnlineGroups.net: https://onlinegroups.net/
