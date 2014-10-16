@@ -166,13 +166,7 @@ You will need to check all the configuration for your initial site.
 ``host``
   The domain name used by your new GroupServer instance. It must
   be the same as what you picked a host name earlier (see `Pick a
-  Host Name`_).
-
-``port``
-  The port that your new GroupServer instance will run on. By
-  default it is ``8080``, which is the same as the ``zope_port``
-  (see Zope_ below). (To run on any other port you will need to
-  set up a web proxy.)
+  Host Name`_). See also the ``zope_port`` below.
 
 ``admin_email``
   When GroupServer is installed, an example site and group are
@@ -408,6 +402,7 @@ History
 ======= ==========  ====================================================
 Version Date        Change
 ======= ==========  ====================================================
+14.xx   2014-10-14  Reducing the number of ports to one.
 14.06   2014-06-23  Moving the sections for configuring the proxy and
                     Postfix to their own documents.
 14.03   2014-03-25  Clarifying the Requirements_ wording.
