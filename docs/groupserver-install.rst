@@ -14,28 +14,7 @@ GroupServer installation
 ..  _Creative Commons Attribution-Share Alike 4.0 International License:
     http://creativecommons.org/licenses/by-sa/4.0/
 
-  .. highlight:: console
-
-To install GroupServer you must get the following installed and
-configured:
-
-* **Postfix** handles both the incoming and outgoing email.
-* **Zope** provides the web framework and basic web server support.
-* **PostgreSQL** stores the posts.
-* **ZODB** stores some web content and the user-information.
-* **Redis** provides an application cache.
-
-.. figure:: setup.svg
-   :width: 100%
-   :alt: The architecture of GroupServer
-   :align: center
-
-   GroupServer listens for connections on port 8080 (by default)
-   and serves up either the administration interface (ZMI) or the
-   normal web interface depending on the name used to connect to
-   the web server (virtual hosting). Email comes into the server
-   via the web interface, and goes out using SMTP. The data is
-   stored in a variety of locations.
+.. highlight:: console
 
 Installation can be tricky: all of the above has to be configured
 and set up correctly or installation will fail. We wrote this
@@ -147,6 +126,27 @@ Finally, GroupServer will be run from the same directory (see
 Set up
 ======
 
+To install GroupServer you must get the following installed and
+configured:
+
+* **Postfix** handles both the incoming and outgoing email.
+* **Zope** provides the web framework and basic web server support.
+* **PostgreSQL** stores the posts.
+* **ZODB** stores some web content and the user-information.
+* **Redis** provides an application cache.
+
+.. figure:: setup.svg
+   :width: 100%
+   :alt: The architecture of GroupServer
+   :align: center
+
+   GroupServer listens for connections on a single port (8080, by
+   default) and serves up either the administration interface
+   (ZMI) or the normal web interface depending on the name used
+   to connect to the web server (virtual hosting). Email comes
+   into the server via the web interface, and goes out using
+   SMTP. The data is stored in a variety of locations.
+
 Setting up GroupServer is done in four steps: first `pick a host name`_,
 then `configure GroupServer`_, `run the Installer`_ to install the 
 system, and finally `start Zope`_.
@@ -154,12 +154,10 @@ system, and finally `start Zope`_.
 Pick a host name
 ----------------
 
-Your new site needs its own hostname. The name needs to be known
-to the *web browser* that you will use to access the site. It
-will pass the name to the Zope system that runs
-GroupServer. (Zope can serve multiple sites, as well as its
-web-based management system.) For a trial system, the name can be
-set up in the ``hosts(5)`` file.
+Your new site needs its own hostname. This is the name that is
+typed into the *web browser* to access your new GroupServer
+site. For a trial system, the name can be set up in the
+``hosts(5)`` file.
 
 #.  Edit ``/etc/hosts`` as ``root``.
 #.  Add the new host name to the ``localhost`` entry, which is
@@ -185,9 +183,9 @@ GroupServer site
 You will need to check all the configuration for your initial site.
 
 ``host``
-  The domain name used by your new GroupServer instance. It must
-  be the same as what you picked a host name earlier (see `Pick a
-  Host Name`_). See also the ``zope_port`` below.
+  The domain name used by your new GroupServer site. It must be
+  the same as what you picked a host name earlier (see `Pick a
+  host name`_).
 
 ``admin_email``
   When GroupServer is installed, an example site and group are
@@ -208,31 +206,43 @@ You will need to check all the configuration for your initial site.
   email address.
 
 ``smtp_host``
-  The SMTP host that will be used to send notifications from
-  GroupServer. It defaults to ``localhost``, assuming you will be running a
-  local SMTP server.
+  The SMTP host that will be used to send email from
+  GroupServer. It defaults to ``localhost``, assuming you will be
+  running Postfix on the same machine as GroupServer.
 
 Zope
 ~~~~
 
-Your site will run on the Zope_ system. This system must also be
-configured. The default values for ``zope_host`` and ``zope_port`` are
-probably correct. However, for security we recommend you change the name
-and password of the Zope administrator.
+Zope_ is used to provide the web-framework for GroupServer, and a
+basic web-server. The server listens for connections on a single
+port (the ``zope_port``) and provides the GroupServer UI if
+connections are made using the ``host`` name, or the Zope
+Management Interface (ZMI) if connections are made with the
+``zope_host``.
+ 
+The ``zope_host`` and ``zope_port`` are probably correct for a
+simple test-system. However, for security we recommend you change
+the name and password of the Zope administrator.
 
 ``zope_host``
-  The host that will run Zope. It defaults to the local machine.
+  The name of the host that will run Zope. It defaults to the
+  local machine (``localhost``).
   
 ``zope_port``
-  The IP port that Zope will listen to. It defaults to 8080. Zope will have
-  to run as ``root`` to use port 80, and this is discouraged.
+  The IP port that Zope will listen to. It defaults
+  to 8080. (Zope will have to run as ``root`` to use port 80, and
+  this is discouraged.)
   
 ``zope_admin``
-  The name of the user who will administer Zope.
+  The name of the user who will administer Zope. This is used to
+  log into the Zope Management Interface (ZMI).
   
 ``zope_password``
-  The password for the Zope administrator. It can (and should) be changed
-  after GroupServer has been set up.
+  The password for the Zope administrator. It can (and should) be
+  changed after GroupServer has been set up.
+
+:Note: The IP-address of the ``zope_host`` and ``host`` (see
+       `GroupServer site`_) must be the same.
 
 Database storage
 ~~~~~~~~~~~~~~~~
@@ -423,6 +433,7 @@ History
 ======= ==========  ====================================================
 Version Date        Change
 ======= ==========  ====================================================
+14.xx   2014-10-21  Adding the setup diagram.
 14.xx   2014-10-14  Reducing the number of ports to one.
 14.06   2014-06-23  Moving the sections for configuring the proxy and
                     Postfix to their own documents.
