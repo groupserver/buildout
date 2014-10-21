@@ -5,7 +5,7 @@ GroupServer installation
 :Authors: `Michael JasonSmith`_; `Richard Waid`_; `Marek Kuziel`_; 
           `Alice Murphy`_; `Dan Randow`_
 :Contact: Michael JasonSmith <mpj17@onlinegroups.net>
-:Date: 2014-06-23 (see `History`_)
+:Date: 2014-10-21 (see `History`_)
 :Organization: `GroupServer.org`_
 :Copyright: This document is licensed under a
   `Creative Commons Attribution-Share Alike 4.0 International License`_
@@ -13,15 +13,36 @@ GroupServer installation
 
 ..  _Creative Commons Attribution-Share Alike 4.0 International License:
     http://creativecommons.org/licenses/by-sa/4.0/
-.. highlight:: console
 
-We wrote this documentation for people with moderate experience in
-Linux system administration. Installation can be tricky: you have to
-configure at least email sending, the web interface, and persistent
-storage. All these systems must work or installation will fail.
+  .. highlight:: console
 
-If you get stuck, please ask us questions in `GroupServer
-Development`_. Other more detailed guides would be gratefully accepted.
+To install GroupServer you must get the following installed and
+configured:
+
+* **Postfix** handles both the incoming and outgoing email.
+* **Zope** provides the web framework and basic web server support.
+* **PostgreSQL** stores the posts.
+* **ZODB** stores some web content and the user-information.
+* **Redis** provides an application cache.
+
+.. figure:: setup.svg
+   :width: 100%
+   :alt: The architecture of GroupServer
+   :align: center
+
+   GroupServer listens for connections on port 8080 (by default)
+   and serves up either the administration interface (ZMI) or the
+   normal web interface depending on the name used to connect to
+   the web server (virtual hosting). Email comes into the server
+   via the web interface, and goes out using SMTP. The data is
+   stored in a variety of locations.
+
+Installation can be tricky: all of the above has to be configured
+and set up correctly or installation will fail. We wrote this
+documentation for people with moderate experience in Linux system
+administration. If you get stuck, please ask us questions in
+`GroupServer Development`_. Other more detailed guides would be
+gratefully accepted.
 
 .. _GroupServer Development: http://groupserver.org/groups/development
 
