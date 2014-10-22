@@ -162,11 +162,12 @@ Open ``/etc/nginx/sites-avaliable/groupserver`` in a text-editor.
 Change the reported port
 ========================
 
-Notifications from GroupServer normally contain links back to the
-site. These links will reference the original port (``8080``)
-rather than the new HTTP or HTTPS port provided by the proxy. To
-change the port that GroupServer *says* it is using carry out the
-following tasks.
+Notifications from GroupServer (such as the *Welcome* email to a
+new group member) normally contain links back to the site. These
+links will reference the port that was used when GroupServer was
+built (``8080``) rather than the new HTTP or HTTPS port provided
+by the proxy. To change the port that GroupServer *says* it is
+using carry out the following tasks.
 
 #.  Connect to the ZMI for your site.
 #.  Visit the folder for your site, at
@@ -176,9 +177,9 @@ following tasks.
 #.  Click the *Delete* button. The ``canonicalPort`` value will
     be deleted.
 
-(In the unlikely case that a non-standard port is used, change
-the value of the ``canonicalPort`` and click the *Save changes*
-button.)
+:Note: In the unlikely case that a non-standard port is used,
+       change the value of the ``canonicalPort`` and click the
+       *Save changes* button, rather than deleting the property.
 
 Change the skin
 ===============
