@@ -26,7 +26,9 @@ Changes to GroupServer
 
 The most extensive change in Calvados is the
 internationalisation_. There are also `updated email commands`_,
-in addition to `minor code improvements`_.
+better `reporting of bouncing email addresses`_, and the new
+`change group-type`_ page. Finally there have been some `minor
+code improvements`_.
 
 Internationalisation
 ====================
@@ -71,17 +73,74 @@ rewritten and improved. Five commands are currently supported.
               post. See `the gs.group.member.email.settings
               product`_ for more information.
 
+The implementation of the new email commands closes `Bug 3403`_.
+
 .. _the gs.group.member.leave product:
    https://github.com/groupserver/gs.group.member.leave/
 .. _the gs.group.member.subscribe product:
    https://github.com/groupserver/gs.group.member.subscribe
 .. _the gs.group.member.email.settings product:
    https://github.com/groupserver/gs.group.member.email.settings
+.. _Bug 3403: https://redmine.iopen.net/issues/3403
+
+Reporting of bouncing email addresses
+=====================================
+
+When an email message cannot be delivered often a *bounce*
+message will be set back to the system that sent the message. For
+many years GroupServer has kept track of these bounce messages;
+if an address of a group-member causes bounces on five separate
+days in a 60 day window then that email address is set to
+*unverified.*
+
+The new *Bounces* page now shows the group administrator a record
+of the bouncing email addresses. In addition a notification is
+sent to the administrator when the email address of a group
+member is disabled. If the member has any additional email
+addresses then notifications is sent to these addresses also.
+
+The updating of the bounce-handling system closes `Feature
+3614`_, `Feature 3772`_ and `Feature 3773`_.
+
+.. _Feature 3614: https://redmine.iopen.net/issues/3614
+.. _Feature 3772: https://redmine.iopen.net/issues/3772
+.. _Feature 3773: https://redmine.iopen.net/issues/3773
+
+Change group-type
+=================
+
+There are four types of group supported by GroupServer: 
+
+* Discussion groups such as `GroupServer development`_, 
+* Announcement group such as `GroupServer announcements`_,
+* Support groups such as ``support@onlinegroups.net``, and
+* Closed groups.
+
+Calvados introduces the *Change group-type* page, which allows
+the type of group to be quickly and easily changed, closing
+`Feature 702`_.
+
+.. _GroupServer development: https://groupserver.org/groups/development
+.. _GroupServer announcements: http://groupserver.org/groups/groupserver_announcements/
+.. _Feature 702: https://redmine.iopen.net/issues/702
 
 Minor code improvements
 =======================
 
-* Move to GitHub
+* `The primary code repository for GroupServer`_ is now at
+  GitHub. We hope that this will make GroupServer easier for
+  others to work on.
+
+* The *Change image* page is now in its own product,
+  ``gs.profile.image.edit``, closing `Feature 601`_
+
+* The notifications that are sent out when someone leaves a group
+  have been updated, closing `Feature 4061`_.
+
+.. _The primary code repository for GroupServer:
+   https://github.com/groupserver/
+.. _Feature 4061: https://redmine.iopen.net/issues/4061
+.. _Feature 601: https://redmine.iopen.net/issues/601
 
 ------------
 Get Calvados
