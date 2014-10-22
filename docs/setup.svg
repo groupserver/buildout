@@ -384,11 +384,11 @@
      objecttolerance="10"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="1.8315886"
-     inkscape:cx="379.38014"
-     inkscape:cy="230.74942"
+     inkscape:zoom="2.5902574"
+     inkscape:cx="215.4255"
+     inkscape:cy="194.59818"
      inkscape:document-units="px"
-     inkscape:current-layer="g4084-2"
+     inkscape:current-layer="layer1"
      inkscape:window-width="1920"
      inkscape:window-height="1029"
      inkscape:window-x="0"
@@ -492,12 +492,12 @@
        sodipodi:linespacing="138.5%"
        id="text3423"
        y="229.29524"
-       x="306.44894"
+       x="364.6423"
        style="font-size:72px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:138.49999905%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:Futura Bk BT;-inkscape-font-specification:Futura Bk BT"
        xml:space="preserve"><tspan
          style="font-size:12px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-family:DejaVu Sans Mono;-inkscape-font-specification:DejaVu Sans Mono Bold"
          y="229.29524"
-         x="306.44894"
+         x="364.6423"
          id="tspan3425"
          sodipodi:role="line">gstest</tspan></text>
     <g
@@ -1366,20 +1366,15 @@
     <text
        xml:space="preserve"
        style="font-size:12px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:100%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:Futura Md BT;-inkscape-font-specification:Futura Md BT"
-       x="367.23019"
-       y="173.25618"
+       x="365.84543"
+       y="175.69954"
        id="text3873"
        sodipodi:linespacing="100%"><tspan
          sodipodi:role="line"
-         id="tspan3875"
-         x="367.23019"
-         y="173.25618"
-         style="-inkscape-font-specification:DejaVu Sans;font-family:DejaVu Sans;font-weight:normal;font-style:normal;font-stretch:normal;font-variant:normal">Incoming</tspan><tspan
-         sodipodi:role="line"
-         x="367.23019"
-         y="189.87617"
+         x="365.84543"
+         y="175.69954"
          id="tspan3898"
-         style="-inkscape-font-specification:DejaVu Sans;font-family:DejaVu Sans;font-weight:normal;font-style:normal;font-stretch:normal;font-variant:normal">email</tspan></text>
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:DejaVu Sans;-inkscape-font-specification:DejaVu Sans">Email in</tspan></text>
     <text
        xml:space="preserve"
        style="font-size:12px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:100%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:Futura Md BT;-inkscape-font-specification:Futura Md BT"
@@ -1388,14 +1383,9 @@
        id="text3873-9"
        sodipodi:linespacing="100%"><tspan
          sodipodi:role="line"
-         id="tspan3875-6"
          x="425.58957"
          y="299.64096"
-         style="-inkscape-font-specification:DejaVu Sans;font-family:DejaVu Sans;font-weight:normal;font-style:normal;font-stretch:normal;font-variant:normal">Outgoing</tspan><tspan
-         sodipodi:role="line"
-         x="425.58957"
-         y="311.64096"
          id="tspan3900"
-         style="-inkscape-font-specification:DejaVu Sans;font-family:DejaVu Sans;font-weight:normal;font-style:normal;font-stretch:normal;font-variant:normal">email</tspan></text>
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:DejaVu Sans;-inkscape-font-specification:DejaVu Sans">Email out</tspan></text>
   </g>
 </svg>
