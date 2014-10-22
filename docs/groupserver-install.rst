@@ -135,7 +135,7 @@ configured:
 * **ZODB** stores some web content and the user-information.
 * **Redis** provides an application cache.
 
-.. figure:: setup.svg
+.. figure:: setup.*
    :width: 100%
    :alt: The architecture of GroupServer
    :align: center
