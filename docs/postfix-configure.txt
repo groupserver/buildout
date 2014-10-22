@@ -43,6 +43,11 @@ be the root user to carry out most of these tasks.)
 
       # chown nobody.nogroup /etc/postfix/groupserver.*
 
+    If you are on a system other than Ubuntu, running the
+    following will display the user-name of the Postfix user::
+  
+      $ /usr/sbin/postconf | grep default_privs | cut -f3 -d" "
+
 #.  Open the file ``/etc/postfix/main.cf`` in a text editor.
 
 #.  Find the line that begins with ``alias_maps``.
@@ -72,12 +77,6 @@ be the root user to carry out most of these tasks.)
 #.  Restart Postfix::
 
     # service postfix restart
-
-.. [#otherOwner] If you are on a system other than Ubuntu,
-                 running the following will display the user-name
-                 of the Postfix user::
-  
-                   $ /usr/sbin/postconf | grep default_privs | cut -f3 -d" "
 
 .. _GroupServer: http://groupserver.org/
 .. _GroupServer.org: http://groupserver.org/
