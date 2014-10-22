@@ -4,7 +4,7 @@ Configuring a web proxy
 
 :Authors: `Michael JasonSmith`_; `Fabien Hespul`_
 :Contact: Michael JasonSmith <mpj17@onlinegroups.net>
-:Date: 2014-06-23
+:Date: 2014-10-22
 :Organization: `GroupServer.org`_
 :Copyright: This document is licensed under a
   `Creative Commons Attribution-Share Alike 4.0 International License`_
@@ -26,8 +26,8 @@ available to the public to provide the following services:
 * To provide caching.
 
 In this document we explain how to `add a virtual host`_ to
-either Apache_ or nginx_. Then we explain how to `change the
-skin`_.
+either Apache_ or nginx_, and how to `change the reported port`_
+in GroupServer. Finally we explain how to `change the skin`_.
 
 Add a virtual host
 ==================
@@ -158,6 +158,27 @@ Open ``/etc/nginx/sites-avaliable/groupserver`` in a text-editor.
 #.  Reload the nginx configuration::
 
     # service nginx reload
+
+Change the reported port
+========================
+
+Notifications from GroupServer normally contain links back to the
+site. These links will reference the original port (``8080``)
+rather than the new HTTP or HTTPS port provided by the proxy. To
+change the port that GroupServer *says* it is using carry out the
+following tasks.
+
+#.  Connect to the ZMI for your site.
+#.  Visit the folder for your site, at
+    ``groupserver/Content/initial_site``.
+#.  Open the ``DivisionConfiguration`` object.
+#.  Select the check-box next to the ``canonicalPort`` line.
+#.  Click the *Delete* button. The ``canonicalPort`` value will
+    be deleted.
+
+(In the unlikely case that a non-standard port is used, change
+the value of the ``canonicalPort`` and click the *Save changes*
+button.)
 
 Change the skin
 ===============
