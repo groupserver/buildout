@@ -39,7 +39,7 @@ be the root user to carry out most of these tasks.)
       # cp postfix_config/groupserver.* /etc/postfix
 
 #.  Change the ownership of the files to the Postfix user and
-    group. For Ubuntu [#otherOwner]_ this would be::
+    group. For Ubuntu this would be::
 
       # chown nobody.nogroup /etc/postfix/groupserver.*
 

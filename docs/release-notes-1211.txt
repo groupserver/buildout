@@ -16,10 +16,16 @@ GroupServer 12.11 — Absinthe Acquired Arbitrarily
 Introduction
 ------------
 
-There are fourteen major `changes to GroupServer`_ in the Absinthe release
-— making the system more useful, usable and extensible for both group
-members, administrators, and developers. You can `get Absinthe`_
-immediately.
+There are fourteen major changes to GroupServer in the Absinthe
+release — making the system more useful, usable and extensible
+for both group members, administrators, and developers.
+
+The `changes visible to participants`_ are mostly subtle
+improvements to existing features, rather than new features. In
+contrast, the `changes to the underlying system`_ are complex and
+extensive.
+
+You can `get Absinthe`_ immediately.
 
 Acknowledgements
 ================
@@ -28,27 +34,22 @@ Thanks to `Bill Bushey`_, with the support of `E-Democracy.org`_, for the
 improvements to the `SVG thumbnails`_. Thanks to Bill and `Marek Kuziel`_
 for testing some early versions of Absinthe.
 
-----------------------
-Changes to GroupServer
-----------------------
-
-The `changes visible to participants`_ are mostly subtle improvements to
-existing features, rather than new features. In contrast, the `changes to
-the underlying system`_ are complex and extensive.
-
+-------------------------------
 Changes Visible to Participants
-===============================
+-------------------------------
 
-The most visible change for the participants is a `new search system`_.
-Some `better error pages`_ have also been created. To help participants and
-administrators there is a `new help system`_, while an `in-context
-administration guide`_ will help administrators get their new group going
-more easily. Administrators now have the ability to create `closed
-groups`_, and the new `profile search`_ will help administrators find the
-profiles of participants. Finally, `SVG thumbnails`_ are now shown.
+The most visible change for the participants is a `new search
+system`_.  Some `better error pages`_ have also been created. To
+help participants and administrators there is a `new help
+system`_, while an `in-context administration guide`_ will help
+administrators get their new group going more
+easily. Administrators now have the ability to create `closed
+groups`_, and the new `profile search`_ will help administrators
+find the profiles of participants. Finally, `SVG thumbnails`_ are
+now shown.
 
 New Search System
------------------
+=================
 
 The new search system is the most visible change in Absinthe. 
 
@@ -69,7 +70,7 @@ The new search system is the most visible change in Absinthe.
 * Searching using non-ASCII characters now works [#nonAscii]_.
 
 Better Error Pages
-------------------
+==================
 
 The *Permission Denied* page has been improved to add some suggestions
 about what the participant should do [#forbidden]_. In addition the
@@ -81,7 +82,7 @@ The Unexpected Error (500) page and the Not Found (404) page now work with
 front-end. Neither of these error-pages redirect to display the error.
 
 New Help System
----------------
+===============
 
 The old monolithic manuals have been replaced. The new more dynamic system
 will automatically show help for the features that are installed in
@@ -89,7 +90,7 @@ GroupServer, including the custom features. Some of the old pages have been
 retained and updated.
 
 In-Context Administration Guide
--------------------------------
+===============================
 
 To help get groups started there is a new system to encourage the group
 administrator [#encouragement]_. The current advice includes:
@@ -100,7 +101,7 @@ administrator [#encouragement]_. The current advice includes:
 * Make a group Private (rather than Secret).
 
 Closed Groups
--------------
+=============
 
 Administrators can now close groups [#closed]_. There are two reasons for
 needing to do this.
@@ -115,22 +116,23 @@ changed [#select]_, an administrator can change the type of the group by
 making a change in the ZMI.
 
 Profile Search
---------------
+==============
 
 A simple profile search has been added [#profileSearch]_. A more complex
 search system has not been added because the privacy issues are still being
 resolved.
 
 SVG Thumbnails
---------------
+==============
 
 GroupServer now correctly displays a thumbnail of an SVG image at the
 bottom of each post [#svg]_. This item was picked from the list of `low
 hanging fruit`_, where there are other (relatively) strait forward tasks
 listed.
 
+--------------------------------
 Changes to the Underlying System
-================================
+--------------------------------
 
 We have made significant changes to the underlying GroupServer system in
 the Absinthe release. The system will be easier to maintain because of a
@@ -152,7 +154,7 @@ aptly-named last release in that series. (Eggs in the Frozen Treats series
 were given the 1.0 version.)
 
 Configuration System
---------------------
+====================
 
 Administration is now simpler, especially for production systems, as the
 configuration for important parts of GroupServer are now in a file that is
@@ -161,7 +163,7 @@ the `improved email handling`_, and the `new authentication system`_. It is
 based on a INI file, located in ``parts/instance/gsconfig.ini``.
 
 Improved Email Handling
------------------------
+=======================
 
 The email-handling subsystem of GroupServer has been completely
 rewritten. Changes have been made to both the handling of outgoing mail and
@@ -179,7 +181,7 @@ by running ``./bin/smtp2gs -h`` or reading `the README for the
 gs.group.messages.add.smtp2gs product`_.
 
 New Authentication System
--------------------------
+=========================
 
 A new authentication system has been created, for the server-side scripts
 [#auth]_. These scripts, such as the those involved in the `improved email
@@ -188,7 +190,7 @@ tasks. This eliminates the need to store the password of the administrator
 in various plain-text files.
 
 Relstorage
-----------
+==========
 
 By default `the Relstorage product`_ is now used to store the ZODB. This
 system stores the pickled objects in a relational database, rather than in
@@ -197,7 +199,7 @@ allows greater scalability, without the need to separately install Zope
 Enterprise Objects (ZEO).
 
 Performance Improvements
-------------------------
+========================
 
 There have been some major performance improvements made to GroupServer in
 the Absinthe release. This includes the removal of some old poorly
@@ -205,7 +207,7 @@ performing code [#divisionObject]_, and altering some of the member
 management code [#members]_.
 
 SQLAlchemy Update
-------------------
+=================
 
 The entire interface between GroupServer and the PostgreSQL_ relational
 database has been rewritten [#dbError]_. This has allowed GroupServer to
@@ -213,7 +215,7 @@ update its SQLAlchemy_ dependency from the ancient 0.3 release to the
 current 0.7 release.
 
 More Flexible Group Page
-------------------------
+========================
 
 The group page was refactored to make it more flexible [#groupHome]_. This
 allows the addition of the `in-context administration guide`_, and for
@@ -231,24 +233,21 @@ Update an Existing GroupServer System
 =====================================
 
 Updating a system running the Faloodeh release of GroupServer (12.06) to
-Absinthe is a three-step process, which includes updating the `relational
-database`_, the `products`_, and the `scripts`_.
+Absinthe is a three-step process, which includes updating the relational
+database, the products, and the scripts.
 
-Relational Database
--------------------
+*Relational* *Database*
 
 The biggest change that is needed to update GroupServer to the Absinthe
 release is to update the rational database, to support the `new search
 system`_ and some of the `performance improvements`_. The tables that are
-used to store the posts_, topics_ and `topic keywords`_ all need to be
-updated. However, **first**, `create a backup`_.
+used to store the posts, topics and topic keywords all need to be
+updated. 
 
-Create a Backup
-~~~~~~~~~~~~~~~
-
-While every effort has been made to crate a upgrade path that is smooth and
-with low risk, there is still a chance that something can go wrong. As such
-it is prudent to **create a backup**. First, **create a backup** of the
+**First**, create a backup.  While every effort has been made to
+crate a upgrade path that is smooth and with low risk, there is
+still a chance that something can go wrong. As such it is prudent
+to **create a backup**. First, **create a backup** of the
 relational database::
 
   $ pg_dump -U gsadmin groupserver > gs-backup.sql
@@ -264,10 +263,9 @@ Where ``gszodbadmin`` is the PostgreSQL user for ``relstorage`` that you
 set up when installing GroupServer, and ``groupserverzodb`` is the name of
 the database.
 
-Posts
-~~~~~
+**Posts**
 
-:Note: Update the ``posts`` table **after** you `create a backup`_. 
+:Note: Update the ``posts`` table **after** you create a backup. 
 
 Begin by updating the table that stores the posts.
 
@@ -308,8 +306,7 @@ Begin by updating the table that stores the posts.
           tsvector_update_trigger(fts_vectors, 'pg_catalog.english', subject, 
                                   body);
 
-Topics
-~~~~~~
+**Topics**
 
 Because people search topics as well as posts the FTR information needs to
 be present in both tables.
@@ -404,8 +401,7 @@ be present in both tables.
         BEFORE INSERT OR UPDATE ON topic
         FOR EACH ROW EXECUTE PROCEDURE topic_fts_update ();
 
-Topic Keywords
-~~~~~~~~~~~~~~
+**Topic Keywords**
 
 Finally, the system that displays the topic keywords has been changed. The
 keywords are now calculated when someone posts, and are stored in the
@@ -458,11 +454,10 @@ topics was displayed.
 
       SELECT topic_keywords_populate();
 
-Products
---------
+**Products**
 
-To update an existing GroupServer installation to Absinthe carry out the
-following steps.
+To update an existing GroupServer installation to Absinthe carry
+out the following steps.
 
 #.  Download the Absinthe tar-ball from `the GroupServer download page
     <http://groupserver.org/downloads>`_.
@@ -503,21 +498,18 @@ following steps.
 
 #.  Restart your GroupServer instance.
 
-Scripts
--------
+**Scripts**
 
-Some `external scripts`_ have changed in the Absinthe release of
-GroupServer, and need to be changed. In addition some `ZMI scripts`_ should
-also be updated.
+Some external scripts have changed in the Absinthe release of
+GroupServer, and need to be changed. In addition some ZMI scripts
+should also be updated.
 
-External Scripts
-~~~~~~~~~~~~~~~~
-
-The script ``smtp2zope`` used to be used to marshal an email message from
-Postfix into GroupServer. With the `improved email handling`_ this script
-should be deleted. The replacement script is called ``smtp2gs``. It will be
-created when you update the products_. The command is simpler to use than
-the old script; the options for the script are shown by running::
+The script ``smtp2zope`` used to be used to marshal an email
+message from Postfix into GroupServer. With the `improved email
+handling`_ this script should be deleted. The replacement script
+is called ``smtp2gs``. It will be created when you update the
+products. The command is simpler to use than the old script; the
+options for the script are shown by running::
 
   $ ./bin/smtp2gs --help
 
@@ -528,8 +520,7 @@ The directory ``potfix_config`` in your GroupServer installation will
 contain an example aliases file for Postfix that uses ``smtp2gs``. This can
 be used to replace the old calls to GroupServer from Postfix.
 
-ZMI Scripts
-~~~~~~~~~~~
+**ZMI Scripts**
 
 Two scripts in the ZMI have to be replaced to gain some of the significant
 `performance improvements`_. 
