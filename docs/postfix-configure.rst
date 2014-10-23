@@ -15,16 +15,43 @@ Configuring Postfix
 Introduction
 ============
 
-Postfix provides the email interface for GroupServer. GroupServer
-uses Postfix to:
+Postfix_ provides the email interface for
+GroupServer_. GroupServer uses Postfix to queue email that is
+delivered to groups, and pass the email messages to GroupServer.
 
-* Queue email that is delivered to groups, and
-* Pass the email messages to GroupServer.
+Configuration files for Postfix that are specific to GroupServer
+are created when GroupServer is installed. However, it is
+necessary to change the main `Postfix configuration`_ files for
+the system so Postfix will send email messages on to
+GroupServer. The Postfix configuration will achieve the
+following.
 
-Configuration files for the Postfix_ mail server are created when
-GroupServer_ is installed. However, it is necessary to change the
-main Postfix configuration files so Postfix will send email
-messages on to GroupServer.
+* Each group will have a unique email address.
+* The Postfix configuration will work, untouched, for any and all
+  groups once it has been set up.
+* A single **virtual address** will respond to all emails coming
+  in to *any possible* group on your site.
+* When an email comes in for *any* group on a it is passed on to
+  GroupServer, which then adds the message to the correct group.
+
+There are two configuration files, created by GroupServer during
+installation, that will provide what we want once they have been
+integrated into the existing Postfix configuration. Both are
+found in the ``postfix_config`` directory after GroupServer has
+been built.
+
+``groupserver.virtual``:
+    This file maps all email messages that are sent to any of
+    your GroupServer groups to the single
+    ``groupserver-automagic@localhost`` email-address. See
+    :manpage:`virtual(5)` for more information.
+
+``groupserver.aliases``:
+    This file maps the ``groupserver-automagic`` address to a
+    command: piping the email to the smtp2gs_ script. See
+    :manpage:`aliases(5)` for more information.
+
+.. _smtp2gs: http://github.com/groupserver/gs.group.messages.add.smtp2gs
 
 :See also: If you are new to administering Postfix you may find
            the `Ubuntu Community Postfix Documentation`_ useful.
@@ -35,17 +62,8 @@ messages on to GroupServer.
 Postfix configuration
 =====================
 
-The Postfix configuration will achieve the following.
-
-* **One single address** will respond to all emails coming in to
-  *any possible* group on your site.
-* When an email comes in for *any* group on a it is passed on to
-  GroupServer.
-
-There are two configuration files, created by GroupServer during
-installation, that will provide what we want once they have been
-integrated into the existing Postfix configuration. Below are the
-steps for configuring Postfix for either Debian or Ubuntu.
+Below are the steps for configuring Postfix for either Debian or
+Ubuntu.
 
 :Note: You will need to be the root user to carry out most of
        these tasks.
@@ -68,26 +86,47 @@ steps for configuring Postfix for either Debian or Ubuntu.
 
 #.  Open the file ``/etc/postfix/main.cf`` in a text editor.
 
-.. Up to here
+#. Update the aliases.
 
-#.  Find the line that begins with ``alias_maps``.
+   #.  Find the line that begins with ``alias_maps``.
 
-#.  Add the item ``hash:/etc/postfix/groupserver.virtual`` to the
-    end of the ``alias_maps`` line. Use a comma to separate the
-    new item from the existing items.
+   #.  Add the item ``hash:/etc/postfix/groupserver.aliases`` to
+       the end of the ``alias_maps`` line. Use a comma to
+       separate the new item from any existing items. For example
 
-#.  Find the line that begins with ``alias_database``.
+       .. code-block:: cfg
 
-#.  Add the item ``hash:/etc/postfix/groupserver.virtual`` to the
-    end of the ``alias_database`` line. Use a comma to separate
-    the new item from the existing items.
+          alias_maps = hash:/etc/aliases,hash:/etc/postfix/groupserver.aliases
 
-#.  Add the following to the bottom, unless it is previously
-    defined
+   #.  Find the line that begins with ``alias_database``.
+
+   #.  Add the item ``hash:/etc/postfix/groupserver.aliases`` to
+       the end of the ``alias_database`` line. Use a comma to
+       separate the new item from any existing items. For
+       example
+
+       .. code-block:: cfg
+
+          alias_database = hash:/etc/aliases,hash:/etc/postfix/groupserver.aliases
+
+#. Update the virtual alias.
+
+   #. Find the line that begins with ``virtual_alias_maps``. If
+      no line exists add one after the ``alias_database`` line.
+
+   #. Add the item ``hash:/etc/postfix/groupserver.virtual`` to
+      the end of the ``virtual_alias_maps`` line. For example
+
+      .. code-block:: cfg
+
+         virtual_alias_maps = hash:/etc/postfix/groupserver.virtual
+
+#.  Add the following to the bottom of the ``main.cf`` file,
+    unless it is previously defined
 
     .. code-block:: cfg
 
-      smtpd_authorized_verp_clients = 127.0.0.1
+       smtpd_authorized_verp_clients = 127.0.0.1,localhost
 
 #.  Generate the Postfix hashes::
 

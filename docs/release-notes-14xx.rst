@@ -44,6 +44,7 @@ following products
 * The topic page **[TODO]**
 * The post page **[TODO]**
 * The image page **[TODO]**
+* The *Change group properties* page
 
 Updated email commands
 ======================
@@ -137,10 +138,14 @@ Minor code improvements
 * The notifications that are sent out when someone leaves a group
   have been updated, closing `Feature 4061`_.
 
+* The subject-line prefix is correctly set when changing the
+  general group properties, closing `Bug 640`_.
+
 .. _The primary code repository for GroupServer:
    https://github.com/groupserver/
 .. _Feature 4061: https://redmine.iopen.net/issues/4061
 .. _Feature 601: https://redmine.iopen.net/issues/601
+.. _Bug 640: https://redmine.iopen.net/issues/640
 
 ------------
 Get Calvados
