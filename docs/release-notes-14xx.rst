@@ -34,12 +34,22 @@ Internationalisation
 ====================
 
 `Alice Murphy`_ has lead an effort to add internationalisation to
-GroupServer_. So far internationalisation has been added to the
-following products
+GroupServer_. So far internationalisation support has been added
+to the following products.
 
 * The core page template that lays out the page
 * The Join page
 * The site homepage **[TODO]**
+  
+  + The *Welcome* area and *Change welcome* page
+  + The *About* area and *Change about* page
+  + The *Admin* area
+
+* The *Change site name* page
+* The *Change site timezone* page
+* The *Start a group* page
+* The *Search for a site member* page
+
 * The group page **[TODO]**
 * The topic page **[TODO]**
 * The post page **[TODO]**
