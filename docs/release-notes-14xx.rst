@@ -44,6 +44,8 @@ to the following products.
   + The *Welcome* area and *Change welcome* page
   + The *About* area and *Change about* page
   + The *Admin* area
+  + The *Groups* lists
+  + The *Topics* list
 
 * The *Change site name* page
 * The *Change site timezone* page
