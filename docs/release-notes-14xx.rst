@@ -39,7 +39,7 @@ to the following products.
 
 * The core page template that lays out the page
 * The Join page
-* The site homepage **[TODO]**
+* The site homepage
   
   + The *Welcome* area and *Change welcome* page
   + The *About* area and *Change about* page
@@ -51,6 +51,7 @@ to the following products.
 * The *Change site timezone* page
 * The *Start a group* page
 * The *Search for a site member* page
+* (Some) of the *Site statistics* page
 
 * The group page **[TODO]**
 * The topic page **[TODO]**
