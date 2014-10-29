@@ -264,9 +264,10 @@ set by you to protect this data.
 Configure PostgreSQL
 --------------------
 
-`The RelStorage system`_ that is used by GroupServer requires *prepared
-transaction* support to be enabled in PostgreSQL. To enable prepared
-transaction support carry out the following steps.
+`The RelStorage system`_ that is used by GroupServer requires
+*prepared transaction* support to be enabled in PostgreSQL. To
+enable prepared transaction support carry out the following
+steps.
 
 #. Edit the PostgreSQL configuration file. On Ubuntu you must be ``root``
    to edit this file, which is located at
@@ -277,6 +278,9 @@ transaction support carry out the following steps.
    .. code-block:: cfg
 
      max_prepared_transactions = 0
+
+   If the line is set to something *other* than ``0`` then
+   nothing needs to change, and you can `run the installer`_.
 
 #. Change the line to read
 
