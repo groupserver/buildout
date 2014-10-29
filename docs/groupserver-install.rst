@@ -32,7 +32,6 @@ gratefully accepted.
 Quick start
 ===========
 
-#.  Install the required packages (see `Requirements`_).
 #.  Download the latest version of GroupServer from 
     <http://groupserver.org/downloads> and extract the archive
     (see `Download`_).
