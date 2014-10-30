@@ -11,7 +11,10 @@ GroupServer Documentation
    groupserver-uninstall
    release-notes
 
-Indices and tables
-==================
+Resources
+=========
 
-* :ref:`search`
+- Documentation: http://groupserver.readthedocs.org/
+- Code repository: https://github.com/groupserver/
+- Questions and comments to http://groupserver.org/groups/development
+- Report bugs at https://redmine.iopen.net/projects/groupserver
