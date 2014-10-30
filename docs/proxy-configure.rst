@@ -29,6 +29,10 @@ In this document we explain how to `add a virtual host`_ to
 either Apache_ or nginx_, and how to `change the reported port`_
 in GroupServer. Finally we explain how to `change the skin`_.
 
+:Note: You will need to be the root user to carry out most of
+       these tasks. Commands that need to be run as root will be
+       shown with ``#`` prompt, rather than a ``$``.
+
 Add a virtual host
 ==================
 
@@ -103,7 +107,7 @@ To add a virtual host to Apache carry out the following steps.
 #.  Link the configuration for your host::
 
     # cd /etc/apache2/sites-enabled/
-    # ln -s ../groupserver 100-groupserver 
+    # ln -s ../groupserver 100-groupserver
 
 #.  Restart Apache::
 
@@ -145,7 +149,7 @@ Open ``/etc/nginx/sites-avaliable/groupserver`` in a text-editor.
       }
 
     * Change the ``server_name`` from ``groups.example.com`` to
-      that of you new virtual host. 
+      that of you new virtual host.
 
     * Make a similar change to the second server, keeping the
       ``zmi.`` at the start.

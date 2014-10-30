@@ -66,7 +66,8 @@ Below are the steps for configuring Postfix for either Debian or
 Ubuntu.
 
 :Note: You will need to be the root user to carry out most of
-       these tasks.
+       these tasks. Commands that need to be run as root will be
+       shown with ``#`` prompt, rather than a ``$``.
 
 #.  Copy the configuration files from the GroupServer
     installation into the Postfix configuration directory::
@@ -75,13 +76,13 @@ Ubuntu.
 
 #.  Change the ownership of the files to root::
 
-      # chown root.root /etc/postfix/groupserver.*
+      # chown root.nogroup /etc/postfix/groupserver.*
 
     If you are on a system other than Ubuntu you will need to
     ensure that the files are owned by the Postfix user. Running
     the following will display the user-name of the Postfix
     user::
-  
+
       $ /usr/sbin/postconf | grep default_privs | cut -f3 -d" "
 
 #.  Open the file ``/etc/postfix/main.cf`` in a text editor.
