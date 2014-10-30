@@ -2,10 +2,10 @@
 GroupServer installation
 ========================
 
-:Authors: `Michael JasonSmith`_; `Richard Waid`_; `Marek Kuziel`_; 
+:Authors: `Michael JasonSmith`_; `Richard Waid`_; `Marek Kuziel`_;
           `Alice Murphy`_; `Dan Randow`_
 :Contact: Michael JasonSmith <mpj17@onlinegroups.net>
-:Date: 2014-10-21 (see `History`_)
+:Date: 2014-10-30 (see `History`_)
 :Organization: `GroupServer.org`_
 :Copyright: This document is licensed under a
   `Creative Commons Attribution-Share Alike 4.0 International License`_
@@ -32,10 +32,10 @@ gratefully accepted.
 Quick start
 ===========
 
-#.  Download the latest version of GroupServer from 
+#.  Download the latest version of GroupServer from
     <http://groupserver.org/downloads> and extract the archive
     (see `Download`_).
-#.  Create a new hostname for your GroupServer site. Yes, you will need 
+#.  Create a new hostname for your GroupServer site. Yes, you will need
     a new one (see `Pick a Host Name`_).
 #.  Edit ``config.cfg`` (see `Configure GroupServer`_).
 #.  Enable prepared transaction support in PostgreSQL (see `Configure
@@ -50,7 +50,7 @@ Quick start
 
 #.  Visit your new site.
 
-You can `remove GroupServer`_ in three steps.
+#.  Commence the `next steps`_.
 
 Requirements
 ============
@@ -147,15 +147,15 @@ configured:
    SMTP. The data is stored in a variety of locations.
 
 Setting up GroupServer is done in four steps: first `pick a host name`_,
-then `configure GroupServer`_, `run the Installer`_ to install the 
+then `configure GroupServer`_, `run the Installer`_ to install the
 system, and finally `start Zope`_.
 
 Pick a host name
 ----------------
 
-Your new site needs its own hostname. This is the name that is
-typed into the *web browser* to access your new GroupServer
-site. For a trial system, the name can be set up in the
+Your new site needs its own hostname. This is the name that
+people will use to access your new GroupServer site with a web
+browser. For a trial system, the name can be set up in the
 ``hosts(5)`` file.
 
 #.  Edit ``/etc/hosts`` as ``root``.
@@ -171,9 +171,9 @@ Configure GroupServer
 ---------------------
 
 The configuration of GroupServer is mostly carried out by modifying the
-``config.cfg`` file, which is located in the root of the GroupServer 
+``config.cfg`` file, which is located in the root of the GroupServer
 folder [#cfgFile]_. First you must configure the `GroupServer Site`_
-itself. Next the `Zope`_ system, which will run your GroupServer site, 
+itself. Next the `Zope`_ system, which will run your GroupServer site,
 needs to be configured, before the `database storage`_.
 
 GroupServer site
@@ -182,9 +182,9 @@ GroupServer site
 You will need to check all the configuration for your initial site.
 
 ``host``
-  The domain name used by your new GroupServer site. It must be
-  the same as what you picked a host name earlier (see `Pick a
-  host name`_).
+  The domain name used by people accessing your new GroupServer
+  site. It must be the same as what you picked a host name
+  earlier (see `Pick a host name`_).
 
 ``admin_email``
   When GroupServer is installed, an example site and group are
@@ -193,7 +193,7 @@ You will need to check all the configuration for your initial site.
   administrator. Posts to the example group will be sent to the
   administrator at this address. This email address **must**
   work.
-  
+
 ``admin_password``
   The password of the administrator of the new GroupServer site. The
   password will be used to log in, and can be changed after the site has
@@ -218,24 +218,29 @@ port (the ``zope_port``) and provides the GroupServer UI if
 connections are made using the ``host`` name, or the Zope
 Management Interface (ZMI) if connections are made with the
 ``zope_host``.
- 
+
 The ``zope_host`` and ``zope_port`` are probably correct for a
 simple test-system. However, for security we recommend you change
 the name and password of the Zope administrator.
 
 ``zope_host``
   The name of the host that will run Zope. It defaults to the
-  local machine (``localhost``).
-  
+  local machine (``localhost``) — which is fine if you are
+  testing on your local desktop Ubuntu box. You can also set this
+  to the **IP address** of the host machine, which is more
+  universally useful.
+
 ``zope_port``
-  The IP port that Zope will listen to. It defaults
-  to 8080. (Zope will have to run as ``root`` to use port 80, and
-  this is discouraged.)
-  
+  The IP port that Zope will listen to. It defaults to ``8080``,
+  and it recommended that you leave this value as-is, unless
+  another service is running on port 8080. (Zope will have to run
+  as ``root`` to use port 80, and this is discouraged; to use
+  port 80 see :doc:`proxy-configure`.)
+
 ``zope_admin``
   The name of the user who will administer Zope. This is used to
   log into the Zope Management Interface (ZMI).
-  
+
 ``zope_password``
   The password for the Zope administrator. It can (and should) be
   changed after GroupServer has been set up.
@@ -253,7 +258,7 @@ set by you to protect this data.
   The password required to attach to the PostgreSQL database. The install
   system will create a PostgreSQL database, and protect it with this
   ``pgsql_password``.
-  
+
 ``relstorage_password``
   `The RelStorage system`_ will store data in a PostgreSQL database for
   Zope. This data is protected by the ``relstorage_password``.
@@ -311,7 +316,7 @@ GroupServer site, with its own version of Python, placed in
 store the data for your site. Finally, it will start the
 `buildout`_ system that will **download** and install all the
 requirements for GroupServer (around 43MB of packages) including:
-  
+
 * `eGenix.com mx Base`_ (4.4MB)
 * `SQL Alchemy`_ (4.3MB)
 * lxml_ (2.8MB)
@@ -390,7 +395,7 @@ requests`` is displayed in the terminal.
 You should be able to view your GroupServer site at
 `http://{host}:{zope_port}`. If you kept the defaults, the
 address will be <http://gstest:8080>.
-  
+
 * The host is the one you picked earlier (see `Pick a Host
   Name`_).
 * The port is the one that site listens to (see `Configure
@@ -398,37 +403,17 @@ address will be <http://gstest:8080>.
 
 Use ``Control-c`` to stop Zope.
 
-:See also: The documentation *Starting and stopping GroupServer*
-           has more information on running GroupServer, including
-           running it as a daemon. We document the setup required
-           to receive email with GroupServer in *Configuring
-           Postifx*. Finally the steps required to configure a
-           proxy is documented in *Configuring a web proxy*.
+Next steps
+----------
 
-Remove Groupserver
-==================
+* :doc:`groupserver-start` has more information on running
+  GroupServer, including running it as a **daemon.**
 
-To remove GroupServer, you must remove the database, the
-associated database user, and the directory that contains the
-GroupServer install.
+* The steps required to configure a **proxy** is documented in
+  :doc:`proxy-configure`.
 
-1. To remove the database, run the following commands::
-  
-    $ dropdb gstestdb -U postgres
-    $ dropuser gstest -U postgres
-
-  ``gstestdb``
-    The name of the test database.
-    
-  ``postgres``
-    The name of the admin of PostgreSQL.
-    
-  ``gstest``
-    The name of the PostgreSQL user.
-
-2. Remove the directory that contains the GroupServer install::
-
-    $ rm -r groupserver-14.03
+* Finally, we document the setup required to **receive email**
+  with GroupServer in :doc:`postfix-configure`.
 
 History
 =======
@@ -436,6 +421,10 @@ History
 ======= ==========  ====================================================
 Version Date        Change
 ======= ==========  ====================================================
+14.xx   2014-10-30  Moving the *Remove GroupServer* section to
+                    :doc:`groupserver-uninstall`.
+14.xx   2014-10-30  Integrating updates  and suggestions from Scott
+                    Fosseen.
 14.xx   2014-10-21  Adding the setup diagram.
 14.xx   2014-10-14  Reducing the number of ports to one.
 14.06   2014-06-23  Moving the sections for configuring the proxy and
@@ -444,70 +433,63 @@ Version Date        Change
 14.03   2014-03-20  Updating to Ouzo.
 12.11   2012-11-27  Adding the sections `CentOS and RHEL`_ and
                     `Configure PostgreSQL`_.
-12.11   2012-11-19  Adding a link to the Postfix documentation for 
+12.11   2012-11-19  Adding a link to the Postfix documentation for
                     Ubuntu.
 12.11   2012-10-25  Removing some odd dependencies.
 12.05   2012-04-30  Updating the `Configure GroupServer`_ and
                     `Run the Installer`_ sections.
-12.05   2012-04-24  Removing unnecessary dependencies, and using 
-                    ``pip`` in the *Run Buildout* section. 
-11.08   2011-12-19  Adding the packages required for XML support and 
+12.05   2012-04-24  Removing unnecessary dependencies, and using
+                    ``pip`` in the *Run Buildout* section.
+11.08   2011-12-19  Adding the packages required for XML support and
                     XSLT support on RHEL and CentOS to the list of
                     `Requirements`_.
 11.08   2011-12-16  Added the CentOS packages to the list of
-                    `Requirements`_, with much thanks to  `Patrick 
+                    `Requirements`_, with much thanks to  `Patrick
                     Leckey.
                     <http://groupserver.org/r/post/6Jfujbedywmu6Wtahz1PeL>`_
-11.08   2011-11-15  Altering the `requirements`_ to switch the 
+11.08   2011-11-15  Altering the `requirements`_ to switch the
                     ``build-essential`` dependency to ``make`` on `the
                     advice of David Sturman.
                     <http://groupserver.org/r/post/1ezm2nM9kQHSJSOfn0Rsm0>`_
 11.08   2011-10-27  Adding the `Download`_ section, and clarifying some
                     more of the documentation.
-11.08   2011-10-26  Correcting some mistakes, and clarifying the 
+11.08   2011-10-26  Correcting some mistakes, and clarifying the
                     documentation on `the advice of Ross Chesley
                     <http://groupserver.org/r/topic/4PF50PHIWeYtaMMzwG3624>`_
 11.08   2011-09-01  Reordering the subsections of *Configure Zope*.
 11.07   2011-07-08  Adding the ``build-essential`` depenency and the
                     cut-n-paste ``apt-get`` block to the `Requirements`_.
 11.06   2011-07-05  Adding the prologue.
-11.06   2011-07-04  Updating the notes, because of a change to the 
+11.06   2011-07-04  Updating the notes, because of a change to the
                     name of the initial GroupServer instance.
 11.06   2011-06-17  Added postfix configuration and spooling notes.
-11.05   2011-05-26  Fixed a typing mistake, and mentioned that the 
-                    ``pgsql_dbname`` and ``pgsql_user`` had to be 
+11.05   2011-05-26  Fixed a typing mistake, and mentioned that the
+                    ``pgsql_dbname`` and ``pgsql_user`` had to be
                     different.
 10.09   2010-09-01  Changed how the configuration options are set.
 1.0β²   2010-07-15  Improved the buildout instructions.
 1.0β²   2010-07-07  Changed the Zope 2.10 (Python 2.4) instructions to
                     Zope 2.13 (Python 2.6) instructions.
-1.0β    2010-06-04  Removed a duplicated instruction from the 
+1.0β    2010-06-04  Removed a duplicated instruction from the
                     `Quick Start`_, and bumped the version number.
 1.0α    2010-05-31  Typo and minor improvement fixes.
 1.0α    2010-05-01  Fixes because upstream broke our buildout.
 1.0α    2010-04-29  Better automatic configuration, so the Configure
                     GroupServer section has been removed.
-1.0α    2010-04-28  Improved the documentation for ``gs_port`` and 
+1.0α    2010-04-28  Improved the documentation for ``gs_port`` and
                     added documentation for the ``gs_admin`` and
                     ``gs_user`` configuration options.
 1.0α    2010-04-23  Added a link to the downloads page. Clarified the
-                    security changes that are made to PostgreSQL. 
+                    security changes that are made to PostgreSQL.
 1.0α    2010-04-06  Fixed some quoting in the requirements.
-1.0α    2010-03-31  Fixed the `Requirements`_, added 
-                    `Remove GroupServer`_ and `History`_
+1.0α    2010-03-31  Fixed the `Requirements`_, added
+                    *Remove GroupServer* and `History`_
 1.0α    2010-03-25  Fixed the config options, added `Quick Start`_
 1.0α    2009-10-04  Updated to reflect the new egg-based system
 ======= ==========  ====================================================
 
-Resources
-=========
-
-- Code repository: https://source.iopen.net/groupserver/
-- Questions and comments to http://groupserver.org/groups/development
-- Report bugs at https://redmine.iopen.net/projects/groupserver
-
-.. [#cfgFile] The ``cfg`` files are interpreted by the Python 
-   `ConfigParser`_ module, which accepts a syntax very similar to 
+.. [#cfgFile] The ``cfg`` files are interpreted by the Python
+   `ConfigParser`_ module, which accepts a syntax very similar to
    Windows INI files.
 .. _ConfigParser:
    https://docs.python.org/2/library/configparser.html
