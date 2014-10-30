@@ -1,6 +1,6 @@
-========================
-GroupServer installation
-========================
+==================
+Remove GroupServer
+==================
 
 :Authors: `Michael JasonSmith`_
 :Contact: Michael JasonSmith <mpj17@onlinegroups.net>
@@ -36,13 +36,6 @@ GroupServer install.
 2. Remove the directory that contains the GroupServer install::
 
     $ rm -r groupserver-14.03
-
-Resources
-=========
-
-- Code repository: https://github.com/groupserver/
-- Questions and comments to http://groupserver.org/groups/development
-- Report bugs at https://redmine.iopen.net/projects/groupserver
 
 .. _GroupServer: http://groupserver.org/
 .. _GroupServer.org: http://groupserver.org/
