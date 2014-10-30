@@ -40,7 +40,7 @@ to the following products.
 * The core page template that lays out the page
 * The Join page
 * The site homepage
-  
+
   + The *Welcome* area and *Change welcome* page
   + The *About* area and *Change about* page
   + The *Admin* area
@@ -123,9 +123,9 @@ The updating of the bounce-handling system closes `Feature
 Change group-type
 =================
 
-There are four types of group supported by GroupServer: 
+There are four types of group supported by GroupServer:
 
-* Discussion groups such as `GroupServer development`_, 
+* Discussion groups such as `GroupServer development`_,
 * Announcement group such as `GroupServer announcements`_,
 * Support groups such as ``support@onlinegroups.net``, and
 * Closed groups.
