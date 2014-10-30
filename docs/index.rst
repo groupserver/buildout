@@ -8,6 +8,7 @@ GroupServer Documentation
    groupserver-start
    postfix-configure
    proxy-configure
+   groupserver-uninstall
    release-notes
 
 Indices and tables
