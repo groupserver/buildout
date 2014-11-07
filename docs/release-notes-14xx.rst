@@ -26,9 +26,9 @@ Changes to GroupServer
 
 The most extensive change in Calvados is the
 internationalisation_. There are also `updated email commands`_,
-better `reporting of bouncing email addresses`_, and the new
-`change group-type`_ page. Finally there have been some `minor
-code improvements`_.
+`updated email headers`_ better `reporting of bouncing email
+addresses`_, and the new `change group-type`_ page. Finally there
+have been some `minor code improvements`_.
 
 Internationalisation
 ====================
@@ -62,7 +62,7 @@ to the following products.
 Updated email commands
 ======================
 
-The system for handling email commands have been completely
+The system for handling email commands has been completely
 rewritten and improved. Five commands are currently supported.
 
 :``Unsubscribe``: This is the most commonly used command. It
@@ -96,6 +96,24 @@ The implementation of the new email commands closes `Bug 3403`_.
 .. _the gs.group.member.email.settings product:
    https://github.com/groupserver/gs.group.member.email.settings
 .. _Bug 3403: https://redmine.iopen.net/issues/3403
+
+Updated email headers
+=====================
+
+The system for updating email headers has also been completely
+rewritten. The previous system relied on page-templates defined
+in the ZMI, which was very hard to update, and harder to
+test. `The gs.group.list.sender product`_ now defines the
+fourteen email headers that are deleted, added, or modified. The
+implementation of the new headers closes `Bug 267`_.
+
+In addition the various ``List`` headers have been added, which
+closes `Issue 3785`_.
+
+.. _the gs.group.list.sender product: 
+   https://github.com/groupserver/gs.group.list.sender/
+.. _Bug 267: https://redmine.iopen.net/issues/267
+.. _Issue 3785: https://redmine.iopen.net/issues/3785
 
 Reporting of bouncing email addresses
 =====================================
