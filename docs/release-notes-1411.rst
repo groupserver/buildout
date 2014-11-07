@@ -1,5 +1,5 @@
 ==============================================
-GroupServer 14.xx — Calvados Consumed Covertly
+GroupServer 14.11 — Calvados Consumed Covertly
 ==============================================
 
 :Authors: `Michael JasonSmith`_;
@@ -204,14 +204,14 @@ Update an Existing GroupServer System
 =====================================
 
 To update a system running the Slivovica release of GroupServer
-(14.06) to Calvados (14.xx) carry out the following steps.
+(14.06) to Calvados (14.11) carry out the following steps.
 
 #.  Download the Calvados tar-ball from `the GroupServer
     download page <http://groupserver.org/downloads>`_.
 
 #.  Uncompress the tar-ball::
 
-      $ tar cfz groupserver-14.xx.tar.gz
+      $ tar cfz groupserver-14.11.tar.gz
 
 #.  Change to the directory that contains your existing
     GroupServer installation.
@@ -219,7 +219,7 @@ To update a system running the Slivovica release of GroupServer
 #.  Copy the new version-configuration files to your existing
     GroupServer installation::
 
-      $ cp ../groupserver-14.xx/[bvz]*cfg  .
+      $ cp ../groupserver-14.11/[bvz]*cfg  .
 
 #.  In your existing GroupServer installation run::
 
