@@ -24,7 +24,7 @@ commands.  You can `get Calvados`_ immediately.
 Changes to GroupServer
 ----------------------
 
-The most extensive change in Calvados is the
+The most extensive change in Calvados is the new
 internationalisation_. There are also `updated email commands`_,
 `updated email headers`_ better `reporting of bouncing email
 addresses`_, and the new `change group-type`_ page. Finally there
@@ -52,12 +52,15 @@ to the following products.
 * The *Start a group* page
 * The *Search for a site member* page
 * (Some) of the *Site statistics* page
-
-* The group page **[TODO]**
-* The topic page **[TODO]**
-* The post page **[TODO]**
-* The image page **[TODO]**
 * The *Change group properties* page
+
+`Status of internationalisation`_ topic in the GroupServer
+Development group is a good place to follow the improvements to
+internationalisation. We welcome any and all efforts to improve
+the internationalisation for GroupServer.
+
+.. _Status of internationalisation: 
+   http://groupserver.org/r/topic/6ehnW0w59Ejf7R4xEUeCNt
 
 Updated email commands
 ======================
@@ -172,11 +175,17 @@ Minor code improvements
 * The subject-line prefix is correctly set when changing the
   general group properties, closing `Bug 640`_.
 
+* Many products now have Sphinx_ documentation. This includes
+  `the documentation for GroupServer installation`_.
+
+
 .. _The primary code repository for GroupServer:
    https://github.com/groupserver/
 .. _Feature 4061: https://redmine.iopen.net/issues/4061
 .. _Feature 601: https://redmine.iopen.net/issues/601
 .. _Bug 640: https://redmine.iopen.net/issues/640
+.. _the documentation for GroupServer installation:
+   http://groupserver.readthedocs.org/
 
 ------------
 Get Calvados
@@ -188,7 +197,8 @@ already have a functioning installation can `update an existing
 GroupServer system`_.
 
 ..  _The Downloads page for GroupServer: http://groupserver.org/downloads
-..  _The GroupServer Installation documentation: http://groupserver.org/downloads/install
+..  _The GroupServer Installation documentation: 
+    http://groupserver.readthedocs.org/
 
 Update an Existing GroupServer System
 =====================================
