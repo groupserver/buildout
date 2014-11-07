@@ -219,7 +219,7 @@ To update a system running the Slivovica release of GroupServer
 #.  Copy the new version-configuration files to your existing
     GroupServer installation::
 
-      $ cp ../groupserver-14.11/[bvz]*cfg  .
+      $ cp ../groupserver-14.11/[biv]*cfg  .
 
 #.  In your existing GroupServer installation run::
 
