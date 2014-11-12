@@ -220,22 +220,21 @@ Management Interface (ZMI) if connections are made with the
 ``zope_host``.
 
 The ``zope_host`` and ``zope_port`` are probably correct for a
-simple test-system. However, for security we recommend you change
-the name and password of the Zope administrator.
+simple test-system, or if you are going to proxy GroupServer (see
+:doc:`proxy-configure`). However, for security we recommend you
+change the name and password of the Zope administrator.
 
 ``zope_host``
   The name of the host that will run Zope. It defaults to the
-  local machine (``localhost``) — which is fine if you are
-  testing on your local desktop Ubuntu box. You can also set this
-  to the **IP address** of the host machine, which is more
-  universally useful.
+  local machine (``127.0.0.1``).
 
 ``zope_port``
   The IP port that Zope will listen to. It defaults to ``8080``,
   and it recommended that you leave this value as-is, unless
   another service is running on port 8080. (Zope will have to run
   as ``root`` to use port 80, and this is discouraged; to use
-  port 80 see :doc:`proxy-configure`.)
+  port 80 you will need to *proxy* GroupServer, see
+  :doc:`proxy-configure`.)
 
 ``zope_admin``
   The name of the user who will administer Zope. This is used to

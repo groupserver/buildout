@@ -385,7 +385,7 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="2.5902574"
-     inkscape:cx="215.4255"
+     inkscape:cx="172.95868"
      inkscape:cy="194.59818"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
@@ -1387,5 +1387,17 @@
          y="299.64096"
          id="tspan3900"
          style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:DejaVu Sans;-inkscape-font-specification:DejaVu Sans">Email out</tspan></text>
+    <text
+       sodipodi:linespacing="138.5%"
+       id="text3423-0-8"
+       y="255.69954"
+       x="232.98605"
+       style="font-size:72px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:138.49999905%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:Futura Bk BT;-inkscape-font-specification:Futura Bk BT"
+       xml:space="preserve"><tspan
+         style="font-size:12px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-family:DejaVu Sans Mono;-inkscape-font-specification:DejaVu Sans Mono Bold"
+         y="255.69954"
+         x="232.98605"
+         id="tspan3425-0-5"
+         sodipodi:role="line">127.0.0.1</tspan></text>
   </g>
 </svg>
