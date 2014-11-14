@@ -272,9 +272,12 @@ Configure PostgreSQL
 enable prepared transaction support carry out the following
 steps.
 
-#. Edit the PostgreSQL configuration file. On Ubuntu you must be ``root``
-   to edit this file, which is located at
-   ``/etc/postgresql/9.1/main/postgresql.conf``.
+#. Edit the PostgreSQL configuration file. On Ubuntu you must be
+   ``root`` to edit this file, which is located in
+   ``/etc/postgresql/9.3/main/postgresql.conf``. (The actual
+   directory name may be different depending on the version of
+   PostgreSQL you have installed; change the ``9.3`` to match
+   your version as appropriate.)
 
 #. Find the line that reads
 
