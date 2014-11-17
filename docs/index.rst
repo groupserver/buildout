@@ -8,6 +8,7 @@ GroupServer Documentation
    groupserver-start
    postfix-configure
    proxy-configure
+   cron
    groupserver-uninstall
    release-notes
 
