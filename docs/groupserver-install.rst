@@ -5,7 +5,7 @@ GroupServer installation
 :Authors: `Michael JasonSmith`_; `Richard Waid`_; `Marek Kuziel`_;
           `Alice Murphy`_; `Dan Randow`_
 :Contact: Michael JasonSmith <mpj17@onlinegroups.net>
-:Date: 2014-10-30 (see `History`_)
+:Date: 2014-11-17 (see `History`_)
 :Organization: `GroupServer.org`_
 :Copyright: This document is licensed under a
   `Creative Commons Attribution-Share Alike 4.0 International License`_
@@ -52,7 +52,7 @@ Quick start
 
 #.  Commence the `next steps`_.
 
-Requirements
+Dependencies
 ============
 
 The installation script for Ubuntu will install all the libraries
@@ -79,9 +79,9 @@ and RedHat Enterprise Linux.
 +-------------+--------------------------------+-----------------------+
 | PostgreSQL  | ``postgresql``                 | ``postgresql``        |
 | Database    +--------------------------------+-----------------------+
-|             | ``postgresql-server-dev-9.1``  | ``postgresql-server`` |
+|             | ``libpq-dev``                  | ``postgresql-server`` |
 |             +--------------------------------+-----------------------+
-|             | ``libpq-dev``                  | ``postgresql-libs``   |
+|             |                                | ``postgresql-libs``   |
 |             +--------------------------------+-----------------------+
 |             |                                | ``postgresql-devel``  |
 +-------------+--------------------------------+-----------------------+
@@ -308,7 +308,7 @@ GroupServer installer enter the following command::
   $ ./gs_install_ubuntu.sh
 
 You will be prompted for your password. This is required to check
-that your Ubuntu system has met all the `requirements`_. Next the
+that your Ubuntu system has met all the dependencies_. Next the
 installer ensures that the `set up`_ is correct.
 
 The rest of the installation process should be completely
@@ -349,7 +349,7 @@ testing.
        as a normal user are shown on lines that begin with a
        ``$``.
 
-#. Install the requirements_.
+#. Install the dependencies_.
 
 #. Create the two database users specified in ``config.cfg``,
    using ``createuser``::
@@ -423,12 +423,13 @@ History
 ======= ==========  ====================================================
 Version Date        Change
 ======= ==========  ====================================================
-14.xx   2014-10-30  Moving the *Remove GroupServer* section to
+14.11   2014-11-17  Renaming the *Requirements* section Dependencies_.
+14.11   2014-10-30  Moving the *Remove GroupServer* section to
                     :doc:`groupserver-uninstall`.
-14.xx   2014-10-30  Integrating updates  and suggestions from Scott
+14.11   2014-10-30  Integrating updates and suggestions from Scott
                     Fosseen.
-14.xx   2014-10-21  Adding the setup diagram.
-14.xx   2014-10-14  Reducing the number of ports to one.
+14.11   2014-10-21  Adding the setup diagram.
+14.11   2014-10-14  Reducing the number of ports to one.
 14.06   2014-06-23  Moving the sections for configuring the proxy and
                     Postfix to their own documents.
 14.03   2014-03-25  Clarifying the Requirements_ wording.
@@ -444,12 +445,12 @@ Version Date        Change
                     ``pip`` in the *Run Buildout* section.
 11.08   2011-12-19  Adding the packages required for XML support and
                     XSLT support on RHEL and CentOS to the list of
-                    `Requirements`_.
+                    Requirements.
 11.08   2011-12-16  Added the CentOS packages to the list of
-                    `Requirements`_, with much thanks to  `Patrick
+                    Requirements, with much thanks to  `Patrick
                     Leckey.
                     <http://groupserver.org/r/post/6Jfujbedywmu6Wtahz1PeL>`_
-11.08   2011-11-15  Altering the `requirements`_ to switch the
+11.08   2011-11-15  Altering the requirements to switch the
                     ``build-essential`` dependency to ``make`` on `the
                     advice of David Sturman.
                     <http://groupserver.org/r/post/1ezm2nM9kQHSJSOfn0Rsm0>`_
@@ -460,7 +461,7 @@ Version Date        Change
                     <http://groupserver.org/r/topic/4PF50PHIWeYtaMMzwG3624>`_
 11.08   2011-09-01  Reordering the subsections of *Configure Zope*.
 11.07   2011-07-08  Adding the ``build-essential`` depenency and the
-                    cut-n-paste ``apt-get`` block to the `Requirements`_.
+                    cut-n-paste ``apt-get`` block to the Requirements.
 11.06   2011-07-05  Adding the prologue.
 11.06   2011-07-04  Updating the notes, because of a change to the
                     name of the initial GroupServer instance.
@@ -484,7 +485,7 @@ Version Date        Change
 1.0α    2010-04-23  Added a link to the downloads page. Clarified the
                     security changes that are made to PostgreSQL.
 1.0α    2010-04-06  Fixed some quoting in the requirements.
-1.0α    2010-03-31  Fixed the `Requirements`_, added
+1.0α    2010-03-31  Fixed the Requirements, added
                     *Remove GroupServer* and `History`_
 1.0α    2010-03-25  Fixed the config options, added `Quick Start`_
 1.0α    2009-10-04  Updated to reflect the new egg-based system
