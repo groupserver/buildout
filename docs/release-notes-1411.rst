@@ -186,6 +186,7 @@ Minor code improvements
 .. _Bug 640: https://redmine.iopen.net/issues/640
 .. _the documentation for GroupServer installation:
    http://groupserver.readthedocs.org/
+.. _Sphinx: http://sphinx-doc.org/
 
 ------------
 Get Calvados

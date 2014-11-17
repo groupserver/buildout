@@ -432,7 +432,7 @@ Version Date        Change
 14.11   2014-10-14  Reducing the number of ports to one.
 14.06   2014-06-23  Moving the sections for configuring the proxy and
                     Postfix to their own documents.
-14.03   2014-03-25  Clarifying the Requirements_ wording.
+14.03   2014-03-25  Clarifying the Requirements wording.
 14.03   2014-03-20  Updating to Ouzo.
 12.11   2012-11-27  Adding the sections `CentOS and RHEL`_ and
                     `Configure PostgreSQL`_.
