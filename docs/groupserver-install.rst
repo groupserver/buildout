@@ -55,10 +55,10 @@ Quick start
 Dependencies
 ============
 
-The installation script for Ubuntu will install all the libraries
-listed below (see `Run the Installer`_). The packages that are
-required to install GroupServer are listed for Ubuntu, CentOS,
-and RedHat Enterprise Linux.
+The installation script for Ubuntu will install all the programs
+and libraries listed below (see `Run the Installer`_). The
+packages that are required to install GroupServer are listed for
+Ubuntu, CentOS, and RedHat Enterprise Linux.
 
 +-------------+--------------------------------------------------------+
 |             | Packages                                               |
@@ -113,8 +113,8 @@ When the tar-file is extracted a new directory will be made.
 This directory contains the configuration files for GroupServer.
 In addition, the installation process will download and install
 some dependencies into the directory (see `Run the Installer`_).
-Finally, GroupServer will be run from the same directory (see
-`Start Zope`_).
+GroupServer will be run from the same directory (see `Start
+Zope`_).
 
 :Permissions: You may need to be the ``root`` user to extract the
        archive. If you do then you **must** change the ownership
@@ -199,10 +199,9 @@ You will need to check all the configuration for your initial site.
   password will be used to log in, and can be changed after the site has
   been created.
 
-``support_email``
-  The email address where support messages are sent, and were email
-  notifications are send from. For testing this can be set to your own
-  email address.
+``support_email`` The email address where support messages are
+  sent, and were email notifications are send from. For testing
+  this can be set to your own or the admin email address.
 
 ``smtp_host``
   The SMTP host that will be used to send email from
@@ -216,13 +215,14 @@ Zope_ is used to provide the web-framework for GroupServer, and a
 basic web-server. The server listens for connections on a single
 port (the ``zope_port``) and provides the GroupServer UI if
 connections are made using the ``host`` name, or the Zope
-Management Interface (ZMI) if connections are made with the
-``zope_host``.
+Management Interface (ZMI) if connections are made with any other
+host names.
 
-The ``zope_host`` and ``zope_port`` are probably correct for a
-simple test-system, or if you are going to proxy GroupServer (see
-:doc:`proxy-configure`). However, for security we recommend you
-change the name and password of the Zope administrator.
+The ``zope_host`` and ``zope_port`` are probably correct for most
+systems, weather you are testing or if you are going to proxy
+GroupServer (see :doc:`proxy-configure`). However, for security
+we recommend you change the name and password of the Zope
+administrator.
 
 ``zope_host``
   The name of the host that will run Zope. It defaults to the
@@ -414,8 +414,11 @@ Next steps
 * The steps required to configure a **proxy** is documented in
   :doc:`proxy-configure`.
 
-* Finally, we document the setup required to **receive email**
-  with GroupServer in :doc:`postfix-configure`.
+* We document the setup required to **receive email** with
+  GroupServer in :doc:`postfix-configure`.
+
+* Finally, we outline the steps required to send out the **daily
+  digest of topics** in :doc:`cron`.
 
 History
 =======
