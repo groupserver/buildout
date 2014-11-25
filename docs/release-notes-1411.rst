@@ -4,7 +4,7 @@ GroupServer 14.11 — Calvados Consumed Covertly
 
 :Authors: `Michael JasonSmith`_;
 :Contact: Michael JasonSmith <mpj17@onlinegroups.net>
-:Date: (unreleased)
+:Date: 2014-11-25
 :Organization: `GroupServer.org`_
 :Copyright: This document is licensed under a
   `Creative Commons Attribution-Share Alike 4.0 International License`_
