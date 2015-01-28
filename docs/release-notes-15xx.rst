@@ -71,7 +71,7 @@ Minor code improvements
 
 --------
 Get Rakı
----------
+--------
 
 To get Rakı go to `the Downloads page for GroupServer`_ and
 follow `the GroupServer Installation documentation`_. Those who
