@@ -20,6 +20,14 @@ In this guide I hope to introduce you to the tools used in the
 `development process`_ for GroupServer_. I also hope to provide
 an overview of the `system structure`_.
 
+You can find out more about GroupServer development by reading
+**the archive**, and asking questions, in `GroupServer
+development`_ group, joining `the #gsdevel channel`_ on
+Freenode.net, or both.
+
+.. _GroupServer development: http://groupserver.org/groups/development/
+.. _the #gsdevel channel: irc://irc.freenode.net/#gsdevel
+
 -------------------
 Development process
 -------------------
@@ -34,9 +42,9 @@ Virtual environment
 ===================
 
 The development for GroupServer takes place within the Python
-*virtual environment* of a GroupServer installation. When you
-start development you need to **activate** the virtual
-environment::
+*virtual environment* of a GroupServer installation (see
+:doc:`groupserver-install`). When you start development you need
+to **activate** the virtual environment::
 
   $ . ./bin/activate
 
@@ -93,8 +101,8 @@ it::
 
 This will checkout the ``gs.group.home`` product from `its
 repository`_ into the ``gs.group.home`` directory within the
-``src`` directory of your GroupServer installation.
-
+``src`` directory of your GroupServer installation. (There is
+more on products_ below.)
 
 .. _its repository: https://github.com/groupserver/gs.group.home
 
@@ -253,7 +261,7 @@ with the documentation_ provided by reStructuredText_.
 Products
 ========
 
-GroupServer is split into many (currently 145) *products*, small
+GroupServer is split into many (currently 145) *products*: small
 Python packages that deal with one aspect of the system. The
 general rule is that **one product for each user interface**
 (usually a form). While this may seem limiting, each product
@@ -275,6 +283,29 @@ is normally refactored into a **base product** — which is
 normally given a name ending in ``.base``, such as
 ``gs.group.list.base``.
 
+Development is carried out on one, or a few, products at a
+time. If you are unsure what products provide aspect of
+GroupServer it would be best to **ask in `GroupServer
+development`_** or in #gsdevel on IRC. However, there are some
+clues: normally name of the product will make up the part of the
+identifier or class-name of an element in the HTML source of a
+page. For example, the link to the ATOM feed of posts on the
+*Group* page has the identifier ``gs-group-messages-posts-link``
+— which indicates that it is provided by `the gs.group.messages.posts product`_.
+
+.. code-block:: xml
+
+  <link id="gs-group-messages-posts-link" rel="alternate"
+      type="application/atom+xml"
+      title="Posts in GroupServer development"
+      href="/s/search.atom?g=development&amp;t=0&amp;p=1" />
+
+.. _the gs.group.messages.posts product: https://github.com/groupserver/gs.group.messages.posts
+
+Each product makes use of namespaces_, and ZCML_. Each product
+usually contains some `static resources`_, `page templates`_, and
+some documentation_
+
 Namespaces
 ----------
 
@@ -282,18 +313,117 @@ The products use *namespace packages* (:pep:`420`).
 
 * Each product belongs beneath the ``gs`` namespace, and often
   many others. Each part of the namespace is separated by
-  dots. For example, the code for the text version of an email
-  message is ``gs.group.list.email.text``.
+  dots. For example, `the code that produces for the plain-text
+  version of an email message`_ is ``gs.group.list.email.text``.
 
 * The root of each product contains the packaging information for
   that product, particularly in the ``setup.py`` file.
 
-* The actual code is within nested sub-directories beneath the
-  product directory, such as 
-  ``gs/group/list/email/text``.
+* The Python code is within nested sub-directories beneath the
+  product directory, such as ``gs/group/list/email/text``.
+
+.. _the code that produces for the plain-text version of an email message:
+    https://github.com/groupserver/gs.group.list.email.text
+
+The Python code is made up of an ``__init__.py`` that is often
+blank, with each class in its own file. (This is my habit, you do
+not have to follow it.) To determine the relationship between the
+files, and the rest of GroupServer, it is necessary to look at
+the ZCML_ file.
+
+ZCML
+----
+
+The Zope Configuration Markup Language (ZCML) defines the `static
+resources`_, the `page templates`_, the relationship that the
+Python files have to each other, and to other products. The
+configuration for each product is always called
+``configure.zcml``, and it is always in the same directory as all
+the Python files.
+
+To begin with the three most important directives are as follows.
+
+``<browser:resource />``:
+  A `static resource`_.
+
+``<browser:page />``:
+  A page on the web, pointing to a `page template`_.
+
+``<browser:viewlet />``:
+  **Part** of a page, which also points at a `page template`_.
+
+.. _static resource:
+
+Static resources
+----------------
+
+Static resources are simply files with names, which are useful
+for JavaScript, CSS, and images. When requested Zope sends the
+static file to the browser.
+
+The resource is defined by the ``<browser:resource/>`` directive
+in the ZCML_.
+
+  .. code-block:: xml
+
+     <browser:resource
+       name="gs-group-messages-topic-compose-20140327.js"
+       file="browser/javascript/compose.js"
+       permission="zope2.Public" />
+
+* The ``name`` attribute is the of the resource. The URL is made
+  up of ``/`` and the name. Normally the name of the product
+  (``gs.group.messages.topic`` in this case) makes up part of the
+  name to prevent namespace clashes, and so it is easier to work
+  back from the filename to the product. The name *should* end
+  with the date the resource was created so there are fewer
+  caching issues when the resource is updated.
+
+* The ``file`` is the static file that is served. It is a path
+  from the directory that holds the ZCML_ file. Resources are
+  always within the ``browser`` sub-directory, within a
+  ``javascript``, ``images`` or ``css`` directory.
+
+* The ``permission`` is the permission on the resource. It is
+  **always** ``zope2.Public``. This will allow the resource to be
+  cached.
+
+In GroupServer the resources are always accessed from the root of
+the site, with ``++resource++`` added to the start of the name:
+<http://groupserver.org/++resource++gs-group-messages-topic-compose-20140327.js>
+
+.. _page template:
 
 Page Templates
 --------------
+
+Pages themselves are defined by one of two directives in the
+ZCML_: ``<browser:page/>`` and ``<browser:viewlet/>``. The former
+links the Python code (``class``) with a ``template``, giving it
+a ``name``.
+
+  .. code-block:: xml
+
+     <browser:page
+       for="gs.group.base.interfaces.IGSGroupMarker"
+       name="index.html"
+       class="gs.group.base.page.GroupPage"
+       template="browser/templates/homepage.pt"
+       permission="zope2.View"/>
+
+A viewlet is **part** of a page. It also links a ``class`` up
+with a ``name`` and ``template``.
+
+  .. code-block:: xml
+
+     <browser:viewlet
+       name="gs-group-message-topic-summary-stats"
+       manager=".interfaces.ITopicSummary"
+       template="browser/templates/summarystats.pt"
+       class=".summarystats.SummaryStats"
+       permission="zope2.View"
+       weight="0"
+       title="Topic Summary Statistics" />
 
 The pages are created using `Zope Page Templates`_ (ZPT), which
 is the same template system that Plone uses, and is very similar
@@ -308,10 +438,24 @@ to Chameleon_.
 * The template itself is **XHTML 5**: the XML form of HTML 5.
 
 * The *dynamic* parts of the template are defined by
-  **attributes**, using the Template Attribute Language (TAL).
+  **attributes**, using the Template Attribute Language
+  (TAL). This accesses attributes and methods of the Python
+  code. In the following example the group-name is written into
+  the ``<h1/>`` element by the ``tal:content`` attribute.
+
+  .. code-block:: xml
+
+      <h1 id="gs-group-home-h" class="fn"
+          tal:content="view/groupInfo/name">Group</h1>
 
 * Within each attribute is one or more expressions that generates
-  the text that is placed into the page.
+  the text that is placed into the page. The Python code (the
+  ``class`` in the ZCML above) is always referred to as ``view``,
+  and a ``/`` is used as an attribute separator (rather than
+  ``.`` in Python code). In the above example the Python class
+  (``gs.group.base.page.GroupPage``) is accessed to get the
+  group-information attribute (``groupInfo``), and from that the
+  group-name is retrieved.
 
 Documentation
 =============
@@ -324,6 +468,8 @@ at Read The Docs`_.
 
 .. _autodoc: http://sphinx-doc.org/tutorial.html#autodoc
 .. _the GroupServer project at Read The Docs: https://readthedocs.org/projects/groupserver/
+
+If present the documentation 
 
 ..  _GroupServer: http://groupserver.org/
 ..  _GroupServer.org: http://groupserver.org/
