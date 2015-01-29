@@ -21,11 +21,10 @@ In this guide I hope to introduce you to the tools used in the
 an overview of the `system structure`_.
 
 You can find out more about GroupServer development by reading
-**the archive**, and asking questions, in `GroupServer
+**the archive**, and asking questions, in the `GroupServer
 development`_ group, joining `the #gsdevel channel`_ on
 Freenode.net, or both.
 
-.. _GroupServer development: http://groupserver.org/groups/development/
 .. _the #gsdevel channel: irc://irc.freenode.net/#gsdevel
 
 -------------------
@@ -208,16 +207,23 @@ tasks.
 Adding a new product
 ====================
 
+GroupServer is split into multiple *products*, each controlling
+one aspect of the system. (There is more on products_ below.) To
+add your own functionality, or override existing functionality,
+you will need to add your own product.
+
 To add your own new product to GroupServer carry out the
 following tasks.
 
-#. Create the product in the ``src`` directory. Normally I clone
+#. Create the product in the ``src`` directory. Normally I copy
    an existing product:
 
    + Rename the product, the directories in the product
      namespace, and the configuration in the ``setup.py``.
 
-   + Delete the old code (keeping a blank ``__init__.py``).
+   + Delete the old code — keeping a blank ``__init__.py`` at the
+     top, and the ``__init__.py`` files needed for the
+     namespace_.
 
    + Delete the contents of the ``<configure>`` element of the
      ``configure.zcml`` file, keeping the element itself.
@@ -291,7 +297,8 @@ clues: normally name of the product will make up the part of the
 identifier or class-name of an element in the HTML source of a
 page. For example, the link to the ATOM feed of posts on the
 *Group* page has the identifier ``gs-group-messages-posts-link``
-— which indicates that it is provided by `the gs.group.messages.posts product`_.
+— which indicates that it is provided by `the
+gs.group.messages.posts product`_.
 
 .. code-block:: xml
 
@@ -311,16 +318,24 @@ Namespaces
 
 The products use *namespace packages* (:pep:`420`).
 
-* Each product belongs beneath the ``gs`` namespace, and often
-  many others. Each part of the namespace is separated by
-  dots. For example, `the code that produces for the plain-text
-  version of an email message`_ is ``gs.group.list.email.text``.
+* Each GroupServer product belongs beneath the ``gs``
+  namespace. Beneath that there are many others. For example,
+  ``gs.group`` products deal with groups, while ``gs.profile``
+  products deal with people. Each part of the namespace is
+  separated by dots. For example, `the code that produces for the
+  plain-text version of an email message`_ is
+  ``gs.group.list.email.text``.
 
 * The root of each product contains the packaging information for
   that product, particularly in the ``setup.py`` file.
 
 * The Python code is within nested sub-directories beneath the
-  product directory, such as ``gs/group/list/email/text``.
+  product directory, such as ``gs/group/list/email/text``. All
+  but the last directory will have ``__init__.py`` files that set
+  the directory up as a *namespace directory*. The last directory
+  (``text`` in this example) will have an ``__init__.py`` that
+  may be blank. It is necessary to turn the directory into a
+  Python module.
 
 .. _the code that produces for the plain-text version of an email message:
     https://github.com/groupserver/gs.group.list.email.text
@@ -405,11 +420,11 @@ a ``name``.
   .. code-block:: xml
 
      <browser:page
-       for="gs.group.base.interfaces.IGSGroupMarker"
        name="index.html"
+       for="gs.group.base.interfaces.IGSGroupMarker"
        class="gs.group.base.page.GroupPage"
        template="browser/templates/homepage.pt"
-       permission="zope2.View"/>
+       permission="zope2.View" />
 
 A viewlet is **part** of a page. It also links a ``class`` up
 with a ``name`` and ``template``.
@@ -469,8 +484,6 @@ at Read The Docs`_.
 .. _autodoc: http://sphinx-doc.org/tutorial.html#autodoc
 .. _the GroupServer project at Read The Docs: https://readthedocs.org/projects/groupserver/
 
-If present the documentation 
-
 ..  _GroupServer: http://groupserver.org/
 ..  _GroupServer.org: http://groupserver.org/
 ..  _OnlineGroups.Net: https://onlinegroups.net/
@@ -481,6 +494,7 @@ If present the documentation
 ..  _Bill Bushey: http://groupserver.org/p/wbushey
 ..  _Alice Murphy: http://groupserver.org/p/alice
 ..  _E-Democracy.org: http://forums.e-democracy.org/
+.. _GroupServer development: http://groupserver.org/groups/development/
 .. _GitHub: https://github.com/groupserver
 .. _mr.developer: https://pypi.python.org/pypi/mr.developer/
 .. _Buildout: http://buildout.org/
@@ -493,4 +507,5 @@ If present the documentation
             control altogether.
 
 ..  LocalWords:  GitHub groupserver buildout VCS awk mr cfg Plone refactored
-..  LocalWords:  SQL Namespaces namespace reStructuredText autodoc
+..  LocalWords:  SQL Namespaces namespace reStructuredText autodoc CSS ZCML ZPT
+..  LocalWords:  TAL XHTML
