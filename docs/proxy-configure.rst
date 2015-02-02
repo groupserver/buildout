@@ -195,13 +195,13 @@ case of nginx the rewrite rule will look like the following
 
 .. code-block:: nginx
 
-  rewrite /(.*) /++skin++blue/VirtualHostBase/http/$host:80/groupserver/Content/initial_site/VirtualHostRoot/$1 break;
+  rewrite /(.*) /++skin++gs_blue/VirtualHostBase/http/$host:80/groupserver/Content/initial_site/VirtualHostRoot/$1 break;
 
 In the case of Apache the rewrite rule would look like the following
 
 .. code-block:: apache
 
-  RewriteRule ^/(.*) http://localhost:8080/++skin++green/groupserver/Content/initial_site/VirtualHostBase/http/%{HTTP_HOST}:80/VirtualHostRoot/$1 [L,P]
+  RewriteRule ^/(.*) http://localhost:8080/++skin++gs_green/groupserver/Content/initial_site/VirtualHostBase/http/%{HTTP_HOST}:80/VirtualHostRoot/$1 [L,P]
 
 
 .. [#domain] Acquiring and configuring a new domain is out of the
