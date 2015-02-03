@@ -25,7 +25,8 @@ Changes to GroupServer
 ----------------------
 
 The most extensive change in Rakı is the new `email processing`_
-subsystem. There have been some `minor code improvements`_.
+subsystem. In addition GroupServer can now `export data`_, and
+there have been some `minor code improvements`_.
 
 Email processing
 ================
@@ -62,6 +63,24 @@ allow the default behaviour of a group to change between
 
 Finally, the **sending** of an email from a group has been
 tweaked. However, there *should* be no noticeable change.
+
+Export data
+===========
+
+GroupServer has long had the ability to import profile data using
+the *Add people in bulk* page, and import posts using the
+``mbox2gs`` script. Now with the Rakı release GroupServer has the
+ability to `export profile data`_.
+
+Export profile data
+-------------------
+
+The new *Export members* page allows an administrator to download
+a CSV file of all the profile information of the group
+members. The profile data is from the new ``profile.json`` view
+of a profile. The new *Export* page closes `Feature 4137`_.
+
+.. _Feature 4137: https://redmine.iopen.net/issues/4137
 
 Minor code improvements
 =======================
@@ -129,5 +148,5 @@ Resources
 ..  _E-Democracy.org: http://forums.e-democracy.org/
 
 ..  LocalWords:  refactored iopen JPEG redmine jQuery jquery async Rakı Bushey
-..  LocalWords:  Randow Organization sectnum Slivovica DMARC CSS Calvados
-..  LocalWords:  SMTP smtp
+..  LocalWords:  Randow Organization sectnum Slivovica DMARC CSS Calvados Rakı
+..  LocalWords:  SMTP smtp mbox CSV
