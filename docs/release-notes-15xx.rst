@@ -70,17 +70,30 @@ Export data
 GroupServer has long had the ability to import profile data using
 the *Add people in bulk* page, and import posts using the
 ``mbox2gs`` script. Now with the Rakı release GroupServer has the
-ability to `export profile data`_.
+ability to `export profiles`_ and `export posts`_.
 
-Export profile data
--------------------
+Export profiles
+---------------
 
 The new *Export members* page allows an administrator to download
 a CSV file of all the profile information of the group
 members. The profile data is from the new ``profile.json`` view
-of a profile. The new *Export* page closes `Feature 4137`_.
+of a profile. The new *Export members* page closes `Feature
+4137`_.
 
 .. _Feature 4137: https://redmine.iopen.net/issues/4137
+
+Export posts
+------------
+
+The new *Export posts* page allows an administrator to download
+an ``mbox`` file containing the posts (with attachments) made to
+a group in one particular month. By breaking the archive up like
+this the administrator is able to download all the posts in the
+most recent month and add it to an existing ``mbox`` archive of
+posts. The new *Export posts* page closes `Feature 3594`_.
+
+.. _Feature 3594: https://redmine.iopen.net/issues/3594
 
 Minor code improvements
 =======================
