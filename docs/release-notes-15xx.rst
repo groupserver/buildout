@@ -100,6 +100,7 @@ Minor code improvements
 
 * The XML for the *Email settings* page has been updated
 * The CSS that is used in the notifications has been fixed
+* Internationalisation has improved
 
 --------
 Get Rakı
