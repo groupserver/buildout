@@ -4,7 +4,7 @@ Configuring a web proxy
 
 :Authors: `Michael JasonSmith`_; `Fabien Hespul`_
 :Contact: Michael JasonSmith <mpj17@onlinegroups.net>
-:Date: 2014-10-22
+:Date: 2015-02-12
 :Organization: `GroupServer.org`_
 :Copyright: This document is licensed under a
   `Creative Commons Attribution-Share Alike 4.0 International License`_
@@ -24,10 +24,12 @@ available to the public to provide the following services:
 * To rewrite the URL to include a skin directive.
 * To rewrite the URL to support virtual hosting.
 * To provide caching.
+* To provide a secure connection.
 
 In this document we explain how to `add a virtual host`_ to
 either Apache_ or nginx_, and how to `change the reported port`_
-in GroupServer. Finally we explain how to `change the skin`_.
+in GroupServer. We then explain how to `change the skin`_, before
+we outline how to set up `secure connections`_.
 
 :Note: You will need to be the root user to carry out most of
        these tasks. Commands that need to be run as root will be
@@ -203,6 +205,53 @@ In the case of Apache the rewrite rule would look like the following
 
   RewriteRule ^/(.*) http://localhost:8080/++skin++gs_green/groupserver/Content/initial_site/VirtualHostBase/http/%{HTTP_HOST}:80/VirtualHostRoot/$1 [L,P]
 
+.. _secure connections:
+
+Secure connections: TLS, SSL, and HTTPS
+=======================================
+
+Establishing a secure connection is done by the proxy rather than
+GroupServer itself. The proxy should still listen to port 80
+(HTTP) and make a permanent redirect to the secure site. In nginx
+the rewrite rule would look like the following:
+
+.. code-block:: nginx
+
+  server {
+    listen 80;
+    server_name www.groups.example.com groups.example.com;
+
+    location / {
+      rewrite ^(.*)$ https://groups.example.com$1 permanent;
+    }
+  }
+
+The proxy will also listen to the secure port and perform a
+rewrite to your GroupServer site. This is similar to the rewrite
+when you `add a virtual host`_, but
+
+* There is configuration for the SSL certificates,
+* The port is 443, rather than 80, and
+* The protocol is ``https`` rather than ``http``.
+
+.. code-block:: nginx
+
+  server {
+    listen 443;
+    server_name groups.example.com;
+
+    ssl on;
+    ssl_certificate /etc/nginx/ssl/groups.example.com.crt;
+    ssl_certificate_key /etc/nginx/ssl/groups.example.com.key;
+
+    location / {
+      rewrite /(.*) /VirtualHostBase/https/$host:443/groupserver/Content/initial_site/VirtualHostRoot/$1 break;
+      proxy_pass http://gs/;
+      include proxy_params;
+    }
+  }
+
+You can `change the skin`_ in the rewrite rule, just like before.
 
 .. [#domain] Acquiring and configuring a new domain is out of the
              scope for this documentation. However, you want the
@@ -221,3 +270,5 @@ In the case of Apache the rewrite rule would look like the following
 ..  _Creative Commons Attribution-Share Alike 4.0 International License:
     http://creativecommons.org/licenses/by-sa/4.0/
 ..  _Fabien Hespul: http://groupserver.org/p/1e38zikXDqFgXFkmCjqC31
+
+..  LocalWords:  TLS DivisionConfiguration apache groupserver params SSL
