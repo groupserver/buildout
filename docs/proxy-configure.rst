@@ -212,18 +212,17 @@ Secure connections: TLS, SSL, and HTTPS
 
 Establishing a secure connection is done by the proxy rather than
 GroupServer itself. The proxy should still listen to port 80
-(HTTP) and make a permanent redirect to the secure site. In nginx
-the rewrite rule would look like the following:
+(HTTP) and make a permanent redirect to the secure site by
+returning a ``301`` response. In nginx the rule would look like
+the following:
 
 .. code-block:: nginx
 
   server {
     listen 80;
-    server_name www.groups.example.com groups.example.com;
+    server_name groups.example.com;
 
-    location / {
-      rewrite ^(.*)$ https://groups.example.com$1 permanent;
-    }
+    return 301 https://$server_name$request_uri;
   }
 
 The proxy will also listen to the secure port and perform a
