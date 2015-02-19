@@ -9,6 +9,7 @@ GroupServer Documentation
    postfix-configure
    proxy-configure
    cron
+   translations
    development
    groupserver-uninstall
    release-notes
