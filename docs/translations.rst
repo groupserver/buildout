@@ -114,12 +114,19 @@ out the following tasks.
               Please pick another group ID.
            </p><!--group-id-error-->
 
-    #. Add ``i18n:name`` attributes to dynamic content
+    #. Add ``i18n:name`` attributes to dynamic content.
 
         .. code-block:: xml
 
            <span class="group" i18n:name="groupName"
                  tal:content="view/groupInfo/name">this group</span>
+
+    #. Add ``i18n:attributes`` attributes to dynamic attributes.
+
+        .. code-block:: xml
+
+           <a title="Change this About box"
+              i18n:attributes="title admin-change-button-title">Change</a>
 
 #.  Add i18n to the Zope Configuration file.
 
