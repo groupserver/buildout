@@ -2,7 +2,7 @@
 Translation guide
 =================
 
-:Authors: `Michael JasonSmith`_;
+:Authors: `Alice Murphy`_; `Michael JasonSmith`_; 
 :Contact: Michael JasonSmith <mpj17@onlinegroups.net>
 :Date: 2015-02-18
 :Organization: `GroupServer.org`_
@@ -15,11 +15,12 @@ Introduction
 
 GroupServer_ is written in English, and the interface has been
 partly translated into French and German. In this guide we work
-through how to `Translate GroupServer`_ and how to `Add
-internationalisation (i18n)`_.
+through how to `translate GroupServer`_, how to `add
+internationalisation (i18n)`_, and finally we discuss how to
+`update the products`_.
 
-Changing the language
----------------------
+Change the language
+-------------------
 
 Your browser determines the language that is chosen when
 GroupServer displays a page. To change what language is chosen
@@ -46,8 +47,8 @@ Adding internationalisation support to a product that lacks it is
 a development task. If you come across a component of GroupServer
 that lacks a translation please **ask for i18n to be added** in
 `the GroupServer development group`_. The person who responds
-(either `Michael JasonSmith`_ or `Alice Murphy`_) will then carry
-out the following tasks.
+(probably either `Michael JasonSmith`_ or `Alice Murphy`_) will
+then carry out the following tasks.
 
 #.  Identify the product. (The element identifiers in the HTML
     often point to the product that needs to be changed.)
@@ -145,8 +146,12 @@ out the following tasks.
 
            <i18n:registerTranslations directory="locales" />
 
-#.  Run the latest version of ``i18n.sh`` [#i18n]_ to create and
-    update the translation.
+#.  Run the latest version of ``i18n.sh`` [#i18n]_ in the base
+    directory of the product to create and update the
+    translation.
+
+#.  Fill out the *English* translation, which is used as the
+    source translation for Transifex.
 
 #.  Commit the changes.
 
@@ -195,7 +200,8 @@ out the following tasks.
 
            $ tx init
 
-    #.  Run ``tx-set.sh`` [#tx-set]_.
+    #.  Run ``tx-set.sh`` [#tx-set]_ in the base directory of the
+        product.
 
     #.  Sync local source and translations to remote:
 
@@ -215,6 +221,71 @@ out the following tasks.
 
 #. Push all the changes to the repositories.
 
+Update the products
+===================
+
+Transifex and the product need to be kept in sync with each
+other. When the product changes it is necessary to `update
+Transifex with the new strings`_. Likewise, when some
+translations have been completed it is necessary to `update the
+product with the new translations`_.
+
+Update Transifex with the new strings
+-------------------------------------
+
+To update a Transifex project with the new strings in a product
+carry out the following tasks.
+
+#.  Update the ``pot`` file and the ``po`` files by running the
+    ``i18n.sh`` script in the root of the product [#i18n]_.
+
+#.  Update the *English* ``po`` file, copying the default text
+    into the ``msgstr``. This is the *source* language that
+    supplies the example text in Transifex. (Without this step
+    the translations can still take place, but the translators
+    see the message identifiers, rather than the default text.)
+
+#.  Push the changes in the source file to Transifex, using the
+    Transifex client (``tx``):
+
+    .. code-block:: console
+
+       $ tx push -s
+
+#.  Commit and push the changes to the source-code repositories.
+
+Update the product with the new translations
+--------------------------------------------
+
+To update a product with the new translations in a Transifex
+project carry out the following tasks.
+
+#.  Pull the updated translations (in ``po`` files) from the
+    Transifex project using the Transifex client (``tx``):
+
+    .. code-block:: console
+
+       $ tx pull -a
+
+#.  Ensure that Zope is set up to automatically compile the
+    ``po`` files to ``mo`` files:
+
+    .. code-block:: console
+
+       $ export zope_i18n_compile_mo_files=true
+
+#.  Start your development system. `Change the language`_ in your
+    browser to test the different translations.
+
+    :Note: Browsing the Web with a changed language will result
+           in Goggle, Microsoft, the NSA, and Yahoo! getting some
+           funny ideas about that languages you can comprehend.
+
+#.  Commit and push the changes to the source-code repositories.
+
+Footnotes
+=========
+
 ..  _GroupServer: http://groupserver.org/
 ..  _GroupServer.org: http://groupserver.org/
 ..  _OnlineGroups.Net: https://onlinegroups.net/
@@ -224,7 +295,7 @@ out the following tasks.
 ..  _Alice Murphy: http://groupserver.org/p/alice
 .. _the GroupServer development group:
    http://groupserver.org/groups/development
-.. _the GroupServer organisation on Tranifex:
+.. _the GroupServer organisation on Transifex:
    https://www.transifex.com/organization/groupserver/dashboard
 
 .. [#client] Ensure you have ``transifex-client`` 0.11.1 beta or
@@ -235,7 +306,14 @@ out the following tasks.
                 $ pip install transifex-client==0.11.1.beta
 
 .. [#i18n] Download ``i18n.sh`` from
-           <http://groupserver.org/downloads/i18n.sh>
+           <http://groupserver.org/downloads/i18n.sh>. It wraps
+           the marvellous i18ndude_.
+
+           .. code-block:: console
+
+                $ pip install i18ndude
+
+.. _i18ndude: https://pypi.python.org/pypi/i18ndude/
 
 .. [#tx-set] Download ``tx-set.sh`` from 
              <http://groupserver.org/downloads/tx-set.sh>

@@ -25,8 +25,9 @@ Changes to GroupServer
 ----------------------
 
 The most extensive change in Rakı is the new `email processing`_
-subsystem. In addition GroupServer can now `export data`_, and
-there have been some `minor code improvements`_.
+subsystem. In addition GroupServer can now `export data`_, the
+have been further `improvements to internationalisation`_ and
+some `minor code improvements`_.
 
 Email processing
 ================
@@ -95,12 +96,33 @@ posts. The new *Export posts* page closes `Feature 3594`_.
 
 .. _Feature 3594: https://redmine.iopen.net/issues/3594
 
+Improvements to internationalisation
+====================================
+
+`Alice Murphy`_ continues her effort to improve the
+internationalisation support in GroupServer. GroupServer is now
+using Transifex_ to manage the translations. **You can add
+translations,** without needing to know any Python or HTML!
+
+.. _Transifex: https://www.transifex.com/organization/groupserver/dashboard
+
+The parts of GroupServer with internationalisation support is
+expanding, and now includes 
+
+* The group *About* box, 
+* The *encouragement* for a new administrator, 
+* The *Export members* page
+* The *Export messages* page
+* The *Group properties* page
+
+Finally there is now a :doc:`translations` included in the
+GroupServer_ documentation.
+
 Minor code improvements
 =======================
 
-* The XML for the *Email settings* page has been updated
-* The CSS that is used in the notifications has been fixed
-* Internationalisation has improved
+* The XML for the *Email settings* page has been updated.
+* The CSS that is used in the notifications has been fixed.
 
 --------
 Get Rakı
@@ -163,4 +185,4 @@ Resources
 
 ..  LocalWords:  refactored iopen JPEG redmine jQuery jquery async Rakı Bushey
 ..  LocalWords:  Randow Organization sectnum Slivovica DMARC CSS Calvados Rakı
-..  LocalWords:  SMTP smtp mbox CSV
+..  LocalWords:  SMTP smtp mbox CSV Transifex
