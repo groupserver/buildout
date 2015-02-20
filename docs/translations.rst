@@ -77,7 +77,7 @@ then carry out the following tasks.
 
         * All strings, including the simple ones, get a label
           with the default (English) text following. The label
-          make Transifex much easier to deal with.
+          make Transifex much easier to deal with [#button]_.
 
           .. code-block:: py
 
@@ -157,7 +157,7 @@ then carry out the following tasks.
 
 #.  Add the product to Transifex [#client]_.
 
-    #.  In `the GroupServer organisation on Tranifex`_, click on
+    #.  In `the GroupServer organisation on Transifex`_, click on
         *New project*.
 
     #.  Fill in the Project Details form:
@@ -298,12 +298,17 @@ Footnotes
 .. _the GroupServer organisation on Transifex:
    https://www.transifex.com/organization/groupserver/dashboard
 
-.. [#client] Ensure you have ``transifex-client`` 0.11.1 beta or
-             later installed
+.. [#button] When actually adding i18n to a command button in a
+             ``zope.formlib`` form remember to **set a name,**
+             that way the element-identifier will be the same no
+             matter the language.
 
-             .. code-block:: console
+             .. code-block:: py
 
-                $ pip install transifex-client==0.11.1.beta
+                @form.action(name="change", label=_('change-action', 'Change'),
+                             failure='handle_change_action_failure')
+                def handle_invite(self, action, data):
+
 
 .. [#i18n] Download ``i18n.sh`` from
            <http://groupserver.org/downloads/i18n.sh>. It wraps
@@ -314,6 +319,13 @@ Footnotes
                 $ pip install i18ndude
 
 .. _i18ndude: https://pypi.python.org/pypi/i18ndude/
+
+.. [#client] Ensure you have ``transifex-client`` 0.11.1 beta or
+             later installed
+
+             .. code-block:: console
+
+                $ pip install transifex-client==0.11.1.beta
 
 .. [#tx-set] Download ``tx-set.sh`` from 
              <http://groupserver.org/downloads/tx-set.sh>
