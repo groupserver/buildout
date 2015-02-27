@@ -107,13 +107,8 @@ translations,** without needing to know any Python or HTML!
 .. _Transifex: https://www.transifex.com/organization/groupserver/dashboard
 
 The parts of GroupServer with internationalisation support is
-expanding, and now includes 
-
-* The group *About* box, 
-* The *encouragement* for a new administrator, 
-* The *Export members* page
-* The *Export messages* page
-* The *Group properties* page
+expanding, and now includes over forty products. The translation
+effort for German, French, and Spanish continues apace.
 
 Finally there is now a :doc:`translations` included in the
 GroupServer_ documentation.
