@@ -107,7 +107,8 @@ translations,** without needing to know any Python or HTML!
 .. _Transifex: https://www.transifex.com/organization/groupserver/dashboard
 
 The parts of GroupServer with internationalisation support is
-expanding, and now includes over forty products. The translation
+expanding: the site homepage, the group page, the topic page, and
+post page all support internationalisation. The translation
 effort for German, French, and Spanish continues apace.
 
 Finally there is now a :doc:`translations` included in the
@@ -118,6 +119,11 @@ Minor code improvements
 
 * The XML for the *Email settings* page has been updated.
 * The CSS that is used in the notifications has been fixed.
+* The code that makes up the *Topics* list on the group page, the
+  *Topic* and *topic digests* has been refactored, closing
+  `Feature 3739`_
+
+.. _Feature 3739: https://redmine.iopen.net/issues/3739
 
 --------
 Get Rakı
