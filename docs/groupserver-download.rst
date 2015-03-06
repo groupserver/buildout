@@ -50,7 +50,9 @@ Dependencies
 
 For your erudition, the packages that contain the programs and
 libraries that are required by GroupServer are listed for Ubuntu,
-CentOS, and RedHat Enterprise Linux.
+CentOS, and RedHat Enterprise Linux. The installation script for
+Ubuntu runs ``apt-get`` to install all the requisite packages
+(see :doc:`groupserver-install`).
 
 +-------------+-----------------------------------------------+
 |             | Packages                                      |
