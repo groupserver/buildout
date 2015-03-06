@@ -16,9 +16,9 @@ GroupServer installation
 
 .. highlight:: console
 
-Installation can be tricky: all of the above has to be configured
-and set up correctly or installation will fail. We wrote this
-documentation for people with moderate experience in Linux system
+Installation can be tricky: much has to be configured and set up
+correctly or installation will fail. We wrote this documentation
+for people with moderate experience in Linux system
 administration. If you get stuck, please ask us questions in
 `GroupServer Development`_. Other more detailed guides would be
 gratefully accepted.
@@ -33,13 +33,16 @@ Quick start
 ===========
 
 #.  Download the latest version of GroupServer from
-    <http://groupserver.org/downloads> and extract the archive
-    (see `Download`_).
+    <http://groupserver.org/downloads> and extract the archive.
+
 #.  Create a new hostname for your GroupServer site. Yes, you will need
     a new one (see `Pick a Host Name`_).
+
 #.  Edit ``config.cfg`` (see `Configure GroupServer`_).
+
 #.  Enable prepared transaction support in PostgreSQL (see `Configure
     PostgreSQL`_).
+
 #.  Run the following (see `Run the Installer`_)::
 
       $ ./gs_install_ubuntu.sh
@@ -52,81 +55,13 @@ Quick start
 
 #.  Commence the `next steps`_.
 
-Dependencies
-============
-
-The installation script for Ubuntu will install all the programs
-and libraries listed below (see `Run the Installer`_). The
-packages that are required to install GroupServer are listed for
-Ubuntu, CentOS, and RedHat Enterprise Linux.
-
-+-------------+--------------------------------------------------------+
-|             | Packages                                               |
-+-------------+--------------------------------+-----------------------+
-| System      | Ubuntu                         | CentOS 6.1 or         |
-|             |                                | RHEL 6.1              |
-+=============+================================+=======================+
-| Python      | ``python2.7``                  | ``python-devel``      |
-|             +--------------------------------+-----------------------+
-|             | ``python2.7-dev``              | ``python-setuptools`` |
-|             +--------------------------------+-----------------------+
-|             | ``python-virtualenv``          | See `CentOS and       |
-|             |                                | RHEL`_ below    .     |
-+-------------+--------------------------------+-----------------------+
-| GNU C++     | ``g++``                        | ``gcc-c++``           |
-+-------------+--------------------------------+-----------------------+
-| Make        | ``build-essential``            | ``make``              |
-+-------------+--------------------------------+-----------------------+
-| PostgreSQL  | ``postgresql``                 | ``postgresql``        |
-| Database    +--------------------------------+-----------------------+
-|             | ``libpq-dev``                  | ``postgresql-server`` |
-|             +--------------------------------+-----------------------+
-|             |                                | ``postgresql-libs``   |
-|             +--------------------------------+-----------------------+
-|             |                                | ``postgresql-devel``  |
-+-------------+--------------------------------+-----------------------+
-| Postfix     | ``postfix``                    | ``postfix``           |
-| Email       +--------------------------------+-----------------------+
-| Server      | ``postfix-dev``                |                       |
-+-------------+--------------------------------+-----------------------+
-| Redis       | ``redis-server``               | ``redis``             |
-+-------------+--------------------------------+-----------------------+
-| JPEG Support| ``libjpeg62-dev``              | ``libjpeg-devel``     |
-+-------------+--------------------------------+-----------------------+
-| zlib (PNG)  | ``zlib1g-dev``                 | ``zlib``              |
-| Support     |                                +-----------------------+
-|             |                                | ``zlib-devel``        |
-+-------------+--------------------------------+-----------------------+
-| SMTP Test   | ``swaks``                      | ``swaks``             |
-+-------------+--------------------------------+-----------------------+
-
-Download
-========
-
-GroupServer is distributed as a tar-file. To download the latest
-version of GroupServer visit <http://groupserver.org/downloads>
-and click ``Download``. You must then extract GroupServer from
-the tar-file into a directory such as ``/opt``, ``/home`` or
-``/usr/local``.
-
-When the tar-file is extracted a new directory will be made.
-This directory contains the configuration files for GroupServer.
-In addition, the installation process will download and install
-some dependencies into the directory (see `Run the Installer`_).
-GroupServer will be run from the same directory (see `Start
-Zope`_).
-
-:Permissions: You may need to be the ``root`` user to extract the
-       archive. If you do then you **must** change the ownership
-       of the new GroupServer directory and all of its
-       contents. GroupServer can only be run by users with normal
-       privileges.
-
 Set up
 ======
 
-To install GroupServer you must get the following installed and
-configured:
+GroupServer builds on five major infrastructure packages. These
+packages are installed by the installation script. However, you
+must configure the relationship between GroupServer and to these
+packages **before** you `run the installer`_.
 
 * **Postfix** handles both the incoming and outgoing email.
 * **Zope** provides the web framework and basic web server support.
@@ -308,8 +243,14 @@ GroupServer installer enter the following command::
   $ ./gs_install_ubuntu.sh
 
 You will be prompted for your password. This is required to check
-that your Ubuntu system has met all the dependencies_. Next the
+that your Ubuntu system has met all the dependencies. Next the
 installer ensures that the `set up`_ is correct.
+
+:Permissions: GroupServer can only be run by users with normal
+       privileges. If the installation directory is owned by
+       ``root`` then you must **change the ownership** of the
+       installation directory to a normal user and switch
+       (``su``) to that user. Then run the installer.
 
 The rest of the installation process should be completely
 automatic. The system will create a *sandbox* for your
@@ -337,6 +278,8 @@ requirements for GroupServer (around 43MB of packages) including:
 It is a good idea to make a cup of coffee, or go to lunch, while
 buildout processes.
 
+.. _centos-install:
+
 CentOS and RHEL
 ---------------
 
@@ -349,7 +292,7 @@ testing.
        as a normal user are shown on lines that begin with a
        ``$``.
 
-#. Install the dependencies_.
+#. Install the :ref:`dependencies`.
 
 #. Create the two database users specified in ``config.cfg``,
    using ``createuser``::
@@ -426,7 +369,9 @@ History
 ======= ==========  ====================================================
 Version Date        Change
 ======= ==========  ====================================================
-14.11   2014-11-17  Renaming the *Requirements* section Dependencies_.
+15.03   2015-03-06  Moving the *Dependencies* and *Download* sections to
+                    :doc:`groupserver-download`.
+14.11   2014-11-17  Renaming the *Requirements* section Dependencies.
 14.11   2014-10-30  Moving the *Remove GroupServer* section to
                     :doc:`groupserver-uninstall`.
 14.11   2014-10-30  Integrating updates and suggestions from Scott
@@ -457,13 +402,13 @@ Version Date        Change
                     ``build-essential`` dependency to ``make`` on `the
                     advice of David Sturman.
                     <http://groupserver.org/r/post/1ezm2nM9kQHSJSOfn0Rsm0>`_
-11.08   2011-10-27  Adding the `Download`_ section, and clarifying some
+11.08   2011-10-27  Adding the Download section, and clarifying some
                     more of the documentation.
 11.08   2011-10-26  Correcting some mistakes, and clarifying the
                     documentation on `the advice of Ross Chesley
                     <http://groupserver.org/r/topic/4PF50PHIWeYtaMMzwG3624>`_
 11.08   2011-09-01  Reordering the subsections of *Configure Zope*.
-11.07   2011-07-08  Adding the ``build-essential`` depenency and the
+11.07   2011-07-08  Adding the ``build-essential`` dependency and the
                     cut-n-paste ``apt-get`` block to the Requirements.
 11.06   2011-07-05  Adding the prologue.
 11.06   2011-07-04  Updating the notes, because of a change to the
