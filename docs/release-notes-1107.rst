@@ -151,20 +151,21 @@ carry out the following steps.
     because the version of Zope used by GroupServer has undergone an
     update.
 
-Footnotes
-=========
-
 .. [#NewCSS] The new mobile CSS closes `Ticket 444 
     <https://redmine.iopen.net/issues/444>`_. More 
     information on the mobile stylesheet can be found in `the topic in 
     GroupServer Development
     <http://groupserver.org/r/topic/2zZBPuapfn1wu9J6LgVCX>`_.
+
 ..  [#Converter] Updating the converter closes 
     `Ticket 596 <https://redmine.iopen.net/issues/596>`_.
+
 ..  [#Sticky] Fixing the position of the Sticky form in a topic closes
     `Ticket 705 <https://redmine.iopen.net/issues/705>`_.
+
 ..  [#Hidden] Hiding posts that are part of hidden files closes 
     `Ticket 692 <https://redmine.iopen.net/issues/692>`_.
+
 ..  _GroupServer.org: http://groupserver.org/
 ..  _OnlineGroups.Net: https://onlinegroups.net/
 ..  _Creative Commons Attribution-Share Alike 3.0 New Zealand License:

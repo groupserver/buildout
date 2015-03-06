@@ -77,11 +77,18 @@ then carry out the following tasks.
 
         * All strings, including the simple ones, get a label
           with the default (English) text following. The label
-          make Transifex much easier to deal with [#button]_.
+          make Transifex much easier to deal with.
 
-          .. code-block:: py
+             .. code-block:: py
 
-             _('start-button', 'Start')
+                @form.action(name="change", label=_('change-action', 'Change'),
+                             failure='handle_change_action_failure')
+                def handle_invite(self, action, data):
+
+          When actually adding i18n to a command button in a
+          ``zope.formlib`` form remember to **set a name,** that
+          way the element-identifier will be the same no matter
+          the language.
 
         * Complex strings have a ``mapping`` keyword argument,
           and a ``${}`` template syntax (rather than ``{}`` for
@@ -283,9 +290,6 @@ project carry out the following tasks.
 
 #.  Commit and push the changes to the source-code repositories.
 
-Footnotes
-=========
-
 ..  _GroupServer: http://groupserver.org/
 ..  _GroupServer.org: http://groupserver.org/
 ..  _OnlineGroups.Net: https://onlinegroups.net/
@@ -298,34 +302,15 @@ Footnotes
 .. _the GroupServer organisation on Transifex:
    https://www.transifex.com/organization/groupserver/dashboard
 
-.. [#button] When actually adding i18n to a command button in a
-             ``zope.formlib`` form remember to **set a name,**
-             that way the element-identifier will be the same no
-             matter the language.
-
-             .. code-block:: py
-
-                @form.action(name="change", label=_('change-action', 'Change'),
-                             failure='handle_change_action_failure')
-                def handle_invite(self, action, data):
-
-
 .. [#i18n] Download ``i18n.sh`` from
            <http://groupserver.org/downloads/i18n.sh>. It wraps
-           the marvellous i18ndude_.
-
-           .. code-block:: console
-
-                $ pip install i18ndude
+           the marvellous i18ndude_: ``$ pip install i18ndude``
 
 .. _i18ndude: https://pypi.python.org/pypi/i18ndude/
 
 .. [#client] Ensure you have ``transifex-client`` 0.11.1 beta or
-             later installed
-
-             .. code-block:: console
-
-                $ pip install transifex-client==0.11.1.beta
+             later installed: 
+             ``$ pip install transifex-client==0.11.1.beta``
 
 .. [#tx-set] Download ``tx-set.sh`` from 
              <http://groupserver.org/downloads/tx-set.sh>

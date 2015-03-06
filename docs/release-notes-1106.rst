@@ -133,26 +133,33 @@ Footnotes
    459 <https://redmine.iopen.net/issues/459>`_. This
    enhancement mostly helps Support groups, which otherwise lack a
    way to prevent people from posting.
+
 .. [#CanPostMove] There is a long-running project to move code from the
    large ``Products`` eggs to many more smaller ``gs`` eggs. The move
    of the Can Post code to ``gs.group.member.canpost`` from the old
    ``Products.GSGroupMember`` is part of this. Moving the code closes
    `Ticket 423 <https://redmine.iopen.net/issues/423>`_. 
+
 .. [#SiteAdmin] Updating the site administration pages closes 
    `Ticket 620 <https://redmine.iopen.net/issues/620>`_. 
+
 .. [#tz] Updating the site-timezone page closes
    `Ticket 662 <https://redmine.iopen.net/issues/662>`_. 
+
 .. [#SiteName] Updating the page that allows a site-name to be changed
    closes `Ticket 607
    <https://redmine.iopen.net/issues/607>`_.
+
 .. [#Verify] Only the simple case of a single-address being verified 
    is currently handled. Verifying an email address when the password is
    reset closes
    `Ticket 480 <https://redmine.iopen.net/issues/480>`_.
+
 .. [#ReplyTo] Prior to Soft Serve, the ``Reply-to`` address was set to 
    the email address of the site support. Setting the ``Reply-to`` to
    the address of the administrator that issued the invitation closes
    `Ticket 681 <https://redmine.iopen.net/issues/681>`_.
+
 .. [#StartTopic] In an announcement group there is a distinction between
    group members that post (*posting members*) and members that just
    view posts (*normal members*). Prior to Soft Serve all group members
@@ -160,14 +167,17 @@ Footnotes
    member would see an error if he or she followed that link. Just
    showing the link on the homepage to the posting members closes
    `Ticket 530 <https://redmine.iopen.net/issues/530>`_.
+
 .. [#GSName] Prior to Soft Serve the initial GroupServer instance,
    site and group had names that contained ``example``. Now
    the instance is called ``groupserver``, the initial site
    is called ``initial_site``, and the initial group is called
    ``example_group``. Renaming the instance and site `Ticket 690
    <https://redmine.iopen.net/issues/690>`_.
+
 .. [#PostingMembers] Fixing the coding error on the Members page closes
    `Ticket 680 <https://redmine.iopen.net/issues/680>`_.
+
 .. _GroupServer.org: http://groupserver.org/
 .. _OnlineGroups.Net: https://onlinegroups.net/
 .. _Creative Commons Attribution-Share Alike 3.0 New Zealand License:

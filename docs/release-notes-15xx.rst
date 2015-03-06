@@ -1,10 +1,10 @@
 ===============================================
-GroupServer 15.xx — Rakı with an eye on history
+GroupServer 15.03 — Rakı with an eye on history
 ===============================================
 
 :Authors: `Michael JasonSmith`_;
 :Contact: Michael JasonSmith <mpj17@onlinegroups.net>
-:Date: 2015-mm-dd
+:Date: 2015-03-06
 :Organization: `GroupServer.org`_
 :Copyright: This document is licensed under a
   `Creative Commons Attribution-Share Alike 4.0 International
@@ -142,14 +142,14 @@ Update an Existing GroupServer System
 =====================================
 
 To update a system running the Calvados release of GroupServer
-(14.11) to Rakı (15.xx) carry out the following steps.
+(14.11) to Rakı (15.03) carry out the following steps.
 
 #.  Download the Calvados tar-ball from `the GroupServer
     download page <http://groupserver.org/downloads>`_.
 
 #.  Uncompress the tar-ball::
 
-      $ tar cfz groupserver-15.xx.tar.gz
+      $ tar cfz groupserver-15.03.tar.gz
 
 #.  Change to the directory that contains your existing
     GroupServer installation.
@@ -157,7 +157,7 @@ To update a system running the Calvados release of GroupServer
 #.  Copy the new version-configuration files to your existing
     GroupServer installation::
 
-      $ cp ../groupserver-15.xx/[biv]*cfg  .
+      $ cp ../groupserver-15.03/[biv]*cfg  .
 
 #.  In your existing GroupServer installation run::
 
