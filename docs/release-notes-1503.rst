@@ -4,7 +4,7 @@ GroupServer 15.03 — Rakı with an eye on history
 
 :Authors: `Michael JasonSmith`_;
 :Contact: Michael JasonSmith <mpj17@onlinegroups.net>
-:Date: 2015-03-06
+:Date: 2015-03-10
 :Organization: `GroupServer.org`_
 :Copyright: This document is licensed under a
   `Creative Commons Attribution-Share Alike 4.0 International
@@ -121,9 +121,13 @@ Minor code improvements
 * The CSS that is used in the notifications has been fixed.
 * The code that makes up the *Topics* list on the group page, the
   *Topic* and *topic digests* has been refactored, closing
-  `Feature 3739`_
+  `Feature 3739`_.
+* The ``+`` character (and others) can now be used in email
+  addresses, closing `Bug 3915`_ and `Bug 4036`_.
 
 .. _Feature 3739: https://redmine.iopen.net/issues/3739
+.. _Bug 3915: https://redmine.iopen.net/issues/3915
+.. _Bug 4036: https://redmine.iopen.net/issues/4036
 
 --------
 Get Rakı
