@@ -313,6 +313,8 @@ Each product makes use of namespaces_, and ZCML_. Each product
 usually contains some `static resources`_, `page templates`_, and
 some documentation_
 
+.. _namespace:
+
 Namespaces
 ----------
 
