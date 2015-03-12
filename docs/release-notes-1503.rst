@@ -4,7 +4,7 @@ GroupServer 15.03 — Rakı with an eye on history
 
 :Authors: `Michael JasonSmith`_;
 :Contact: Michael JasonSmith <mpj17@onlinegroups.net>
-:Date: 2015-03-10
+:Date: 2015-03-12
 :Organization: `GroupServer.org`_
 :Copyright: This document is licensed under a
   `Creative Commons Attribution-Share Alike 4.0 International
@@ -104,15 +104,26 @@ internationalisation support in GroupServer. GroupServer is now
 using Transifex_ to manage the translations. **You can add
 translations,** without needing to know any Python or HTML!
 
-.. _Transifex: https://www.transifex.com/organization/groupserver/dashboard
+.. _Transifex: https://www.transifex.com/organization/groupserver/
 
-The parts of GroupServer with internationalisation support is
-expanding: the site homepage, the group page, the topic page, and
-post page all support internationalisation. The translation
-effort for German, French, and Spanish continues apace.
+All the major components of GroupServer have internationalisation
+support. This includes the site homepage, the group page, the
+topic page, and the post page. Adding internationalisation
+support to the bulk of GroupServer closes `Bug 81`_.
+
+.. _Bug 81: https://redmine.iopen.net/issues/81
+
+The translation effort for German, French, and Spanish continues
+apace. French is has the most complete localisation, thanks to
+the amazing efforts of `Razique Mahroua`_.
+
+.. _Razique Mahroua: https://www.transifex.com/accounts/profile/Razique/
 
 Finally there is now a :doc:`translations` included in the
-GroupServer_ documentation.
+GroupServer_ documentation. Adding the new internalisation
+documentation closes `Feature 4031`_.
+
+.. _Feature 4031: https://redmine.iopen.net/issues/4031
 
 Minor code improvements
 =======================
