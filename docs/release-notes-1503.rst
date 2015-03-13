@@ -99,9 +99,9 @@ posts. The new *Export posts* page closes `Feature 3594`_.
 Improvements to internationalisation
 ====================================
 
-`Alice Murphy`_ continues her effort to improve the
-internationalisation support in GroupServer. GroupServer is now
-using Transifex_ to manage the translations. **You can add
+The effort by `Alice Murphy`_ to improve internationalisation
+support in GroupServer continues apace. GroupServer is now using
+Transifex_ to manage the translations. **You can add
 translations,** without needing to know any Python or HTML!
 
 .. _Transifex: https://www.transifex.com/organization/groupserver/
@@ -113,9 +113,10 @@ support to the bulk of GroupServer closes `Bug 81`_.
 
 .. _Bug 81: https://redmine.iopen.net/issues/81
 
-The translation effort for German, French, and Spanish continues
-apace. French is has the most complete localisation, thanks to
-the amazing efforts of `Razique Mahroua`_.
+The translation effort is currently focused on French, German,
+and Spanish (with English being the default language). French is
+has the most complete localisation, thanks to the amazing efforts
+of `Razique Mahroua`_.
 
 .. _Razique Mahroua: https://www.transifex.com/accounts/profile/Razique/
 
