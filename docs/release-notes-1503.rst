@@ -25,8 +25,9 @@ Changes to GroupServer
 ----------------------
 
 The most extensive change in Rakı is the new `email processing`_
-subsystem. In addition GroupServer can now `export data`_, the
-have been further `improvements to internationalisation`_ and
+subsystem. In addition GroupServer can now `export data`_, there
+have been further `improvements to internationalisation`_, and
+the introduction of `message relaying`_. Finally, there have been
 some `minor code improvements`_.
 
 Email processing
@@ -125,6 +126,29 @@ GroupServer_ documentation. Adding the new internalisation
 documentation closes `Feature 4031`_.
 
 .. _Feature 4031: https://redmine.iopen.net/issues/4031
+
+Message relaying
+================
+
+Messages sent from a GroupServer group can fall afoul of
+email-servers that enforce DMARC_ policies. To overcome this
+GroupServer rewrites the :mailheader:`From` address: when
+necessary it replaces the :mailheader:`From` address with one
+constructed from the unique identifier of the profile of the
+author. This new address is known as the **obfuscated address**
+(see :doc:`release-notes-1406`).
+
+However, the rewritten :mailheader:`From` address has made it
+difficult to reply the author of the message — and this was
+particularly problematic when the default :mailheader:`Reply-to`
+for the group set to the *author* rather than the *group* .
+
+Now, thanks to the work by `Bill Bushey`_ GroupServer will now
+relay on messages that are sent to an obfuscated address, closing
+`Feature 4106`_. 
+
+.. _DMARC: https://www.rfc-editor.org/info/rfc7489
+.. _Feature 4106: https://redmine.iopen.net/issues/4106
 
 Minor code improvements
 =======================
