@@ -2,7 +2,7 @@
 Translation guide
 =================
 
-:Authors: `Alice Murphy`_; `Michael JasonSmith`_; 
+:Authors: `Alice Rose`_; `Michael JasonSmith`_; 
 :Contact: Michael JasonSmith <mpj17@onlinegroups.net>
 :Date: 2015-02-18
 :Organization: `GroupServer.org`_
@@ -47,7 +47,7 @@ Adding internationalisation support to a product that lacks it is
 a development task. If you come across a component of GroupServer
 that lacks a translation please **ask for i18n to be added** in
 `the GroupServer development group`_. The person who responds
-(probably either `Michael JasonSmith`_ or `Alice Murphy`_) will
+(probably either `Michael JasonSmith`_ or `Alice Rose`_) will
 then carry out the following tasks.
 
 #.  Identify the product. (The element identifiers in the HTML
@@ -296,7 +296,7 @@ project carry out the following tasks.
 ..  _Creative Commons Attribution-Share Alike 4.0 International License:
     http://creativecommons.org/licenses/by-sa/4.0/
 ..  _Michael JasonSmith: http://groupserver.org/p/mpj17
-..  _Alice Murphy: http://groupserver.org/p/alice
+..  _Alice Rose: https://twitter.com/heldinz
 .. _the GroupServer development group:
    http://groupserver.org/groups/development
 .. _the GroupServer organisation on Transifex:

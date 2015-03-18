@@ -3,7 +3,7 @@ GroupServer installation
 ========================
 
 :Authors: `Michael JasonSmith`_; `Richard Waid`_; `Marek Kuziel`_;
-          `Alice Murphy`_; `Dan Randow`_
+          `Alice Rose`_; `Dan Randow`_
 :Contact: Michael JasonSmith <mpj17@onlinegroups.net>
 :Date: 2014-11-17 (see `History`_)
 :Organization: `GroupServer.org`_
@@ -454,5 +454,5 @@ Version Date        Change
 ..  _Michael JasonSmith: http://groupserver.org/p/mpj17
 ..  _Richard Waid: http://groupserver.org/p/richard
 ..  _Marek Kuziel: http://groupserver.org/p/marek
-..  _Alice Murphy: http://groupserver.org/p/alice
+..  _Alice Rose: https://twitter.com/heldinz
 ..  _Dan Randow: http://groupserver.org/p/danr

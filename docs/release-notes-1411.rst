@@ -33,7 +33,7 @@ have been some `minor code improvements`_.
 Internationalisation
 ====================
 
-`Alice Murphy`_ has lead an effort to add internationalisation to
+`Alice Rose`_ has lead an effort to add internationalisation to
 GroupServer_. So far internationalisation support has been added
 to the following products.
 
@@ -247,7 +247,7 @@ Resources
 ..  _Michael JasonSmith: http://groupserver.org/p/mpj17
 ..  _Dan Randow: http://groupserver.org/p/danr
 ..  _Bill Bushey: http://groupserver.org/p/wbushey
-..  _Alice Murphy: http://groupserver.org/p/alice
+..  _Alice Rose: https://twitter.com/heldinz
 ..  _E-Democracy.org: http://forums.e-democracy.org/
 
 ..  LocalWords:  refactored iopen JPEG redmine jQuery jquery async

@@ -494,7 +494,7 @@ at Read The Docs`_.
 ..  _Michael JasonSmith: http://groupserver.org/p/mpj17
 ..  _Dan Randow: http://groupserver.org/p/danr
 ..  _Bill Bushey: http://groupserver.org/p/wbushey
-..  _Alice Murphy: http://groupserver.org/p/alice
+..  _Alice Rose: https://twitter.com/heldinz
 ..  _E-Democracy.org: http://forums.e-democracy.org/
 .. _GroupServer development: http://groupserver.org/groups/development/
 .. _GitHub: https://github.com/groupserver

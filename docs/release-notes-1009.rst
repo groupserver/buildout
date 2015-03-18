@@ -2,7 +2,7 @@
 GroupServer 10.09 —  Spaghettieis with a Wafer of Confusion
 -----------------------------------------------------------
 
-:Authors: Michael JasonSmith; Richard Waid; Alice Murphy; Dan Randow
+:Authors: Michael JasonSmith; Richard Waid; Alice Rose; Dan Randow
 :Contact: Michael JasonSmith <mpj17@onlinegroups.net>
 :Date: 2010-09-09
 :Organization: `GroupServer.org`_

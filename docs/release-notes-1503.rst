@@ -99,7 +99,7 @@ posts. The new *Export posts* page closes `Feature 3594`_.
 Improvements to internationalisation
 ====================================
 
-The effort by `Alice Murphy`_ to improve internationalisation
+The effort by `Alice Rose`_ to improve internationalisation
 support in GroupServer continues apace. GroupServer is now using
 Transifex_ to manage the translations. **You can add
 translations,** without needing to know any Python or HTML!
@@ -197,7 +197,7 @@ Resources
 ..  _Michael JasonSmith: http://groupserver.org/p/mpj17
 ..  _Dan Randow: http://groupserver.org/p/danr
 ..  _Bill Bushey: http://groupserver.org/p/wbushey
-..  _Alice Murphy: http://groupserver.org/p/alice
+..  _Alice Rose: https://twitter.com/heldinz
 ..  _E-Democracy.org: http://forums.e-democracy.org/
 
 ..  LocalWords:  refactored iopen JPEG redmine jQuery jquery async Rakı Bushey

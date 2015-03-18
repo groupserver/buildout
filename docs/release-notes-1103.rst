@@ -2,7 +2,7 @@
 GroupServer 11.03 — Pineapple Snow at a Child's Party
 -----------------------------------------------------
 
-:Authors: Michael JasonSmith; Richard Waid; Alice Murphy; Dan Randow
+:Authors: Michael JasonSmith; Richard Waid; Alice Rose; Dan Randow
 :Contact: Michael JasonSmith <mpj17@onlinegroups.net>
 :Date: 2011-03-29
 :Organization: `GroupServer.org`_

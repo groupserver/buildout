@@ -2,7 +2,7 @@
 GroupServer 10.12 — Lemon Ice in the Cool of the Evening
 --------------------------------------------------------
 
-:Authors: Michael JasonSmith; Richard Waid; Alice Murphy; Dan Randow
+:Authors: Michael JasonSmith; Richard Waid; Alice Rose; Dan Randow
 :Contact: Michael JasonSmith <mpj17@onlinegroups.net>
 :Date: 2010-12-17
 :Organization: `GroupServer.org`_

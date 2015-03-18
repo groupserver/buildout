@@ -25,7 +25,7 @@ Acknowledgements
 ----------------
 
 Thanks to `Steven Clift`_ for his support with the `new stylesheet`_.
-Thanks also to `Le Coyote`_ and `Alice Murphy`_ for testing an early
+Thanks also to `Le Coyote`_ and `Alice Rose`_ for testing an early
 release of Frozen Yoghurt.
 
 New Stylesheet
@@ -175,7 +175,7 @@ carry out the following steps.
 .. _Dan Randow: http://groupserver.org/p/danr
 ..  _Steven Clift: http://groupserver.org/p/stevenc
 ..  _Le Coyote: http://groupserver.org/p/5wdOKPGCaEV8sDPbmN0Qnn
-..  _Alice Murphy: http://groupserver.org/p/alice
+..  _Alice Rose: https://twitter.com/heldinz
 ..  _CSS3 Media Queries: http://www.w3.org/TR/css3-mediaqueries/
 ..  _The standard Python HTML Parser library: 
     https://docs.python.org/2/library/htmlparser.html

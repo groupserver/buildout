@@ -2,7 +2,7 @@
 GroupServer 10.11 — Kulfi Craved while Caving
 ---------------------------------------------
 
-:Authors: Michael JasonSmith; Richard Waid; Alice Murphy; Dan Randow
+:Authors: Michael JasonSmith; Richard Waid; Alice Rose; Dan Randow
 :Contact: Michael JasonSmith <mpj17@onlinegroups.net>
 :Date: 2010-11-30
 :Organization: `GroupServer.org`_

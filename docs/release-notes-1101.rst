@@ -2,7 +2,7 @@
 GroupServer 11.01 — Baked Alaska with and Eye on the Soviets
 ------------------------------------------------------------
 
-:Authors: Michael JasonSmith; Richard Waid; Alice Murphy; Dan Randow
+:Authors: Michael JasonSmith; Richard Waid; Alice Rose; Dan Randow
 :Contact: Michael JasonSmith <mpj17@onlinegroups.net>
 :Date: 2011-01-31
 :Organization: `GroupServer.org`_
