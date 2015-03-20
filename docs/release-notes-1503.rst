@@ -197,7 +197,7 @@ To update a system running the Calvados release of GroupServer
 #.  Copy the new version-configuration files to your existing
     GroupServer installation::
 
-      $ cp ../groupserver-15.03/[biv]*cfg  .
+      $ cp ../groupserver-15.03/[bdiv]*cfg  .
 
 #.  In your existing GroupServer installation run::
 
