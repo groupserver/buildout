@@ -292,7 +292,13 @@ testing.
        as a normal user are shown on lines that begin with a
        ``$``.
 
-#. Install the :ref:`dependencies`.
+#. Install the :ref:`dependencies`. 
+
+   :PostgreSQL: The version of PostgreSQL that is supplied with
+                RHEL 6.x and CentOS 6.x (PostgreSQL 8.4) lacks
+                the features required by GroupServer. You will
+                need to install PostgreSQL 9 using `the
+                instruction provided by the PostgreSQL project.`_
 
 #. Create the two database users specified in ``config.cfg``,
    using ``createuser``::
@@ -325,6 +331,9 @@ testing.
 #. Run the ``buildout`` process::
 
      $ ./bin/buildout -N
+
+.. _the instruction provided by the PostgreSQL project.:
+   http://www.postgresql.org/download/linux/redhat/
 
 Start Zope
 ----------
@@ -369,6 +378,7 @@ History
 ======= ==========  ====================================================
 Version Date        Change
 ======= ==========  ====================================================
+15.03   2015-03-25  Making a note about PostgreSQL 9 on CentOS and RHEL
 15.03   2015-03-06  Moving the *Dependencies* and *Download* sections to
                     :doc:`groupserver-download`.
 14.11   2014-11-17  Renaming the *Requirements* section Dependencies.

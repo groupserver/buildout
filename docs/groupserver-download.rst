@@ -57,8 +57,8 @@ Ubuntu runs ``apt-get`` to install all the requisite packages
 +-------------+-----------------------------------------------+
 |             | Packages                                      |
 +-------------+-----------------------+-----------------------+
-| System      | Ubuntu                | CentOS 6.1 or         |
-|             |                       | RHEL 6.1              |
+| System      | Ubuntu                | CentOS 6.x or         |
+|             |                       | RHEL 6.x              |
 +=============+=======================+=======================+
 | Python      | ``python2.7``         | ``python-devel``      |
 |             +-----------------------+-----------------------+
@@ -72,7 +72,9 @@ Ubuntu runs ``apt-get`` to install all the requisite packages
 | Make        | ``build-essential``   | ``make``              |
 +-------------+-----------------------+-----------------------+
 | PostgreSQL  | ``postgresql``        | ``postgresql``        |
-| Database    +-----------------------+-----------------------+
+| Database    |                       | See                   |
+|             |                       | :ref:`centos-install` |
+|             +-----------------------+-----------------------+
 |             | ``libpq-dev``         | ``postgresql-server`` |
 |             +-----------------------+-----------------------+
 |             |                       | ``postgresql-libs``   |
