@@ -145,7 +145,7 @@ for the group set to the *author* rather than the *group* .
 
 Now, thanks to the work by `Bill Bushey`_ GroupServer will now
 relay on messages that are sent to an obfuscated address, closing
-`Feature 4106`_. 
+`Feature 4106`_.
 
 .. _DMARC: https://www.rfc-editor.org/info/rfc7489
 .. _Feature 4106: https://redmine.iopen.net/issues/4106
@@ -175,7 +175,7 @@ already have a functioning installation can `update an existing
 GroupServer system`_.
 
 ..  _The Downloads page for GroupServer: http://groupserver.org/downloads
-..  _The GroupServer Installation documentation: 
+..  _The GroupServer Installation documentation:
     http://groupserver.readthedocs.org/
 
 Update an Existing GroupServer System
@@ -198,6 +198,11 @@ To update a system running the Calvados release of GroupServer
     GroupServer installation::
 
       $ cp ../groupserver-15.03/[bdiv]*cfg  .
+
+#.  In your **existing** GroupServer installation change the
+    permissions of the configuration file
+
+      $ chmod 440 parts/instance/etc/gsconfig.ini
 
 #.  In your existing GroupServer installation run::
 

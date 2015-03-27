@@ -5,7 +5,7 @@ GroupServer installation
 :Authors: `Michael JasonSmith`_; `Richard Waid`_; `Marek Kuziel`_;
           `Alice Rose`_; `Dan Randow`_
 :Contact: Michael JasonSmith <mpj17@onlinegroups.net>
-:Date: 2014-11-17 (see `History`_)
+:Date: 2015-03-27 (see `History`_)
 :Organization: `GroupServer.org`_
 :Copyright: This document is licensed under a
   `Creative Commons Attribution-Share Alike 4.0 International License`_
