@@ -292,13 +292,19 @@ testing.
        as a normal user are shown on lines that begin with a
        ``$``.
 
-#. Install the :ref:`dependencies`. 
+#. Install the :ref:`dependencies`.
 
    :PostgreSQL: The version of PostgreSQL that is supplied with
                 RHEL 6.x and CentOS 6.x (PostgreSQL 8.4) lacks
                 the features required by GroupServer. You will
-                need to install PostgreSQL 9 using `the
-                instruction provided by the PostgreSQL project.`_
+                need to install PostgreSQL 9, including the
+                **development libraries** using `the instruction
+                provided by the PostgreSQL project.`_
+
+   :Python: The version of Python supplied with RHEL 6.x and
+             CentOS 6.x (Python 2.6) lack the features required
+             by GroupServer. You will need to install Python 2.7
+             using `these instructions from H₂0.ai.`_
 
 #. Create the two database users specified in ``config.cfg``,
    using ``createuser``::
@@ -316,17 +322,22 @@ testing.
 
      # easy_install virtualenv
 
-#. Set up a virtual Python environment for GroupServer::
+#. Set up a Python virtual-environment for GroupServer::
 
-     $ virtualenv --no-site-packages .
+     $ virtualenv --python=python2.7 --no-site-packages .
+
+#. Activate the Python virtual-environment (**note** the
+   dot-space at the start of the command)::
+
+     $ . bin/activate
 
 #. Grab the ``argparse`` module::
 
-     $ ./bin/easy_install argparse==1.1
+     $ easy_install argparse==1.1
 
 #. Fetch the system that builds GroupServer::
 
-     $ ./bin/easy_install zc.buildout==1.5.2
+     $ easy_install zc.buildout==1.7.1
 
 #. Run the ``buildout`` process::
 
@@ -334,6 +345,9 @@ testing.
 
 .. _the instruction provided by the PostgreSQL project.:
    http://www.postgresql.org/download/linux/redhat/
+
+.. _these instructions from H₂0.ai.:
+   https://github.com/h2oai/h2o/wiki/Installing-python-2.7-on-centos-6.3.-Follow-this-sequence-exactly-for-centos-machine-only
 
 Start Zope
 ----------
@@ -378,7 +392,8 @@ History
 ======= ==========  ====================================================
 Version Date        Change
 ======= ==========  ====================================================
-15.03   2015-03-25  Making a note about PostgreSQL 9 on CentOS and RHEL
+15.03   2015-03-27  Updating the CentOS install instructions.
+15.03   2015-03-25  Making a note about PostgreSQL 9 on CentOS and RHEL.
 15.03   2015-03-06  Moving the *Dependencies* and *Download* sections to
                     :doc:`groupserver-download`.
 14.11   2014-11-17  Renaming the *Requirements* section Dependencies.
@@ -404,19 +419,16 @@ Version Date        Change
 11.08   2011-12-19  Adding the packages required for XML support and
                     XSLT support on RHEL and CentOS to the list of
                     Requirements.
-11.08   2011-12-16  Added the CentOS packages to the list of
+11.08   2011-12-16  Adding the CentOS packages to the list of
                     Requirements, with much thanks to  `Patrick
-                    Leckey.
-                    <http://groupserver.org/r/post/6Jfujbedywmu6Wtahz1PeL>`_
+                    Leckey`_.
 11.08   2011-11-15  Altering the requirements to switch the
                     ``build-essential`` dependency to ``make`` on `the
-                    advice of David Sturman.
-                    <http://groupserver.org/r/post/1ezm2nM9kQHSJSOfn0Rsm0>`_
+                    advice of David Sturman.`_
 11.08   2011-10-27  Adding the Download section, and clarifying some
                     more of the documentation.
 11.08   2011-10-26  Correcting some mistakes, and clarifying the
-                    documentation on `the advice of Ross Chesley
-                    <http://groupserver.org/r/topic/4PF50PHIWeYtaMMzwG3624>`_
+                    documentation on `the advice of Ross Chesley`_
 11.08   2011-09-01  Reordering the subsections of *Configure Zope*.
 11.07   2011-07-08  Adding the ``build-essential`` dependency and the
                     cut-n-paste ``apt-get`` block to the Requirements.
@@ -424,30 +436,39 @@ Version Date        Change
 11.06   2011-07-04  Updating the notes, because of a change to the
                     name of the initial GroupServer instance.
 11.06   2011-06-17  Added postfix configuration and spooling notes.
-11.05   2011-05-26  Fixed a typing mistake, and mentioned that the
+11.05   2011-05-26  Fixing a typing mistake, and mentioned that the
                     ``pgsql_dbname`` and ``pgsql_user`` had to be
                     different.
-10.09   2010-09-01  Changed how the configuration options are set.
-1.0β²   2010-07-15  Improved the buildout instructions.
-1.0β²   2010-07-07  Changed the Zope 2.10 (Python 2.4) instructions to
-                    Zope 2.13 (Python 2.6) instructions.
+10.09   2010-09-01  Changing how the configuration options are set.
+1.0β²   2010-07-15  Improving the buildout instructions.
+1.0β²   2010-07-07  Changing the Zope 2.10 (Python 2.4) instructions
+                    to Zope 2.13 (Python 2.6) instructions.
 1.0β    2010-06-04  Removed a duplicated instruction from the
                     `Quick Start`_, and bumped the version number.
-1.0α    2010-05-31  Typo and minor improvement fixes.
-1.0α    2010-05-01  Fixes because upstream broke our buildout.
+1.0α    2010-05-31  Fixing a typo and adding minor improvements.
+1.0α    2010-05-01  Fixing, because upstream broke our buildout.
 1.0α    2010-04-29  Better automatic configuration, so the Configure
                     GroupServer section has been removed.
-1.0α    2010-04-28  Improved the documentation for ``gs_port`` and
+1.0α    2010-04-28  Improving the documentation for ``gs_port`` and
                     added documentation for the ``gs_admin`` and
                     ``gs_user`` configuration options.
-1.0α    2010-04-23  Added a link to the downloads page. Clarified the
-                    security changes that are made to PostgreSQL.
-1.0α    2010-04-06  Fixed some quoting in the requirements.
-1.0α    2010-03-31  Fixed the Requirements, added
-                    *Remove GroupServer* and `History`_
-1.0α    2010-03-25  Fixed the config options, added `Quick Start`_
-1.0α    2009-10-04  Updated to reflect the new egg-based system
+1.0α    2010-04-23  Adding a link to the downloads page. Clarified
+                    the security changes that are made to PostgreSQL.
+1.0α    2010-04-06  Fixing some quoting in the requirements.
+1.0α    2010-03-31  Fixing the Requirements, adding
+                    *Remove GroupServer* and `History`_.
+1.0α    2010-03-25  Fixing the config options, added `Quick Start`_.
+1.0α    2009-10-04  Updating to reflect the new egg-based system.
 ======= ==========  ====================================================
+
+.. _Patrick Leckey:
+   http://groupserver.org/r/post/6Jfujbedywmu6Wtahz1PeL
+
+.. _the advice of David Sturman.:
+   http://groupserver.org/r/post/1ezm2nM9kQHSJSOfn0Rsm0
+
+.. _the advice of Ross Chesley:
+   http://groupserver.org/r/topic/4PF50PHIWeYtaMMzwG3624
 
 .. [#cfgFile] The ``cfg`` files are interpreted by the Python
    `ConfigParser`_ module, which accepts a syntax very similar to
