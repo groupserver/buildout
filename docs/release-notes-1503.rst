@@ -231,4 +231,4 @@ Resources
 
 ..  LocalWords:  refactored iopen JPEG redmine jQuery jquery async Rakı Bushey
 ..  LocalWords:  Randow Organization sectnum Slivovica DMARC CSS Calvados Rakı
-..  LocalWords:  SMTP smtp mbox CSV Transifex
+..  LocalWords:  SMTP smtp mbox CSV Transifex Rakı
