@@ -258,18 +258,18 @@ GroupServer site, with its own version of Python, placed in
 ``./bin/``. It will then configure the PostgreSQL databases that
 store the data for your site. Finally, it will start the
 `buildout`_ system that will **download** and install all the
-requirements for GroupServer (around 43MB of packages) including:
+requirements for GroupServer (around 47MB of packages) including:
 
 * `eGenix.com mx Base`_ (4.4MB)
-* `SQL Alchemy`_ (4.3MB)
-* lxml_ (2.8MB)
+* `SQL Alchemy`_ (3.9MB)
+* lxml_ (3.4MB)
 * Pillow_ (2.4MB)
 * `Zope 2.13`_ (1.4MB)
 
 .. _eGenix.com mx Base: http://www.egenix.com/products/python/mxBase
 .. _SQL Alchemy: http://www.sqlalchemy.org/
 .. _lxml: http://lxml.de/
-.. _Pillow: https://pypi.python.org/pypi/Pillow/2.3.1
+.. _Pillow: https://pypi.python.org/pypi/Pillow/
 .. _Zope 2.13: http://docs.zope.org/zope2/releases/2.13/
 
 :Note: You need a functioning network connection to download the
@@ -335,7 +335,7 @@ testing.
 
      $ easy_install argparse==1.1
 
-#. Fetch the system that builds GroupServer::
+#. Fetch the `zc.buildout`_ system that builds GroupServer::
 
      $ easy_install zc.buildout==1.7.1
 
@@ -348,6 +348,8 @@ testing.
 
 .. _these instructions from H₂0.ai.:
    https://github.com/h2oai/h2o/wiki/Installing-python-2.7-on-centos-6.3.-Follow-this-sequence-exactly-for-centos-machine-only
+
+.. _zc.buildout: https://pypi.python.org/pypi/zc.buildout/
 
 Start Zope
 ----------
