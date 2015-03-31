@@ -4,7 +4,7 @@ Starting and stopping GroupServer
 
 :Authors: `Michael JasonSmith`_; `Richard Waid`_; 
 :Contact: Michael JasonSmith <mpj17@onlinegroups.net>
-:Date: 2015-03-30
+:Date: 2015-03-31
 :Organization: `GroupServer.org`_
 :Copyright: This document is licensed under a
   `Creative Commons Attribution-Share Alike 4.0 International License`_
@@ -106,7 +106,7 @@ Running GroupServer
 
 Running GroupServer on a more permanent basis requires starting
 the Zope instance as a demon, and keeping a track of `the log
-file`_
+file`_.
 
 **Start** the Zope instance as a demon by running the following
 command from the GroupServer installation directory::
@@ -120,8 +120,21 @@ command from the GroupServer installation directory::
 The log file
 ------------
 
-The log file is ``var/log/instance.cfg``, located withing the
+The log file is ``var/log/instance.log``, located in the
 GroupServer directory.
+
+You can change the logging level, and log-file rotation, by
+setting parameters of the ``[instance]`` section of the
+:file:`instance.cfg` file in the GroupServer directory. `The
+documentation for zope2instance`_ details the available options.
+Run buildout once you have made the changes::
+
+  $ ./bin/buildout -N
+
+Then stop GroupServer and restart it.
+
+.. _The documentation for zope2instance:
+   https://pypi.python.org/pypi/plone.recipe.zope2instance
 
 Issues, and problems
 ====================
@@ -151,6 +164,6 @@ a hosted Web service, such as GroupServer.
 ..  _Creative Commons Attribution-Share Alike 4.0 International License:
     http://creativecommons.org/licenses/by-sa/4.0/
 
-..  LocalWords:  fg ZMI richard sa groupserver http localhost
+..  LocalWords:  fg ZMI richard sa groupserver http localhost buildout
 ..  LocalWords:  config cfg gstest zope txt gsdevel irc Freenode
 ..  LocalWords:  freenode
