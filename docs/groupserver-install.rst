@@ -229,7 +229,8 @@ steps.
 
      max_prepared_transactions = 1
 
-#. Restart PostgreSQL. On Ubuntu this is done using the following command::
+#. Restart PostgreSQL. On Ubuntu this is done using the following
+   command::
 
      $ sudo service postgresql restart
 
