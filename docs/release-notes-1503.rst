@@ -4,7 +4,7 @@ GroupServer 15.03 — Rakı with an eye on history
 
 :Authors: `Michael JasonSmith`_;
 :Contact: Michael JasonSmith <mpj17@onlinegroups.net>
-:Date: 2015-03-12
+:Date: 2015-03-31
 :Organization: `GroupServer.org`_
 :Copyright: This document is licensed under a
   `Creative Commons Attribution-Share Alike 4.0 International
@@ -199,16 +199,23 @@ To update a system running the Calvados release of GroupServer
 
       $ cp ../groupserver-15.03/[bdiv]*cfg  .
 
-#.  In your **existing** GroupServer installation change the
-    permissions of the configuration file
+#.  In your **existing** GroupServer installation copy the
+    configuration file to its new location.
 
-      $ chmod 440 parts/instance/etc/gsconfig.ini
+    #.  Make an ``etc`` directory::
 
-#.  In your existing GroupServer installation run::
+          $ mkdir etc/
 
-      $ ./bin/buildout -n
+    #.  Move the configuration file to the new directory::
 
-#.  Restart your GroupServer instance.
+          $ cp parts/instance/etc/gsconfig.ini etc/
+
+#.  Run ``buildout`` in your existing GroupServer installation::
+
+      $ ./bin/buildout -N
+
+#.  Restart your GroupServer instance (see
+    :doc:`groupserver-start`).
 
 ---------
 Resources
@@ -231,4 +238,5 @@ Resources
 
 ..  LocalWords:  refactored iopen JPEG redmine jQuery jquery async Rakı Bushey
 ..  LocalWords:  Randow Organization sectnum Slivovica DMARC CSS Calvados Rakı
-..  LocalWords:  SMTP smtp mbox CSV Transifex Rakı
+..  LocalWords:  SMTP smtp mbox CSV Transifex Rakı cfg mkdir groupserver
+..  LocalWords:  buildout
