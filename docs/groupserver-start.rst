@@ -4,7 +4,7 @@ Starting and stopping GroupServer
 
 :Authors: `Michael JasonSmith`_; `Richard Waid`_; 
 :Contact: Michael JasonSmith <mpj17@onlinegroups.net>
-:Date: 2014-05-27
+:Date: 2015-03-30
 :Organization: `GroupServer.org`_
 :Copyright: This document is licensed under a
   `Creative Commons Attribution-Share Alike 4.0 International License`_
@@ -28,7 +28,7 @@ problems`_.
 Trying out GroupServer
 ======================
 
-The first time you fire-up GroupServer_ it is reassuring to see
+The first time you fire-up GroupServer it is reassuring to see
 all the debugging information, in case there is an error. 
 
 Starting GroupServer for the first time
@@ -104,24 +104,33 @@ GroupServer is running.
 Running GroupServer
 ===================
 
-Running GroupServer_ on a more permanent basis requires starting
-the Zope instance as a demon. To do this run the following
+Running GroupServer on a more permanent basis requires starting
+the Zope instance as a demon, and keeping a track of `the log
+file`_
+
+**Start** the Zope instance as a demon by running the following
 command from the GroupServer installation directory::
 
   $ ./bin/instance start
 
-To stop the Zope instance run the following command::
+**Stop** the demon by running the following command::
 
   $ ./bin/instance stop
+
+The log file
+------------
+
+The log file is ``var/log/instance.cfg``, located withing the
+GroupServer directory.
 
 Issues, and problems
 ====================
 
-Should something go wrong, there is a log files are written to
-the ``var/log/`` directory within the GroupServer_ directory. You
-can ask questions and make comments in `the GroupServer
-Development group`_, or in the gsdevel IRC channel on
-Freenode (``irc://irc.freenode.net/#gsdevel``).
+Please, ask questions and make comments in `the GroupServer
+Development group`_, or in the gsdevel IRC channel on Freenode
+(``irc://irc.freenode.net/#gsdevel``). `The log file`_ will
+usually contain relevant information, including copies of any
+errors.
 
 Virtual machines
 ----------------
