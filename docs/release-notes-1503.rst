@@ -185,8 +185,8 @@ Update an Existing GroupServer System
 To update a system running the Calvados release of GroupServer
 (14.11) to Rakı (15.03) carry out the following steps.
 
-#.  Download the Calvados tar-ball from `the GroupServer
-    download page <http://groupserver.org/downloads>`_.
+#.  Download the Rakı tar-ball from `the GroupServer download
+    page <http://groupserver.org/downloads>`_.
 
 #.  Uncompress the tar-ball::
 
