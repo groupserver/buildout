@@ -16,8 +16,9 @@ GroupServer 15.03 — Rakı with an eye on history
 Introduction
 ------------
 
-The major `changes to GroupServer`_ in the Rakı release is the
-rebuilt email processing sub-system.  You can `get Rakı`_
+The major `changes to GroupServer`_ in the Rakı release include
+the rebuilt email processing sub-system, the ability to export
+posts, and internationalisation.  You can `get Rakı`_
 immediately.
 
 ----------------------
