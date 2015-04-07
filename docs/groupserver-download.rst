@@ -89,6 +89,8 @@ Ubuntu runs ``apt-get`` to install all the requisite packages
 +-------------+-----------------------+-----------------------+
 | JPEG Support| ``libjpeg62-dev``     | ``libjpeg-devel``     |
 +-------------+-----------------------+-----------------------+
+| WebP Support| ``libwebp-dev``       |                       |
++-------------+-----------------------+-----------------------+
 | zlib (PNG)  | ``zlib1g-dev``        | ``zlib``              |
 | Support     |                       +-----------------------+
 |             |                       | ``zlib-devel``        |
