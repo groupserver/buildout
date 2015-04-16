@@ -1,5 +1,5 @@
 ==============================================
-GroupServer 14.11 — Calvados Consumed Covertly
+GroupServer 14.11 — Calvados consumed covertly
 ==============================================
 
 :Authors: `Michael JasonSmith`_;

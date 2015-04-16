@@ -1,5 +1,5 @@
 =================================================
-GroupServer 12.11 — Absinthe Acquired Arbitrarily
+GroupServer 12.11 — Absinthe acquired arbitrarily
 =================================================
 
 :Authors: `Michael JasonSmith`_; `Richard Waid`_; `Dan Randow`_
