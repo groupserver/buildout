@@ -2,7 +2,19 @@
 Release notes
 ~~~~~~~~~~~~~
 
+GroupServer uses a year-month version number (``yy.mm``). What
+would be termed Version 1 with `semantic version numbers`_, the
+**Frozen treats** series, corresponds to the releases from
+:doc:`release-notes-1009` up to and including
+:doc:`release-notes-1205` [#alpha]_.
+
+Currently, GroupServer could be considered in Version 2
+since the release of :doc:`release-notes-1211`, which marked the
+start of the **Awesome aperitifs** series.
+
+
 .. toctree::
+   :caption: Frozen treats
    :maxdepth: 1
 
    release-notes-1009
@@ -18,9 +30,21 @@ Release notes
    release-notes-1107
    release-notes-1108
    release-notes-1205
+
+.. toctree::
+   :caption: Awesome aperitifs
+   :maxdepth: 1
+
    release-notes-1211
    release-notes-1403
    release-notes-1406
    release-notes-1411
    release-notes-1503
    release-notes-15xx
+
+.. [#alpha] The project itself dates from 2007, with versions
+            prior to 10.09 being part of the Version 1-alpha
+            series. The first release made in May 2008. Release
+            notes were not made until :doc:`release-notes-1009`.
+
+.. _semantic version numbers: http://semver.org/
