@@ -12,9 +12,10 @@ Currently, GroupServer could be considered in Version 2
 since the release of :doc:`release-notes-1211`, which marked the
 start of the **Awesome aperitifs** series.
 
+Frozen treats
+~~~~~~~~~~~~~
 
 .. toctree::
-   :caption: Frozen treats
    :maxdepth: 1
 
    release-notes-1009
@@ -31,8 +32,10 @@ start of the **Awesome aperitifs** series.
    release-notes-1108
    release-notes-1205
 
+Awesome aperitifs
+~~~~~~~~~~~~~~~~~
+
 .. toctree::
-   :caption: Awesome aperitifs
    :maxdepth: 1
 
    release-notes-1211
