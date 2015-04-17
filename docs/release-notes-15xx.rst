@@ -31,6 +31,8 @@ Minor code improvements
 * A memory leak has been fixed.
 * The rewriting of the message subject when the post has been
   forwarded from another group has been fixed.
+* YouTube and Vimeo videos are now embedded using ``<iframe>``
+  elements.
 
 ---------------
 Get Limonchello
@@ -106,5 +108,5 @@ Resources
 
 ..  LocalWords:  refactored iopen JPEG redmine jQuery jquery async Rakı Bushey
 ..  LocalWords:  Randow Organization sectnum Slivovica DMARC CSS Calvados 
-..  LocalWords:  SMTP smtp mbox CSV Transifex cfg mkdir groupserver
-..  LocalWords:  buildout Limonchello
+..  LocalWords:  SMTP smtp mbox CSV Transifex cfg mkdir groupserver Vimeo
+..  LocalWords:  buildout Limonchello iframe
