@@ -4,7 +4,7 @@ GroupServer 15.xx — Limonchello to ward off summer
 
 :Authors: `Michael JasonSmith`_;
 :Contact: Michael JasonSmith <mpj17@onlinegroups.net>
-:Date: 2015-04-16
+:Date: 2015-04-24
 :Organization: `GroupServer.org`_
 :Copyright: This document is licensed under a
   `Creative Commons Attribution-Share Alike 4.0 International
@@ -23,11 +23,38 @@ include XXX.  You can `get Limonchello`_ immediately.
 Changes to GroupServer
 ----------------------
 
-Finally, there have been some `minor code improvements`_.
+Limonchello includes an `updated topic digest`_. Finally, there
+have been some `minor code improvements`_.
+
+Updated topic digest
+====================
+
+Group members can opt to receive a *daily topic digest* from a
+group — rather than getting an email message every time someone
+posts. The look of the digest, and the tools for sending the
+digests have been significantly updated.
+
+The topic digest now includes photos of the most recent person to
+post to each topic. It is easier to
+* Find the group from the digest,
+* Post to a new topic, and
+* Change your email settings.
+
+The digests also look like standard email notifications, closing
+`Feature 3985`_.
+
+.. _Feature 3985: https://redmine.iopen.net/issues/3985
+
+The :program:`sendigest` command, which is run once a day by
+:program:`cron` to send the digests, has also been updated. It is
+now faster, and now has a ``--verbose`` option for producing
+verbose output, including a percentage-progress indicator.
 
 Minor code improvements
 =======================
 
+* The HTML form of email notifications should render better in
+  IBM Notes and Microsoft Outlook.
 * A memory leak has been fixed.
 * The rewriting of the message subject when the post has been
   forwarded from another group has been fixed.
@@ -107,6 +134,6 @@ Resources
 ..  _E-Democracy.org: http://forums.e-democracy.org/
 
 ..  LocalWords:  refactored iopen JPEG redmine jQuery jquery async Rakı Bushey
-..  LocalWords:  Randow Organization sectnum Slivovica DMARC CSS Calvados 
+..  LocalWords:  Randow Organization sectnum Slivovica DMARC CSS Calvados
 ..  LocalWords:  SMTP smtp mbox CSV Transifex cfg mkdir groupserver Vimeo
 ..  LocalWords:  buildout Limonchello iframe
