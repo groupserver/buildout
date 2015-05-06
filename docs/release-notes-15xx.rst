@@ -60,6 +60,9 @@ Minor code improvements
   forwarded from another group has been fixed.
 * YouTube and Vimeo videos are now embedded using ``<iframe>``
   elements.
+* The WAI-AIRA roles have been improved, closing `Issue 4156`_.
+
+.. _Issue 4156: https://redmine.iopen.net/issues/4156
 
 ---------------
 Get Limonchello
@@ -134,6 +137,6 @@ Resources
 ..  _E-Democracy.org: http://forums.e-democracy.org/
 
 ..  LocalWords:  refactored iopen JPEG redmine jQuery jquery async Rakı Bushey
-..  LocalWords:  Randow Organization sectnum Slivovica DMARC CSS Calvados
-..  LocalWords:  SMTP smtp mbox CSV Transifex cfg mkdir groupserver Vimeo
+..  LocalWords:  Randow Organization sectnum Slivovica DMARC CSS Calvados AIRA
+..  LocalWords:  SMTP smtp mbox CSV Transifex cfg mkdir groupserver Vimeo WAI
 ..  LocalWords:  buildout Limonchello iframe
