@@ -23,8 +23,9 @@ include XXX.  You can `get Limonchello`_ immediately.
 Changes to GroupServer
 ----------------------
 
-Limonchello includes an `updated topic digest`_. Finally, there
-have been some `minor code improvements`_.
+Limonchello includes an `updated topic digest`_, and a `profile
+status notification`_. Finally, there have been some `minor code
+improvements`_.
 
 Updated topic digest
 ====================
@@ -49,6 +50,22 @@ The :program:`sendigest` command, which is run once a day by
 :program:`cron` to send the digests, has also been updated. It is
 now faster, and now has a ``--verbose`` option for producing
 verbose output, including a percentage-progress indicator.
+
+Profile status notification
+===========================
+
+GroupServer now has the ability to send out a notification that
+reminds people about their profile status, what groups they are
+in, and encourages the group members to enhance their
+profiles. It is designed to be sent out once a month (towards the
+start of every month), and includes a new :program:`sendprofile`
+command — which works much like the :program:`senddigest` command
+that sends out the daily digest of topics.
+
+The creation of a profile status notification closes `Feature
+370`_.
+
+.. _Feature 370: https://redmine.iopen.net/issues/370
 
 Minor code improvements
 =======================
@@ -92,6 +109,16 @@ To update a system running the Rakı release of GroupServer
 
 #.  Change to the directory that contains your existing
     GroupServer installation.
+
+#.  Add the ``profile_notification_skip`` table to the relational
+    database::
+
+      $ psql -U {psql_user} {psql_dbname} -i \
+        eggs/gs.profile.status.base-*/gs/profile/status/base/sql/01-skip.sql
+
+    Where ``{psql_user}`` and ``{psql_dbname}`` are the names of
+    the PostgreSQL user and relational-database used by
+    GroupServer.
 
 #.  Copy the new version-configuration files to your existing
     GroupServer installation::
