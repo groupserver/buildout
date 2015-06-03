@@ -257,8 +257,8 @@ The rest of the installation process should be completely
 automatic. The system will create a *sandbox* for your
 GroupServer site, with its own version of Python, placed in
 ``./bin/``. It will then configure the PostgreSQL databases that
-store the data for your site. Finally, it will start the
-`buildout`_ system that will **download** and install all the
+store the data for your site. Finally, it will start the buildout
+[#buildout]_ system that will **download** and install all the
 requirements for GroupServer (around 47MB of packages) including:
 
 * `eGenix.com mx Base`_ (4.4MB)
@@ -473,17 +473,18 @@ Version Date        Change
 .. _the advice of Ross Chesley:
    http://groupserver.org/r/topic/4PF50PHIWeYtaMMzwG3624
 
-.. [#cfgFile] The ``cfg`` files are interpreted by the Python
-   `ConfigParser`_ module, which accepts a syntax very similar to
-   Windows INI files.
-.. _ConfigParser:
-   https://docs.python.org/2/library/configparser.html
+.. [#cfgFile] The ``cfg`` files are interpreted by the standard
+   Python :mod:`ConfigParser` module, which accepts a syntax very
+   similar to Windows INI files.
 
+.. [#buildout] For more on :program:`buildout` see
+               :doc:`README-buildout` and `the Buildout site`_.
+.. _the Buildout site: http://www.buildout.org/en/latest/
+                    
 .. _GroupServer.org: http://groupserver.org/
 .. _OnlineGroups.net: https://onlinegroups.net/
 .. _Ubuntu: http://www.ubuntu.com/
 .. _CentOS: http://centos.org/
-.. _Buildout: http://www.buildout.org/en/latest/
 .. _Zope: http://zope.org
 ..  _Michael JasonSmith: http://groupserver.org/p/mpj17
 ..  _Richard Waid: http://groupserver.org/p/richard
