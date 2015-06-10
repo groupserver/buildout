@@ -37,6 +37,7 @@ digests have been significantly updated.
 
 The topic digest now includes photos of the most recent person to
 post to each topic. It is easier to
+
 * Find the group from the digest,
 * Post to a new topic, and
 * Change your email settings.
@@ -57,10 +58,16 @@ Profile status notification
 GroupServer now has the ability to send out a notification that
 reminds people about their profile status, what groups they are
 in, and encourages the group members to enhance their
-profiles. It is designed to be sent out once a month (towards the
-start of every month), and includes a new :program:`sendprofile`
-command — which works much like the :program:`senddigest` command
-that sends out the daily digest of topics.
+profiles. The new *What is going on in your groups* notification
+is designed to be sent out once a month (towards the start of
+every month), and includes a new :program:`sendprofile` command —
+which works much like the :program:`senddigest` command that
+sends out the daily digest of topics.
+
+There is also two new email-commands: ``Status off`` and ``Status
+on``. The former records that the person wishes to stop receiving
+the monthly summary, the latter turns it on. Both work for a
+*support* group.
 
 The creation of a profile status notification closes `Feature
 370`_.
@@ -70,14 +77,16 @@ The creation of a profile status notification closes `Feature
 Minor code improvements
 =======================
 
-* The HTML form of email notifications should render better in
-  IBM Notes and Microsoft Outlook.
+* Email notifications should render better in IBM Notes and
+  Microsoft Outlook.
 * A memory leak has been fixed.
 * The rewriting of the message subject when the post has been
   forwarded from another group has been fixed.
 * YouTube and Vimeo videos are now embedded using ``<iframe>``
   elements.
 * The WAI-AIRA roles have been improved, closing `Issue 4156`_.
+* An error with a link in the *Unknown email address*
+  notification has been fixed.
 
 .. _Issue 4156: https://redmine.iopen.net/issues/4156
 
