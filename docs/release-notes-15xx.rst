@@ -87,8 +87,11 @@ Minor code improvements
 * The WAI-AIRA roles have been improved, closing `Issue 4156`_.
 * An error with a link in the *Unknown email address*
   notification has been fixed.
+* The scripts that use webhooks now handle 301 redirects
+  correctly, closing `Bug 4162`_.
 
 .. _Issue 4156: https://redmine.iopen.net/issues/4156
+.. _ Bug 4162: https://redmine.iopen.net/issues/4162
 
 ---------------
 Get Limonchello
