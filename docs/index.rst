@@ -10,6 +10,7 @@ GroupServer Documentation
    postfix-configure
    proxy-configure
    cron
+   webhook
    translations
    development
    groupserver-uninstall

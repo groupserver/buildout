@@ -24,7 +24,7 @@ Changes to GroupServer
 ----------------------
 
 Limonchello includes an `updated topic digest`_, and a `profile
-status notification`_. Finally, there have been some `minor code
+status notification`_. Finally, there have been some `minor
 improvements`_.
 
 Updated topic digest
@@ -62,7 +62,8 @@ profiles. The new *What is going on in your groups* notification
 is designed to be sent out once a month (towards the start of
 every month), and includes a new :program:`sendprofile` command —
 which works much like the :program:`senddigest` command that
-sends out the daily digest of topics.
+sends out the daily digest of topics (see :doc:`cron` for more
+information).
 
 There is also two new email-commands: ``Status off`` and ``Status
 on``. The former records that the person wishes to stop receiving
@@ -74,24 +75,47 @@ The creation of a profile status notification closes `Feature
 
 .. _Feature 370: https://redmine.iopen.net/issues/370
 
-Minor code improvements
-=======================
+Web hooks
+=========
+
+For a long time GroupServer has used *web hooks* to expose
+functionality to outside systems. For example, the scripts
+:program:`mbox2gs`, :program:`smtp2gs`, :program:`senddigest` and
+the new :program:`sendprofile` (see `Profile status
+notification`_) all use web hooks.
+
+Thanks to **our generous sponsors** some *generic* web-hooks have
+been added.
+
+* Discover all the groups on a site.
+* Remove someone from a group.
+* Search for someone by email address.
+* List all the site members.
+
+Implementing the web-hooks closes `Issue 262`_.
+
+.. _Issue 262: https://redmine.iopen.net/issues/262
+
+Minor improvements
+==================
 
 * Email notifications should render better in IBM Notes and
   Microsoft Outlook.
-* A memory leak has been fixed.
-* The rewriting of the message subject when the post has been
-  forwarded from another group has been fixed.
+* Some memory leaks have been fixed.
+* The rewriting of the ``Subject`` of an email message when the
+  post has been forwarded from another group has been fixed.
 * YouTube and Vimeo videos are now embedded using ``<iframe>``
   elements.
 * The WAI-AIRA roles have been improved, closing `Issue 4156`_.
 * An error with a link in the *Unknown email address*
   notification has been fixed.
+* An error with a link to the profile from the *Member has left*
+  notification has been fixed.
 * The scripts that use webhooks now handle 301 redirects
   correctly, closing `Bug 4162`_.
 
 .. _Issue 4156: https://redmine.iopen.net/issues/4156
-.. _ Bug 4162: https://redmine.iopen.net/issues/4162
+.. _Bug 4162: https://redmine.iopen.net/issues/4162
 
 ---------------
 Get Limonchello
