@@ -185,7 +185,7 @@ administrator.
 Database storage
 ~~~~~~~~~~~~~~~~
 
-GroupServer stores most of its data in PostgreSQL. Two passwords need to be
+GroupServer stores most of its data in PostgreSQL_. Two passwords need to be
 set by you to protect this data.
 
 ``pgsql_password``
@@ -491,3 +491,4 @@ Version Date        Change
 ..  _Marek Kuziel: http://groupserver.org/p/marek
 ..  _Alice Rose: https://twitter.com/heldinz
 ..  _Dan Randow: http://groupserver.org/p/danr
+..  _PostgreSQL: http://www.postgresql.org/
