@@ -25,21 +25,23 @@ access some features. All the hooks work the same way:
 #. Data, including a token_ for authentication, is sent to a form
    as an HTTP ``POST``,
 #. The system processes the request, and
-#. Data is returned as a JSON_ object.
+#. The response is returned as a JSON_ object.
 
 GroupServer uses some of these hooks itself — for tasks such as
 for adding email (see :doc:`postfix-configure`) and sending out
 regular notifications (see :doc:`cron`).
 
-Here I discuss the hooks that are provided to allow external
-systems to manage the `profile life-cycle`_: creating,
-retrieving, and removing profiles. These hooks all return the
-same `profile data`_ as a JSON object.
+Here I first discuss the `authentication token`_. I then
+introduce the hooks that are provided to allow external systems
+to retrieve `group information`_ and manage the `profile
+life-cycle`_: creating, retrieving, and removing profiles.
 
 Feel free ask any questions regarding the hooks in `GroupServer
 Development`_ group.
 
-:Note: The URLs used for web hooks are often quite long. This is
+
+.. note::
+       The URLs used for web hooks are often quite long. This is
        deliberate, as it makes them easy to spot, and easier to
        understand as they refer to the GroupServer subsystem that
        provides the functionality.
@@ -63,6 +65,12 @@ token accessed by a nefarious individual then they can do
 
 However, all is not lost `if the token is exposed`_, as you can
 generate a new token.
+
+.. warning::
+   Because consequence of the token being divulged is so high it
+   is recommended that the hooks are only used from the same
+   machine as GroupServer (so it never travels over a network),
+   or using **secure connections** (TLS).
 
 If the token is exposed
 =======================
@@ -104,9 +112,39 @@ web hooks is exposed.
 .. _The documentation at Read the Docs:
      http://groupserver.readthedocs.org/projects/gsauthtoken/en/latest/script.html
 
-------------
+
+-----------------
+Group information
+-----------------
+
+The web hook ``/gs-group-groups.json`` is the simplest
+web-hook. It takes the `authentication token`_ (``token``) and
+the action (``get``) — and it returns a list of group-objects.
+
+.. seealso:: `The documentation for the Groups web-hook`_ has
+             more details about how the hook works, including
+             examples.
+
+.. _The documentation for the Groups web-hook:
+   http://groupserver.readthedocs.org/projects/gsgroupgroupsjson/en/latest/hook.html
+
+------------------
+Profile life-cycle
+------------------
+
+There are web-hooks for managing the entire life-cycle of a profile.
+
+* Create a profile when you `add a profile`_ to a group for the
+  first time,
+* Find more about people when you `retrieve profile
+  information`_.
+* Finally, you can `remove a profile`_ from a group (or site).
+
+Most of the profile-related web hooks return the same `profile
+data`_.
+
 Profile data
-------------
+============
 
 The profile data returned by the hooks involved in the `profile
 life-cycle`_ all return the same properties for the profiles,
@@ -155,7 +193,7 @@ property of another object.
          A list of the unverified addresses.
 
 Example profile data
-====================
+--------------------
 
 In the example JSON object below is the profile for someone
 called ``A Person``. The have set a nickname, so the URL to the
@@ -189,19 +227,6 @@ Example, and Test.
       ]
     }
 
-------------------
-Profile life-cycle
-------------------
-
-The profile life-cycle follows
-
-* The creation of a profile when you `add a profile`_ to a group
-  for the first time,
-* Finding more about people when you `retrieve profile
-  information`_, and finally
-* The ending of a profile when you `remove a profile`_ from a
-  group (or site).
-
 Add a profile
 =============
 
@@ -211,27 +236,102 @@ not exist for that person already. The hook takes
 
 * The `authentication token`_ (``token``),
 * A name (``fn``),
-* an email address (``email``), and
-* A group identifier (``groupId``).
+* an email address (``email``),
+* A group identifier (``groupId``), and
+* An action (``add``).
 
 It returns the `profile data`_ of the person that has been added
 to the group, as well as some details about whether a profile was
 created, or already existed.
 
-.. seealso:: `The documentation for the add a profile web-hook`_
+.. seealso:: `The documentation for the Add a profile web-hook`_
              has more details about how the hook works, including
              examples.
 
-.. _The documentation for the add a profile web-hook:
-   http://gsgroupmemberaddjson.readthedocs.org/en/latest/hook.html
+.. _The documentation for the Add a profile web-hook:
+   http://groupserver.readthedocs.org/projects/gsgroupmemberaddjson/en/latest/hook.html
 
 Retrieve profile information
 ============================
 
+There are three ways to retrieve profile information: information
+about `an individual`_, and information about `people that belong
+to a site`_.
 
+.. _an individual:
+
+Single profile
+--------------
+
+The web-hook ``/gs-search-people.json`` allows you to retrieve
+information about an individual, using their user-identifier or
+email address. The hook takes
+
+* An `authentication token`_,
+* The identifying information about someone (``user``) — which is
+  either the user-identifier or email address), and
+* An action (``search``).
+
+It returns the `profile data`_ of the person, or an empty object
+(``{}``) if no one could be found.
+
+.. seealso:: `The documentation for the Search for people
+             web-hook`_ has more details about how the hook
+             works, including examples.
+
+.. _The documentation for the Search for people web-hook:
+   http://groupserver.readthedocs.org/projects/gssearchpeople/en/latest/hook.html
+
+.. Group members
+.. -------------
+
+.. _people that belong to a site:
+
+Site members
+------------
+
+The web-hook ``/gs-site-member.json`` allows you to retrieve
+information about the site members in a couple of ways.
+
+* If passed an `authentication token`_ and an action of ``users``
+  then a simple list of user-identifiers is returned.
+* If passed an `authentication token`_ and an action of
+  ``user_groups`` then the full `profile data`_ is returned for
+  each person.
+
+.. seealso:: `The documentation for the Site members web-hook`_
+             has more details about how the hook works, including
+             examples.
+
+.. _The documentation for the Site members web-hook:
+   http://groupserver.readthedocs.org/projects/gssitememberjson/en/latest/hook.html
 
 Remove a profile
 ================
+
+The web-hook ``/gs-group-member-leave.json`` removes a person
+from a group. The hook takes
+
+* The `authentication token`_ (``token``),
+* A group identifier (``groupId``), and
+* A user-identifier (``userId``).
+
+.. seealso:: `The documentation for the Leave group web-hook`_
+             has more details about how the hook works, including
+             examples.
+
+If you only have an email-address for the person, then you should
+retrieve a `single profile`_ first to determine the user
+identifier (:js:attr:`id`).
+
+The profile is also useful for removing someone from a
+**site**. A person is removed from a site when they are removed
+from all groups on the site: so by iterating through the list of
+groups (:js:attr:`groups`) you will eventually remove someone
+from the site.
+
+.. _The documentation for the Leave group web-hook:
+   http://groupserver.readthedocs.org/projects/gsgroupmemberleave/en/latest/hook.html
 
 ..  _GroupServer: http://groupserver.org/
 ..  _GroupServer.org: http://groupserver.org/
