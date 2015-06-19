@@ -1,6 +1,6 @@
-================
-Configuring cron
-================
+===========================
+Configuring :command:`cron`
+===========================
 
 :Authors: `Michael JasonSmith`_
 :Contact: Michael JasonSmith <mpj17@onlinegroups.net>
@@ -25,10 +25,10 @@ functionality. One provides the `daily digest of topics`_ to
 those that elect to receive it. The other sends a `monthly
 profile status`_ to everyone.
 
-:See also: The `Ubuntu Cron HOWTO`_ has more information on how
-           to use :command:`cron`.
+.. seealso:: `The Ubuntu Cron HOWTO`_ has more information on how
+             to use :command:`cron`.
 
-.. _Ubuntu Cron HOWTO: https://help.ubuntu.com/community/CronHowto
+.. _The Ubuntu Cron HOWTO: https://help.ubuntu.com/community/CronHowto
 
 ----------------------
 Daily digest of topics
@@ -50,9 +50,9 @@ each day. It is recommended that the digests are sent out in the
 early-hours of the morning, as this means they will contain the
 activity for the full day.
 
-:Note: The full path to the :command:`senddigest` command in your
-       GroupServer installation will be needed, as :envvar:`PATH`
-       is not set for :command:`cron`.
+.. note:: The full path to the :command:`senddigest` command in
+          your GroupServer installation will be needed, as
+          :envvar:`PATH` is not set for :command:`cron`.
 
 The :command:`senddigest` command itself normally just takes the
 URL of the site as its only argument. However, `the documentation

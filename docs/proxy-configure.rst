@@ -34,9 +34,9 @@ either Apache_ or nginx_, and how to `change the reported port`_
 in GroupServer. We then explain how to `change the skin`_, before
 we outline how to set up `secure connections`_.
 
-:Note: You will need to be the root user to carry out most of
-       these tasks. Commands that need to be run as root will be
-       shown with ``#`` prompt, rather than a ``$``.
+.. note:: You will need to be the root user to carry out most of
+          these tasks. Commands that need to be run as root will
+          be shown with ``#`` prompt, rather than a ``$``.
 
 Add a virtual host
 ==================
@@ -54,7 +54,8 @@ you will need to update the configuration for GroupServer itself.
 
 #.  Visit the ZMI for your site. Log in if necessary.
 
-#.  Visit the folder ``/groupserver/Content/initial_site/``.
+#.  Visit the folder
+    :guilabel:`/groupserver/Content/initial_site/`.
 
 #.  Open the ``DivisionConfiguration``.
 
@@ -70,12 +71,14 @@ Add a virtual host to Apache
 To add a virtual host to Apache carry out the following steps.
 
 #.  Ensure the ``rewrite``, ``proxy``, and ``proxy_httpd``
-    modules are enabled in Apache::
+    modules are enabled in Aapache:
+
+    .. code-block:: console
 
       # a2enmod rewrite proxy proxy_http
       # service apache2 restart
 
-#.  Open ``/etc/apache2/sites-available/groupserver`` in a
+#.  Open :file:`/etc/apache2/sites-available/groupserver` in a
     text-editor.
 
 
@@ -109,19 +112,24 @@ To add a virtual host to Apache carry out the following steps.
       ``support_email`` in the ``config.cfg`` file in the
       GroupServer directory.
 
-#.  Link the configuration for your host::
+#.  Link the configuration for your host:
 
-    # cd /etc/apache2/sites-enabled/
-    # ln -s ../groupserver 100-groupserver
+    .. code-block:: console
 
-#.  Restart Apache::
+      # cd /etc/apache2/sites-enabled/
+      # ln -s ../groupserver 100-groupserver
 
-     # service apache2 restart
+#.  Restart Apache using :command:`service`
+
+    .. code-block:: console
+
+      # service apache2 restart
 
 Add a virtual host to nginx
 ---------------------------
 
-Open ``/etc/nginx/sites-avaliable/groupserver`` in a text-editor.
+Open :file:`/etc/nginx/sites-avaliable/groupserver` in a
+text-editor.
 
 #.  Add the following to the file
 
@@ -159,14 +167,18 @@ Open ``/etc/nginx/sites-avaliable/groupserver`` in a text-editor.
     * Make a similar change to the second server, keeping the
       ``zmi.`` at the start.
 
-#.  Link the configuration for your host::
+#.  Link the configuration for your host:
 
-    # cd /etc/nginx/sites-enabled/
-    # ln -s 100-groupserver ../groupserver
+    .. code-block:: console
 
-#.  Reload the nginx configuration::
+      # cd /etc/nginx/sites-enabled/
+      # ln -s 100-groupserver ../groupserver
 
-    # service nginx reload
+#.  Reload the nginx configuration using :command:`service`:
+
+    .. code-block:: console
+
+      # service nginx reload
 
 Change the reported port
 ========================
@@ -180,15 +192,17 @@ using carry out the following tasks.
 
 #.  Connect to the ZMI for your site.
 #.  Visit the folder for your site, at
-    ``groupserver/Content/initial_site``.
-#.  Open the ``DivisionConfiguration`` object.
-#.  Select the check-box next to the ``canonicalPort`` line.
-#.  Click the *Delete* button. The ``canonicalPort`` value will
-    be deleted.
+    :guilabel:`groupserver/Content/initial_site`.
+#.  Open the :guilabel:`DivisionConfiguration` object.
+#.  Select the check-box next to the :guilabel:`canonicalPort`
+    line.
+#.  Click the :guilabel:`Delete` button. The
+    :guilabel:`canonicalPort` value will be deleted.
 
-:Note: In the unlikely case that a non-standard port is used,
-       change the value of the ``canonicalPort`` and click the
-       *Save changes* button, rather than deleting the property.
+.. note:: In the unlikely case that a non-standard port is used,
+          change the value of the ``canonicalPort`` and click the
+          *Save changes* button, rather than deleting the
+          property.
 
 Change the skin
 ===============

@@ -2,7 +2,7 @@
 Translation guide
 =================
 
-:Authors: `Alice Rose`_; `Michael JasonSmith`_; 
+:Authors: `Alice Rose`_; `Michael JasonSmith`_;
 :Contact: Michael JasonSmith <mpj17@onlinegroups.net>
 :Date: 2015-02-18
 :Organization: `GroupServer.org`_
@@ -56,25 +56,25 @@ then carry out the following tasks.
 #.  Identify the product. (The element identifiers in the HTML
     often point to the product that needs to be changed.)
 #.  Add a ``locales`` directory to the product, in the same
-    directory that has the ``configure.zcml`` file.
+    directory that has the :file:`configure.zcml` file.
 
 #.  Add i18n to the Python code.
 
-    #.  To the ``__init__.py`` for the product instantiate a
+    #.  To the :file:`__init__.py` for the product instantiate a
         message factory, passing the name of the product as an
         argument:
 
-        .. code-block:: py
+          .. code-block:: py
 
-           from zope.i18nmessageid import MessageFactory
-           GSMessageFactory = MessageFactory('gs.groups')
+             from zope.i18nmessageid import MessageFactory
+             GSMessageFactory = MessageFactory('gs.groups')
 
     #.  Identify the Python products that contain strings that
         need translating. To each add the following ``import``:
 
-        .. code-block:: py
+          .. code-block:: py
 
-           from . import GSMessageFactory as _
+             from . import GSMessageFactory as _
 
     #.  Add i18n to all the strings:
 
@@ -84,7 +84,8 @@ then carry out the following tasks.
 
              .. code-block:: py
 
-                @form.action(name="change", label=_('change-action', 'Change'),
+                @form.action(name="change", label=_('change-action',
+                                                    'Change'),
                              failure='handle_change_action_failure')
                 def handle_invite(self, action, data):
 
@@ -97,21 +98,21 @@ then carry out the following tasks.
           and a ``${}`` template syntax (rather than ``{}`` for
           Python format-strings).
 
-          .. code-block:: py
+            .. code-block:: py
 
-             _('start-status',
-               'The group ${groupName} has been started.',
-               mapping={'groupName': r})
+               _('start-status',
+                 'The group ${groupName} has been started.',
+                 mapping={'groupName': r})
 
 #.  Add i18n to the page templates.
 
     #.  Add the ``i18n`` namespace to the page template, using
         the product name as the domain.
 
-        .. code-block:: xml
+          .. code-block:: xml
 
-           <html xmlns:i18n="http://xml.zope.org/namespaces/i18n"
-                 i18n:domain="gs.group.start">
+             <html xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+                   i18n:domain="gs.group.start">
 
     #. Add ``i18n:translate`` attributes to all elements that
        require translation. Always set the translation ID.
@@ -141,20 +142,19 @@ then carry out the following tasks.
 
 #.  Add i18n to the Zope Configuration file.
 
-
     #.  Add the ``i18n`` namespace
 
-        .. code-block:: xml
+          .. code-block:: xml
 
-           <configure xmlns="http://namespaces.zope.org/zope"
-                      xmlns:browser="http://namespaces.zope.org/browser"
-                      xmlns:i18n="http://namespaces.zope.org/i18n">
+             <configure xmlns="http://namespaces.zope.org/zope"
+                        xmlns:browser="http://namespaces.zope.org/browser"
+                        xmlns:i18n="http://namespaces.zope.org/i18n">
 
     #.  Add the ``reigsterTranslations`` element
 
-        .. code-block:: xml
+          .. code-block:: xml
 
-           <i18n:registerTranslations directory="locales" />
+             <i18n:registerTranslations directory="locales" />
 
 #.  Run the latest version of ``i18n.sh`` [#i18n]_ in the base
     directory of the product to create and update the
@@ -193,38 +193,39 @@ then carry out the following tasks.
        ``gs-site-about``).
 
     #. Optionally add a *Long Description* from the
-       *Introduction* section of the product ``README.rst``.
+       *Introduction* section of the product :file:`README.rst`.
 
     #.  *Save*.
 
-    #.  Update the ``README.rst`` to include a Transifex link in
-        the *Resources* section.
+    #.  Update the :file:`README.rst` to include a Transifex link
+        in the *Resources* section.
 
-        .. code-block:: rst
+          .. code-block:: rst
 
-           - Translations: https://www.transifex.com/projects/p/gs-group-encouragement/
+             - Translations:
+               https://www.transifex.com/projects/p/gs-group-encouragement/
 
     #.  Initialise the product, accepting the defaults:
 
-        .. code-block:: console
+          .. code-block:: console
 
-           $ tx init
+             $ tx init
 
     #.  Run ``tx-set.sh`` [#tx-set]_ in the base directory of the
         product.
 
     #.  Sync local source and translations to remote:
 
-        .. code-block:: console
+          .. code-block:: console
 
-           $ tx push -s -t
+             $ tx push -s -t
 
     #.  Pull the translations, now modified by Transifex from
         remote to local:
 
-        .. code-block:: console
+          .. code-block:: console
 
-           $ tx pull -a
+             $ tx pull -a
 
     #. Commit the Transifex configuration (``.tx/``) and the
        modified translations to version control.
@@ -258,9 +259,9 @@ carry out the following tasks.
 #.  Push the changes in the source file to Transifex, using the
     Transifex client (``tx``):
 
-    .. code-block:: console
+      .. code-block:: console
 
-       $ tx push -s
+         $ tx push -s
 
 #.  Commit and push the changes to the source-code repositories.
 
@@ -273,23 +274,24 @@ project carry out the following tasks.
 #.  Pull the updated translations (in ``po`` files) from the
     Transifex project using the Transifex client (``tx``):
 
-    .. code-block:: console
+      .. code-block:: console
 
-       $ tx pull -a
+         $ tx pull -a
 
 #.  Ensure that Zope is set up to automatically compile the
     ``po`` files to ``mo`` files:
 
-    .. code-block:: console
+      .. code-block:: console
 
-       $ export zope_i18n_compile_mo_files=true
+         $ export zope_i18n_compile_mo_files=true
 
 #.  Start your development system. `Change the language`_ in your
     browser to test the different translations.
 
-    :Note: Browsing the Web with a changed language will result
-           in Goggle, Microsoft, the NSA, and Yahoo! getting some
-           funny ideas about that languages you can comprehend.
+    .. note:: Browsing the Web with a changed language will
+              result in Goggle, Microsoft, the NSA, and Yahoo!
+              getting some funny ideas about that languages you
+              can comprehend.
 
 #.  Commit and push the changes to the source-code repositories.
 
@@ -310,10 +312,10 @@ project carry out the following tasks.
 .. _i18ndude: https://pypi.python.org/pypi/i18ndude/
 
 .. [#client] Ensure you have ``transifex-client`` 0.11.1 beta or
-             later installed: 
+             later installed:
              ``$ pip install transifex-client==0.11.1.beta``
 
-.. [#tx-set] Download ``tx-set.sh`` from 
+.. [#tx-set] Download ``tx-set.sh`` from
              <http://groupserver.org/downloads/tx-set.sh>
 
 ..  LocalWords:  Transifex

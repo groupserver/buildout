@@ -1,5 +1,5 @@
 ==============================
-Configuring :command:`Postfix`
+Configuring :command:`postfix`
 ==============================
 
 :Authors: `Michael JasonSmith`_; `Fabien Hespul`_

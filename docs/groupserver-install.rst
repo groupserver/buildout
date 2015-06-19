@@ -25,9 +25,10 @@ gratefully accepted.
 
 .. _GroupServer Development: http://groupserver.org/groups/development
 
-:Note: GroupServer is developed on `Ubuntu`_, and is know to run
-       on `CentOS`_. We will gladly accept any modifications you
-       have that will make GroupServer run on more platforms.
+.. note:: GroupServer is developed on `Ubuntu`_, and is know to
+          run on `CentOS`_. We will gladly accept any
+          modifications you have that will make GroupServer run
+          on more platforms.
 
 Quick start
 ===========
@@ -43,13 +44,17 @@ Quick start
 #.  Enable prepared transaction support in PostgreSQL (see `Configure
     PostgreSQL`_).
 
-#.  Run the following (see `Run the Installer`_)::
+#.  Run the following (see `Run the Installer`_):
 
-      $ ./gs_install_ubuntu.sh
+      .. code-block:: console
 
-#.  `Start Zope`_::
+         $ ./gs_install_ubuntu.sh
 
-      $ ./bin/instance fg
+#.  `Start Zope`_:
+
+      .. code-block:: console
+
+         $ ./bin/instance fg
 
 #.  Visit your new site.
 
@@ -91,9 +96,9 @@ Pick a host name
 Your new site needs its own hostname. This is the name that
 people will use to access your new GroupServer site with a web
 browser. For a trial system, the name can be set up in the
-``hosts(5)`` file.
+:manpage:`hosts(5)` file.
 
-#.  Edit ``/etc/hosts`` as ``root``.
+#.  Edit :file:`/etc/hosts` as  the ``root`` user.
 #.  Add the new host name to the ``localhost`` entry, which is
     normally the first one. For example, to add the name
     ``gstest`` change the line to the following::
@@ -105,11 +110,12 @@ browser. For a trial system, the name can be set up in the
 Configure GroupServer
 ---------------------
 
-The configuration of GroupServer is mostly carried out by modifying the
-``config.cfg`` file, which is located in the root of the GroupServer
-folder [#cfgFile]_. First you must configure the `GroupServer Site`_
-itself. Next the `Zope`_ system, which will run your GroupServer site,
-needs to be configured, before the `database storage`_.
+The configuration of GroupServer is mostly carried out by
+modifying the :file:`config.cfg` file, which is located in the
+root of the GroupServer folder [#cfgFile]_. First you must
+configure the `GroupServer Site`_ itself. Next the `Zope`_
+system, which will run your GroupServer site, needs to be
+configured, before the `database storage`_.
 
 GroupServer site
 ~~~~~~~~~~~~~~~~
@@ -179,23 +185,24 @@ administrator.
   The password for the Zope administrator. It can (and should) be
   changed after GroupServer has been set up.
 
-:Note: The IP-address of the ``zope_host`` and ``host`` (see
-       `GroupServer site`_) must be the same.
+.. note:: The IP-address of the ``zope_host`` and ``host`` (see
+          `GroupServer site`_) must be the same.
 
 Database storage
 ~~~~~~~~~~~~~~~~
 
-GroupServer stores most of its data in PostgreSQL_. Two passwords need to be
-set by you to protect this data.
+GroupServer stores most of its data in PostgreSQL_. Two passwords
+need to be set by you to protect this data.
 
 ``pgsql_password``
-  The password required to attach to the PostgreSQL database. The install
-  system will create a PostgreSQL database, and protect it with this
-  ``pgsql_password``.
+  The password required to attach to the PostgreSQL database. The
+  install system will create a PostgreSQL database, and protect
+  it with this ``pgsql_password``.
 
 ``relstorage_password``
-  `The RelStorage system`_ will store data in a PostgreSQL database for
-  Zope. This data is protected by the ``relstorage_password``.
+  `The RelStorage system`_ will store data in a PostgreSQL
+  database for Zope. This data is protected by the
+  ``relstorage_password``.
 
 .. _the RelStorage system: https://pypi.python.org/pypi/RelStorage
 
@@ -209,30 +216,32 @@ steps.
 
 #. Edit the PostgreSQL configuration file. On Ubuntu you must be
    ``root`` to edit this file, which is located in
-   ``/etc/postgresql/9.3/main/postgresql.conf``. (The actual
+   :file:`/etc/postgresql/9.{x}/main/postgresql.conf`. (The actual
    directory name may be different depending on the version of
-   PostgreSQL you have installed; change the ``9.3`` to match
+   PostgreSQL you have installed; change the ``9.{x}`` to match
    your version as appropriate.)
 
 #. Find the line that reads
 
-   .. code-block:: cfg
+     .. code-block:: cfg
 
-     max_prepared_transactions = 0
+        max_prepared_transactions = 0
 
    If the line is set to something *other* than ``0`` then
    nothing needs to change, and you can `run the installer`_.
 
 #. Change the line to read
 
-   .. code-block:: cfg
+     .. code-block:: cfg
 
-     max_prepared_transactions = 1
+        max_prepared_transactions = 1
 
 #. Restart PostgreSQL. On Ubuntu this is done using the following
-   command::
+   command:
 
-     $ sudo service postgresql restart
+     .. code-block:: console
+
+         $ sudo service postgresql restart
 
 Run the installer
 =================
@@ -248,10 +257,11 @@ that your Ubuntu system has met all the dependencies. Next the
 installer ensures that the `set up`_ is correct.
 
 :Permissions: GroupServer can only be run by users with normal
-       privileges. If the installation directory is owned by
-       ``root`` then you must **change the ownership** of the
-       installation directory to a normal user and switch
-       (``su``) to that user. Then run the installer.
+              privileges. If the installation directory is owned
+              by ``root`` then you must **change the ownership**
+              of the installation directory to a normal user and
+              switch (``su``) to that user. Then run the
+              installer.
 
 The rest of the installation process should be completely
 automatic. The system will create a *sandbox* for your
@@ -273,8 +283,8 @@ requirements for GroupServer (around 47MB of packages) including:
 .. _Pillow: https://pypi.python.org/pypi/Pillow/
 .. _Zope 2.13: http://docs.zope.org/zope2/releases/2.13/
 
-:Note: You need a functioning network connection to download the
-       packages.
+.. note:: You need a functioning network connection to download
+          the packages.
 
 It is a good idea to make a cup of coffee, or go to lunch, while
 buildout processes.
@@ -288,10 +298,10 @@ The process to install GroupServer on CentOS or RedHat Enterprise
 Linux is manual. The basic idea is as follows, but it lacks
 testing.
 
-:Note: Commands that have to be run as ``root`` are shown on
-       lines that begin with a ``#``. Commands that must be run
-       as a normal user are shown on lines that begin with a
-       ``$``.
+.. note:: Commands that have to be run as ``root`` are shown on
+          lines that begin with a ``#``. Commands that must be
+          run as a normal user are shown on lines that begin with
+          a ``$``.
 
 #. Install the :ref:`dependencies`.
 
@@ -307,42 +317,58 @@ testing.
              by GroupServer. You will need to install Python 2.7
              using `these instructions from H₂0.ai.`_
 
-#. Create the two database users specified in ``config.cfg``,
-   using ``createuser``::
+#. Create the two database users specified in :file:`config.cfg`,
+   using :command:`createuser`:
 
-     # createuser -D -S -R -l gsadmin
-     # createuser -D -S -R -l gszodbadmin
+     .. code-block:: console
 
-#. Create the two databases specified in ``config.cfg`` using
-   ``createdb``::
+        # createuser -D -S -R -l gsadmin
+        # createuser -D -S -R -l gszodbadmin
 
-     # createdb -Ttemplate0 -O gsadmin -EUTF-8 groupserver
-     # createdb -Ttemplate0 -O gszodbadmin -EUTF-8 groupserverzodb
+#. Create the two databases specified in :file:`config.cfg` using
+   :command:`createdb`:
 
-#. Get the Python ``virtualenv`` package::
+     .. code-block:: console
 
-     # easy_install virtualenv
+        # createdb -Ttemplate0 -O gsadmin -EUTF-8 groupserver
+        # createdb -Ttemplate0 -O gszodbadmin -EUTF-8 groupserverzodb
 
-#. Set up a Python virtual-environment for GroupServer::
+#. Get the Python ``virtualenv`` package:
 
-     $ virtualenv --python=python2.7 --no-site-packages .
+     .. code-block:: console
+
+        # easy_install virtualenv
+
+#. Set up a Python virtual-environment for GroupServer:
+
+     .. code-block:: console
+
+        $ virtualenv --python=python2.7 --no-site-packages .
 
 #. Activate the Python virtual-environment (**note** the
-   dot-space at the start of the command)::
+   dot-space at the start of the command):
 
-     $ . bin/activate
+     .. code-block:: console
 
-#. Grab the ``argparse`` module::
+         $ . bin/activate
 
-     $ easy_install argparse==1.1
+#. Install the ``argparse`` module:
 
-#. Fetch the `zc.buildout`_ system that builds GroupServer::
+     .. code-block:: console
 
-     $ easy_install zc.buildout==1.7.1
+        $ easy_install argparse==1.1
 
-#. Run the ``buildout`` process::
+#. Fetch the `zc.buildout`_ system that builds GroupServer:
 
-     $ ./bin/buildout -N
+     .. code-block:: console
+
+        $ easy_install zc.buildout==1.7.1
+
+#. Run the ``buildout`` process:
+
+     .. code-block:: console
+
+        $ ./bin/buildout -N
 
 .. _the instruction provided by the PostgreSQL project.:
    http://www.postgresql.org/download/linux/redhat/
@@ -356,9 +382,11 @@ Start Zope
 ----------
 
 Your GroupServer site is supported by Zope. To start Zope run the
-following command::
+following command:
 
-  $ ./bin/instance fg
+.. code-block:: console
+
+   $ ./bin/instance fg
 
 Zope will have started when the message ``Zope Ready to handle
 requests`` is displayed in the terminal.
@@ -395,6 +423,7 @@ History
 ======= ==========  ====================================================
 Version Date        Change
 ======= ==========  ====================================================
+15.xx   2015-06-19  Updating the Sphinx markup
 15.03   2015-03-27  Updating the CentOS install instructions.
 15.03   2015-03-25  Making a note about PostgreSQL 9 on CentOS and RHEL.
 15.03   2015-03-06  Moving the *Dependencies* and *Download* sections to
@@ -480,7 +509,7 @@ Version Date        Change
 .. [#buildout] For more on :program:`buildout` see
                :doc:`README-buildout` and `the Buildout site`_.
 .. _the Buildout site: http://www.buildout.org/en/latest/
-                    
+
 .. _GroupServer.org: http://groupserver.org/
 .. _OnlineGroups.net: https://onlinegroups.net/
 .. _Ubuntu: http://www.ubuntu.com/
