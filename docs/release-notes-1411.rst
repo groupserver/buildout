@@ -155,7 +155,7 @@ Calvados introduces the *Change group-type* page, which allows
 the type of group to be quickly and easily changed, closing
 `Feature 702`_.
 
-.. _GroupServer development: https://groupserver.org/groups/development
+.. _GroupServer development: http://groupserver.org/groups/development
 .. _GroupServer announcements: http://groupserver.org/groups/groupserver_announcements/
 .. _Feature 702: https://redmine.iopen.net/issues/702
 

@@ -331,7 +331,7 @@ groups (:js:attr:`groups`) you will eventually remove someone
 from the site.
 
 .. _The documentation for the Leave group web-hook:
-   http://groupserver.readthedocs.org/projects/gsgroupmemberleave/en/latest/hook.html
+   http://groupserver.readthedocs.org/projects/gsgroupmemberleavejson/en/latest/hook.html
 
 ..  _GroupServer: http://groupserver.org/
 ..  _GroupServer.org: http://groupserver.org/
