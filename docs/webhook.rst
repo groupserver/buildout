@@ -4,7 +4,7 @@ Connecting external systems
 
 :Authors: `Michael JasonSmith`_;
 :Contact: Michael JasonSmith <mpj17@onlinegroups.net>
-:Date: 2015-06-18
+:Date: 2015-06-19
 :Organization: `GroupServer.org`_
 :Copyright: This document is licensed under a
   `Creative Commons Attribution-Share Alike 4.0 International
@@ -19,7 +19,7 @@ Connecting external systems
 Introduction
 ------------
 
-GroupServer_ provides *web hooks* that allow external systems to
+GroupServer_ provides *web hooks* that allow external programs to
 access some features. All the hooks work the same way:
 
 #. Data, including a token_ for authentication, is sent to a form
@@ -27,10 +27,12 @@ access some features. All the hooks work the same way:
 #. The system processes the request, and
 #. Data is returned as a JSON_ object.
 
-GroupServer uses some of these hooks itself, such as for adding
-email (see :doc:`postfix-configure`) and sending out regular
-notifications (see :doc:`cron`). Hooks are also provided to allow
-external systems to manage the `profile life-cycle`_: creating,
+GroupServer uses some of these hooks itself — for tasks such as
+for adding email (see :doc:`postfix-configure`) and sending out
+regular notifications (see :doc:`cron`).
+
+Here I discuss the hooks that are provided to allow external
+systems to manage the `profile life-cycle`_: creating,
 retrieving, and removing profiles. These hooks all return the
 same `profile data`_ as a JSON object.
 
@@ -77,7 +79,7 @@ web hooks is exposed.
      parameter for the ``database`` section of the configuration
      in the :file:`etc/gsconfig.ini` file.
 
-#. The :program:`gs_auth_token_create` program will 
+#. The :program:`gs_auth_token_create` program will
 
    * **Generate** a new token, and
    * **Change** the value of the token in the PostgreSQL
@@ -111,28 +113,46 @@ life-cycle`_ all return the same properties for the profiles,
 either as a single JSON object, as part of a list, or as a
 property of another object.
 
-The profile-data includes the following five properties.
+.. js:class:: ProfileData()
 
-``id``:
-  The identifier of the profile.
+   The profile-data includes the following five properties.
 
-``name``:
-  The name of the person.
+   .. js:attribute:: id
 
-``url``:
-  The URL of the profile.
+      The identifier of the profile.
 
-``groups``:
-  A list of identifiers for the groups that the person is a
-  member of.
+   .. js:attribute:: name
 
-``email``:
-  The email addresses associated with the profile.
+      The name of the person.
 
-  * ``all``: All the addresses.
-  * ``preferred``: The preferred address or addresses.
-  * ``unverified``: The unverified addresses.
-  * ``other``: The verified addresses that are not preferred.
+   .. js:attribute:: url
+
+      The URL of the profile.
+
+   .. js:attribute:: groups
+
+      A list of identifiers for the groups that the person is a
+      member of.
+
+   .. js:attribute:: email
+
+      The email addresses associated with the profile.
+
+      .. js:attribute:: all
+
+         A list of all the email addresses.
+
+      .. js:attribute:: preferred
+
+         A list of the preferred address or addresses.
+
+      .. js:attribute:: other
+
+         A list of verified addresses that are not preferred.
+
+      .. js:attribute:: unverified
+
+         A list of the unverified addresses.
 
 Example profile data
 ====================
@@ -140,7 +160,7 @@ Example profile data
 In the example JSON object below is the profile for someone
 called ``A Person``. The have set a nickname, so the URL to the
 profile does not contain their profile-identifier. They have two
-email addresses, with their home address preferred and no
+email addresses — with their home address preferred, and no
 unverified addresses. Finally, the person belongs to two groups:
 Example, and Test.
 
@@ -173,7 +193,7 @@ Example, and Test.
 Profile life-cycle
 ------------------
 
-The profile life-cycle follows 
+The profile life-cycle follows
 
 * The creation of a profile when you `add a profile`_ to a group
   for the first time,
@@ -185,10 +205,30 @@ The profile life-cycle follows
 Add a profile
 =============
 
+The web-hook ``/gs-group-member-add.json`` is used to add a
+profile to a group. It will also create a profile, if one does
+not exist for that person already. The hook takes
 
+* The `authentication token`_ (``token``),
+* A name (``fn``),
+* an email address (``email``), and
+* A group identifier (``groupId``).
+
+It returns the `profile data`_ of the person that has been added
+to the group, as well as some details about whether a profile was
+created, or already existed.
+
+.. seealso:: `The documentation for the add a profile web-hook`_
+             has more details about how the hook works, including
+             examples.
+
+.. _The documentation for the add a profile web-hook:
+   http://gsgroupmemberaddjson.readthedocs.org/en/latest/hook.html
 
 Retrieve profile information
 ============================
+
+
 
 Remove a profile
 ================
