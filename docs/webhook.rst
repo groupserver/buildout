@@ -105,9 +105,9 @@ web hooks is exposed.
    the file. All web hooks will be running again. No restart of
    GroupServer is necessary to change the token.
 
-:See also: `The documentation at Read the Docs`_ contains more
-           details about the :program:`gs_auth_token_create`
-           program.
+.. seealso:: `The documentation at Read the Docs`_ contains more
+             details about the :program:`gs_auth_token_create`
+             program.
 
 .. _The documentation at Read the Docs:
      http://groupserver.readthedocs.org/projects/gsauthtoken/en/latest/script.html
