@@ -10,6 +10,9 @@ Starting and stopping GroupServer
   `Creative Commons Attribution-Share Alike 4.0 International License`_
   by `OnlineGroups.net`_.
 
+..  _Creative Commons Attribution-Share Alike 4.0 International License:
+    https://creativecommons.org/licenses/by-sa/4.0/
+
 .. highlight:: console
 
 Introduction
@@ -154,15 +157,14 @@ hosted machine. The documentation for your chosen virtual
 environment should cover how to expose the network interface for
 a hosted Web service, such as GroupServer.
 
-.. _the GroupServer Development group: http://groupserver.org/groups/development
+.. _the GroupServer Development group:
+   http://groupserver.org/groups/development
 .. _GroupServer: http://groupserver.org/
 .. _GroupServer.org: http://groupserver.org/
 .. _OnlineGroups.net: https://onlinegroups.net/
 .. _Zope: http://zope.org
 ..  _Michael JasonSmith: http://groupserver.org/p/mpj17
 ..  _Richard Waid: http://groupserver.org/p/richard
-..  _Creative Commons Attribution-Share Alike 4.0 International License:
-    http://creativecommons.org/licenses/by-sa/4.0/
 
 ..  LocalWords:  fg ZMI richard sa groupserver http localhost buildout
 ..  LocalWords:  config cfg gstest zope txt gsdevel irc Freenode

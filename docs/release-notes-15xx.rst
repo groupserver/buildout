@@ -10,6 +10,9 @@ GroupServer 15.xx — Limonchello to ward off summer
   `Creative Commons Attribution-Share Alike 4.0 International
   License`_ by `OnlineGroups.net`_.
 
+..  _Creative Commons Attribution-Share Alike 4.0 International License:
+    https://creativecommons.org/licenses/by-sa/4.0/
+
 .. highlight:: console
 
 ------------
@@ -191,8 +194,6 @@ Resources
 ..  _GroupServer: http://groupserver.org/
 ..  _GroupServer.org: http://groupserver.org/
 ..  _OnlineGroups.Net: https://onlinegroups.net/
-..  _Creative Commons Attribution-Share Alike 4.0 International License:
-    http://creativecommons.org/licenses/by-sa/4.0/
 ..  _Michael JasonSmith: http://groupserver.org/p/mpj17
 ..  _Dan Randow: http://groupserver.org/p/danr
 ..  _Bill Bushey: http://groupserver.org/p/wbushey

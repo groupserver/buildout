@@ -10,6 +10,9 @@ Translation guide
   `Creative Commons Attribution-Share Alike 4.0 International
   License`_ by `OnlineGroups.net`_.
 
+..  _Creative Commons Attribution-Share Alike 4.0 International License:
+    https://creativecommons.org/licenses/by-sa/4.0/
+
 Introduction
 ============
 
@@ -293,8 +296,6 @@ project carry out the following tasks.
 ..  _GroupServer: http://groupserver.org/
 ..  _GroupServer.org: http://groupserver.org/
 ..  _OnlineGroups.Net: https://onlinegroups.net/
-..  _Creative Commons Attribution-Share Alike 4.0 International License:
-    http://creativecommons.org/licenses/by-sa/4.0/
 ..  _Michael JasonSmith: http://groupserver.org/p/mpj17
 ..  _Alice Rose: https://twitter.com/heldinz
 .. _the GroupServer development group:

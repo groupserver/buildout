@@ -12,7 +12,7 @@ GroupServer installation
   by `OnlineGroups.net`_.
 
 ..  _Creative Commons Attribution-Share Alike 4.0 International License:
-    http://creativecommons.org/licenses/by-sa/4.0/
+    https://creativecommons.org/licenses/by-sa/4.0/
 
 .. highlight:: console
 

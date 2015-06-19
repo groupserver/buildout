@@ -10,6 +10,9 @@ Configuring Postfix
   `Creative Commons Attribution-Share Alike 4.0 International License`_
   by `OnlineGroups.net`_.
 
+..  _Creative Commons Attribution-Share Alike 4.0 International License:
+    https://creativecommons.org/licenses/by-sa/4.0/
+
 .. highlight:: console
 
 Introduction
@@ -143,8 +146,6 @@ Ubuntu.
 .. _OnlineGroups.net: https://onlinegroups.net/
 ..  _Postfix: http://www.postfix.org/
 ..  _Michael JasonSmith: http://groupserver.org/p/mpj17
-..  _Creative Commons Attribution-Share Alike 4.0 International License:
-    http://creativecommons.org/licenses/by-sa/4.0/
 ..  _Fabien Hespul: http://groupserver.org/p/1e38zikXDqFgXFkmCjqC31
 
 ..  LocalWords:  Organization Postfix

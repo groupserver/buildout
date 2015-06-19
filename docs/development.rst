@@ -10,6 +10,9 @@ Development guide
   `Creative Commons Attribution-Share Alike 4.0 International
   License`_ by `OnlineGroups.net`_.
 
+..  _Creative Commons Attribution-Share Alike 4.0 International License:
+    https://creativecommons.org/licenses/by-sa/4.0/
+
 .. highlight:: console
 
 ------------
@@ -484,13 +487,12 @@ documentation is then pushed up to the `the GroupServer project
 at Read The Docs`_.
 
 .. _autodoc: http://sphinx-doc.org/tutorial.html#autodoc
-.. _the GroupServer project at Read The Docs: https://readthedocs.org/projects/groupserver/
+.. _the GroupServer project at Read The Docs:
+   https://readthedocs.org/projects/groupserver/
 
 ..  _GroupServer: http://groupserver.org/
 ..  _GroupServer.org: http://groupserver.org/
 ..  _OnlineGroups.Net: https://onlinegroups.net/
-..  _Creative Commons Attribution-Share Alike 4.0 International License:
-    http://creativecommons.org/licenses/by-sa/4.0/
 ..  _Michael JasonSmith: http://groupserver.org/p/mpj17
 ..  _Dan Randow: http://groupserver.org/p/danr
 ..  _Bill Bushey: http://groupserver.org/p/wbushey

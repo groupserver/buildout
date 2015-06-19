@@ -11,7 +11,7 @@ Getting GroupServer
   by `OnlineGroups.net`_.
 
 ..  _Creative Commons Attribution-Share Alike 4.0 International License:
-    http://creativecommons.org/licenses/by-sa/4.0/
+    https://creativecommons.org/licenses/by-sa/4.0/
 
 GroupServer_ is distributed as a compressed tar-file that you
 download_. This file contains an **installation script for

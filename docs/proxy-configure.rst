@@ -10,6 +10,9 @@ Configuring a web proxy
   `Creative Commons Attribution-Share Alike 4.0 International License`_
   by `OnlineGroups.net`_.
 
+..  _Creative Commons Attribution-Share Alike 4.0 International License:
+    https://creativecommons.org/licenses/by-sa/4.0/
+
 .. highlight:: console
 
 Introduction
@@ -266,8 +269,6 @@ You can `change the skin`_ in the rewrite rule, just like before.
 ..  _Apache: http://httpd.apache.org/
 ..  _nginx: http://nginx.org/
 ..  _Michael JasonSmith: http://groupserver.org/p/mpj17
-..  _Creative Commons Attribution-Share Alike 4.0 International License:
-    http://creativecommons.org/licenses/by-sa/4.0/
 ..  _Fabien Hespul: http://groupserver.org/p/1e38zikXDqFgXFkmCjqC31
 
 ..  LocalWords:  TLS DivisionConfiguration apache groupserver params SSL
