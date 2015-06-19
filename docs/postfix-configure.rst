@@ -1,10 +1,10 @@
-===================
-Configuring Postfix
-===================
+==============================
+Configuring :command:`Postfix`
+==============================
 
 :Authors: `Michael JasonSmith`_; `Fabien Hespul`_
 :Contact: Michael JasonSmith <mpj17@onlinegroups.net>
-:Date: 2014-10-22
+:Date: 2015-06-19
 :Organization: `GroupServer.org`_
 :Copyright: This document is licensed under a
   `Creative Commons Attribution-Share Alike 4.0 International License`_
@@ -56,10 +56,10 @@ been built.
 
 .. _smtp2gs: http://github.com/groupserver/gs.group.messages.add.smtp2gs
 
-:See also: If you are new to administering Postfix you may find
-           the `Ubuntu Community Postfix Documentation`_ useful.
+.. Seealso:: `The Ubuntu Community Postfix Documentation`_ is
+             useful if you are new to administering Postfix.
 
-.. _Ubuntu Community Postfix Documentation:
+.. _The Ubuntu Community Postfix Documentation:
    https://help.ubuntu.com/community/Postfix
 
 Postfix configuration
@@ -68,27 +68,33 @@ Postfix configuration
 Below are the steps for configuring Postfix for either Debian or
 Ubuntu.
 
-:Note: You will need to be the root user to carry out most of
-       these tasks. Commands that need to be run as root will be
-       shown with ``#`` prompt, rather than a ``$``.
+.. note:: You will need to be the ``root`` user to carry out most
+          of these tasks. Commands that need to be run as root
+          will be shown with ``#`` prompt, rather than a ``$``.
 
 #.  Copy the configuration files from the GroupServer
-    installation into the Postfix configuration directory::
+    installation into the Postfix configuration directory.
+
+    .. code-block:: console
 
       # cp postfix_config/groupserver.* /etc/postfix
 
-#.  Change the ownership of the files to root::
+#.  Change the ownership of the files to root:
+
+    .. code-block:: console
 
       # chown root.nogroup /etc/postfix/groupserver.*
 
     If you are on a system other than Ubuntu you will need to
     ensure that the files are owned by the Postfix user. Running
     the following will display the user-name of the Postfix
-    user::
+    user.
+
+    .. code-block:: console
 
       $ /usr/sbin/postconf | grep default_privs | cut -f3 -d" "
 
-#.  Open the file ``/etc/postfix/main.cf`` in a text editor.
+#.  Open the file :file:`/etc/postfix/main.cf` in a text editor.
 
 #. Update the aliases.
 
@@ -125,21 +131,26 @@ Ubuntu.
 
          virtual_alias_maps = hash:/etc/postfix/groupserver.virtual
 
-#.  Add the following to the bottom of the ``main.cf`` file,
+#.  Add the following to the bottom of the :file:`main.cf` file,
     unless it is previously defined
 
     .. code-block:: cfg
 
        smtpd_authorized_verp_clients = 127.0.0.1,localhost
 
-#.  Generate the Postfix hashes::
+#.  Generate the Postfix hashes by running :command:`postmap` and
+    :command:`postalias`:
 
-    # postmap /etc/postfix/groupserver.virtual
-    # postalias /etc/postfix/groupserver.aliases
+    .. code-block:: console
 
-#.  Restart Postfix::
+      # postmap /etc/postfix/groupserver.virtual
+      # postalias /etc/postfix/groupserver.aliases
 
-    # service postfix restart
+#.  Restart :command:`Postfix` using :command:`service`:
+
+    .. code-block:: console
+
+      # service postfix restart
 
 .. _GroupServer: http://groupserver.org/
 .. _GroupServer.org: http://groupserver.org/
