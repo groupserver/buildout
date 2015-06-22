@@ -26,9 +26,9 @@ include XXX.  You can `get Limonchello`_ immediately.
 Changes to GroupServer
 ----------------------
 
-Limonchello includes an `updated topic digest`_, and a `profile
-status notification`_. Finally, there have been some `minor
-improvements`_.
+Limonchello includes an `updated topic digest`_, a `profile
+status notification`_, and `web hooks`_. Finally, there have been
+some `minor improvements`_.
 
 Updated topic digest
 ====================
@@ -87,17 +87,32 @@ functionality to outside systems. For example, the scripts
 the new :program:`sendprofile` (see `Profile status
 notification`_) all use web hooks.
 
-Thanks to **our generous sponsors** some *generic* web-hooks have
-been added.
+Thanks to `Team Z`_ some *generic* web-hooks have been added:
 
-* Discover all the groups on a site.
-* Remove someone from a group.
-* Search for someone by email address.
-* List all the site members.
+* `Discover`_ all the groups on a site.
+* `Add`_ someone to a group.
+* `Search`_ for someone by email address.
+* `List`_ all the site members.
+* `Remove`_ someone from a group.
+
+The is also a new overview of the avaliable hooks (see
+:doc:`webhook`).
 
 Implementing the web-hooks closes `Issue 262`_.
 
+.. _Team Z: http://triteamz.com/
+.. _Discover:
+   http://groupserver.readthedocs.org/projects/gsgroupgroupsjson/en/latest/hook.html
+.. _Add:
+   http://groupserver.readthedocs.org/projects/gsgroupmemberaddjson/en/latest/hook.html
+.. _Search:
+   http://groupserver.readthedocs.org/projects/gssearchpeople/en/latest/hook.html
+.. _List:
+   http://groupserver.readthedocs.org/projects/gssitememberjson/en/latest/hook.html
+.. _Remove:
+   http://groupserver.readthedocs.org/projects/gsgroupmemberleavejson/en/latest/hook.html
 .. _Issue 262: https://redmine.iopen.net/issues/262
+
 
 Minor improvements
 ==================
@@ -114,7 +129,7 @@ Minor improvements
   notification has been fixed.
 * An error with a link to the profile from the *Member has left*
   notification has been fixed.
-* The scripts that use webhooks now handle 301 redirects
+* The scripts that use web hooks now handle 301 redirects
   correctly, closing `Bug 4162`_.
 
 .. _Issue 4156: https://redmine.iopen.net/issues/4156
