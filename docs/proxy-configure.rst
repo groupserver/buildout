@@ -73,36 +73,35 @@ To add a virtual host to Apache carry out the following steps.
 #.  Ensure the ``rewrite``, ``proxy``, and ``proxy_httpd``
     modules are enabled in Aapache:
 
-    .. code-block:: console
+      .. code-block:: console
 
-      # a2enmod rewrite proxy proxy_http
-      # service apache2 restart
+        # a2enmod rewrite proxy proxy_http
+        # service apache2 restart
 
 #.  Open :file:`/etc/apache2/sites-available/groupserver` in a
     text-editor.
 
-
 #.  Add the following to the file
 
-    .. code-block:: apacheconf
+      .. code-block:: apacheconf
 
-      <VirtualHost *:80>
-        ServerAdmin support@example.com
-        ServerName groups.example.com
+        <VirtualHost *:80>
+          ServerAdmin support@example.com
+          ServerName groups.example.com
 
-        RewriteEngine on
-        RewriteRule ^/(.*) http://localhost:8080/groupserver/Content/initial_site/VirtualHostBase/http/%{HTTP_HOST}:80/VirtualHostRoot/$1 [L,P]
+          RewriteEngine on
+          RewriteRule ^/(.*) http://localhost:8080/groupserver/Content/initial_site/VirtualHostBase/http/%{HTTP_HOST}:80/VirtualHostRoot/$1 [L,P]
 
-        ProxyVia On
+          ProxyVia On
 
-        ErrorLog ${APACHE_LOG_DIR}/error.log
+          ErrorLog ${APACHE_LOG_DIR}/error.log
 
-        # Possible values include: debug, info, notice, warn, error, crit,
-        # alert, emerg.
-        LogLevel info
+          # Possible values include: debug, info, notice, warn, error, crit,
+          # alert, emerg.
+          LogLevel info
 
-        CustomLog ${APACHE_LOG_DIR}/access.log combined
-      </VirtualHost>
+          CustomLog ${APACHE_LOG_DIR}/access.log combined
+        </VirtualHost>
 
     * Change the address for the site from ``groups.example.com``
       to that of you new virtual host.
@@ -114,16 +113,16 @@ To add a virtual host to Apache carry out the following steps.
 
 #.  Link the configuration for your host:
 
-    .. code-block:: console
+      .. code-block:: console
 
-      # cd /etc/apache2/sites-enabled/
-      # ln -s ../groupserver 100-groupserver
+        # cd /etc/apache2/sites-enabled/
+        # ln -s ../groupserver 100-groupserver
 
 #.  Restart Apache using :command:`service`
 
-    .. code-block:: console
+      .. code-block:: console
 
-      # service apache2 restart
+        # service apache2 restart
 
 Add a virtual host to nginx
 ---------------------------
@@ -133,33 +132,33 @@ text-editor.
 
 #.  Add the following to the file
 
-    .. code-block:: nginx
+      .. code-block:: nginx
 
-      upstream gs {
-        server localhost:8080;
-      }
-
-      server {
-        listen 80;
-        server_name groups.example.com;
-
-        location / {
-          rewrite /(.*) /VirtualHostBase/http/$host:80/groupserver/Content/initial_site/VirtualHostRoot/$1 break;
-          proxy_pass http://gs/;
-          include proxy_params;
+        upstream gs {
+          server localhost:8080;
         }
-      }
 
-      server {
-        listen 80;
-        server_name zmi.groups.example.com;
+        server {
+          listen 80;
+          server_name groups.example.com;
 
-        location / {
-          rewrite /(.*) /VirtualHostBase/http/$host:80/VirtualHostRoot/$1 break;
-          proxy_pass http://gs/;
-          include proxy_params;
+          location / {
+            rewrite /(.*) /VirtualHostBase/http/$host:80/groupserver/Content/initial_site/VirtualHostRoot/$1 break;
+            proxy_pass http://gs/;
+            include proxy_params;
+          }
         }
-      }
+
+        server {
+          listen 80;
+          server_name zmi.groups.example.com;
+
+          location / {
+            rewrite /(.*) /VirtualHostBase/http/$host:80/VirtualHostRoot/$1 break;
+            proxy_pass http://gs/;
+            include proxy_params;
+          }
+        }
 
     * Change the ``server_name`` from ``groups.example.com`` to
       that of you new virtual host.
@@ -169,16 +168,16 @@ text-editor.
 
 #.  Link the configuration for your host:
 
-    .. code-block:: console
+      .. code-block:: console
 
-      # cd /etc/nginx/sites-enabled/
-      # ln -s 100-groupserver ../groupserver
+        # cd /etc/nginx/sites-enabled/
+        # ln -s 100-groupserver ../groupserver
 
 #.  Reload the nginx configuration using :command:`service`:
 
-    .. code-block:: console
+      .. code-block:: console
 
-      # service nginx reload
+        # service nginx reload
 
 Change the reported port
 ========================

@@ -19,10 +19,12 @@ To remove GroupServer_, you must remove the database, the
 associated database user, and the directory that contains the
 GroupServer install.
 
-1. To remove the database, run the following commands::
+1. To remove the database, run the following commands:
 
-    $ dropdb gstestdb -U postgres
-    $ dropuser gstest -U postgres
+     .. code-block:: console
+
+        $ dropdb gstestdb -U postgres
+        $ dropuser gstest -U postgres
 
   ``gstestdb``
     The name of the test database.
@@ -33,9 +35,11 @@ GroupServer install.
   ``gstest``
     The name of the PostgreSQL user.
 
-2. Remove the directory that contains the GroupServer install::
+2. Remove the directory that contains the GroupServer install:
 
-    $ rm -r groupserver-14.03
+     .. code-block:: console
+
+        $ rm -r groupserver-14.03
 
 .. _GroupServer: http://groupserver.org/
 .. _GroupServer.org: http://groupserver.org/

@@ -46,17 +46,21 @@ Virtual environment
 The development for GroupServer takes place within the Python
 *virtual environment* of a GroupServer installation (see
 :doc:`groupserver-install`). When you start development you need
-to **activate** the virtual environment::
+to **activate** the virtual environment:
 
-  $ . ./bin/activate
+.. code-block:: console
+
+   $ . ./bin/activate
 
 The command-prompt will change to indicate that you are now in a
 virtual environment.
 
 When you have done with development you can **deactivate** the
-environment::
+environment:
 
-  $ deactivate
+.. code-block:: console
+
+   $ deactivate
 
 Version control system
 ======================
@@ -97,9 +101,11 @@ Usage
 
 Run the following To use ``mr.developer`` to **checkout** the
 code from the VCS, and active the source code so you can work on
-it::
+it:
 
-  $ develop checkout gs.group.home
+.. code-block:: console
+
+   $ develop checkout gs.group.home
 
 This will checkout the ``gs.group.home`` product from `its
 repository`_ into the ``gs.group.home`` directory within the
@@ -109,9 +115,11 @@ more on products_ below.)
 .. _its repository: https://github.com/groupserver/gs.group.home
 
 Next you will have to rebuild GroupServer to update all the
-configuration to point to the new code::
+configuration to point to the new code:
 
-  $ buildout -N
+.. code-block:: console
+
+   $ buildout -N
 
 Now any changes that you make to the ``gs.group.home`` product
 will change your version of GroupServer.
@@ -120,10 +128,12 @@ When you have finished making changes you want you should commit
 them, and push your changes up to a repository.
 
 To resume using the standard version of a product **deactivate**
-the source code version of the product and rebuild GroupServer::
+the source code version of the product and rebuild GroupServer:
 
-  $ develop deactivate gs.group.home
-  $ buildout -N
+.. code-block:: console
+
+    $ develop deactivate gs.group.home
+    $ buildout -N
 
 Development configuration file
 ------------------------------
@@ -195,17 +205,20 @@ tasks.
 #. Add ``git+`` to the start of the value for the ``dest``
    variable.
 
-#. Run the command::
+#. Run the command:
 
-     $ awk -f emit-devel.awk < versions.cfg > new-develop.cfg
+     .. code-block:: console
+
+       $ awk -f emit-devel.awk < versions.cfg > new-develop.cfg
 
 #. Check that the new configuration is to your liking and move
-   the new configuration into place::
+   the new configuration into place:
 
-     $ mv new-develop.cfg develop.cfg
+     .. code-block:: console
+
+        $ mv new-develop.cfg develop.cfg
 
 .. _the Hg-Git plugin: http://hg-git.github.io/
-
 
 Adding a new product
 ====================
@@ -237,13 +250,17 @@ following tasks.
 #. Add the version-control information for the product to the
    `development configuration file`_.
 
-#. Activate the product::
+#. Activate the product:
 
-     $ develop activate your.product.name
+     .. code-block:: console
 
-#. Rebuild GroupServer::
+        $ develop activate your.product.name
 
-     $ buildout -N
+#. Rebuild GroupServer:
+
+     .. code-block:: console
+
+        $ buildout -N
 
 ----------------
 System structure
@@ -384,7 +401,7 @@ static file to the browser.
 The resource is defined by the ``<browser:resource/>`` directive
 in the ZCML_.
 
-  .. code-block:: xml
+.. code-block:: xml
 
      <browser:resource
        name="gs-group-messages-topic-compose-20140327.js"
@@ -422,7 +439,7 @@ ZCML_: ``<browser:page/>`` and ``<browser:viewlet/>``. The former
 links the Python code (``class``) with a ``template``, giving it
 a ``name``.
 
-  .. code-block:: xml
+.. code-block:: xml
 
      <browser:page
        name="index.html"
@@ -434,7 +451,7 @@ a ``name``.
 A viewlet is **part** of a page. It also links a ``class`` up
 with a ``name`` and ``template``.
 
-  .. code-block:: xml
+.. code-block:: xml
 
      <browser:viewlet
        name="gs-group-message-topic-summary-stats"
@@ -463,10 +480,10 @@ to Chameleon_.
   code. In the following example the group-name is written into
   the ``<h1/>`` element by the ``tal:content`` attribute.
 
-  .. code-block:: xml
+    .. code-block:: xml
 
-      <h1 id="gs-group-home-h" class="fn"
-          tal:content="view/groupInfo/name">Group</h1>
+       <h1 id="gs-group-home-h" class="fn"
+           tal:content="view/groupInfo/name">Group</h1>
 
 * Within each attribute is one or more expressions that generates
   the text that is placed into the page. The Python code (the

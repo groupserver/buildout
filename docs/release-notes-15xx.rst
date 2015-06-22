@@ -142,42 +142,54 @@ To update a system running the Rakı release of GroupServer
 #.  Download the Limonchello tar-ball from `the GroupServer
     download page <http://groupserver.org/downloads>`_.
 
-#.  Uncompress the tar-ball::
+#.  Uncompress the tar-ball:
 
-      $ tar cfz groupserver-15.xx.tar.gz
+      ::
+
+        $ tar cfz groupserver-15.xx.tar.gz
 
 #.  Change to the directory that contains your existing
     GroupServer installation.
 
 #.  Add the ``profile_notification_skip`` table to the relational
-    database::
+    database:
 
-      $ psql -U {psql_user} {psql_dbname} -i \
-        eggs/gs.profile.status.base-*/gs/profile/status/base/sql/01-skip.sql
+      ::
+
+        $ psql -U {psql_user} {psql_dbname} -i \
+          eggs/gs.profile.status.base-*/gs/profile/status/base/sql/01-skip.sql
 
     Where ``{psql_user}`` and ``{psql_dbname}`` are the names of
     the PostgreSQL user and relational-database used by
     GroupServer.
 
 #.  Copy the new version-configuration files to your existing
-    GroupServer installation::
+    GroupServer installation:
 
-      $ cp ../groupserver-15.xx/[bdiv]*cfg  .
+      ::
+
+        $ cp ../groupserver-15.xx/[bdiv]*cfg  .
 
 #.  In your **existing** GroupServer installation copy the
     configuration file to its new location.
 
-    #.  Make an ``etc`` directory::
+    #.  Make an ``etc`` directory:
 
-          $ mkdir etc/
+          ::
 
-    #.  Move the configuration file to the new directory::
+            $ mkdir etc/
 
-          $ cp parts/instance/etc/gsconfig.ini etc/
+    #.  Move the configuration file to the new directory:
 
-#.  Run ``buildout`` in your existing GroupServer installation::
+          ::
 
-      $ ./bin/buildout -N
+            $ cp parts/instance/etc/gsconfig.ini etc/
+
+#.  Run ``buildout`` in your existing GroupServer installation:
+
+      ::
+
+        $ ./bin/buildout -N
 
 #.  Restart your GroupServer instance (see
     :doc:`groupserver-start`).

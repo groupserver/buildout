@@ -103,7 +103,7 @@ browser. For a trial system, the name can be set up in the
     normally the first one. For example, to add the name
     ``gstest`` change the line to the following::
 
-      127.0.0.1    localhost gstest
+        127.0.0.1    localhost gstest
 
 #. Save the ``hosts`` file.
 
