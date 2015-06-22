@@ -89,9 +89,10 @@ web hooks is exposed.
 
 #. The :program:`gs_auth_token_create` program will
 
-   * **Generate** a new token, and
+   * **Generate** a new token,
    * **Change** the value of the token in the PostgreSQL
-     database.
+     database, and
+   * **Report** the value of the token.
 
    At this point the token in the PostgreSQL database and the
    :file:`etc/gsconfig.ini` file will be different, so *all web
@@ -99,8 +100,7 @@ web hooks is exposed.
    the :program:`smtp2gs` program, which adds email messages to
    the site.
 
-#. The :program:`gs_auth_token_create` program reports the new
-   token. **Edit** :file:`etc/gsconfig.ini` and **change** the
+#. Edit the :file:`etc/gsconfig.ini` file and **change** the
    ``token`` parameter in the ``webservice`` section. **Save**
    the file. All web hooks will be running again. No restart of
    GroupServer is necessary to change the token.
@@ -111,7 +111,6 @@ web hooks is exposed.
 
 .. _The documentation at Read the Docs:
      http://groupserver.readthedocs.org/projects/gsauthtoken/en/latest/script.html
-
 
 -----------------
 Group information
