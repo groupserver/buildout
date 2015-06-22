@@ -4,7 +4,7 @@ Configuring :command:`postfix`
 
 :Authors: `Michael JasonSmith`_; `Fabien Hespul`_
 :Contact: Michael JasonSmith <mpj17@onlinegroups.net>
-:Date: 2015-06-19
+:Date: 2015-06-22
 :Organization: `GroupServer.org`_
 :Copyright: This document is licensed under a
   `Creative Commons Attribution-Share Alike 4.0 International License`_
@@ -56,7 +56,7 @@ been built.
 
 .. _smtp2gs: http://github.com/groupserver/gs.group.messages.add.smtp2gs
 
-.. Seealso:: `The Ubuntu Community Postfix Documentation`_ is
+.. seealso:: `The Ubuntu Community Postfix Documentation`_ is
              useful if you are new to administering Postfix.
 
 .. _The Ubuntu Community Postfix Documentation:
@@ -75,9 +75,9 @@ Ubuntu.
 #.  Copy the configuration files from the GroupServer
     installation into the Postfix configuration directory.
 
-    .. code-block:: console
+      .. code-block:: console
 
-      # cp postfix_config/groupserver.* /etc/postfix
+        # cp postfix_config/groupserver.* /etc/postfix
 
 #.  Change the ownership of the files to root:
 
@@ -90,9 +90,9 @@ Ubuntu.
     the following will display the user-name of the Postfix
     user.
 
-    .. code-block:: console
+      .. code-block:: console
 
-      $ /usr/sbin/postconf | grep default_privs | cut -f3 -d" "
+        $ /usr/sbin/postconf | grep default_privs | cut -f3 -d" "
 
 #.  Open the file :file:`/etc/postfix/main.cf` in a text editor.
 
@@ -104,9 +104,9 @@ Ubuntu.
        the end of the ``alias_maps`` line. Use a comma to
        separate the new item from any existing items. For example
 
-       .. code-block:: cfg
+         .. code-block:: cfg
 
-          alias_maps = hash:/etc/aliases,hash:/etc/postfix/groupserver.aliases
+            alias_maps = hash:/etc/aliases,hash:/etc/postfix/groupserver.aliases
 
    #.  Find the line that begins with ``alias_database``.
 
@@ -115,9 +115,9 @@ Ubuntu.
        separate the new item from any existing items. For
        example
 
-       .. code-block:: cfg
+         .. code-block:: cfg
 
-          alias_database = hash:/etc/aliases,hash:/etc/postfix/groupserver.aliases
+            alias_database = hash:/etc/aliases,hash:/etc/postfix/groupserver.aliases
 
 #. Update the virtual alias.
 
@@ -127,30 +127,38 @@ Ubuntu.
    #. Add the item ``hash:/etc/postfix/groupserver.virtual`` to
       the end of the ``virtual_alias_maps`` line. For example
 
-      .. code-block:: cfg
+        .. code-block:: cfg
 
-         virtual_alias_maps = hash:/etc/postfix/groupserver.virtual
+           virtual_alias_maps = hash:/etc/postfix/groupserver.virtual
 
 #.  Add the following to the bottom of the :file:`main.cf` file,
     unless it is previously defined
 
-    .. code-block:: cfg
+      .. code-block:: cfg
 
-       smtpd_authorized_verp_clients = 127.0.0.1,localhost
+         smtpd_authorized_verp_clients = 127.0.0.1,localhost
 
 #.  Generate the Postfix hashes by running :command:`postmap` and
     :command:`postalias`:
 
-    .. code-block:: console
+      .. code-block:: console
 
-      # postmap /etc/postfix/groupserver.virtual
-      # postalias /etc/postfix/groupserver.aliases
+        # postmap /etc/postfix/groupserver.virtual
+        # postalias /etc/postfix/groupserver.aliases
 
 #.  Restart :command:`Postfix` using :command:`service`:
 
-    .. code-block:: console
+      .. code-block:: console
 
-      # service postfix restart
+        # service postfix restart
+
+.. seealso:: More information about the GroupServer
+             :program:`smtp2gs` command — including optional
+             arguments, return values, and examples — is
+             available from `the smtp2gs documentation.`_
+
+.. _the smtp2gs documentation.: http://groupserver.readthedocs.org/projects/gsgroupmessagesaddsmtp2gs/en/latest/script.html
+
 
 .. _GroupServer: http://groupserver.org/
 .. _GroupServer.org: http://groupserver.org/
