@@ -2,7 +2,7 @@
 Connecting external systems
 ===========================
 
-:Authors: `Michael JasonSmith`_;
+:Authors: `Michael JasonSmith`_; `Eugene Guilaran`_;
 :Contact: Michael JasonSmith <mpj17@onlinegroups.net>
 :Date: 2015-06-19
 :Organization: `GroupServer.org`_
@@ -332,6 +332,7 @@ from the site.
 .. _The documentation for the Leave group web-hook:
    http://groupserver.readthedocs.org/projects/gsgroupmemberleavejson/en/latest/hook.html
 
+..  _Eugene Guilaran: http://www.euge.com/
 ..  _GroupServer: http://groupserver.org/
 ..  _GroupServer.org: http://groupserver.org/
 ..  _OnlineGroups.Net: https://onlinegroups.net/
