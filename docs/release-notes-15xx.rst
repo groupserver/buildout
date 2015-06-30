@@ -198,16 +198,19 @@ To update a system running the Rakı release of GroupServer
     GroupServer installation.
 
 #.  Add the ``profile_notification_skip`` table to the relational
-    database:
+    database. Download `the SQL definition of the table`_ and
+    execute the SQL using the following command:
 
       ::
 
-        $ psql -U {psql_user} {psql_dbname} -i \
-          eggs/gs.profile.status.base-*/gs/profile/status/base/sql/01-skip.sql
+        $ psql -U {psql_user} {psql_dbname} -i {filename}
 
     Where ``{psql_user}`` and ``{psql_dbname}`` are the names of
     the PostgreSQL user and relational-database used by
-    GroupServer.
+    GroupServer (as recorded in :file:`config.cfg`, see
+    :doc:`groupserver-install`). The final argument is the name
+    of the SQL file you downloaded (probably
+    :file:`01-skip.sql`).
 
 #.  Copy the new version-configuration files to your existing
     GroupServer installation:
@@ -239,6 +242,9 @@ To update a system running the Rakı release of GroupServer
 
 #.  Restart your GroupServer instance (see
     :doc:`groupserver-start`).
+
+.. _the SQL definition of the table:
+  https://raw.githubusercontent.com/groupserver/gs.profile.status.base/master/gs/profile/status/base/sql/01-skip.sql
 
 ---------
 Resources
