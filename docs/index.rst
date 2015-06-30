@@ -16,6 +16,11 @@ GroupServer Documentation
    groupserver-uninstall
    release-notes
 
+.. toctree::
+   :hidden:
+
+   README-buildout
+
 Resources
 =========
 
