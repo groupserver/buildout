@@ -4,7 +4,7 @@ GroupServer 15.xx — Limonchello to ward off summer
 
 :Authors: `Michael JasonSmith`_;
 :Contact: Michael JasonSmith <mpj17@onlinegroups.net>
-:Date: 2015-04-24
+:Date: 2015-06-30
 :Organization: `GroupServer.org`_
 :Copyright: This document is licensed under a
   `Creative Commons Attribution-Share Alike 4.0 International
@@ -20,15 +20,17 @@ Introduction
 ------------
 
 The major `changes to GroupServer`_ in the Limonchello release
-include XXX.  You can `get Limonchello`_ immediately.
+include better notifications, and more ways to connect with other
+systems.  You can `get Limonchello`_ immediately.
 
 ----------------------
 Changes to GroupServer
 ----------------------
 
-Limonchello includes an `updated topic digest`_, a `profile
-status notification`_, and `web hooks`_. Finally, there have been
-some `minor improvements`_.
+Limonchello includes an `updated topic digest`_, a new `profile
+status notification`_, new `web hooks`_, `updated member
+management`_, and more `code documentation`_. Finally, there have
+been some `minor improvements`_.
 
 Updated topic digest
 ====================
@@ -54,6 +56,11 @@ The :program:`sendigest` command, which is run once a day by
 :program:`cron` to send the digests, has also been updated. It is
 now faster, and now has a ``--verbose`` option for producing
 verbose output, including a percentage-progress indicator.
+
+Because the new `profile status notification`_ reminds people
+that they are in groups the **weekly** topic digest, which was
+sent when there was no activity in a group for a week, is no
+longer sent.
 
 Profile status notification
 ===========================
@@ -113,6 +120,30 @@ Implementing the web-hooks closes `Issue 262`_.
    http://groupserver.readthedocs.org/projects/gsgroupmemberleavejson/en/latest/hook.html
 .. _Issue 262: https://redmine.iopen.net/issues/262
 
+Updated member management
+=========================
+
+The *Manage members* page has been updated to make it easier to use.
+
+* 48 people are now shown on every page, rather than just 20
+* The *Manage **many** members* page is now shown when there is
+  more than 48 members in a group, rather than 127.
+* The list of people on the *Manage many members* page is now
+  sorted by name
+
+Code documentation
+==================
+
+The documentation for the low-level system continues to improve
+in the Limonchello release. Many system now how documentation
+available on `Read the Docs`_, including all the scrips that are
+generated during installation. The document components of
+GroupServer are listed as `sub-projects of GroupServer`_ on Read
+the Docs.
+
+.. _Read the Docs: https://readthedocs.org/
+.. _sub-projects of GroupServer:
+   https://readthedocs.org/projects/groupserver/
 
 Minor improvements
 ==================
