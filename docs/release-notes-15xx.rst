@@ -28,9 +28,10 @@ Changes to GroupServer
 ----------------------
 
 Limonchello includes an `updated topic digest`_, a new `profile
-status notification`_, new `web hooks`_, `updated member
-management`_, and more `code documentation`_. Finally, there have
-been some `minor improvements`_.
+status notification`_, the introduction of `restricted groups`_,
+`updated member management`_, new `web hooks`_, and more `code
+documentation`_. Finally, there have been some `minor
+improvements`_.
 
 Updated topic digest
 ====================
@@ -85,6 +86,43 @@ The creation of a profile status notification closes `Feature
 
 .. _Feature 370: https://redmine.iopen.net/issues/370
 
+Restricted groups
+=================
+
+A new privacy level has been added to GroupServer in the
+Limonchello release: restricted groups. Everyone that is a member
+of the **site** can see a restricted group, and the posts within
+it. It joins the three existing privacy levels:
+
+* Public, where the group and posts are shown to everyone,
+* Private, where only group-members can see the posts, and
+* Secret, where only members can see the group and posts.
+
+The different privacy levels can be set from the *Change privacy*
+page, linked from the *Admin* area of the group page.
+  
+Allowing the restricted group-type to be set closes `Feature
+4169`_.
+
+.. _Feature 4169: https://redmine.iopen.net/issues/4169
+
+Configurable :mailheader:`reply-to`
+===================================
+
+In the Rakı release of GroupServer the 
+
+
+Updated member management
+=========================
+
+The *Manage members* page has been updated to make it easier to use.
+
+* 48 people are now shown on every page, rather than just 20
+* The *Manage **many** members* page is now shown when there is
+  more than 48 members in a group, rather than 127.
+* The list of people on the *Manage many members* page is now
+  sorted by name
+
 Web hooks
 =========
 
@@ -119,17 +157,6 @@ Implementing the web-hooks closes `Issue 262`_.
 .. _Remove:
    http://groupserver.readthedocs.org/projects/gsgroupmemberleavejson/en/latest/hook.html
 .. _Issue 262: https://redmine.iopen.net/issues/262
-
-Updated member management
-=========================
-
-The *Manage members* page has been updated to make it easier to use.
-
-* 48 people are now shown on every page, rather than just 20
-* The *Manage **many** members* page is now shown when there is
-  more than 48 members in a group, rather than 127.
-* The list of people on the *Manage many members* page is now
-  sorted by name
 
 Code documentation
 ==================
