@@ -56,8 +56,9 @@ Minor fixes in Soft Serve include the following.
 
 * If a member with a single unverified address resets a password then
   that address will become verified [#Verify]_.
-* The ``Reply-to`` address of an invitation is now set to the address 
-  of the administrator who issued the invitation [#ReplyTo]_.
+* The :mailheader:`Reply-to` address of an invitation is now set
+  to the address of the administrator who issued the invitation
+  [#ReplyTo]_.
 * Only posting members of an announcement group are shown a link to
   start a topic [#StartTopic]_.
 * The name of the initial GroupServer instance and GroupServer site have
@@ -155,10 +156,11 @@ Footnotes
    reset closes
    `Ticket 480 <https://redmine.iopen.net/issues/480>`_.
 
-.. [#ReplyTo] Prior to Soft Serve, the ``Reply-to`` address was set to 
-   the email address of the site support. Setting the ``Reply-to`` to
-   the address of the administrator that issued the invitation closes
-   `Ticket 681 <https://redmine.iopen.net/issues/681>`_.
+.. [#ReplyTo] Prior to Soft Serve, the :mailheader:`Reply-to`
+   address was set to the email address of the site
+   support. Setting the :mailheader:`Reply-to` to the address of the
+   administrator that issued the invitation closes `Ticket 681
+   <https://redmine.iopen.net/issues/681>`_.
 
 .. [#StartTopic] In an announcement group there is a distinction between
    group members that post (*posting members*) and members that just

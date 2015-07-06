@@ -57,8 +57,9 @@ message, and at the bottom the *file notifications* and the
 
 The **headers** have been refactored to be more extensible. It is
 now easy to add to the headers, and to change the behaviour of a
-header. The ``Reply-to`` header, in particular, has changed to
-allow the default behaviour of a group to change between
+header. The :mailheader:`Reply-to` header, in particular, has
+changed to allow the default behaviour of a group to change
+between
 
 * Reply to the group,
 * Reply to the original author, and
