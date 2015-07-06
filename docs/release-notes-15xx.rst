@@ -4,7 +4,7 @@ GroupServer 15.xx — Limonchello to ward off summer
 
 :Authors: `Michael JasonSmith`_;
 :Contact: Michael JasonSmith <mpj17@onlinegroups.net>
-:Date: 2015-06-30
+:Date: 2015-07-06
 :Organization: `GroupServer.org`_
 :Copyright: This document is licensed under a
   `Creative Commons Attribution-Share Alike 4.0 International
@@ -106,22 +106,31 @@ Allowing the restricted group-type to be set closes `Feature
 
 .. _Feature 4169: https://redmine.iopen.net/issues/4169
 
-Configurable :mailheader:`reply-to`
+Configurable :mailheader:`Reply-to`
 ===================================
 
-In the Rakı release of GroupServer the 
+The :mailheader:`Reply-to` header for posts sent from a group can
+now be easily configured — using the *Reply to* property on the
+*General group properties* page, which is linked from the *Admin*
+section of the group page. In the Rakı release of we added the
+ability for GroupServer to change the :mailheader:`Reply-to`
+header to the email address of author of the post, the group, or
+both (see :doc:`release-notes-1503`). However, there was never an
+easy way to change what the value should be. Adding this ability
+closes `Feature 4051`_.
 
+.. _Feature 4051: https://redmine.iopen.net/issues/4051
 
 Updated member management
 =========================
 
 The *Manage members* page has been updated to make it easier to use.
 
-* 48 people are now shown on every page, rather than just 20
-* The *Manage **many** members* page is now shown when there is
+* 48 people are now shown on every page, rather than just 20.
+* The *Manage many members* page is now shown when there is
   more than 48 members in a group, rather than 127.
 * The list of people on the *Manage many members* page is now
-  sorted by name
+  sorted by name.
 
 Web hooks
 =========
