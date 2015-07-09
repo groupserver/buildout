@@ -46,24 +46,27 @@ your GroupServer installation first you must `update the
 GroupServer configuration`_ and then `add a virtual host to
 Apache`_ or `Add a virtual host to nginx`_.
 
+.. _GroupServer Name:
+
 Update the GroupServer configuration
 ------------------------------------
 
 If you used a host such as ``gstest`` to try out GroupServer then
 you will need to update the configuration for GroupServer itself.
 
-#.  Visit the ZMI for your site. Log in if necessary.
+#.  Log into the ZMI (see :ref:`ZMI Login`).
 
-#.  Visit the folder
-    :guilabel:`/groupserver/Content/initial_site/`.
+#.  Visit the folder for your site at
+    :menuselection:`groupserver --> Contents --> initial_site`.
 
-#.  Open the ``DivisionConfiguration``.
+#.  Open the :guilabel:`DivisionConfiguration` object.
 
-#.  Set the ``canonicalHost`` to the domain for your new site.
+#.  Set the :guilabel:`canonicalHost` to the domain for your new
+    site.
 
-#.  Set the ``canonicalPort`` to ``80``.
+#.  Set the :guilabel:`canonicalPort` to ``80``.
 
-#.  Click the ``Save Changes`` button.
+#.  Click the :guilabel:`Save Changes` button.
 
 Add a virtual host to Apache
 ----------------------------
@@ -226,6 +229,15 @@ In the case of Apache the rewrite rule would look like the following
 Secure connections: TLS, SSL, and HTTPS
 =======================================
 
+Setting up a secure connection is done in two stages. First you
+:ref:`set up your proxy <proxy HTTPS>`, then you :ref:`configure
+GroupServer <GroupServer HTTPS>`.
+
+.. _proxy HTTPS:
+
+Update the proxy configuration
+------------------------------
+
 Establishing a secure connection is done by the proxy rather than
 GroupServer itself. The proxy should still listen to port 80
 (HTTP) and make a permanent redirect to the secure site by
@@ -268,13 +280,32 @@ when you `add a virtual host`_, but
 
 You can `change the skin`_ in the rewrite rule, just like before.
 
+.. _GroupServer HTTPS:
+
+Update the GroupServer configuration
+------------------------------------
+
+GroupServer should use ``https`` links in email messages and in
+the :guilabel:`Share` button [#web]_, to prevent potential
+attacks. To do this carry out the following tasks.
+
+#.  Log into the ZMI (see :ref:`ZMI Login`).
+#.  Visit the folder for your site at
+    :menuselection:`groupserver --> Contents --> initial_site`.
+#.  Select the :guilabel:`DivisionConfiguration` object.
+#.  Set the :guilabel:`canonicalPort` to ``443``.
+#.  Select the :guilabel:`useHTTPS` check-box (the one to the
+    right, sorry it *is* confusing).
+#.  Click the :guilabel:`Save Changes` button.
+
 .. [#domain] Acquiring and configuring a new domain is out of the
              scope for this documentation. However, you want the
              A-record for your new domain to point to the IP of
              your GroupServer site, and the MX-record to also
              point at your new site.
 
-.. [#port] Leave the port set to ``8080``.
+.. [#web] On the web GroupServer normally uses links without a
+          specified protocol.
 
 ..  _GroupServer: http://groupserver.org/
 ..  _GroupServer.org: http://groupserver.org/

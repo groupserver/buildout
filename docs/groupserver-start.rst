@@ -2,7 +2,7 @@
 Starting and stopping GroupServer
 =================================
 
-:Authors: `Michael JasonSmith`_; `Richard Waid`_; 
+:Authors: `Michael JasonSmith`_; `Richard Waid`_;
 :Contact: Michael JasonSmith <mpj17@onlinegroups.net>
 :Date: 2015-03-31
 :Organization: `GroupServer.org`_
@@ -32,7 +32,7 @@ Trying out GroupServer
 ======================
 
 The first time you fire-up GroupServer it is reassuring to see
-all the debugging information, in case there is an error. 
+all the debugging information, in case there is an error.
 
 Starting GroupServer for the first time
 ---------------------------------------
@@ -44,6 +44,8 @@ it with the command in the GroupServer installation directory::
 
 This starts the Zope_ instance, which runs GroupServer, in
 *foreground* mode.
+
+.. _ZMI Login:
 
 Access the ZMI
 --------------

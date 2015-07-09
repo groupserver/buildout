@@ -100,7 +100,7 @@ it. It joins the three existing privacy levels:
 
 The different privacy levels can be set from the *Change privacy*
 page, linked from the *Admin* area of the group page.
-  
+
 Allowing the restricted group-type to be set closes `Feature
 4169`_.
 
@@ -198,9 +198,13 @@ Minor improvements
   notification has been fixed.
 * The scripts that use web hooks now handle 301 redirects
   correctly, closing `Bug 4162`_.
+* Links in email messages can now use ``https://`` as the
+  protocol, closing `Bug 4171`_. For more information see
+  :ref:`secure connections`.
 
 .. _Issue 4156: https://redmine.iopen.net/issues/4156
 .. _Bug 4162: https://redmine.iopen.net/issues/4162
+.. _Bug 4171: https://redmine.iopen.net/issues/4171
 
 ---------------
 Get Limonchello
