@@ -282,8 +282,8 @@ You can `change the skin`_ in the rewrite rule, just like before.
 
 .. _GroupServer HTTPS:
 
-Update the GroupServer configuration
-------------------------------------
+Update GroupServer
+------------------
 
 GroupServer should use ``https`` links in email messages and in
 the :guilabel:`Share` button [#web]_, to prevent potential
