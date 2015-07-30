@@ -31,6 +31,8 @@ have been further `improvements to internationalisation`_, and
 the introduction of `message relaying`_. Finally, there have been
 some `minor code improvements`_.
 
+.. _rebuilt email processing:
+
 Email processing
 ================
 

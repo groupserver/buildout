@@ -4,7 +4,7 @@ GroupServer 15.xx — Limonchello to ward off summer
 
 :Authors: `Michael JasonSmith`_;
 :Contact: Michael JasonSmith <mpj17@onlinegroups.net>
-:Date: 2015-07-06
+:Date: 2015-07-30
 :Organization: `GroupServer.org`_
 :Copyright: This document is licensed under a
   `Creative Commons Attribution-Share Alike 4.0 International
@@ -20,38 +20,74 @@ Introduction
 ------------
 
 The major `changes to GroupServer`_ in the Limonchello release
-include better notifications, and more ways to connect with other
-systems.  You can `get Limonchello`_ immediately.
+include HTML formatting of posts, better notifications, and more
+ways to connect with other systems.  You can `get Limonchello`_
+immediately.
 
 ----------------------
 Changes to GroupServer
 ----------------------
 
-Limonchello includes an `updated topic digest`_, a new `profile
-status notification`_, the introduction of `restricted groups`_,
-`updated member management`_, new `web hooks`_, and more `code
+The most visible change to GroupServer in this release is `HTML
+formatting in posts`_. Limonchello also includes an `updated
+topic digest`_, a new `profile status notification`_, the
+introduction of `restricted groups`_, `updated member
+management`_, new `web hooks`_, and more `code
 documentation`_. Finally, there have been some `minor
 improvements`_.
+
+HTML formatting in posts
+========================
+
+With the Limonchello release GroupServer now will format email
+messages from a group using HTML — in addition to sending a
+plain-text version of the message. The HTML form of the message
+includes additional metadata about the post:
+
+* The profile image of the person who made the post,
+* The name of the person who made the post, and a link to their
+  profile,
+* A link to the topic that the post belongs to,
+* The full name of the group, and a link to the group, and
+* A link that makes it easy to leave the group.
+
+The HTML version of the email is generated from the **plain
+text** version of the post. However, the post is formatted in
+much the same way as the post on the web: text in ``*asterisks*``
+is made bold, quoted text is muted, and people can click on email
+addresses, URLs, and site names.
+
+Sending a HTML formatted message based on a plain-text email
+closes `Feature 4160`_.
+
+.. note::
+
+   We hope to generate the HTML form of an email from the submitted
+   HTML in a future version of GroupServer. This task is tracked in
+   `Feature 3676`_.
+
+.. _Feature 3676: https://redmine.iopen.net/issues/3676
+.. _Feature 4160: https://redmine.iopen.net/issues/4160
 
 Updated topic digest
 ====================
 
 Group members can opt to receive a *daily topic digest* from a
 group — rather than getting an email message every time someone
-posts. The look of the digest, and the tools for sending the
-digests have been significantly updated.
+posts. The Limonchello release includes significantly updates to
+the look of the digest, and the tools for sending the digests.
 
-The topic digest now includes photos of the most recent person to
-post to each topic. It is easier to
+* The digests look like standard email notification, closing
+  `Feature 3985`_.
 
-* Find the group from the digest,
-* Post to a new topic, and
-* Change your email settings.
+* The digest now includes a photo of the most recent person to
+  post to each topic.
 
-The digests also look like standard email notifications, closing
-`Feature 3985`_.
+* It is now easier to
 
-.. _Feature 3985: https://redmine.iopen.net/issues/3985
+  + Find the group from the digest,
+  + Post to a new topic, and
+  + Change your email settings.
 
 The :program:`sendigest` command, which is run once a day by
 :program:`cron` to send the digests, has also been updated. It is
@@ -63,6 +99,8 @@ that they are in groups the **weekly** topic digest, which was
 sent when there was no activity in a group for a week, is no
 longer sent.
 
+.. _Feature 3985: https://redmine.iopen.net/issues/3985
+
 Profile status notification
 ===========================
 
@@ -71,15 +109,15 @@ reminds people about their profile status, what groups they are
 in, and encourages the group members to enhance their
 profiles. The new *What is going on in your groups* notification
 is designed to be sent out once a month (towards the start of
-every month), and includes a new :program:`sendprofile` command —
-which works much like the :program:`senddigest` command that
-sends out the daily digest of topics (see :doc:`cron` for more
-information).
+every month). The system includes a new :program:`sendprofile`
+command — which works much like the :program:`senddigest` command
+that sends out the daily digest of topics (see :doc:`cron` for
+more information).
 
-There is also two new email-commands: ``Status off`` and ``Status
-on``. The former records that the person wishes to stop receiving
-the monthly summary, the latter turns it on. Both work for a
-*support* group.
+There are also two new email-commands: ``Status off`` and
+``Status on``. The former records that the person wishes to stop
+receiving the monthly summary, the latter turns it on. Both work
+for a *support* group.
 
 The creation of a profile status notification closes `Feature
 370`_.
@@ -90,9 +128,9 @@ Restricted groups
 =================
 
 A new privacy level has been added to GroupServer in the
-Limonchello release: restricted groups. Everyone that is a member
-of the **site** can see a restricted group, and the posts within
-it. It joins the three existing privacy levels:
+Limonchello release: *restricted groups.* Everyone that is a
+member of the **site** can see a restricted group, and the posts
+within it. It joins the three existing privacy levels:
 
 * Public, where the group and posts are shown to everyone,
 * Private, where only group-members can see the posts, and
@@ -115,9 +153,9 @@ now be easily configured — using the *Reply to* property on the
 section of the group page. In the Rakı release of we added the
 ability for GroupServer to change the :mailheader:`Reply-to`
 header to the email address of author of the post, the group, or
-both (see :doc:`release-notes-1503`). However, there was never an
-easy way to change what the value should be. Adding this ability
-closes `Feature 4051`_.
+both (see :ref:`rebuilt email processing`). However, there was
+never an easy way to change what the value should be. Adding this
+ability closes `Feature 4051`_.
 
 .. _Feature 4051: https://redmine.iopen.net/issues/4051
 
@@ -171,7 +209,7 @@ Code documentation
 ==================
 
 The documentation for the low-level system continues to improve
-in the Limonchello release. Many system now how documentation
+in the Limonchello release. Many system now have documentation
 available on `Read the Docs`_, including all the scrips that are
 generated during installation. The document components of
 GroupServer are listed as `sub-projects of GroupServer`_ on Read
@@ -184,8 +222,8 @@ the Docs.
 Minor improvements
 ==================
 
-* Email notifications should render better in IBM Notes and
-  Microsoft Outlook.
+* Email notifications should render better in IBM Notes, and
+  Microsoft Outlook on Windows.
 * Some memory leaks have been fixed.
 * The rewriting of the ``Subject`` of an email message when the
   post has been forwarded from another group has been fixed.
