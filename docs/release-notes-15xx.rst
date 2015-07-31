@@ -32,9 +32,9 @@ The most visible change to GroupServer in this release is `HTML
 formatting in posts`_. Limonchello also includes an `updated
 topic digest`_, a new `profile status notification`_, the
 introduction of `restricted groups`_, `updated member
-management`_, new `web hooks`_, and more `code
-documentation`_. Finally, there have been some `minor
-improvements`_.
+management`_, new `web hooks`_, more `code documentation`_, and
+an improved `German translation of GroupServer`_. Finally, there
+have been some `minor improvements`_.
 
 HTML formatting in posts
 ========================
@@ -204,6 +204,12 @@ Implementing the web-hooks closes `Issue 262`_.
 .. _Remove:
    http://groupserver.readthedocs.org/projects/gsgroupmemberleavejson/en/latest/hook.html
 .. _Issue 262: https://redmine.iopen.net/issues/262
+
+German translation of GroupServer
+=================================
+
+Far more of the GroupServer user-interface has been translated
+into German, thanks to the diligent work of Cousin Clara.
 
 Code documentation
 ==================
