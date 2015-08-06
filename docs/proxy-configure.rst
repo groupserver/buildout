@@ -74,7 +74,7 @@ Add a virtual host to Apache
 To add a virtual host to Apache carry out the following steps.
 
 #.  Ensure the ``rewrite``, ``proxy``, and ``proxy_httpd``
-    modules are enabled in Aapache:
+    modules are enabled in Apache:
 
       .. code-block:: console
 
@@ -119,7 +119,7 @@ To add a virtual host to Apache carry out the following steps.
       .. code-block:: console
 
         # cd /etc/apache2/sites-enabled/
-        # ln -s ../groupserver 100-groupserver
+        # ln -s ../sites-available/groupserver 100-groupserver
 
 #.  Restart Apache using :command:`service`
 
@@ -174,7 +174,7 @@ text-editor.
       .. code-block:: console
 
         # cd /etc/nginx/sites-enabled/
-        # ln -s 100-groupserver ../groupserver
+        # ln -s ../sites-available/groupserver 100-groupserver
 
 #.  Reload the nginx configuration using :command:`service`:
 
