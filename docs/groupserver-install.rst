@@ -5,7 +5,7 @@ GroupServer installation
 :Authors: `Michael JasonSmith`_; `Richard Waid`_; `Marek Kuziel`_;
           `Alice Rose`_; `Dan Randow`_
 :Contact: Michael JasonSmith <mpj17@onlinegroups.net>
-:Date: 2015-03-27 (see `History`_)
+:Date: 2015-08-17 (see `History`_)
 :Organization: `GroupServer.org`_
 :Copyright: This document is licensed under a
   `Creative Commons Attribution-Share Alike 4.0 International License`_
@@ -44,7 +44,7 @@ Quick start
 #.  Enable prepared transaction support in PostgreSQL (see `Configure
     PostgreSQL`_).
 
-#.  Run the following (see `Run the Installer`_):
+#.  Run the following (see `Run the installer`_):
 
       .. code-block:: console
 
@@ -87,7 +87,7 @@ packages **before** you `run the installer`_.
    SMTP. The data is stored in a variety of locations.
 
 Setting up GroupServer is done in four steps: first `pick a host name`_,
-then `configure GroupServer`_, `run the Installer`_ to install the
+then `configure GroupServer`_, `run the installer`_ to install the
 system, and finally `start Zope`_.
 
 Pick a host name
@@ -130,15 +130,15 @@ You will need to check all the configuration for your initial site.
 ``admin_email``
   When GroupServer is installed, an example site and group are
   created. So you can use the administration functions you must
-  log in as an administrator. This is the email address of that
+  sign in as an administrator. This is the email address of that
   administrator. Posts to the example group will be sent to the
   administrator at this address. This email address **must**
   work.
 
 ``admin_password``
-  The password of the administrator of the new GroupServer site. The
-  password will be used to log in, and can be changed after the site has
-  been created.
+  The password of the administrator of the new GroupServer
+  site. The password will be used to sign in, and can be changed
+  after the site has been created.
 
 ``support_email`` The email address where support messages are
   sent, and were email notifications are send from. For testing
@@ -264,30 +264,36 @@ installer ensures that the `set up`_ is correct.
               installer.
 
 The rest of the installation process should be completely
-automatic. The system will create a *sandbox* for your
-GroupServer site, with its own version of Python, placed in
-``./bin/``. It will then configure the PostgreSQL databases that
-store the data for your site. Finally, it will start the buildout
-[#buildout]_ system that will **download** and install all the
-requirements for GroupServer (around 47MB of packages) including:
+automatic.
 
-* `eGenix.com mx Base`_ (4.4MB)
-* `SQL Alchemy`_ (3.9MB)
-* lxml_ (3.4MB)
-* Pillow_ (2.4MB)
-* `Zope 2.13`_ (1.4MB)
+* The system will create a *sandbox* for your GroupServer site,
+  with its own version of Python, placed in ``./bin/``.
+
+* It will then configure the PostgreSQL databases that store the
+  data for your site.
+
+* Finally, it will start the buildout [#buildout]_ system that
+  will **download** and install all the requirements for
+  GroupServer (around 47MB of packages) including:
+
+  + `eGenix.com mx Base`_ (4.4MB)
+  + `SQL Alchemy`_ (3.9MB)
+  + lxml_ (3.4MB)
+  + Pillow_ (2.4MB)
+  + `Zope 2.13`_ (1.4MB)
+
+  You need a functioning network connection to download the
+  GroupServer requirements.
+
+It is a good idea to make a cup of coffee, or go to lunch, while
+buildout processes. The log file for the install will be written
+to ``parts/log/{year}-{month}-{day}.{n}.log``.
 
 .. _eGenix.com mx Base: http://www.egenix.com/products/python/mxBase
 .. _SQL Alchemy: http://www.sqlalchemy.org/
 .. _lxml: http://lxml.de/
 .. _Pillow: https://pypi.python.org/pypi/Pillow/
 .. _Zope 2.13: http://docs.zope.org/zope2/releases/2.13/
-
-.. note:: You need a functioning network connection to download
-          the packages.
-
-It is a good idea to make a cup of coffee, or go to lunch, while
-buildout processes.
 
 .. _centos-install:
 
@@ -423,7 +429,8 @@ History
 ======= ==========  ====================================================
 Version Date        Change
 ======= ==========  ====================================================
-15.xx   2015-06-19  Updating the Sphinx markup
+15.xx   2015-08-17  Updating the Sphinx markup, and mentioning the log
+                    files
 15.03   2015-03-27  Updating the CentOS install instructions.
 15.03   2015-03-25  Making a note about PostgreSQL 9 on CentOS and RHEL.
 15.03   2015-03-06  Moving the *Dependencies* and *Download* sections to
