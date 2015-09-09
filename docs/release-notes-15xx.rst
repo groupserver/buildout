@@ -44,18 +44,26 @@ messages from a group using HTML — in addition to sending a
 plain-text version of the message. The HTML form of the message
 includes additional metadata about the post:
 
-* The profile image of the person who made the post,
+* The profile image of the person who made the post
+* The name of the topic that the post belongs to
 * The name of the person who made the post, and a link to their
-  profile,
-* A link to the topic that the post belongs to,
-* The full name of the group, and a link to the group, and
-* A link that makes it easy to leave the group.
+  profile
+* The full name of the group, and a link to the group
+* Links that make it easy to
+
+  + Reply to the post
+  + Start a new topic
+  + View the topic on the web
+  + Leave the group
+  + Switch to a daily digest of topics
 
 The HTML version of the email is generated from the **plain
 text** version of the post. However, the post is formatted in
 much the same way as the post on the web: text in ``*asterisks*``
-is made bold, quoted text is muted, and people can click on email
-addresses, URLs, and site names.
+is made bold, quoted text (``> like this``) is muted, and people
+can click on email addresses, URLs, and site names. Attachments
+are still stripped, and replaced with links to the files on the
+web.
 
 Sending a HTML formatted message based on a plain-text email
 closes `Feature 4160`_.
