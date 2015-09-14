@@ -304,6 +304,9 @@ To update a system running the Rakı release of GroupServer
     of the SQL file you downloaded (probably
     :file:`01-skip.sql`).
 
+.. Use Alembic?
+.. https://alembic.readthedocs.org/en/latest/
+
 #.  Copy the new version-configuration files to your existing
     GroupServer installation:
 
