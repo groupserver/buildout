@@ -236,23 +236,28 @@ the Docs.
 Minor improvements
 ==================
 
-* Email notifications should render better in IBM Notes, and
-  Microsoft Outlook on Windows.
-* Some memory leaks have been fixed.
-* The rewriting of the ``Subject`` of an email message when the
+* Email notifications should render better in **IBM Notes,** and
+  **Microsoft Outlook** on Windows.
+* Some **memory leaks** have been fixed.
+* The rewriting of **the Subject** of an email message when the
   post has been forwarded from another group has been fixed.
-* YouTube and Vimeo videos are now embedded using ``<iframe>``
-  elements.
-* The WAI-AIRA roles have been improved, closing `Issue 4156`_.
+* **YouTube** and **Vimeo** videos are now embedded in posts in
+  the archive using ``<iframe>`` elements.
+* The **WAI-AIRA** roles have been improved, closing `Issue 4156`_.
 * An error with a link in the *Unknown email address*
   notification has been fixed.
 * An error with a link to the profile from the *Member has left*
   notification has been fixed.
-* The scripts that use web hooks now handle 301 redirects
+* The scripts that use web hooks now handle **301 redirects**
   correctly, closing `Bug 4162`_.
-* Links in email messages can now use ``https://`` as the
-  protocol, closing `Bug 4171`_. For more information see
-  :ref:`secure connections`.
+* Links in email messages can now **use TLS as the protocol**
+  (``https://``) closing `Bug 4171`_. For more information see
+  the document for :ref:`secure connections`.
+* Email notifications now use *Hello* as the **opening
+  salutation,** rather than *Dear.*
+* A fix for an incorrect **link to Support** in the *Welcome*
+  message that is sent when someone is added to a group has been
+  added.
 
 .. _Issue 4156: https://redmine.iopen.net/issues/4156
 .. _Bug 4162: https://redmine.iopen.net/issues/4162
