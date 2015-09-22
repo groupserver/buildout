@@ -258,6 +258,8 @@ Minor improvements
 * A fix for an incorrect **link to Support** in the *Welcome*
   message that is sent when someone is added to a group has been
   added.
+* A problem with ``mailto`` links that set a
+  :mailheader:`Subject` failing in Google GMail has been fixed.
 
 .. _Issue 4156: https://redmine.iopen.net/issues/4156
 .. _Bug 4162: https://redmine.iopen.net/issues/4162
