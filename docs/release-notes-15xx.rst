@@ -260,6 +260,8 @@ Minor improvements
   added.
 * A problem with ``mailto`` links that set a
   :mailheader:`Subject` failing in Google GMail has been fixed.
+* The **Rest of post** section of a message on the *Post* page is
+  now open by default.
 
 .. _Issue 4156: https://redmine.iopen.net/issues/4156
 .. _Bug 4162: https://redmine.iopen.net/issues/4162
