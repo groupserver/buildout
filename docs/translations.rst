@@ -168,14 +168,14 @@ then carry out the following tasks.
 #.  Add the product to Transifex [#client]_.
 
     #.  In `the GroupServer organisation on Transifex`_, click on
-        *New project*.
+        *Add project*.
 
     #.  Fill in the Project Details form:
 
         * Use the GroupServer product identifier as the name
           (e.g. ``gs.site.about``).
         * Source language is always English.
-        * The License is always "Permissive open-source".
+        * The License is always "Permissive open-source"
         * Source Code URL is the GitHub URL.
 
     #.  Assign to the project to the GroupServer Team.
