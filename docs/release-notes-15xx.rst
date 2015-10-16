@@ -260,6 +260,9 @@ Minor improvements
   added.
 * A problem with ``mailto`` links that set a
   :mailheader:`Subject` failing in Google GMail has been fixed.
+* The code for that displays the **posts on the web** has been
+  `refactored and documented.
+  <https://github.com/groupserver/gs.group.messages.post.base>`_
 * The **Rest of post** section of a message on the *Post* page is
   now open by default.
 
