@@ -263,6 +263,8 @@ Minor improvements
 * The code for that displays the **posts on the web** has been
   `refactored and documented.
   <https://github.com/groupserver/gs.group.messages.post.base>`_
+* The *closing* (such as “Yours sincerely…” or “Kind regards…”)
+  is now always shown in messages.
 * Extraneous CSS added to the bottom-quoting by Mozilla
   Thunderbird is now hidden by default.
 * The **Rest of post** section of a message on the *Post* page is
