@@ -269,6 +269,10 @@ Minor improvements
   Thunderbird is now hidden by default.
 * The **Rest of post** section of a message on the *Post* page is
   now open by default.
+* When non-member tries to **unsubscribe** from a group they are
+  now sent an email telling them that they are not a
+  member. Different messages are sent to people with and without
+  profiles.
 
 .. _Issue 4156: https://redmine.iopen.net/issues/4156
 .. _Bug 4162: https://redmine.iopen.net/issues/4162
