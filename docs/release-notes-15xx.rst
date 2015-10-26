@@ -273,6 +273,8 @@ Minor improvements
   now sent an email telling them that they are not a
   member. Different messages are sent to people with and without
   profiles.
+* The file-sizes of attached files look better; empty files are
+  explicitly labelled as ``empty``.
 
 .. _Issue 4156: https://redmine.iopen.net/issues/4156
 .. _Bug 4162: https://redmine.iopen.net/issues/4162
