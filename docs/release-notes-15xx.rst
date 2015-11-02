@@ -4,7 +4,7 @@ GroupServer 15.xx — Limonchello to ward off summer
 
 :Authors: `Michael JasonSmith`_;
 :Contact: Michael JasonSmith <mpj17@onlinegroups.net>
-:Date: 2015-07-30
+:Date: 2015-11-02
 :Organization: `GroupServer.org`_
 :Copyright: This document is licensed under a
   `Creative Commons Attribution-Share Alike 4.0 International
@@ -29,20 +29,29 @@ Changes to GroupServer
 ----------------------
 
 The most visible change to GroupServer in this release is `HTML
-formatting in posts`_. Limonchello also includes an `updated
+formatting of posts`_. Limonchello also includes an `updated
 topic digest`_, a new `profile status notification`_, the
 introduction of `restricted groups`_, `updated member
 management`_, new `web hooks`_, more `code documentation`_, and
 an improved `German translation of GroupServer`_. Finally, there
 have been some `minor improvements`_.
 
-HTML formatting in posts
+HTML formatting of posts
 ========================
 
-With the Limonchello release GroupServer now will format email
-messages from a group using HTML — in addition to sending a
-plain-text version of the message. The HTML form of the message
-includes additional metadata about the post:
+The formatting of posts is the largest change in the Limonchello
+release of GroupServer. Both `post formatting in email`_ and
+`post formatting on the web`_ has been changed.
+
+Post formatting in email
+------------------------
+
+GroupServer now will format email messages from a group using
+HTML — in addition to sending a plain-text version of the
+message.
+
+The HTML form of the message includes additional **metadata**
+about the post:
 
 * The profile image of the person who made the post
 * The name of the topic that the post belongs to
@@ -57,16 +66,10 @@ includes additional metadata about the post:
   + Leave the group
   + Switch to a daily digest of topics
 
-The HTML version of the email is generated from the **plain
-text** version of the post. However, the post is formatted in
-much the same way as the post on the web: text in ``*asterisks*``
-is made bold, quoted text (``> like this``) is muted, and people
-can click on email addresses, URLs, and site names. Attachments
-are still stripped, and replaced with links to the files on the
-web.
-
-Sending a HTML formatted message based on a plain-text email
-closes `Feature 4160`_.
+The HTML version of the **message body** is generated from the
+plain text version of the post. The formatting follows what is
+used on the web, which is discussed further in :ref:`the next
+section <web post>`.
 
 .. note::
 
@@ -74,8 +77,71 @@ closes `Feature 4160`_.
    HTML in a future version of GroupServer. This task is tracked in
    `Feature 3676`_.
 
+Sending a HTML formatted message based on a plain-text email
+closes `Feature 4160`_.
+
 .. _Feature 3676: https://redmine.iopen.net/issues/3676
 .. _Feature 4160: https://redmine.iopen.net/issues/4160
+
+.. _web post:
+
+Post formatting on the web
+--------------------------
+
+The formatting of the **message body** the web has been changed
+to follow the updates in `post formatting in email`_.
+
+* Text in ``*asterisks*`` is made bold (as with prior releases).
+
+* Quoted text (``> like this``) is now muted.
+
+* URLs and site names are made into links, as before.
+
+  + The host name in links is now made bold, so people can more
+    easily see where the link goes.
+
+  + Long URLs are now shown in a small-font, so they take up less
+    room.
+
+* Email addresses are made clickable.
+
+  + All email addresses are shown in the body of the email
+    messages that are sent from the group.
+
+  + All email addresses are still shown on the web in private,
+    restricted, or secret groups.
+
+  + As before, addresses shown on the web in **public groups**
+    are hidden. However, if the address is either the **group
+    email** address or the **support address** for the site then
+    the address is now shown.
+
+* Posts on the web still embed **videos** from YouTube and Vimeo.
+  In this release the videos are now embedded using ``<iframe>``
+  elements. Embedding cannot be done in the email messages sent
+  from the group, so the videos are kept as URLs.
+
+* **Bottom quoting** and the signature is still hidden. However,
+  the system has been improved in the Limonchello release.
+
+  + The *closing* (such as “Yours sincerely…” or “Kind regards…”)
+    is now always shown in messages.
+
+  + Extraneous CSS added to the bottom-quoting by Mozilla
+    Thunderbird is now hidden by default.
+
+  + The **Rest of post** section of a message on the *Post* page
+    is now open by default. This makes following the link from
+    the email message to the archive easier.
+
+Attachments are still stripped, and replaced with links to the
+files on the web. The file-sizes of attached files now look
+better; empty files are explicitly labelled as ``empty``.
+
+In addition to the user-visible changes, the code for that
+displays the **posts on the web** has been `refactored and
+documented.
+<https://github.com/groupserver/gs.group.messages.post.base>`_
 
 Updated topic digest
 ====================
@@ -241,8 +307,6 @@ Minor improvements
 * Some **memory leaks** have been fixed.
 * The rewriting of **the Subject** of an email message when the
   post has been forwarded from another group has been fixed.
-* **YouTube** and **Vimeo** videos are now embedded in posts in
-  the archive using ``<iframe>`` elements.
 * The **WAI-AIRA** roles have been improved, closing `Issue 4156`_.
 * An error with a link in the *Unknown email address*
   notification has been fixed.
@@ -260,21 +324,10 @@ Minor improvements
   added.
 * A problem with ``mailto`` links that set a
   :mailheader:`Subject` failing in Google GMail has been fixed.
-* The code for that displays the **posts on the web** has been
-  `refactored and documented.
-  <https://github.com/groupserver/gs.group.messages.post.base>`_
-* The *closing* (such as “Yours sincerely…” or “Kind regards…”)
-  is now always shown in messages.
-* Extraneous CSS added to the bottom-quoting by Mozilla
-  Thunderbird is now hidden by default.
-* The **Rest of post** section of a message on the *Post* page is
-  now open by default.
 * When non-member tries to **unsubscribe** from a group they are
   now sent an email telling them that they are not a
   member. Different messages are sent to people with and without
   profiles.
-* The file-sizes of attached files look better; empty files are
-  explicitly labelled as ``empty``.
 
 .. _Issue 4156: https://redmine.iopen.net/issues/4156
 .. _Bug 4162: https://redmine.iopen.net/issues/4162
