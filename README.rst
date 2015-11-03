@@ -51,7 +51,7 @@ the contents of the repository in a tar-ball [#hggit]_:
 
 .. code-block:: console
 
-   $ hg archive -p groupserver-{yy}.{mm} -ttgz -X.hg \
+   $ hg archive -p groupserver-{yy}.{mm} -ttgz -X ".hg*" \
      groupserver-{yy}.{mm}.tar.gz
 
 .. _The repository on GitHub:
