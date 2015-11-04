@@ -1,6 +1,6 @@
-==================================================
-GroupServer 15.11 — Limonchello to ward off summer
-==================================================
+=================================================
+GroupServer 15.11 — Limoncello to ward off summer
+=================================================
 
 :Authors: `Michael JasonSmith`_;
 :Contact: Michael JasonSmith <mpj17@onlinegroups.net>
@@ -19,9 +19,9 @@ GroupServer 15.11 — Limonchello to ward off summer
 Introduction
 ------------
 
-The major `changes to GroupServer`_ in the Limonchello release
+The major `changes to GroupServer`_ in the Limoncello release
 include HTML formatting of posts, better notifications, and more
-ways to connect with other systems.  You can `get Limonchello`_
+ways to connect with other systems.  You can `get Limoncello`_
 immediately.
 
 ----------------------
@@ -29,7 +29,7 @@ Changes to GroupServer
 ----------------------
 
 The most visible change to GroupServer in this release is `HTML
-formatting of posts`_. Limonchello also includes an `updated
+formatting of posts`_. Limoncello also includes an `updated
 topic digest`_, a new `profile status notification`_, the
 introduction of `restricted groups`_, `updated member
 management`_, new `web hooks`_, more `code documentation`_, and
@@ -39,7 +39,7 @@ have been some `minor improvements`_.
 HTML formatting of posts
 ========================
 
-The formatting of posts is the largest change in the Limonchello
+The formatting of posts is the largest change in the Limoncello
 release of GroupServer. Both `post formatting in email`_ and
 `post formatting on the web`_ has been changed.
 
@@ -122,7 +122,7 @@ to follow the updates in `post formatting in email`_.
   from the group, so the videos are kept as URLs.
 
 * **Bottom quoting** and the signature is still hidden. However,
-  the system has been improved in the Limonchello release.
+  the system has been improved in the Limoncello release.
 
   + The *closing* (such as “Yours sincerely…” or “Kind regards…”)
     is now always shown in messages.
@@ -148,7 +148,7 @@ Updated topic digest
 
 Group members can opt to receive a *daily topic digest* from a
 group — rather than getting an email message every time someone
-posts. The Limonchello release includes significantly updates to
+posts. The Limoncello release includes significantly updates to
 the look of the digest, and the tools for sending the digests.
 
 * The digests look like standard email notification, closing
@@ -202,7 +202,7 @@ Restricted groups
 =================
 
 A new privacy level has been added to GroupServer in the
-Limonchello release: *restricted groups.* Everyone that is a
+Limoncello release: *restricted groups.* Everyone that is a
 member of the **site** can see a restricted group, and the posts
 within it. It joins the three existing privacy levels:
 
@@ -289,7 +289,7 @@ Code documentation
 ==================
 
 The documentation for the low-level system continues to improve
-in the Limonchello release. Many system now have documentation
+in the Limoncello release. Many system now have documentation
 available on `Read the Docs`_, including all the scrips that are
 generated during installation. The document components of
 GroupServer are listed as `sub-projects of GroupServer`_ on Read
@@ -334,10 +334,10 @@ Minor improvements
 .. _Bug 4171: https://redmine.iopen.net/issues/4171
 
 ---------------
-Get Limonchello
+Get Limoncello
 ---------------
 
-To get Limonchello go to `the Downloads page for GroupServer`_
+To get Limoncello go to `the Downloads page for GroupServer`_
 and follow `the GroupServer Installation documentation`_. Those
 who already have a functioning installation can `update an
 existing GroupServer system`_.
@@ -350,9 +350,9 @@ Update an Existing GroupServer System
 =====================================
 
 To update a system running the Rakı release of GroupServer
-(15.03) to Limonchello (15.11) carry out the following steps.
+(15.03) to Limoncello (15.11) carry out the following steps.
 
-#.  Download the Limonchello tar-ball from `the GroupServer
+#.  Download the Limoncello tar-ball from `the GroupServer
     download page <http://groupserver.org/downloads>`_.
 
 #.  Uncompress the tar-ball:
@@ -437,4 +437,4 @@ Resources
 ..  LocalWords:  refactored iopen JPEG redmine jQuery jquery async Rakı Bushey
 ..  LocalWords:  Randow Organization sectnum Slivovica DMARC CSS Calvados AIRA
 ..  LocalWords:  SMTP smtp mbox CSV Transifex cfg mkdir groupserver Vimeo WAI
-..  LocalWords:  buildout Limonchello iframe
+..  LocalWords:  buildout Limoncello iframe
