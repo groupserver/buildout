@@ -352,6 +352,38 @@ Update an Existing GroupServer System
 To update a system running the Rakı release of GroupServer
 (15.03) to Limoncello (15.11) carry out the following steps.
 
+#.  Add the ``profile_notification_skip`` table to the relational
+    database. (The table records those that have chosen to skip
+    the new `Profile status notification`_.)
+
+    #.  Download `the SQL definition of the table`_.
+
+    #.  Execute the SQL using the following command:
+
+        ::
+
+          $ psql -U {psql_user} {psql_dbname} -f {filename}
+
+        Where ``{psql_user}`` and ``{psql_dbname}`` are the names
+        of the PostgreSQL user and relational-database used by
+        GroupServer (as recorded in :file:`config.cfg`, see
+        :doc:`groupserver-install`). The final argument is the
+        name of the SQL file you downloaded (probably
+        :file:`01-skip.sql`).
+
+        Alternatively, if you get a ``password authentication
+        failed`` error with the above command, the following
+        command may be more successful depending on your database
+        configuration:
+
+        ::
+
+           $ sudo -u postgres psql {psql_dbname} -f {filename}
+
+
+    .. Use Alembic?
+    .. https://alembic.readthedocs.org/en/latest/
+
 #.  Download the Limoncello tar-ball from `the GroupServer
     download page <http://groupserver.org/downloads>`_.
 
@@ -359,50 +391,17 @@ To update a system running the Rakı release of GroupServer
 
       ::
 
-        $ tar cfz groupserver-15.11.tar.gz
+        $ tar xfz groupserver-15.11.tar.gz
 
 #.  Change to the directory that contains your existing
     GroupServer installation.
 
-#.  Add the ``profile_notification_skip`` table to the relational
-    database. Download `the SQL definition of the table`_ and
-    execute the SQL using the following command:
+#.  Copy the new versions of the configuration files to your
+    existing GroupServer installation:
 
       ::
 
-        $ psql -U {psql_user} {psql_dbname} -i {filename}
-
-    Where ``{psql_user}`` and ``{psql_dbname}`` are the names of
-    the PostgreSQL user and relational-database used by
-    GroupServer (as recorded in :file:`config.cfg`, see
-    :doc:`groupserver-install`). The final argument is the name
-    of the SQL file you downloaded (probably
-    :file:`01-skip.sql`).
-
-.. Use Alembic?
-.. https://alembic.readthedocs.org/en/latest/
-
-#.  Copy the new version-configuration files to your existing
-    GroupServer installation:
-
-      ::
-
-        $ cp ../groupserver-15.11/[bdiv]*cfg  .
-
-#.  In your **existing** GroupServer installation copy the
-    configuration file to its new location.
-
-    #.  Make an ``etc`` directory:
-
-          ::
-
-            $ mkdir etc/
-
-    #.  Move the configuration file to the new directory:
-
-          ::
-
-            $ cp parts/instance/etc/gsconfig.ini etc/
+        $ cp ../groupserver-15.11/[biv]*cfg  .
 
 #.  Run ``buildout`` in your existing GroupServer installation:
 
@@ -412,6 +411,9 @@ To update a system running the Rakı release of GroupServer
 
 #.  Restart your GroupServer instance (see
     :doc:`groupserver-start`).
+
+#.  Update :command:`cron` so it sends :ref:`the new monthly
+    profile status notification. <profile status>`
 
 .. _the SQL definition of the table:
   https://raw.githubusercontent.com/groupserver/gs.profile.status.base/master/gs/profile/status/base/sql/01-skip.sql

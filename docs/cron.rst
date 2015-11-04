@@ -62,6 +62,8 @@ optional arguments, and running the command manually.
 .. _the documentation for the senddigest command:
    https://groupserver.readthedocs.org/projects/gsgroupmessagestopicdigestsend/en/latest/command.html
 
+.. _profile status:
+
 ----------------------
 Monthly profile status
 ----------------------
