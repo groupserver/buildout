@@ -18,7 +18,7 @@ Awesome aperitifs
 .. toctree::
    :maxdepth: 1
 
-   release-notes-15xx
+   release-notes-1511
    release-notes-1503
    release-notes-1411
    release-notes-1406

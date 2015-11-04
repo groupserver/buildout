@@ -1,5 +1,5 @@
 ==================================================
-GroupServer 15.xx — Limonchello to ward off summer
+GroupServer 15.11 — Limonchello to ward off summer
 ==================================================
 
 :Authors: `Michael JasonSmith`_;
@@ -350,7 +350,7 @@ Update an Existing GroupServer System
 =====================================
 
 To update a system running the Rakı release of GroupServer
-(15.03) to Limonchello (15.xx) carry out the following steps.
+(15.03) to Limonchello (15.11) carry out the following steps.
 
 #.  Download the Limonchello tar-ball from `the GroupServer
     download page <http://groupserver.org/downloads>`_.
@@ -359,7 +359,7 @@ To update a system running the Rakı release of GroupServer
 
       ::
 
-        $ tar cfz groupserver-15.xx.tar.gz
+        $ tar cfz groupserver-15.11.tar.gz
 
 #.  Change to the directory that contains your existing
     GroupServer installation.
@@ -387,7 +387,7 @@ To update a system running the Rakı release of GroupServer
 
       ::
 
-        $ cp ../groupserver-15.xx/[bdiv]*cfg  .
+        $ cp ../groupserver-15.11/[bdiv]*cfg  .
 
 #.  In your **existing** GroupServer installation copy the
     configuration file to its new location.

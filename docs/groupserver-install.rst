@@ -429,7 +429,7 @@ History
 ======= ==========  ====================================================
 Version Date        Change
 ======= ==========  ====================================================
-15.xx   2015-08-17  Updating the Sphinx markup, and mentioning the log
+15.11   2015-08-17  Updating the Sphinx markup, and mentioning the log
                     files
 15.03   2015-03-27  Updating the CentOS install instructions.
 15.03   2015-03-25  Making a note about PostgreSQL 9 on CentOS and RHEL.
