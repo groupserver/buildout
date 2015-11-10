@@ -44,7 +44,7 @@ Buildout is a project designed to solve 2 problems:
    distribution, there can only be one installed.
 
 To learn more about buildout, including how to use it, see
-http://buildout.org/.
+<http://www.buildout.org/>.
 
 Installation
 ************
