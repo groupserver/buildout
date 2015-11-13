@@ -29,12 +29,12 @@ Changes to GroupServer
 ----------------------
 
 The most visible change to GroupServer in this release is `HTML
-formatting of posts`_. Limoncello also includes an `updated
-topic digest`_, a new `profile status notification`_, the
-introduction of `restricted groups`_, `updated member
-management`_, new `web hooks`_, more `code documentation`_, and
-an improved `German translation of GroupServer`_. Finally, there
-have been some `minor improvements`_.
+formatting of posts`_. Limoncello also includes an `updated topic
+digest`_, a new `profile status notification`_, the introduction
+of `restricted groups`_, `updated member management`_, `easier
+sharing of links`_, new `web hooks`_, more `code documentation`_,
+and an improved `German translation of GroupServer`_. Finally,
+there have been some `minor improvements`_.
 
 HTML formatting of posts
 ========================
@@ -243,6 +243,23 @@ The *Manage members* page has been updated to make it easier to use.
   more than 48 members in a group, rather than 127.
 * The list of people on the *Manage many members* page is now
   sorted by name.
+
+.. _easier sharing of links:
+
+Sharing links
+=============
+
+GroupServer has a *Share* button on each Topic page, next to
+every post, and on every Image page. It makes it easy to share
+links on social media sites such as **Twitter**, **Facebook** and
+**Google+**. It also provides a URL so you can share a link using
+email, or a different system.
+
+The popup that opens when you click *Share* now it has a *Copy*
+button, that makes it even easier to share links. Providing the
+*Copy* button closes `Feature 4176`_.
+
+.. _Feature 4176: https://redmine.iopen.net/issues/4176
 
 Web hooks
 =========
