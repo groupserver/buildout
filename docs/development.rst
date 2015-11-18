@@ -173,8 +173,9 @@ Default configuration
 ~~~~~~~~~~~~~~~~~~~~~
 
 The default configuration for ``mr.developer`` is generated from
-the ``versions.cfg`` file using the following ``awk`` script. It
-specifies that ``git`` should be used with all the products.
+the :file:`versions.cfg` file using the following :command:`awk`
+script. It specifies that :command:`git` should be used with all
+the products.
 
 .. code-block:: awk
 
@@ -198,7 +199,8 @@ tasks.
 
 #. Install `the Hg-Git plugin`_ for Mercurial.
 
-#. Copy the above ``awk`` script to the file ``emit-devel.awk``.
+#. Copy the above :command:`awk` script to the file
+   :file:`emit-devel.awk`.
 
 #. Change the ``vcs`` variable to ``hg``.
 
