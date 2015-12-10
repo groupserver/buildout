@@ -27,7 +27,9 @@ Changes to GroupServer
 ----------------------
 
 The `Email-settings page`_ is now easier to use with mobile
-phones. Finally, there have been some `minor improvements`_.
+phones. The other major update in this release is the `updated
+base packages`_. Finally, there have been some `minor
+improvements`_.
 
 Email-settings page
 ===================
@@ -44,6 +46,27 @@ email settings. This results in a far-faster page than before.
 
 Finally, the dependencies on jQuery.UI and Twitter Bootstrap have
 been removed.
+
+Updated base packages
+=====================
+
+The Zope2_ application framework, which makes up GroupServer, has
+been updated to version 2.13.23 from 2.13.22. The buildout_
+system, which controls most of the installation and update
+process, has been updated to use `zc.buildout 2.3.1`_.
+
+In addition packages such as Pillow_, premailer_, requests_,
+lxml_ and pytz_ have also been updated.
+
+.. _Zope2: https://pypi.python.org/pypi/Zope2
+.. _buildout: http://www.buildout.org/en/latest/
+.. _zc.buildout 2.3.1:
+   https://pypi.python.org/pypi/zc.buildout/2.3.1
+.. _Pillow: https://pypi.python.org/pypi/Pillow
+.. _premailer: https://pypi.python.org/pypi/premailer
+.. _requests: https://pypi.python.org/pypi/requests
+.. _lxml: https://pypi.python.org/pypi/lxml
+.. _pytz: https://pypi.python.org/pypi/pytz
 
 Minor improvements
 ==================
