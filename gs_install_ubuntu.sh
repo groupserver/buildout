@@ -95,7 +95,7 @@ echo
 virtualenv --no-site-packages . 
 . ./bin/activate
 # Fetch the system that builds GroupServer
-pip install zc.buildout==1.7.1
+pip install zc.buildout==2.3.1
 echo
 echo "Python setup complete."
 
