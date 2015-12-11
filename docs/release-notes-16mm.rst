@@ -55,13 +55,15 @@ been updated to version 2.13.23 from 2.13.22. The buildout_
 system, which controls most of the installation and update
 process, has been updated to use `zc.buildout 2.3.1`_.
 
-In addition packages such as Pillow_, premailer_, requests_,
-lxml_ and pytz_ have also been updated.
+In addition packages such as dnspython_, lxml_, Pillow_,
+premailer_, pytz_ and requests_ have also been updated.
 
 .. _Zope2: https://pypi.python.org/pypi/Zope2
 .. _buildout: http://www.buildout.org/en/latest/
 .. _zc.buildout 2.3.1:
    https://pypi.python.org/pypi/zc.buildout/2.3.1
+.. _dnspython: https://pypi.python.org/pypi/dnspython
+.. _premailer: https://pypi.python.org/pypi/premailer
 .. _Pillow: https://pypi.python.org/pypi/Pillow
 .. _premailer: https://pypi.python.org/pypi/premailer
 .. _requests: https://pypi.python.org/pypi/requests
