@@ -4,7 +4,7 @@ GroupServer 16.mm — Pastis proffered politely
 
 :Authors: `Michael JasonSmith`_;
 :Contact: Michael JasonSmith <mpj17@onlinegroups.net>
-:Date: 2015-12-09
+:Date: 2015-12-15
 :Organization: `GroupServer.org`_
 :Copyright: This document is licensed under a
   `Creative Commons Attribution-Share Alike 4.0 International
@@ -19,8 +19,9 @@ GroupServer 16.mm — Pastis proffered politely
 Introduction
 ------------
 
-The major `changes to GroupServer`_ in the Pastis release include
-a new email-settings page. You can `get Pastis`_ immediately.
+Of the visible `changes to GroupServer`_ in the Pastis release
+the most significant is the new Change email settings page. You
+can `get Pastis`_ immediately.
 
 ----------------------
 Changes to GroupServer
@@ -34,18 +35,18 @@ improvements`_.
 Email-settings page
 ===================
 
-The email-settings page allows people to add email addresses, and
-set which addresses they prefer. The page has been updated so it
-is easier to use with mobile devices, with buttons allowing
-people to add and remove addresses from the list of
+The Change email settings page allows people to add email addresses, and
+set the addresses they prefer. The page has been updated so it is
+**easier to use** with mobile devices, with buttons allowing
+people to add and remove addresses from each list of
 addresses. Using drag-and-drop between the lists still works for
 those on desktop systems.
 
 The underlying code now uses web-hooks and JSON to update the
 email settings. This results in a far-faster page than before.
 
-Finally, the dependencies on jQuery.UI and Twitter Bootstrap have
-been removed.
+Finally, the dependencies that the Change email settings page had
+on ``jQuery.UI`` and Twitter Bootstrap have been removed.
 
 Updated base packages
 =====================
@@ -71,7 +72,6 @@ updated.
 .. _zc.buildout 2.3.1: https://pypi.python.org/pypi/zc.buildout/2.3.1
 .. _Zope2: https://pypi.python.org/pypi/Zope2
 
-
 Minor improvements
 ==================
 
@@ -83,15 +83,15 @@ Minor improvements
 
     $ ./bin/testrunner -v -c -m "gs\..*"
 
-* The image-scaling code now handles some errors in a more robust
-  way.
+* The code that provides the **image scaling** now handles some
+  errors in a more robust way.
+
+* The **installation script** :program:`gs_install_ubuntu.sh` now
+  uses bold and muted text to make the information hierarchy more
+  clear.
 
 .. _zc.recipe.testrunner:
    https://pypi.python.org/pypi/zc.recipe.testrunner/
-
-* The installation script :program:`gs_install_ubuntu.sh` now
-  uses bold and muted text to make the information hierarchy more
-  clear.
 
 ----------
 Get Pastis
@@ -117,7 +117,7 @@ GroupServer to Pastis (16.mm) carry out the following steps.
 
       ::
 
-        $ cp ../groupserver-16.mm/[biv]*cfg  .
+        $ cp ../groupserver-16.mm/[bivz]*cfg  .
 
 #.  Run ``buildout`` in your existing GroupServer installation:
 
