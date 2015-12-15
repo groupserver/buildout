@@ -55,20 +55,22 @@ been updated to version 2.13.23 from 2.13.22. The buildout_
 system, which controls most of the installation and update
 process, has been updated to use `zc.buildout 2.3.1`_.
 
-In addition packages such as dnspython_, lxml_, Pillow_,
-premailer_, pytz_ and requests_ have also been updated.
+In addition packages such as dnspython_, enum34_, lxml_,
+premailer_, pytz_, Pillow_, requests_, and six_ have also been
+updated.
 
-.. _Zope2: https://pypi.python.org/pypi/Zope2
 .. _buildout: http://www.buildout.org/en/latest/
-.. _zc.buildout 2.3.1:
-   https://pypi.python.org/pypi/zc.buildout/2.3.1
 .. _dnspython: https://pypi.python.org/pypi/dnspython
-.. _premailer: https://pypi.python.org/pypi/premailer
-.. _Pillow: https://pypi.python.org/pypi/Pillow
-.. _premailer: https://pypi.python.org/pypi/premailer
-.. _requests: https://pypi.python.org/pypi/requests
+.. _enum34: https://pypi.python.org/pypi/six
 .. _lxml: https://pypi.python.org/pypi/lxml
+.. _premailer: https://pypi.python.org/pypi/premailer
 .. _pytz: https://pypi.python.org/pypi/pytz
+.. _Pillow: https://pypi.python.org/pypi/Pillow
+.. _requests: https://pypi.python.org/pypi/requests
+.. _six: https://pypi.python.org/pypi/six
+.. _zc.buildout 2.3.1: https://pypi.python.org/pypi/zc.buildout/2.3.1
+.. _Zope2: https://pypi.python.org/pypi/Zope2
+
 
 Minor improvements
 ==================
@@ -86,6 +88,10 @@ Minor improvements
 
 .. _zc.recipe.testrunner:
    https://pypi.python.org/pypi/zc.recipe.testrunner/
+
+* The installation script :program:`gs_install_ubuntu.sh` now
+  uses bold and muted text to make the information hierarchy more
+  clear.
 
 ----------
 Get Pastis
