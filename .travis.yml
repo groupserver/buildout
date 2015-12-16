@@ -6,4 +6,4 @@ install:
   - pip install setuptools==18.0.1
   - buildout -c .travis.cfg bootstrap
   - buildout -c .travis.cfg -n
-script: ./bin/testrunner -m \"gs\\..*\"
+script: ./bin/testrunner -m gs\\..*
