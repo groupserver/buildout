@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 ##############################################################################
 #
 # Copyright © 2012, 2014, 2015 OnlineGroups.net and Contributors.
