@@ -1,6 +1,23 @@
-================================
-GroupServer mailing list manager
-================================
+===========
+GroupServer
+===========
+-------------------------------------------------
+A mailing list manager with a great web interface
+-------------------------------------------------
+
+:Authors: Michael JasonSmith; Richard Waid; Alice Rose; Dan
+          Randow; Bill Bushey; Marek Kuziel
+:Contact: Michael JasonSmith <mpj17@onlinegroups.net>
+:Date: 2015-12-16
+:Organization: `GroupServer.org`_
+:Copyright: This document is licensed under a
+  `Creative Commons Attribution-Share Alike 4.0 International
+  License`_
+:Status: |build| |docs|
+
+..  _Creative Commons Attribution-Share Alike 4.0 International License:
+    https://creativecommons.org/licenses/by-sa/4.0/
+
 
 This is GroupServer_: a mailing-list manager with an excellent
 integrated web interface.
@@ -64,7 +81,18 @@ the contents of the repository in a tar-ball [#hggit]_:
 Resources
 =========
 
-- Code repository: https://github.com/groupserver/buildout
+- Documentation: http://groupserver.readthedocs.org/en/master
 - Questions and comments to
   http://groupserver.org/groups/development
 - Report bugs at https://redmine.iopen.net/projects/groupserver
+- Code repository: https://github.com/groupserver/buildout
+- Build status: https://travis-ci.org/groupserver/buildout
+
+.. |build| image:: https://travis-ci.org/groupserver/buildout.svg?branch=master
+   :target: https://travis-ci.org/groupserver/buildout
+   :alt: Build Status
+.. |docs| image:: http://readthedocs.org/projects/groupserver/badge/?version=master
+   :target: http://groupserver.readthedocs.org/en/master/?badge=master
+   :alt: Documentation Status
+
+.. _GroupServer.org: http://groupserver.org/
