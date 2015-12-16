@@ -5,7 +5,7 @@ GroupServer installation
 :Authors: `Michael JasonSmith`_; `Richard Waid`_; `Marek Kuziel`_;
           `Alice Rose`_; `Dan Randow`_
 :Contact: Michael JasonSmith <mpj17@onlinegroups.net>
-:Date: 2015-08-17 (see `History`_)
+:Date: 2015-12-16 (see `History`_)
 :Organization: `GroupServer.org`_
 :Copyright: This document is licensed under a
   `Creative Commons Attribution-Share Alike 4.0 International License`_
@@ -362,19 +362,38 @@ testing.
 
      .. code-block:: console
 
-        $ easy_install argparse==1.1
+        $ pip install argparse==1.1
 
 #. Fetch the `zc.buildout`_ system that builds GroupServer:
 
      .. code-block:: console
 
-        $ easy_install zc.buildout==1.7.1
+        $ pip install zc.buildout==2.3.1
 
-#. Run the ``buildout`` process:
+#. Update ``setuptools``:
 
      .. code-block:: console
 
-        $ ./bin/buildout -N
+        $ pip install setuptools==18.0.1
+
+#. *Bootstrap* the installation:
+
+     .. code-block:: console
+
+        $ buildout bootstrap
+
+#. Install the dependencies, which will take at least seven
+   minutes:
+
+     .. code-block:: console
+
+        $ buildout install
+
+#. Create your site:
+
+     .. code-block:: console
+
+        $ buildout -c site.cfg install
 
 .. _the instruction provided by the PostgreSQL project.:
    http://www.postgresql.org/download/linux/redhat/
@@ -429,8 +448,10 @@ History
 ======= ==========  ====================================================
 Version Date        Change
 ======= ==========  ====================================================
+16.mm   2015-12-16  Updating the `CentOS and RHEL`_ documentation,
+                    following the changes to the configuration files.
 15.11   2015-08-17  Updating the Sphinx markup, and mentioning the log
-                    files
+                    files.
 15.03   2015-03-27  Updating the CentOS install instructions.
 15.03   2015-03-25  Making a note about PostgreSQL 9 on CentOS and RHEL.
 15.03   2015-03-06  Moving the *Dependencies* and *Download* sections to
