@@ -4,6 +4,6 @@ python:
 install:
   - pip install zc.buildout==2.3.1
   - pip install setuptools==18.0.1
-  - buildout -c .travis.cfg bootstrap
-  - buildout -c .travis.cfg -n
+  - buildout bootstrap
+  - buildout -n install
 script: ./bin/testrunner -k --auto-color --udiff -m gs\\..*

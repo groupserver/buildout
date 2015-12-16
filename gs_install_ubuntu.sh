@@ -136,7 +136,8 @@ echo "Installing GroupServer and its dependencies"
 echo -en '\033[0m\033[2m'
 echo "This will take a while"
 echo -e '\033[0m'
-buildout -n
+buildout -n install
+buildout -n -c site.cfg install
 # Buildout has its own "completed" message.
 
 rm pgpass-tmp
