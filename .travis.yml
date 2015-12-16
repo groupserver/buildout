@@ -1,5 +1,9 @@
 language: python
 python:
   - "2.7"
-install: ./gs_install_ubuntu.sh
+install:
+  - pip install zc.buildout==2.3.1
+  - pip install setuptools==18.0.1
+  - buildout -c .travis.cfg bootstrap
+  - buildout -c .travis.cfg -n
 script: ./bin/testrunner -m \"gs\\..*\"
