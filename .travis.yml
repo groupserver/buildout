@@ -1,5 +1,5 @@
 language: python
 python:
   - "2.7"
-install: gs_install_ubuntu.sh
-script: bin/testrunner -m \"gs\\..*\"
+install: ./gs_install_ubuntu.sh
+script: ./bin/testrunner -m \"gs\\..*\"
