@@ -1,7 +1,10 @@
 .. index::
-   single: postfix, postmap, postalias, SMTP
-   pair: email; configuration
-   pair: install; mail server
+   single: Postfix
+   single: postmap
+   single: postalias
+   pair: Email; SMTP
+   pair: Email; Configuration
+   pair: Install; Mail server
 
 ==============================
 Configuring :command:`postfix`

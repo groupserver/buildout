@@ -30,6 +30,8 @@ internationalisation_. There are also `updated email commands`_,
 addresses`_, and the new `change group-type`_ page. Finally there
 have been some `minor code improvements`_.
 
+.. index:: Internationalisation, i18n
+
 Internationalisation
 ====================
 
@@ -61,6 +63,9 @@ the internationalisation for GroupServer.
 
 .. _Status of internationalisation: 
    http://groupserver.org/r/topic/6ehnW0w59Ejf7R4xEUeCNt
+
+.. index::
+   pair: Email; Commands
 
 Updated email commands
 ======================
@@ -100,6 +105,9 @@ The implementation of the new email commands closes `Bug 3403`_.
    https://github.com/groupserver/gs.group.member.email.settings
 .. _Bug 3403: https://redmine.iopen.net/issues/3403
 
+.. index::
+   pair: Email; Header
+
 Updated email headers
 =====================
 
@@ -118,15 +126,19 @@ closes `Issue 3785`_.
 .. _Bug 267: https://redmine.iopen.net/issues/267
 .. _Issue 3785: https://redmine.iopen.net/issues/3785
 
+.. index::
+   pair: Email; Bounce
+   pair: Email; XVERP
+
 Reporting of bouncing email addresses
 =====================================
 
 When an email message cannot be delivered often a *bounce*
 message will be set back to the system that sent the message. For
-many years GroupServer has kept track of these bounce messages;
-if an address of a group-member causes bounces on five separate
-days in a 60 day window then that email address is set to
-*unverified.*
+many years GroupServer has kept track of these bounce messages
+using XVERP; if an address of a group-member causes bounces on
+five separate days in a 60 day window then that email address is
+set to *unverified.*
 
 The new *Bounces* page now shows the group administrator a record
 of the bouncing email addresses. In addition a notification is
@@ -140,6 +152,9 @@ The updating of the bounce-handling system closes `Feature
 .. _Feature 3614: https://redmine.iopen.net/issues/3614
 .. _Feature 3772: https://redmine.iopen.net/issues/3772
 .. _Feature 3773: https://redmine.iopen.net/issues/3773
+
+.. index::
+   triple: Group; Type; Change
 
 Change group-type
 =================
@@ -201,7 +216,7 @@ GroupServer system`_.
 ..  _The GroupServer Installation documentation: 
     http://groupserver.readthedocs.org/
 
-Update an Existing GroupServer System
+Update an existing GroupServer system
 =====================================
 
 To update a system running the Slivovica release of GroupServer

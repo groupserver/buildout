@@ -25,7 +25,9 @@ improvements`_ and a new `site homepage`_. In addition we have made
 steps towards `easier installation`_, and there have been some `minor 
 changes`_.
 
-Group Improvements
+.. index:: Group
+
+Group improvements
 ------------------
 
 The most visible change to groups in this release of GroupServer is to 
@@ -50,6 +52,8 @@ Public Access Period:
   making it easier for group members who follow conversations using
   email to access the files that are posted to the group.
 
+.. index:: Notification
+
 Notifications
 ~~~~~~~~~~~~~
 
@@ -68,7 +72,7 @@ change, along with the rest of the `can post`_ system [#CannotPost]_. It
 now has a HTML variant, as well as a wording change to (hopefully) make 
 it easer to understand.
 
-Can Post
+Can post
 ~~~~~~~~
 
 The biggest change to groups was a complete rewrite of the system that
@@ -81,7 +85,12 @@ determines if a user can post. This system is used to
 The Can Post system is now self-documenting [#RulesList]_, and it allows
 for `more extensible groups`_.
 
-More Extensible Groups
+.. index::
+   triple: Group; Type; Discussion
+   triple: Group; Type; Announcement
+   triple: Group; Type; Support
+
+More extensible groups
 ~~~~~~~~~~~~~~~~~~~~~~
 
 Along with the new `can post`_ code, the definition of what 
@@ -103,7 +112,9 @@ Now there are specific marker-interfaces for each of these group-types.
 Currently only the `can post`_ system uses them extensively, but other
 systems will follow in the future.
 
-Profile Improvements
+.. index:: Profile
+
+Profile improvements
 --------------------
 
 The primary improvements to profiles is a new *Verify Email Address*
@@ -116,7 +127,7 @@ All the notifications with an HTML component are possible because of a
 new system for sending notifications. This system is documented as part
 of the ``gs.profile.notify`` component [#Notify]_.
 
-Site Homepage
+Site homepage
 -------------
 
 The site homepage has been completely rewritten, but it looks largely
@@ -124,7 +135,9 @@ unchanged. Now the page — provided  by the new ``gs.site.home`` product
 [#SiteHome]_ — can be skinned easily. Extra components can be easily 
 added to it in the future.
 
-Easier Installation
+.. index:: Installation
+
+Easier installation
 -------------------
 
 Installation should be more reliable for three reasons. The first is a

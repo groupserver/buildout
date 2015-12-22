@@ -1,6 +1,4 @@
-.. index:: 
-   single: download
-   pair: install; download
+.. index:: !Download
 
 ===================
 Getting GroupServer
@@ -22,11 +20,14 @@ download_. This file contains an **installation script for
 Ubuntu** will install all the necessary dependencies_ that your
 system currently lacks (see :doc:`groupserver-install`).
 
+.. index::
+   pair: Install; Download
+
 Download
 ========
 
 GroupServer is distributed as a compressed tar-file. To download
-the latest version of GroupServer 
+the latest version of GroupServer
 
 #. Visit <http://groupserver.org/downloads> and click
    ``Download``.
@@ -47,6 +48,7 @@ same directory.
        its contents to a normal user. GroupServer can only be run
        by users with normal privileges.
 
+.. index:: !Dependencies, CentOS, RHEL, Ubuntu
 .. _dependencies:
 
 Dependencies

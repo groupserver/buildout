@@ -1,4 +1,4 @@
-.. index:: !web-hook, JSON
+.. index:: !Web-hook, JSON
 
 ===========================
 Connecting external systems
@@ -48,6 +48,9 @@ Development`_ group.
        understand as they refer to the GroupServer subsystem that
        provides the functionality.
 
+.. index::
+   pair: Web-hook; Authentication
+   pair: Web-hook; Token
 .. _token:
 
 --------------------
@@ -114,6 +117,9 @@ web hooks is exposed.
 .. _The documentation at Read the Docs:
      http://groupserver.readthedocs.org/projects/gsauthtoken/en/latest/script.html
 
+.. index::
+   pair: Group; JSON
+
 -----------------
 Group information
 -----------------
@@ -128,6 +134,9 @@ the action (``get``) — and it returns a list of group-objects.
 
 .. _The documentation for the Groups web-hook:
    http://groupserver.readthedocs.org/projects/gsgroupgroupsjson/en/latest/hook.html
+
+.. index::
+   pair: Profile; JSON
 
 ------------------
 Profile life-cycle

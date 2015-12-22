@@ -1,4 +1,4 @@
-.. index:: demon
+.. index:: Demon
 
 =================================
 Starting and stopping GroupServer

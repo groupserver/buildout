@@ -32,6 +32,10 @@ phones. The other major update in this release is the `updated
 base packages`_. Finally, there have been some `minor
 improvements`_.
 
+.. index::
+   single: Profile
+   pair: Email; Settings
+
 Email-settings page
 ===================
 
@@ -47,6 +51,8 @@ email settings. This results in a far-faster page than before.
 
 Finally, the dependencies that the Change email settings page had
 on ``jQuery.UI`` and Twitter Bootstrap have been removed.
+
+.. index:: Dependencies
 
 Updated base packages
 =====================

@@ -31,6 +31,8 @@ style pages`_. In addition the system for `adding people`_ in bulk has been
 completely rewritten, there has been an extensive `notifications update`_,
 and `other updates`_.
 
+.. index:: Skin
+
 New style pages
 ===============
 
@@ -257,6 +259,7 @@ distinguish between people with similar names (`Issue 452`_).
 .. _Issue 3494: https://redmine.iopen.net/issues/3494
 .. _Issue 452: https://redmine.iopen.net/issues/452
 
+.. index:: Notification
 
 Notifications update
 ====================
@@ -274,6 +277,9 @@ notifications is now far more consistent than before.
 .. _Issue 3892: https://redmine.iopen.net/issues/3892
 .. _Premailer: https://pypi.python.org/pypi/premailer/
 .. _Issue 269: https://redmine.iopen.net/issues/269
+
+.. index::
+   pair: Notification; Topic digest
 
 Topic digests
 -------------

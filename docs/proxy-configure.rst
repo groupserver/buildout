@@ -1,7 +1,8 @@
-.. index:: 
-   single: proxy, virtual host, web proxy
-   pair: install; proxy
-   pair: configuration; proxy
+.. index::
+   single: Proxy
+   single: Web proxy
+   pair: Install; Proxy
+   pair: Configuration; Proxy
 
 =======================
 Configuring a web proxy
@@ -43,6 +44,9 @@ we outline how to set up `secure connections`_.
           these tasks. Commands that need to be run as root will
           be shown with ``#`` prompt, rather than a ``$``.
 
+.. index::
+   single: Virtual host
+
 Add a virtual host
 ==================
 
@@ -52,6 +56,9 @@ GroupServer configuration`_ and then `add a virtual host to
 Apache`_ or `Add a virtual host to nginx`_.
 
 .. _GroupServer Name:
+
+.. index::
+   pair: Configuration; GroupServer
 
 Update the GroupServer configuration
 ------------------------------------
@@ -74,7 +81,7 @@ you will need to update the configuration for GroupServer itself.
 #.  Click the :guilabel:`Save Changes` button.
 
 .. index::
-    pair: configuration; Apache
+    pair: Configuration; Apache
 
 Add a virtual host to Apache
 ----------------------------
@@ -136,7 +143,7 @@ To add a virtual host to Apache carry out the following steps.
         # service apache2 restart
 
 .. index::
-    pair: configuration; nginx
+    pair: Configuration; nginx
 
 Add a virtual host to nginx
 ---------------------------
@@ -217,7 +224,7 @@ using carry out the following tasks.
           *Save changes* button, rather than deleting the
           property.
 
-.. index:: skin, theme
+.. index:: !Skin, Theme
 
 Change the skin
 ===============
@@ -237,7 +244,7 @@ In the case of Apache the rewrite rule would look like the following
 
   RewriteRule ^/(.*) http://localhost:8080/++skin++gs_green/groupserver/Content/initial_site/VirtualHostBase/http/%{HTTP_HOST}:80/VirtualHostRoot/$1 [L,P]
 
-.. index:: HTTPS, TLS, SSL
+.. index:: HTTPS, !TLS, SSL
 
 .. _secure connections:
 
@@ -249,6 +256,9 @@ Setting up a secure connection is done in two stages. First you
 GroupServer <GroupServer HTTPS>`.
 
 .. _proxy HTTPS:
+
+.. index::
+   pair: Configuration; nginx
 
 Update the proxy configuration
 ------------------------------
@@ -296,6 +306,9 @@ when you `add a virtual host`_, but
 You can `change the skin`_ in the rewrite rule, just like before.
 
 .. _GroupServer HTTPS:
+
+.. index::
+   pair: Configuration; GroupServer
 
 Update GroupServer
 ------------------

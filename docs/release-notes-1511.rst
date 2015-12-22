@@ -36,6 +36,9 @@ sharing of links`_, new `web hooks`_, more `code documentation`_,
 and an improved `German translation of GroupServer`_. Finally,
 there have been some `minor improvements`_.
 
+.. index::
+   pair: Email; Formatting
+
 HTML formatting of posts
 ========================
 
@@ -143,6 +146,9 @@ displays the **posts on the web** has been `refactored and
 documented.
 <https://github.com/groupserver/gs.group.messages.post.base>`_
 
+.. index::
+   pair: Notification; Topic digest
+
 Updated topic digest
 ====================
 
@@ -175,6 +181,10 @@ longer sent.
 
 .. _Feature 3985: https://redmine.iopen.net/issues/3985
 
+.. index::
+   single: Profile
+   pair: Notification; Profile
+
 Profile status notification
 ===========================
 
@@ -198,6 +208,9 @@ The creation of a profile status notification closes `Feature
 
 .. _Feature 370: https://redmine.iopen.net/issues/370
 
+.. index::
+   pair: Group; Privacy
+
 Restricted groups
 =================
 
@@ -218,6 +231,10 @@ Allowing the restricted group-type to be set closes `Feature
 
 .. _Feature 4169: https://redmine.iopen.net/issues/4169
 
+.. index::
+   single: Reply-to
+   pair: Email; Header
+
 Configurable :mailheader:`Reply-to`
 ===================================
 
@@ -233,6 +250,9 @@ ability closes `Feature 4051`_.
 
 .. _Feature 4051: https://redmine.iopen.net/issues/4051
 
+.. index::
+   pair: Group; Members
+
 Updated member management
 =========================
 
@@ -244,6 +264,8 @@ The *Manage members* page has been updated to make it easier to use.
 * The list of people on the *Manage many members* page is now
   sorted by name.
 
+
+.. index:: Share link
 .. _easier sharing of links:
 
 Sharing links
@@ -260,6 +282,8 @@ button, that makes it even easier to share links. Providing the
 *Copy* button closes `Feature 4176`_.
 
 .. _Feature 4176: https://redmine.iopen.net/issues/4176
+
+.. index:: Web-hook
 
 Web hooks
 =========
@@ -296,11 +320,15 @@ Implementing the web-hooks closes `Issue 262`_.
    http://groupserver.readthedocs.org/projects/gsgroupmemberleavejson/en/latest/hook.html
 .. _Issue 262: https://redmine.iopen.net/issues/262
 
+.. index:: i10n, German, Translation
+
 German translation of GroupServer
 =================================
 
 Far more of the GroupServer user-interface has been translated
 into German, thanks to the diligent work of Cousin Clara.
+
+.. index:: ReadTheDocs
 
 Code documentation
 ==================

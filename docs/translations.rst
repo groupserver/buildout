@@ -1,4 +1,4 @@
-.. index:: internationalisation, i18n, localisation, l10n, development
+.. index:: !Internationalisation, !i18n, !Localisation, !l10n
 
 =================
 Translation guide
@@ -32,6 +32,8 @@ GroupServer displays a page. To change what language is chosen
 alter the *Preferred languages*, or *Language and input* setting
 in your browser preferences (options).
 
+.. index:: Translation, !Transifex
+
 Translate GroupServer
 =====================
 
@@ -44,6 +46,8 @@ group`_.
 
 .. _the Transifex system:
    https://www.transifex.com/organization/groupserver/dashboard
+
+.. index:: Development
 
 Add internationalisation (i18n)
 ===============================

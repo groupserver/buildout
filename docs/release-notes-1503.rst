@@ -31,6 +31,9 @@ have been further `improvements to internationalisation`_, and
 the introduction of `message relaying`_. Finally, there have been
 some `minor code improvements`_.
 
+.. index::
+   pair: Email; Processing
+
 .. _rebuilt email processing:
 
 Email processing
@@ -78,6 +81,9 @@ the *Add people in bulk* page, and import posts using the
 ``mbox2gs`` script. Now with the Rakı release GroupServer has the
 ability to `export profiles`_ and `export posts`_.
 
+.. index::
+   pair: Profile; Export
+
 Export profiles
 ---------------
 
@@ -88,6 +94,9 @@ of a profile. The new *Export members* page closes `Feature
 4137`_.
 
 .. _Feature 4137: https://redmine.iopen.net/issues/4137
+
+.. index::
+   pair: Email; Export
 
 Export posts
 ------------
@@ -100,6 +109,8 @@ most recent month and add it to an existing ``mbox`` archive of
 posts. The new *Export posts* page closes `Feature 3594`_.
 
 .. _Feature 3594: https://redmine.iopen.net/issues/3594
+
+.. index:: Internationalisation, i18n
 
 Improvements to internationalisation
 ====================================
@@ -130,6 +141,9 @@ GroupServer_ documentation. Adding the new internalisation
 documentation closes `Feature 4031`_.
 
 .. _Feature 4031: https://redmine.iopen.net/issues/4031
+
+.. index::
+   pair: Email; DMARC
 
 Message relaying
 ================

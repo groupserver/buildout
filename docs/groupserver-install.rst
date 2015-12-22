@@ -1,7 +1,4 @@
-.. index:: 
-   single: setup
-   single: configuration
-   single: install
+.. index:: !Setup, !Configuration, !Install
 
 ========================
 GroupServer installation
@@ -96,7 +93,7 @@ then `configure GroupServer`_, `run the installer`_ to install the
 system, and finally `start Zope`_.
 
 .. index:: 
-   pair: configuration; host name
+   pair: Configuration; Host name
 
 Pick a host name
 ----------------
@@ -116,7 +113,7 @@ browser. For a trial system, the name can be set up in the
 #. Save the ``hosts`` file.
 
 .. index::
-   pair: configuration; GroupServer
+   pair: Configuration; GroupServer
 
 Configure GroupServer
 ---------------------
@@ -127,6 +124,10 @@ root of the GroupServer folder [#cfgFile]_. First you must
 configure the `GroupServer Site`_ itself. Next the `Zope`_
 system, which will run your GroupServer site, needs to be
 configured, before the `database storage`_.
+
+.. index::
+   pair: Configuration; SMTP
+   pair: Email; SMTP
 
 GroupServer site
 ~~~~~~~~~~~~~~~~
@@ -220,7 +221,7 @@ need to be set by you to protect this data.
 .. index::
    single: PostgreSQL
    single: database
-   pair: configuration; PostgreSQL
+   pair: Configuration; PostgreSQL
 
 Configure PostgreSQL
 --------------------
@@ -260,7 +261,7 @@ steps.
          $ sudo service postgresql restart
 
 .. index::
-   pair: install; build
+   pair: Install; Build
 
 Run the installer
 =================
@@ -315,7 +316,6 @@ to ``parts/log/{year}-{month}-{day}.{n}.log``.
 .. _Zope 2.13: http://docs.zope.org/zope2/releases/2.13/
 
 .. index:: CentOS, RHEL
-
 .. _centos-install:
 
 CentOS and RHEL

@@ -32,6 +32,9 @@ of installing GroupServer more robust. For existing systems
 `incoming SMTP`_ is handled. Finally there have been many other
 `minor code improvements`_.
 
+.. index::
+   pair: Install; Build
+
 Updated buildout recipes
 ========================
 
@@ -57,6 +60,9 @@ expected. Specific improvements include the following.
 .. _a problem that Bill found: http://groupserver.org/r/post/3mqbXmGwp6CqQWBkCjPXQI
 .. _setuptools: https://pypi.python.org/pypi/setuptools/
 
+.. index::
+   pair: Email; DMARC
+
 DMARC Support
 =============
 
@@ -78,6 +84,9 @@ still be identified, and email message will still get through.
 
 .. _strict DMARC: http://groupserver.org/r/topic/3x4yEy0lBQnHuROtR4Kwnx
 .. _Feature 4108: https://redmine.iopen.net/issues/4108
+
+.. index::
+   pair: Email; SMTP
 
 Incoming SMTP
 =============

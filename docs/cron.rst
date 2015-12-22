@@ -1,6 +1,6 @@
 .. index::
-   pair: install; cron job
-   pair: configuration; cron
+   pair: Install; Cron
+   pair: Configuration; Cron
 
 ===========================
 Configuring :command:`cron`
@@ -37,7 +37,7 @@ profile status`_ to everyone.
 
 .. index::
    single: sendidgest
-   pair: notification; topic digest
+   pair: Notification; Topic digest
 
 ----------------------
 Daily digest of topics
@@ -75,7 +75,7 @@ optional arguments, and running the command manually.
 
 .. index::
    single: sendprofile
-   pair: notification; profile
+   pair: Notification; Profile
 
 ----------------------
 Monthly profile status

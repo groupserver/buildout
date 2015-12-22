@@ -35,7 +35,7 @@ improvements to the `SVG thumbnails`_. Thanks to Bill and `Marek Kuziel`_
 for testing some early versions of Absinthe.
 
 -------------------------------
-Changes Visible to Participants
+Changes visible to participants
 -------------------------------
 
 The most visible change for the participants is a `new search
@@ -48,10 +48,13 @@ groups`_, and the new `profile search`_ will help administrators
 find the profiles of participants. Finally, `SVG thumbnails`_ are
 now shown.
 
-New Search System
+.. index::
+   pair: Email; Search
+
+New search system
 =================
 
-The new search system is the most visible change in Absinthe. 
+The new search system is the most visible change in Absinthe.
 
 * The *Topics* tab on both the site homepage and the group page have a
   *Search* entry [#noSearch]_.
@@ -69,7 +72,7 @@ The new search system is the most visible change in Absinthe.
   loaded.
 * Searching using non-ASCII characters now works [#nonAscii]_.
 
-Better Error Pages
+Better error pages
 ==================
 
 The *Permission Denied* page has been improved to add some suggestions
@@ -81,7 +84,7 @@ The Unexpected Error (500) page and the Not Found (404) page now work with
 ``infrae.wsgi``, for systems that run GroupServer behind a WSGI
 front-end. Neither of these error-pages redirect to display the error.
 
-New Help System
+New help system
 ===============
 
 The old monolithic manuals have been replaced. The new more dynamic system
@@ -89,18 +92,24 @@ will automatically show help for the features that are installed in
 GroupServer, including the custom features. Some of the old pages have been
 retained and updated.
 
-In-Context Administration Guide
+.. index::
+   pair: Group; Administration
+
+In-context administration guide
 ===============================
 
 To help get groups started there is a new system to encourage the group
 administrator [#encouragement]_. The current advice includes:
 
 * Start a topic
-* Invite people, 
+* Invite people,
 * Write some text in the *About* tab, and
 * Make a group Private (rather than Secret).
 
-Closed Groups
+.. index::
+   triple: Group; Type; Closed
+
+Closed groups
 =============
 
 Administrators can now close groups [#closed]_. There are two reasons for
@@ -115,14 +124,17 @@ While there is no front-end user interface that allows the group-type to be
 changed [#select]_, an administrator can change the type of the group by
 making a change in the ZMI.
 
-Profile Search
+.. index::
+   pair: Profile; Search
+
+Profile search
 ==============
 
 A simple profile search has been added [#profileSearch]_. A more complex
 search system has not been added because the privacy issues are still being
 resolved.
 
-SVG Thumbnails
+SVG thumbnails
 ==============
 
 GroupServer now correctly displays a thumbnail of an SVG image at the
@@ -131,7 +143,7 @@ hanging fruit`_, where there are other (relatively) strait forward tasks
 listed.
 
 --------------------------------
-Changes to the Underlying System
+Changes to the underlying system
 --------------------------------
 
 We have made significant changes to the underlying GroupServer system in
@@ -153,7 +165,9 @@ continue to use the ``month.day`` format. The old series was known as
 aptly-named last release in that series. (Eggs in the Frozen Treats series
 were given the 1.0 version.)
 
-Configuration System
+.. index:: Configuration
+
+Configuration system
 ====================
 
 Administration is now simpler, especially for production systems, as the
@@ -162,7 +176,10 @@ external to the ZODB. The new configuration system handles the database,
 the `improved email handling`_, and the `new authentication system`_. It is
 based on a INI file, located in ``parts/instance/gsconfig.ini``.
 
-Improved Email Handling
+.. index::
+   pair: Email; SMTP
+
+Improved email handling
 =======================
 
 The email-handling subsystem of GroupServer has been completely
@@ -180,7 +197,10 @@ better documented, and works. Documentation for the new script can be found
 by running ``./bin/smtp2gs -h`` or reading `the README for the
 gs.group.messages.add.smtp2gs product`_.
 
-New Authentication System
+.. index::
+   pair: Web-hook; Authentication
+
+New authentication system
 =========================
 
 A new authentication system has been created, for the server-side scripts
@@ -188,6 +208,8 @@ A new authentication system has been created, for the server-side scripts
 handling`_, now pass a *token* to the server when they carry out
 tasks. This eliminates the need to store the password of the administrator
 in various plain-text files.
+
+.. index:: PostgreSQL, Relstorage
 
 Relstorage
 ==========
@@ -198,7 +220,7 @@ the file-system. (The PostgreSQL_ database is used by GroupServer.) This
 allows greater scalability, without the need to separately install Zope
 Enterprise Objects (ZEO).
 
-Performance Improvements
+Performance improvements
 ========================
 
 There have been some major performance improvements made to GroupServer in
@@ -206,15 +228,19 @@ the Absinthe release. This includes the removal of some old poorly
 performing code [#divisionObject]_, and altering some of the member
 management code [#members]_.
 
-SQLAlchemy Update
-=================
+.. index:: Dependencies
+
+``SQLAlchemy`` update
+=====================
 
 The entire interface between GroupServer and the PostgreSQL_ relational
 database has been rewritten [#dbError]_. This has allowed GroupServer to
 update its SQLAlchemy_ dependency from the ancient 0.3 release to the
 current 0.7 release.
 
-More Flexible Group Page
+.. index:: Group
+
+More flexible group page
 ========================
 
 The group page was refactored to make it more flexible [#groupHome]_. This
@@ -229,7 +255,7 @@ To get Absinthe go to `the Downloads page for GroupServer`_ and follow `the
 GroupServer Installation documentation`_. Those who already have a
 functioning installation can `update an existing GroupServer system`_.
 
-Update an Existing GroupServer System
+Update an existing GroupServer system
 =====================================
 
 Updating a system running the Faloodeh release of GroupServer (12.06) to
@@ -242,7 +268,7 @@ The biggest change that is needed to update GroupServer to the Absinthe
 release is to update the rational database, to support the `new search
 system`_ and some of the `performance improvements`_. The tables that are
 used to store the posts, topics and topic keywords all need to be
-updated. 
+updated.
 
 **First**, create a backup.  While every effort has been made to
 crate a upgrade path that is smooth and with low risk, there is
@@ -265,12 +291,12 @@ the database.
 
 **Posts**
 
-:Note: Update the ``posts`` table **after** you create a backup. 
+:Note: Update the ``posts`` table **after** you create a backup.
 
 Begin by updating the table that stores the posts.
 
 #.  Log in to the PostgreSQL_ command line::
-   
+
       $ psql -hlocahlost -Ugsadmin groupserver
 
     Where ``gsadmin`` is the PostgreSQL user that you set up when
@@ -285,9 +311,9 @@ Begin by updating the table that stores the posts.
 #.  Update the rows of the ``post`` table to add the FTR data. This may
     take some time::
 
-     UPDATE post 
-     SET fts_vectors = to_tsvector('english', 
-                                   left(coalesce(subject,'') || ' ' || coalesce(body, ''), 
+     UPDATE post
+     SET fts_vectors = to_tsvector('english',
+                                   left(coalesce(subject,'') || ' ' || coalesce(body, ''),
                                         1048575));
 
 #.  Create an index for the FTR data. This may take some time::
@@ -300,10 +326,10 @@ Begin by updating the table that stores the posts.
 
 #.  Create a trigger to update the FTR data whenever a new post is made::
 
-      CREATE TRIGGER fts_vectors_update 
-        BEFORE INSERT or UPDATE ON post 
-        FOR EACH ROW EXECUTE PROCEDURE 
-          tsvector_update_trigger(fts_vectors, 'pg_catalog.english', subject, 
+      CREATE TRIGGER fts_vectors_update
+        BEFORE INSERT or UPDATE ON post
+        FOR EACH ROW EXECUTE PROCEDURE
+          tsvector_update_trigger(fts_vectors, 'pg_catalog.english', subject,
                                   body);
 
 **Topics**
@@ -337,7 +363,7 @@ be present in both tables.
             retval TEXT;
         BEGIN
           SELECT string_agg(post.body, ' ') INTO topic_text
-            FROM post 
+            FROM post
             WHERE post.topic_id = topic_body.topic_id
               AND post.hidden IS NULL;
           SELECT COALESCE(post.subject, '') INTO subject
@@ -349,8 +375,8 @@ be present in both tables.
 
 #.  Create the function that will ``topic`` table with FTR data::
 
-      CREATE OR REPLACE FUNCTION topic_ftr_populate () 
-        RETURNS void AS $$ 
+      CREATE OR REPLACE FUNCTION topic_ftr_populate ()
+        RETURNS void AS $$
           DECLARE
             total_topics REAL;
             trecord RECORD;
@@ -364,7 +390,7 @@ be present in both tables.
             FOR trecord IN SELECT * FROM topic WHERE fts_vectors IS NULL LOOP
               RAISE NOTICE 'Topic %', trecord.topic_id;
               topic_vector := to_tsvector('english', topic_body(trecord.topic_id));
-              UPDATE topic SET fts_vectors = topic_vector 
+              UPDATE topic SET fts_vectors = topic_vector
                 WHERE topic.topic_id = trecord.topic_id;
               i := i + 1;
               p := (i / total_topics) * 100;
@@ -395,7 +421,7 @@ be present in both tables.
             topic_text := topic_body(NEW.topic_id);
             NEW.fts_vectors := to_tsvector('english', topic_text);
             RETURN NEW;
-          END;  
+          END;
       $$ LANGUAGE 'plpgsql';
       CREATE TRIGGER topic_update_trigger_01
         BEFORE INSERT OR UPDATE ON topic
@@ -424,8 +450,8 @@ topics was displayed.
 
 #.  Create the function to populate the new ``topic_keywords`` table::
 
-      CREATE OR REPLACE FUNCTION topic_keywords_populate () 
-        RETURNS void AS $$ 
+      CREATE OR REPLACE FUNCTION topic_keywords_populate ()
+        RETURNS void AS $$
           DECLARE
             total_topics REAL;
             trecord RECORD;
@@ -439,7 +465,7 @@ topics was displayed.
             FOR trecord IN SELECT * FROM topic LOOP
               RAISE NOTICE 'Topic %', trecord.topic_id;
               topic_text = topic_body(trecord.topic_id);
-              SELECT ARRAY(SELECT word 
+              SELECT ARRAY(SELECT word
                              FROM topic_keywords(trecord.topic_id, topic_text))
                 INTO new_keywords;
               INSERT INTO topic_keywords VALUES(trecord.topic_id, new_keywords);
@@ -478,18 +504,18 @@ out the following steps.
     installation::
 
       $ cp ../groupserver-12.11/*.cfg .
-   
+
 #.  Restore your custom configuration::
 
       $ mv custom-bk.cfg custom.cfg
       $ mv config-bk.cfg config.cfg
 
 #.  Disable the creation of the database tables::
-    
+
       $ echo 1 > var/create-tables.cfg
 
 #.  Disable the creation of a new GroupServer site::
-    
+
       $ echo 1 > var/setup-gs.cfg
 
 #.  In your existing GroupServer installation run::
@@ -523,7 +549,7 @@ be used to replace the old calls to GroupServer from Postfix.
 **ZMI Scripts**
 
 Two scripts in the ZMI have to be replaced to gain some of the significant
-`performance improvements`_. 
+`performance improvements`_.
 
 #.  Visit the ZMI for your site. By default it is at
     <http://localhost:8080/manage>.
@@ -538,7 +564,7 @@ Two scripts in the ZMI have to be replaced to gain some of the significant
       siteId = list_object.siteId
       site = getattr(context.Content, siteId)
       group_object = getattr(site.groups, groupId)
-      
+
       # we copy the propertysheet, because we won't be able to access it
       # in the lower layer
       group_properties = {}
@@ -552,7 +578,7 @@ Two scripts in the ZMI have to be replaced to gain some of the significant
       if replyToProp == 'sender':
           replyto = None
       else:
-          replyto = getValueFor('mailto') 
+          replyto = getValueFor('mailto')
 
       try:
           group_properties['division_id'] = site.aq_explicit.getId()
@@ -571,11 +597,11 @@ Two scripts in the ZMI have to be replaced to gain some of the significant
       except:
           pass
 
-      return context.email_header(REQUEST, list_object=list_object, 
+      return context.email_header(REQUEST, list_object=list_object,
                             group_properties=group_properties,
-                            getValueFor=getValueFor, title=title, mail=mail, 
-                            body=body, files=files, post_id=post_id, 
-                            mailto=mailto, replyto=replyto, 
+                            getValueFor=getValueFor, title=title, mail=mail,
+                            body=body, files=files, post_id=post_id,
+                            mailto=mailto, replyto=replyto,
                             xmailer=xmailer).strip()
 
 #.  Click the ``Save Changes`` button.
@@ -640,10 +666,10 @@ Two scripts in the ZMI have to be replaced to gain some of the significant
       # Pass the Boolean to the "email_footer" template
       mailto = getValueFor('mailto')
 
-      return context.email_footer(REQUEST, list_object=list_object, 
+      return context.email_footer(REQUEST, list_object=list_object,
                             group_properties=group_properties,
-                            getValueFor=getValueFor, title=title, 
-                            mailto=mailto, mail=mail, body=body, 
+                            getValueFor=getValueFor, title=title,
+                            mailto=mailto, mail=mail, body=body,
                             user_object=user, from_addr=from_addr,
                             files=files, post_id=post_id, pap_set=pap_set)
 
@@ -728,7 +754,7 @@ Resources
 ..  _Marek Kuziel: https://onlinegroups.net/p/marek
 ..  _low hanging fruit: https://redmine.iopen.net/projects/groupserver/wiki/LowHangingFruit
 ..  _The Downloads page for GroupServer: http://groupserver.org/downloads
-..  _The GroupServer Installation documentation: 
+..  _The GroupServer Installation documentation:
     http://groupserver.org/downloads/install
 .. _the Relstorage product: https://pypi.python.org/pypi/RelStorage
 .. _PostgreSQL: http://www.postgresql.org
