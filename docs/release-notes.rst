@@ -1,3 +1,5 @@
+.. index:: version
+
 ~~~~~~~~~~~~~
 Release notes
 ~~~~~~~~~~~~~

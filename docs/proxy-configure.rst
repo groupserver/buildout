@@ -1,3 +1,8 @@
+.. index:: 
+   single: proxy, virtual host, web proxy
+   pair: install; proxy
+   pair: configuration; proxy
+
 =======================
 Configuring a web proxy
 =======================
@@ -68,6 +73,9 @@ you will need to update the configuration for GroupServer itself.
 
 #.  Click the :guilabel:`Save Changes` button.
 
+.. index::
+    pair: configuration; Apache
+
 Add a virtual host to Apache
 ----------------------------
 
@@ -126,6 +134,9 @@ To add a virtual host to Apache carry out the following steps.
       .. code-block:: console
 
         # service apache2 restart
+
+.. index::
+    pair: configuration; nginx
 
 Add a virtual host to nginx
 ---------------------------
@@ -206,6 +217,8 @@ using carry out the following tasks.
           *Save changes* button, rather than deleting the
           property.
 
+.. index:: skin, theme
+
 Change the skin
 ===============
 
@@ -223,6 +236,8 @@ In the case of Apache the rewrite rule would look like the following
 .. code-block:: apache
 
   RewriteRule ^/(.*) http://localhost:8080/++skin++gs_green/groupserver/Content/initial_site/VirtualHostBase/http/%{HTTP_HOST}:80/VirtualHostRoot/$1 [L,P]
+
+.. index:: HTTPS, TLS, SSL
 
 .. _secure connections:
 

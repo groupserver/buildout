@@ -1,3 +1,8 @@
+.. index::
+   single: development
+   single: source
+   pair: install; development
+
 =================
 Development guide
 =================
@@ -40,6 +45,7 @@ size and structure of the project. Here we cover using a `virtual
 environment`_, before introducing you to the `version control
 system`_ used for GroupServer.
 
+
 Virtual environment
 ===================
 
@@ -61,6 +67,8 @@ environment:
 .. code-block:: console
 
    $ deactivate
+
+.. index:: hg, git
 
 Version control system
 ======================
@@ -86,6 +94,8 @@ you can make a `pull request`_.
 
 .. _fork a repo: https://help.github.com/articles/fork-a-repo/
 .. _pull request: https://help.github.com/articles/using-pull-requests/
+
+.. index:: Mr. Developer
 
 Mr Developer
 ============
@@ -169,6 +179,8 @@ system`_ that you use. The `default configuration`_ that ships
 with GroupServer points to the canonical Git repositories for all
 products.
 
+.. index:: awk
+
 Default configuration
 ~~~~~~~~~~~~~~~~~~~~~
 
@@ -221,6 +233,8 @@ tasks.
         $ mv new-develop.cfg develop.cfg
 
 .. _the Hg-Git plugin: http://hg-git.github.io/
+
+.. index:: customisation
 
 Adding a new product
 ====================

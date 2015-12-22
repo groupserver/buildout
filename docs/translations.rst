@@ -1,3 +1,5 @@
+.. index:: internationalisation, i18n, localisation, l10n, development
+
 =================
 Translation guide
 =================

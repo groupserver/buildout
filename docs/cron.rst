@@ -1,3 +1,7 @@
+.. index::
+   pair: install; cron job
+   pair: configuration; cron
+
 ===========================
 Configuring :command:`cron`
 ===========================
@@ -29,6 +33,11 @@ profile status`_ to everyone.
              to use :command:`cron`.
 
 .. _The Ubuntu Cron HOWTO: https://help.ubuntu.com/community/CronHowto
+
+
+.. index::
+   single: sendidgest
+   pair: notification; topic digest
 
 ----------------------
 Daily digest of topics
@@ -63,6 +72,10 @@ optional arguments, and running the command manually.
    https://groupserver.readthedocs.org/projects/gsgroupmessagestopicdigestsend/en/latest/command.html
 
 .. _profile status:
+
+.. index::
+   single: sendprofile
+   pair: notification; profile
 
 ----------------------
 Monthly profile status

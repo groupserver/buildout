@@ -1,3 +1,5 @@
+.. index:: demon
+
 =================================
 Starting and stopping GroupServer
 =================================

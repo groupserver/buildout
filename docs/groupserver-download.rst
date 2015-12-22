@@ -1,3 +1,7 @@
+.. index:: 
+   single: download
+   pair: install; download
+
 ===================
 Getting GroupServer
 ===================

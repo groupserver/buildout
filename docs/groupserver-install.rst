@@ -1,3 +1,8 @@
+.. index:: 
+   single: setup
+   single: configuration
+   single: install
+
 ========================
 GroupServer installation
 ========================
@@ -90,6 +95,9 @@ Setting up GroupServer is done in four steps: first `pick a host name`_,
 then `configure GroupServer`_, `run the installer`_ to install the
 system, and finally `start Zope`_.
 
+.. index:: 
+   pair: configuration; host name
+
 Pick a host name
 ----------------
 
@@ -106,6 +114,9 @@ browser. For a trial system, the name can be set up in the
         127.0.0.1    localhost gstest
 
 #. Save the ``hosts`` file.
+
+.. index::
+   pair: configuration; GroupServer
 
 Configure GroupServer
 ---------------------
@@ -206,6 +217,11 @@ need to be set by you to protect this data.
 
 .. _the RelStorage system: https://pypi.python.org/pypi/RelStorage
 
+.. index::
+   single: PostgreSQL
+   single: database
+   pair: configuration; PostgreSQL
+
 Configure PostgreSQL
 --------------------
 
@@ -242,6 +258,9 @@ steps.
      .. code-block:: console
 
          $ sudo service postgresql restart
+
+.. index::
+   pair: install; build
 
 Run the installer
 =================
@@ -294,6 +313,8 @@ to ``parts/log/{year}-{month}-{day}.{n}.log``.
 .. _lxml: http://lxml.de/
 .. _Pillow: https://pypi.python.org/pypi/Pillow/
 .. _Zope 2.13: http://docs.zope.org/zope2/releases/2.13/
+
+.. index:: CentOS, RHEL
 
 .. _centos-install:
 
