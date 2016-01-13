@@ -52,7 +52,10 @@ Public Access Period:
   making it easier for group members who follow conversations using
   email to access the files that are posted to the group.
 
-.. index:: Notification
+.. index:: 
+   pair: Notification; Welcome
+   pair: Notification; New member
+   pair: Notification; Invitation
 
 Notifications
 ~~~~~~~~~~~~~
@@ -71,6 +74,9 @@ Finally, the *Cannot Post* notification has undergone an extensive
 change, along with the rest of the `can post`_ system [#CannotPost]_. It
 now has a HTML variant, as well as a wording change to (hopefully) make 
 it easer to understand.
+
+.. index::
+   pair: Email; Can post
 
 Can post
 ~~~~~~~~
