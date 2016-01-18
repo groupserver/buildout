@@ -57,12 +57,17 @@ on ``jQuery.UI`` and Twitter Bootstrap have been removed.
 Updated base packages
 =====================
 
-The Zope2_ application framework, which makes up GroupServer, has
+The most visible dependency to change in Pastis is jQuery_, which
+has been updated to version 1.12.0, from 1.9.1. This should be
+compatible with any customisation code that exists for
+GroupServer, as the API for jQuery remains the same.
+
+The Zope2_ application framework, which supports GroupServer, has
 been updated to version 2.13.23 from 2.13.22. The buildout_
 system, which controls most of the installation and update
 process, has been updated to use `zc.buildout 2.3.1`_.
 
-In addition packages such as dnspython_, enum34_, jQuery_, lxml_,
+In addition packages such as dnspython_, enum34_, lxml_,
 premailer_, pytz_, Pillow_, requests_, and six_ have also been
 updated.
 
@@ -182,4 +187,4 @@ Resources
 ..  LocalWords:  refactored iopen JPEG redmine jQuery jquery async Rakı Bushey
 ..  LocalWords:  Randow Organization sectnum Slivovica DMARC CSS Calvados AIRA
 ..  LocalWords:  SMTP smtp mbox CSV Transifex cfg mkdir groupserver Vimeo WAI
-..  LocalWords:  buildout Limoncello iframe
+..  LocalWords:  buildout Limoncello iframe Pastis
