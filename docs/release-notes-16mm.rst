@@ -4,7 +4,7 @@ GroupServer 16.mm — Pastis proffered politely
 
 :Authors: `Michael JasonSmith`_;
 :Contact: Michael JasonSmith <mpj17@onlinegroups.net>
-:Date: 2015-12-15
+:Date: 2016-01-21
 :Organization: `GroupServer.org`_
 :Copyright: This document is licensed under a
   `Creative Commons Attribution-Share Alike 4.0 International
@@ -35,6 +35,8 @@ improvements`_.
 .. index::
    single: Profile
    pair: Email; Settings
+   pair: JavaScript; jQuery.UI
+   pair: JavaScript; Bootstrap
 
 Email-settings page
 ===================
@@ -52,7 +54,11 @@ email settings. This results in a far-faster page than before.
 Finally, the dependencies that the Change email settings page had
 on ``jQuery.UI`` and Twitter Bootstrap have been removed.
 
-.. index:: Dependencies
+.. index::
+   single: Dependencies
+   pair: Install; Buildout
+   pair: JavaScript; jQuery
+   pair: JavaScript; WYMeditor
 
 Updated base packages
 =====================
@@ -60,7 +66,9 @@ Updated base packages
 The most visible dependency to change in Pastis is jQuery_, which
 has been updated to version 1.12.0, from 1.9.1. This should be
 compatible with any customisation code that exists for
-GroupServer, as the API for jQuery remains the same.
+GroupServer, as the API for jQuery remains the same. Following
+the change to jQuery, the WYMeditor_ has also been updated to
+1.1.1, from 1.0.0b5.
 
 The Zope2_ application framework, which supports GroupServer, has
 been updated to version 2.13.23 from 2.13.22. The buildout_
@@ -81,6 +89,7 @@ updated.
 .. _Pillow: https://pypi.python.org/pypi/Pillow
 .. _requests: https://pypi.python.org/pypi/requests
 .. _six: https://pypi.python.org/pypi/six
+.. _WYMeditor: http://wymeditor.github.io/wymeditor/
 .. _zc.buildout 2.3.1: https://pypi.python.org/pypi/zc.buildout/2.3.1
 .. _Zope2: https://pypi.python.org/pypi/Zope2
 
@@ -91,7 +100,7 @@ updated.
    single: Continuous integration
    pair: Email; Can post
    pair: Internationalisation; German
-   
+
 Minor improvements
 ==================
 
@@ -122,6 +131,9 @@ Minor improvements
 
   This script is run by the new **continuous integration** system
   provided by `Travis CI`_.
+
+* More JavaScript has been switched to use *strict mode.* This
+  includes the code that supports **Registration.**
 
 .. _zc.recipe.testrunner:
    https://pypi.python.org/pypi/zc.recipe.testrunner/
