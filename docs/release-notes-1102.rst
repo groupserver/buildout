@@ -13,6 +13,9 @@ GroupServer 11.02 — Tartufo Nibbled in Polite Company
 The Tartufo release of GroupServer mostly consists of enhancements so
 errors are handled better.
 
+.. index::
+   pair: JavaScript; jQuery
+
 * A new *Unexpected Error* page provides more detail to the user.
   In addition, the pre-written message to support contains a full
   stack-trace. This information can be used to find and eliminate the

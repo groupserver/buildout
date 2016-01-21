@@ -1,3 +1,7 @@
+.. index:: !Buildout
+   pair: Install; Buildout
+   pair: Install; Bootstrap
+
 ********
 Buildout
 ********

@@ -22,6 +22,12 @@ and corrections.
 You can `get Pineapple Snow`_ immediately. Work is now starting on
 GroupServer 11.04 — Slushy followed by a Pounding Headache.
 
+.. index::
+   single: Profile
+   pair: Email; Settings
+   pair: JavaScript; jQuery
+   pair: JavaScript; jQuery.UI
+
 Updated Change Email Settings Page
 ==================================
 
@@ -32,8 +38,8 @@ multiple buttons, and was far harder to use. In addition the new
 interface automatically updates when an email address is verified
 [#Verify]_.
 
-The new interface uses the jQuery UI JavaScript library, just like the
-group homepage. jQuery UI is an excellent library builds on the already
+The new interface uses the jQuery.UI JavaScript library, just like the
+group homepage. jQuery.UI is an excellent library builds on the already
 great jQuery library [#jQuery]_.
 
 Get Pineapple Snow

@@ -1,7 +1,7 @@
 .. index::
    single: development
    single: source
-   pair: install; development
+   pair: Install; development
 
 =================
 Development guide

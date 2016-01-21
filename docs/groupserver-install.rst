@@ -315,7 +315,10 @@ to ``parts/log/{year}-{month}-{day}.{n}.log``.
 .. _Pillow: https://pypi.python.org/pypi/Pillow/
 .. _Zope 2.13: http://docs.zope.org/zope2/releases/2.13/
 
-.. index:: CentOS, RHEL
+.. index:: 
+   single: CentOS
+   single: RHEL
+   pair: Install; Bootstrap
 .. _centos-install:
 
 CentOS and RHEL
@@ -397,7 +400,7 @@ testing.
 
         $ pip install setuptools==18.0.1
 
-#. *Bootstrap* the installation:
+#. :doc:`Bootstrap <README-buildout>` the installation:
 
      .. code-block:: console
 

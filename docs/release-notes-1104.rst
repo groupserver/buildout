@@ -46,6 +46,9 @@ address can include a name, such as ``"OnlineGroups.Net Support"
 <support@onlinegroups.net>`` [#FullAddress]_. Other pages will be
 converted to support full addresses over time.
 
+.. index::
+   pair: JavaScript; jQuery.UI
+
 Minor Fixes
 -----------
 

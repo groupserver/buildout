@@ -31,7 +31,9 @@ style pages`_. In addition the system for `adding people`_ in bulk has been
 completely rewritten, there has been an extensive `notifications update`_,
 and `other updates`_.
 
-.. index:: Skin
+.. index:: 
+   single: Skin
+   pair: JavaScript; Bootstrap
 
 New style pages
 ===============
@@ -93,6 +95,9 @@ the new navigation_ into account.
 .. _Issue 3871: https://redmine.iopen.net/issues/3871
 .. _Issue 3455: https://redmine.iopen.net/issues/3455
 .. _Issue 3663: https://redmine.iopen.net/issues/3663
+
+.. index::
+   pair: JavaScript; Bootstrap
 
 Twitter Bootstrap
 -----------------
@@ -327,6 +332,10 @@ Attachment detection:
     3683`_).
 
 .. _Issue 3683: https://redmine.iopen.net/issues/3863
+
+.. index::
+   pair: JavaScript; WYMeditor
+   pair: JavaScript; jQuery
 
 *WMYeditor* updated:
   The *WYMeditor* is used to provide editing of HTML content such as the

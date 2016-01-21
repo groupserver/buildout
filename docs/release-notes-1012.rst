@@ -10,6 +10,9 @@ GroupServer 10.12 — Lemon Ice in the Cool of the Evening
   `Creative Commons Attribution-Share Alike 3.0 New Zealand License`_
   by `OnlineGroups.Net`_.
 
+.. index::
+   pair: JavaScript; jQuery
+
 The Lemon Ice release of GroupServer mostly consists of changes to the
 CSS. 
 

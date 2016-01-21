@@ -125,6 +125,9 @@ information about the properties of the various parts of GroupServer (see
     CREATE UNIQUE INDEX option_idx 
     ON option (component_id, option_id, site_id, group_id);
 
+.. index::
+   pair: Install; Bootstrap
+
 Update the Packages
 ~~~~~~~~~~~~~~~~~~~
 
