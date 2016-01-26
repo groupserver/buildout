@@ -4,7 +4,7 @@ GroupServer 16.mm — Pastis proffered politely
 
 :Authors: `Michael JasonSmith`_;
 :Contact: Michael JasonSmith <mpj17@onlinegroups.net>
-:Date: 2016-01-21
+:Date: 2016-01-26
 :Organization: `GroupServer.org`_
 :Copyright: This document is licensed under a
   `Creative Commons Attribution-Share Alike 4.0 International
@@ -100,6 +100,7 @@ updated.
    single: Continuous integration
    pair: Email; Can post
    pair: Internationalisation; German
+   pair: JavaScript; Style guide
 
 Minor improvements
 ==================
@@ -108,18 +109,22 @@ Minor improvements
   it stays in once place while the dynamic *Members* and *Recent
   files* sections load.
 
-* The code that determines if someone **can post** has been
-  updated so it is more thoroughly tested.
-
-* The code that provides the **image scaling** now handles some
-  errors in a more robust way.
-
 * The **installation script** :program:`gs_install_ubuntu.sh` now
   uses bold and muted text to make the information hierarchy more
   clear.
 
 * The **German translation** has been updated, thanks to Alice
   and `Stephan G. Blendinger`_.
+
+* The code that provides the **image scaling** now handles some
+  errors in a more robust way.
+
+* The JavaScript code that makes up GroupServer has been updated
+  to conform to the `Google JavaScript Style Guide`_, thanks to
+  the use of the `Google Closure Linter`_.
+
+* The code that determines if someone **can post** has been
+  updated so it is more thoroughly tested.
 
 * More **unit tests** have been added to the products that make
   up GroupServer
@@ -135,11 +140,17 @@ Minor improvements
 * More JavaScript has been switched to use *strict mode.* This
   includes the code that supports **Registration.**
 
-.. _zc.recipe.testrunner:
-   https://pypi.python.org/pypi/zc.recipe.testrunner/
-
 .. _Stephan G. Blendinger:
    https://www.transifex.com/user/profile/stephanblendinger/
+
+.. _Google JavaScript Style Guide:
+   https://google.github.io/styleguide/javascriptguide.xml
+
+.. _Google Closure Linter:
+   https://developers.google.com/closure/utilities/
+
+.. _zc.recipe.testrunner:
+   https://pypi.python.org/pypi/zc.recipe.testrunner/
 
 .. _Travis CI: https://travis-ci.org/groupserver/
 
@@ -199,4 +210,4 @@ Resources
 ..  LocalWords:  refactored iopen JPEG redmine jQuery jquery async Rakı Bushey
 ..  LocalWords:  Randow Organization sectnum Slivovica DMARC CSS Calvados AIRA
 ..  LocalWords:  SMTP smtp mbox CSV Transifex cfg mkdir groupserver Vimeo WAI
-..  LocalWords:  buildout Limoncello iframe Pastis
+..  LocalWords:  buildout Limoncello iframe Pastis Linter
