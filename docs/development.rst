@@ -1,7 +1,6 @@
 .. index::
    single: development
    single: source
-   pair: Install; development
 
 =================
 Development guide
@@ -9,7 +8,7 @@ Development guide
 
 :Authors: `Michael JasonSmith`_;
 :Contact: Michael JasonSmith <mpj17@onlinegroups.net>
-:Date: 2015-02-18
+:Date: 2016-01-26
 :Organization: `GroupServer.org`_
 :Copyright: This document is licensed under a
   `Creative Commons Attribution-Share Alike 4.0 International
@@ -96,6 +95,8 @@ you can make a `pull request`_.
 .. _pull request: https://help.github.com/articles/using-pull-requests/
 
 .. index:: Mr. Developer
+   pair: Install; development
+   pair: Install; buildout
 
 Mr Developer
 ============
@@ -278,6 +279,8 @@ following tasks.
 
         $ buildout -N
 
+.. index:: Pyramid, Zope component architecture, ZCA
+
 ----------------
 System structure
 ----------------
@@ -299,6 +302,9 @@ technology:
 
 The source-code for GroupServer is split into many products_,
 with the documentation_ provided by reStructuredText_.
+
+.. index::
+   pair: Development; Python products
 
 Products
 ========
@@ -388,12 +394,7 @@ The products use *namespace packages* (:pep:`420`).
 
   + The :file:`COPYRIGHT.txt`, and :file:`LICENSE.txt`.
 
-* The **documentation** will be in the :file:`docs/`
-  directory. There will always be a :file:`docs/HISTORY.rst`, and
-  often a full API documentation written using Sphinx_
-  documentation system. Read the Docs is often used to
-  automatically build the documentation; if it is then a link
-  will be in the :file:`README.rst`.
+* The documentation_ will be in the :file:`docs/` directory.
 
 * **The Python code** is within nested sub-directories beneath
   the product directory, such as
@@ -414,6 +415,8 @@ not have to follow it.) To determine the relationship between the
 files, and the rest of GroupServer, it is necessary to look at
 the ZCML_ file.
 
+.. index:: ZCML, Zope Configuration Markup Language
+
 ZCML
 ----
 
@@ -421,8 +424,8 @@ The Zope Configuration Markup Language (ZCML) defines the `static
 resources`_, the `page templates`_, the relationship that the
 Python files have to each other, and to other products. The
 configuration for each product is always called
-``configure.zcml``, and it is always in the same directory as all
-the Python files.
+:file:`configure.zcml`, and it is always in the same directory as
+all the Python files.
 
 To begin with the three most important directives are as follows.
 
@@ -474,6 +477,8 @@ in the ZCML_.
 In GroupServer the resources are always accessed from the root of
 the site, with ``++resource++`` added to the start of the name:
 <http://groupserver.org/++resource++gs-group-messages-topic-compose-20140327.js>
+
+.. index:: ZPT, Chameleon, Page templates
 
 .. _page template:
 
@@ -540,14 +545,22 @@ to Chameleon_.
   group-information attribute (``groupInfo``), and from that the
   group-name is retrieved.
 
+.. index:: reStructuredText
+
 Documentation
 =============
+
+Every package will always have documentation. The primary
+documentation is in the :file:`README.rst`, and there will also
+be a Changelog in the :file:`docs/HISTORY.rst` file. Often there
+will be full API documentation.
 
 The development documentation for GroupServer_ is entirely in
 reStructuredText_, with the autodoc_ plugin for Sphinx_ used to
 generate the source-code documentation where possible. The
-documentation is then pushed up to the `the GroupServer project
-at Read The Docs`_.
+documentation is then usually pushed up to the `the GroupServer
+project at Read The Docs`_; if it is then a link will be in the
+:file:`README.rst`.
 
 .. _autodoc: http://sphinx-doc.org/tutorial.html#autodoc
 .. _the GroupServer project at Read The Docs:
@@ -575,4 +588,4 @@ at Read The Docs`_.
 
 ..  LocalWords:  GitHub groupserver buildout VCS awk mr cfg Plone refactored
 ..  LocalWords:  SQL Namespaces namespace reStructuredText autodoc CSS ZCML ZPT
-..  LocalWords:  TAL XHTML
+..  LocalWords:  TAL XHTML Changelog
