@@ -6,7 +6,7 @@ Getting GroupServer
 
 :Authors: `Michael JasonSmith`_;
 :Contact: Michael JasonSmith <mpj17@onlinegroups.net>
-:Date: 2015-03-06
+:Date: 2016-01-27
 :Organization: `GroupServer.org`_
 :Copyright: This document is licensed under a
   `Creative Commons Attribution-Share Alike 4.0 International License`_
@@ -15,10 +15,26 @@ Getting GroupServer
 ..  _Creative Commons Attribution-Share Alike 4.0 International License:
     https://creativecommons.org/licenses/by-sa/4.0/
 
-GroupServer_ is distributed as a compressed tar-file that you
-download_. This file contains an **installation script for
-Ubuntu** will install all the necessary dependencies_ that your
-system currently lacks (see :doc:`groupserver-install`).
+The requirements_ for GroupServer_ are fairly light for a
+stand-alone system. It is distributed as a compressed tar-file
+that you download_. This file contains an **installation script
+for Ubuntu** will install all the necessary dependencies_ that
+your system currently lacks (see :doc:`groupserver-install`).
+
+.. index:: !Requirements
+   pair: Install; Requirements
+   pair: Install; Virtual machine
+
+.. _requirements:
+
+System requirements
+===================
+
+GroupServer requires a Linux system, with a network connection,
+and at least 1024MB of RAM [#lxml]_. (The default amount of RAM
+for a virtual machine may be too small.) GroupServer and all its
+libraries takes around 320MB of disk space, with more required to
+store the messages, posted files, and other data.
 
 .. index::
    pair: Install; Download
@@ -104,6 +120,9 @@ Ubuntu runs ``apt-get`` to install all the requisite packages
 | SMTP Test   | ``swaks``             | ``swaks``             |
 +-------------+-----------------------+-----------------------+
 
+..  [#lxml] The RAM requirement is for `compiling lxml`_ during
+            installation.
+..  _compiling lxml: http://stackoverflow.com/a/25916353
 ..  _GroupServer: http://groupserver.org/
 ..  _GroupServer.org: http://groupserver.org/
 ..  _OnlineGroups.net: https://onlinegroups.net/
