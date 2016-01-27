@@ -1,4 +1,4 @@
-.. index:: !Setup, !Configuration, !Install
+.. index:: !Install
 
 ========================
 GroupServer installation
@@ -62,6 +62,8 @@ Quick start
 
 #.  Commence the `next steps`_.
 
+.. index:: !Setup, !Configuration,
+
 Set up
 ======
 
@@ -92,7 +94,7 @@ Setting up GroupServer is done in four steps: first `pick a host name`_,
 then `configure GroupServer`_, `run the installer`_ to install the
 system, and finally `start Zope`_.
 
-.. index:: 
+.. index::
    pair: Configuration; Host name
 
 Pick a host name
@@ -160,6 +162,9 @@ You will need to check all the configuration for your initial site.
   The SMTP host that will be used to send email from
   GroupServer. It defaults to ``localhost``, assuming you will be
   running Postfix on the same machine as GroupServer.
+
+.. index::
+   pair: Configuration; server
 
 Zope
 ~~~~
@@ -315,7 +320,7 @@ to ``parts/log/{year}-{month}-{day}.{n}.log``.
 .. _Pillow: https://pypi.python.org/pypi/Pillow/
 .. _Zope 2.13: http://docs.zope.org/zope2/releases/2.13/
 
-.. index:: 
+.. index::
    single: CentOS
    single: RHEL
    pair: Install; Bootstrap
