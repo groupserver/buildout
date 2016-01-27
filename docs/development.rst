@@ -303,7 +303,7 @@ with the documentation_ provided by reStructuredText_.
 Products
 ========
 
-GroupServer is split into many (currently 145) *products*: small
+GroupServer is split into many (currently 146) *products*: small
 Python packages that deal with one aspect of the system. The
 general rule is that **one product for each user interface**
 (usually a form). While this may seem limiting, each product
@@ -327,8 +327,8 @@ normally given a name ending in ``.base``, such as
 
 Development is carried out on one, or a few, products at a
 time. If you are unsure what products provide aspect of
-GroupServer it would be best to **ask in `GroupServer
-development`_** or in #gsdevel on IRC. However, there are some
+GroupServer it would be best to **ask** in `GroupServer
+development`_ or in ``#gsdevel`` on IRC. However, there are some
 clues: normally name of the product will make up the part of the
 identifier or class-name of an element in the HTML source of a
 page. For example, the link to the ATOM feed of posts on the
@@ -356,27 +356,57 @@ Namespaces
 
 The products use *namespace packages* (:pep:`420`).
 
+* Each part of the namespace is separated by dots. For example,
+  the code that produces for `the plain-text version of an email
+  message`_ is ``gs.group.list.email.text``.
+
 * Each GroupServer product belongs beneath the ``gs``
-  namespace. Beneath that there are many others. For example,
-  ``gs.group`` products deal with groups, while ``gs.profile``
-  products deal with people. Each part of the namespace is
-  separated by dots. For example, `the code that produces for the
-  plain-text version of an email message`_ is
-  ``gs.group.list.email.text``.
+  namespace. Beneath that there are many others. The three large
+  ones are for the three main agents in GroupServer:
 
-* The root of each product contains the packaging information for
-  that product, particularly in the ``setup.py`` file.
+  ``gs.group``:
+    Groups, including mailing list functionality (``gs.group.list``).
 
-* The Python code is within nested sub-directories beneath the
-  product directory, such as ``gs/group/list/email/text``. All
-  but the last directory will have ``__init__.py`` files that set
-  the directory up as a *namespace directory*. The last directory
-  (``text`` in this example) will have an ``__init__.py`` that
-  may be blank. It is necessary to turn the directory into a
-  Python module.
+  ``gs.profile``:
+    People, as represented by their profiles.
 
-.. _the code that produces for the plain-text version of an email message:
+  ``gs.site``:
+    The code relating specifically to a site.
+
+  The other major namespace is ``gs.content``, which provides the
+  **client side** code.
+
+* The **root** of each product contains the packaging information
+  for that product.
+
+  + The configuration for setuptools_, particularly in the files
+    :file:`setup.py`, :file:`setup.cfg`, and :file:`MANIFEST.in`.
+    The first is the one with most of the information, in
+    particular the dependencies for the package.
+
+  + The :file:`README.rst`, which appears on GitHub.
+
+  + The :file:`COPYRIGHT.txt`, and :file:`LICENSE.txt`.
+
+* The **documentation** will be in the :file:`docs/`
+  directory. There will always be a :file:`docs/HISTORY.rst`, and
+  often a full API documentation written using Sphinx_
+  documentation system. Read the Docs is often used to
+  automatically build the documentation; if it is then a link
+  will be in the :file:`README.rst`.
+
+* **The Python code** is within nested sub-directories beneath
+  the product directory, such as
+  :file:`gs/group/list/email/text`. All but the last directory
+  will have :file:`__init__.py` files that set the directory up
+  as a *namespace directory*. The last directory (``text`` in
+  this example) will have an :file:`__init__.py`. It is necessary
+  to turn the directory into a Python module.
+
+.. _the plain-text version of an email message:
     https://github.com/groupserver/gs.group.list.email.text
+
+.. _setuptools: https://pypi.python.org/pypi/setuptools
 
 The Python code is made up of an ``__init__.py`` that is often
 blank, with each class in its own file. (This is my habit, you do
