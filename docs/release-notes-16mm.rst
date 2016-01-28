@@ -68,17 +68,20 @@ The most visible dependency to change in Pastis is jQuery_, which
 has been updated to version 1.12.0, from 1.9.1. This should be
 compatible with any customisation code that exists for
 GroupServer, as the API for jQuery remains the same. Following
-the change to jQuery, the WYMeditor_ has also been updated to
-1.1.1, from 1.0.0b5.
+the change to jQuery
+
+* The WYMeditor_ has been updated to 1.1.1 from 1.0.0b5, and
+* The `jQuery MultiFile`_ plugin has been updated to 2.2.1 from
+  1.48.
 
 The Zope2_ application framework, which supports GroupServer, has
 been updated to version 2.13.23 from 2.13.22. The buildout_
 system, which controls most of the installation and update
 process, has been updated to use `zc.buildout 2.3.1`_.
 
-In addition packages such as dnspython_, enum34_, `jQuery
-MultiFile`_, lxml_, premailer_, pytz_, Pillow_, requests_, and
-six_ have also been updated.
+In addition packages such as dnspython_, enum34_, lxml_,
+premailer_, pytz_, Pillow_, requests_, and six_ have also been
+updated.
 
 .. _buildout: http://www.buildout.org/en/latest/
 .. _dnspython: https://pypi.python.org/pypi/dnspython
