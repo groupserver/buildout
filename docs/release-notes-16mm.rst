@@ -58,6 +58,7 @@ on ``jQuery.UI`` and Twitter Bootstrap have been removed.
    single: Dependencies
    pair: Install; Buildout
    pair: JavaScript; jQuery
+   pair: JavaScript; MultiFile
    pair: JavaScript; WYMeditor
 
 Updated base packages
@@ -75,14 +76,15 @@ been updated to version 2.13.23 from 2.13.22. The buildout_
 system, which controls most of the installation and update
 process, has been updated to use `zc.buildout 2.3.1`_.
 
-In addition packages such as dnspython_, enum34_, lxml_,
-premailer_, pytz_, Pillow_, requests_, and six_ have also been
-updated.
+In addition packages such as dnspython_, enum34_, `jQuery
+MultiFile`_, lxml_, premailer_, pytz_, Pillow_, requests_, and
+six_ have also been updated.
 
 .. _buildout: http://www.buildout.org/en/latest/
 .. _dnspython: https://pypi.python.org/pypi/dnspython
 .. _enum34: https://pypi.python.org/pypi/six
 .. _jQuery: http://jquery.com/
+.. _jQuery MultiFile: http://www.fyneworks.com/jquery/multifile/
 .. _lxml: https://pypi.python.org/pypi/lxml
 .. _premailer: https://pypi.python.org/pypi/premailer
 .. _pytz: https://pypi.python.org/pypi/pytz
