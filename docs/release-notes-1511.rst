@@ -251,7 +251,7 @@ ability closes `Feature 4051`_.
 .. _Feature 4051: https://redmine.iopen.net/issues/4051
 
 .. index::
-   pair: Group; Members
+   pair: Group member; Manage
 
 Updated member management
 =========================
