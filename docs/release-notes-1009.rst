@@ -14,6 +14,9 @@ The changes below form the bulk of what is new in the
 Spaghettieis release of GroupServer. Work is now progressing on
 GroupServer 10.10 — Gelato while Viewing the Sights.
 
+.. index::
+   pair: Group member; Invite
+
 Invitations
 ============
 
@@ -99,6 +102,9 @@ from the *Accept Invitation* page that is shown to new members. It also
 shares the fixes to the notifications that are sent to the new member
 and the group administrators.
 
+.. index::
+   pair: Group member; Join
+   pair: Group member; Leave
 
 Join and Leave
 ==============
@@ -129,6 +135,9 @@ Join and Leave Log
 People joining and leaving groups is now audited [#JoinAudit]_. The
 audit-data is then fed into a new *Join and Leave Log* [#Log]_.
 
+.. index::
+   pair: Group member; Manage
+
 Manage Members
 ==============
 
@@ -140,6 +149,9 @@ rewrite, thanks to the heroic efforts of Alice [#ManageMembers]_. The new
 page now meshes properly with invitations, so invites can be withdrawn
 without causing any problems [#WithdrawingInvites]_.
 
+.. index::
+   pair: JavaScript; WYMeditor
+
 Change Site Introduction
 ========================
 
@@ -147,6 +159,8 @@ The page that is used to change the text that appears on the
 homepage of the site has been updated so it uses the `WYMeditor`_
 [#ChangeHomepage]_. This is the same JavaScript-based HTML editor that
 is used to change a biography on the *Profile* of a member.
+
+.. index:: Share link
 
 Share Box
 =========

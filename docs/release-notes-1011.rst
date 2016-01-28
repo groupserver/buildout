@@ -17,15 +17,18 @@ GroupServer:
   a more flexible `delivery settings page`_, a simplified `start a
   group`_ process, and a new `group homepage about tab`_.
 * `Management of a group member`_ is now easier.
-* There have been some `set password`_  enhancements and `notification 
+* There have been some `set password`_  enhancements and `notification
   updates`_.
 * Finally, the `buildout`_ process has been improved.
 
 All these enhancements will be available to new GroupServer
 installations, and those who `update an existing groupserver system`_.
-  
+
 Work is now progressing on GroupServer 10.12 — Lemon Ice in the Cool
 of the Evening.
+
+.. index::
+   pair: Group; Properties
 
 Group Properties Page
 =====================
@@ -41,6 +44,9 @@ rather than relying on the older GroupServer ``XForms`` code. This
 means that standard features of forms on GroupServer are present,
 such as popup help.
 
+.. index::
+   pair: Group; Delivery settings
+
 Delivery Settings Page
 ======================
 
@@ -50,6 +56,9 @@ page is that administrators can now change the delivery settings of
 group members.  For members the page looks and behaves much as it did
 before. However, the system has undergone a major rework behind the
 scenes. This will make the page easier to maintain, extend and change.
+
+.. index::
+   pair: Group; Start
 
 Start a Group
 =============
@@ -65,6 +74,10 @@ and will continue to be supported. To create an announcement group
 first create a discussion group. Then use the ZMI to change the
 ``group_template`` property to ``announcement``.
 
+.. index::
+   pair: Group: About
+   pair: JavaScript; WYMeditor
+
 Group Homepage About Tab
 ========================
 
@@ -73,12 +86,18 @@ page [#AboutTab]_. The new tab provides a blank area where a site
 administrator is free to write any HTML. The WYMeditor is used to edit
 the contents of the tab [#WYMeditorUse]_.
 
+.. index::
+   pair: Group member; Manage
+
 Management of a Group Member
 ============================
 
 A group administrator is now shown a *Manage Member* link when viewing
 the profile of a member [#ManageMember]_. This should make managing
 members even easier than before.
+
+.. index::
+   pair: Profile; Password
 
 Set Password
 ============
@@ -89,12 +108,17 @@ links multiple times [#Password]_. In addition all the Set Password
 pages have been updated to use a single text entry, rather than two
 password entries [#EnClearPasswords]_.
 
+.. index:: Notification
+
 Notification Updates
 ====================
 
 Some notifications that are stored in the ZMI have been updated. In
 addition better feedback is given for those who fail to change the
 group-delivery settings by email [#Notifications]_.
+
+.. index::
+   pair: Install; Buildout
 
 Buildout
 ========
@@ -109,8 +133,6 @@ information about the new GroupServer site is displayed at the end of
 the buildout process. This should make it easier to start and view the
 new GroupServer site.
 
-
-
 Update an Existing GroupServer System
 =====================================
 
@@ -123,14 +145,14 @@ Update the Package Versions
 
 Carry out the following steps to update the package versions.
 
-#. Download the Kulfi tar-ball from `the GroupServer download page 
+#. Download the Kulfi tar-ball from `the GroupServer download page
    <http://groupserver.org/downloads>`_
 
 #. Uncompress the tar-ball.
-   
+
 #. Copy the file ``groupserver-10.11/versions.cfg`` to your existing
    GroupServer installation.
-   
+
 #. In your existing GroupServer installation run::
 
       $ ./bin/buildout -N
@@ -146,14 +168,14 @@ to update the database.
    and note their values.
 
 #. Run the following command::
-   
+
       $ psql -U {psql_user} {psql_dbname} -c "ALTER TABLE "\
         "password_reset ADD COLUMN reset TIMESTAMP WITH TIME ZONE "\
         "DEFAULT NULL;"
 
-Older installations will also have to update the table used to record 
+Older installations will also have to update the table used to record
 invitations::
-      
+
       $ psql -U {psql_user} {psql_dbname} -c "ALTER TABLE "\
         "user_group_member_invitation ADD COLUMN initial_invite "\
         "BOOLEAN DEFAULT FALSE, ADD COLUMN withdrawn_date TIMESTAMP "\
@@ -176,13 +198,13 @@ a hand with this.
 .. _Zope 2: http://zope2.zope.org/
 
 .. [#GroupProperties] The new group properties page closes
-   `Ticket 292 <https://redmine.iopen.net/issues/292>`_  
+   `Ticket 292 <https://redmine.iopen.net/issues/292>`_
 
 .. [#PropertiesTopic] The GroupServer Development
    group hosted `a lively debate about topics
    <http://groupserver.org/r/topic/6ips13y2R228XK4dBYJTTl>`_
 
-.. [#EmailSettings] Creating a new email-settings page closes `Ticket 
+.. [#EmailSettings] Creating a new email-settings page closes `Ticket
    371 <https://redmine.iopen.net/issues/371>`_
 
 .. [#StartAGroup] Simplifying the process used to start a group closes
@@ -191,7 +213,7 @@ a hand with this.
 .. [#AboutTab] Creating the About Tab closes `Ticket 493
    <https://redmine.iopen.net/issues/493>`_
 
-.. [#WYMeditorUse] GroupServer uses the excellent `WYMeditor 
+.. [#WYMeditorUse] GroupServer uses the excellent `WYMeditor
    <http://www.wymeditor.org/>`_ as its HTML editor. Pages that use the
    editor include *Change Profile*, *Change Site Introduction* and all
    pages that are editable with the Content Manager (such as *About*
@@ -200,10 +222,10 @@ a hand with this.
 .. [#ManageMember] Creating a link from the profile page to the manage
    member page closes `Ticket 515
    <https://redmine.iopen.net/issues/515>`_
-   
+
 .. [#Password] Knowing when a password has been reset closes `Ticket 326
    <https://redmine.iopen.net/issues/326>`_
-   
+
 .. [#EnClearPasswords] Why text entries are used to set passwords is
    explained in this `blog post
    <http://onlinegroups.net/blog/2010/10/22/change-password/>`_
@@ -215,7 +237,7 @@ a hand with this.
    #. `Ticket 531 <https://redmine.iopen.net/issues/531>`_
 
 .. [#lxml] The ``lxml`` improvements should resolve `the issues that Tom
-   had when installing GroupServer 
+   had when installing GroupServer
    <http://groupserver.org/r/post/QeQVi7Zt4SgkNdPpZSyQl>`_
 
 .. _GroupServer.org: http://groupserver.org/
@@ -223,4 +245,3 @@ a hand with this.
 .. _Creative Commons Attribution-Share Alike 3.0 New Zealand License:
    http://creativecommons.org/licenses/by-sa/3.0/nz/
 .. _GroupServer Development: http://groupserver.org/groups/development
-
