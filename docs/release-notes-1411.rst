@@ -66,6 +66,7 @@ the internationalisation for GroupServer.
 
 .. index::
    pair: Email; Commands
+   pair: Notification: Confirm subscription
 
 Updated email commands
 ======================
@@ -80,12 +81,13 @@ rewritten and improved. Five commands are currently supported.
 :``Subscribe``: This used to join a **public** group. A person
             who registers this way will be unable to log in,
             because he or she will have no password. In addition
-            public groups are rare it has limited use. However,
-            tradition dictates that a ``Subscribe`` command is
-            supported. See `the gs.group.member.subscribe
-            product`_ for more information.
-:``Confirm``: This message, the companion to ``Subscribe``, is
-              used to ensure that a person wants to join a
+            public groups are rare so it has limited
+            use. However, tradition dictates that a ``Subscribe``
+            command is supported. See `the
+            gs.group.member.subscribe product`_ for more
+            information.
+:``Confirm``: This notification, the companion to ``Subscribe``,
+              is used to ensure that a person wants to join a
               group. See `the gs.group.member.subscribe product`_
               for more information.
 :``Digest on``: This is used to switch to the topic-digest. See
