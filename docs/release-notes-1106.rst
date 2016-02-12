@@ -49,21 +49,26 @@ administration pages have been updated [#SiteAdmin]_. In particular,
 the pages that allow an administrator to set the site timezone [#tz]_ and
 change the site name [#SiteName]_ have been fixed so they work correctly.
 
+.. index::
+   pair: Email; Verify
+   pair: Password; Rest
+   triple: Group; Type; Announcement
+
 Minor Fixes
 ===========
 
 Minor fixes in Soft Serve include the following. 
 
-* If a member with a single unverified address resets a password then
-  that address will become verified [#Verify]_.
+* If a member with a single unverified address resets a password
+  then that address will become verified [#Verify]_.
 * The :mailheader:`Reply-to` address of an invitation is now set
   to the address of the administrator who issued the invitation
   [#ReplyTo]_.
-* Only posting members of an announcement group are shown a link to
-  start a topic [#StartTopic]_.
+* Only posting members of an *announcement* group are shown a
+  link to start a topic [#StartTopic]_.
 * The name of the initial GroupServer instance and GroupServer site have
   been changed [#GSName]_.
-* A coding error with the Members page has been fixed
+* A coding error with the *Members* page has been fixed
   [#PostingMembers]_.
 
 Get Soft Serve

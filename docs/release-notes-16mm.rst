@@ -107,6 +107,7 @@ updated.
    pair: Internationalisation; German
    pair: JavaScript; Style guide
    pair: Notification: Confirm subscription
+   triple: Group; Type; Announcement
 
 Minor improvements
 ==================
@@ -114,6 +115,12 @@ Minor improvements
 * The **Admin** section of the group page has been moved up, so
   it stays in once place while the dynamic *Members* and *Recent
   files* sections load.
+
+* The **Manage members** page has been updated, so it is easier
+  to use, it looks better, and includes internationalisation
+  support. A coding error that prevented a group administrator
+  from being a posting member of an *announcement* group has been
+  corrected.
 
 * The **German translation** has been updated, thanks to Alice
   and `Stephan G. Blendinger`_.

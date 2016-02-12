@@ -59,6 +59,7 @@ scenes. This will make the page easier to maintain, extend and change.
 
 .. index::
    pair: Group; Start
+   triple: Group; Type; Announcement
 
 Start a Group
 =============
