@@ -148,7 +148,7 @@ To add a virtual host to Apache carry out the following steps.
 Add a virtual host to nginx
 ---------------------------
 
-Open :file:`/etc/nginx/sites-avaliable/groupserver` in a
+Open :file:`/etc/nginx/sites-available/groupserver` in a
 text-editor.
 
 #.  Add the following to the file
