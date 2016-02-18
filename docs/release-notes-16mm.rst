@@ -106,7 +106,7 @@ updated.
    pair: Email; Can post
    pair: Internationalisation; German
    pair: JavaScript; Style guide
-   pair: Notification: Confirm subscription
+   pair: Notification; Confirm subscription
    triple: Group; Type; Announcement
 
 Minor improvements

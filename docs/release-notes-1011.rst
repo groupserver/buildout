@@ -76,7 +76,7 @@ first create a discussion group. Then use the ZMI to change the
 ``group_template`` property to ``announcement``.
 
 .. index::
-   pair: Group: About
+   pair: Group; About
    pair: JavaScript; WYMeditor
 
 Group Homepage About Tab
