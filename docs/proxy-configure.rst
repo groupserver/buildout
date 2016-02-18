@@ -1,6 +1,4 @@
-.. index::
-   single: Proxy
-   single: Web proxy
+.. index:: Proxy, !Web proxy
    pair: Install; Proxy
    pair: Configuration; Proxy
 
@@ -10,7 +8,7 @@ Configuring a web proxy
 
 :Authors: `Michael JasonSmith`_; `Fabien Hespul`_
 :Contact: Michael JasonSmith <mpj17@onlinegroups.net>
-:Date: 2015-02-12
+:Date: 2016-02-18
 :Organization: `GroupServer.org`_
 :Copyright: This document is licensed under a
   `Creative Commons Attribution-Share Alike 4.0 International License`_
@@ -36,16 +34,18 @@ available to the public to provide the following services:
 * To provide a secure connection.
 
 In this document we explain how to `add a virtual host`_ to
-either Apache_ or nginx_, and how to `change the reported port`_
-in GroupServer. We then explain how to `change the skin`_, before
-we outline how to set up `secure connections`_.
+either Apache_ or nginx_, `update the DNS`_, and `change the
+reported port`_ in GroupServer. We then explain how to `change
+the skin`_, before we outline how to set up `secure
+connections`_.
 
 .. note:: You will need to be the root user to carry out most of
           these tasks. Commands that need to be run as root will
           be shown with ``#`` prompt, rather than a ``$``.
 
-.. index::
-   single: Virtual host
+.. index:: !Virtual host, ZMI
+
+.. _virtual host:
 
 Add a virtual host
 ==================
@@ -103,6 +103,7 @@ To add a virtual host to Apache carry out the following steps.
 
       .. code-block:: apacheconf
 
+        # GroupServer site
         <VirtualHost *:80>
           ServerAdmin support@example.com
           ServerName groups.example.com
@@ -121,8 +122,35 @@ To add a virtual host to Apache carry out the following steps.
           CustomLog ${APACHE_LOG_DIR}/access.log combined
         </VirtualHost>
 
-    * Change the address for the site from ``groups.example.com``
-      to that of you new virtual host.
+        # ZMI Support
+        <VirtualHost *:80>
+          ServerAdmin support@example.com
+          ServerName zmi.example.com
+
+          RewriteEngine on
+          RewriteRule ^/(.*) http://localhost:8080/VirtualHostBase/http/%{HTTP_HOST}:80/VirtualHostRoot/$1 [L,P]
+
+          ProxyVia On
+
+          ErrorLog ${APACHE_LOG_DIR}/zmi-error.log
+
+          # Possible values include: debug, info, notice, warn, error, crit,
+          # alert, emerg.
+          LogLevel info
+
+          CustomLog ${APACHE_LOG_DIR}/access.log combined
+        </VirtualHost>
+
+    * Two virtual sites are defined: one that presents
+      GroupServer (which is used most of the time) and one for
+      :ref:`the ZMI. <ZMI Login>`
+
+      + Change the address for the GroupServer site from
+        ``groups.example.com`` to that of you new virtual host.
+
+      + Change the address for the ZMI from
+        ``zmi.groups.example.com`` to that of your new virtual
+        host, keeping the ``zmi`` at the start.
 
     * Change the email address for ``ServerAdmin`` from
       ``support@example.com`` to the value of the
@@ -181,11 +209,17 @@ text-editor.
           }
         }
 
-    * Change the ``server_name`` from ``groups.example.com`` to
-      that of you new virtual host.
+    * Two virtual sites are defined: one that presents
+      GroupServer (which is used most of the time) and one for
+      :ref:`the ZMI. <ZMI Login>`
 
-    * Make a similar change to the second server, keeping the
-      ``zmi.`` at the start.
+      + Change the ``server_name`` in the first ``server`` from
+        ``groups.example.com`` to the address of you new virtual
+        host.
+
+      + Change the host name for the ZMI, defined by the second
+        ``server`` from ``zmi.groups.example.com`` to that of
+        your new virtual host, keeping the ``zmi`` at the start.
 
 #.  Link the configuration for your host:
 
@@ -200,6 +234,20 @@ text-editor.
 
         # service nginx reload
 
+.. index:: DNS
+   pair: Configuration; Host name
+
+Update the DNS
+==============
+
+The service that supplies your domain-name should provide
+instructions for updating the domain name to point to your new
+:ref:`virtual host <virtual host>`. You will also need the domain
+for the ZMI to also point to the **same** server. You can either
+
+* Add a DNS entry for the ZMI, or
+* Add an entry to your local :file:`/etc/hosts` file.
+
 Change the reported port
 ========================
 
@@ -210,7 +258,7 @@ built (``8080``) rather than the new HTTP or HTTPS port provided
 by the proxy. To change the port that GroupServer *says* it is
 using carry out the following tasks.
 
-#.  Connect to the ZMI for your site.
+#.  :ref:`Login to the ZMI <ZMI Login>` for your site.
 #.  Visit the folder for your site, at
     :guilabel:`groupserver/Content/initial_site`.
 #.  Open the :guilabel:`DivisionConfiguration` object.
@@ -317,7 +365,7 @@ GroupServer should use ``https`` links in email messages and in
 the :guilabel:`Share` button [#web]_, to prevent potential
 attacks. To do this carry out the following tasks.
 
-#.  Log into the ZMI (see :ref:`ZMI Login`).
+#.  :ref:`Login to the ZMI <ZMI Login>` for your site.
 #.  Visit the folder for your site at
     :menuselection:`groupserver --> Contents --> initial_site`.
 #.  Select the :guilabel:`DivisionConfiguration` object.
