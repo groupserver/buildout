@@ -125,7 +125,7 @@ To add a virtual host to Apache carry out the following steps.
         # ZMI Support
         <VirtualHost *:80>
           ServerAdmin support@example.com
-          ServerName zmi.example.com
+          ServerName zmi.groups.example.com
 
           RewriteEngine on
           RewriteRule ^/(.*) http://localhost:8080/VirtualHostBase/http/%{HTTP_HOST}:80/VirtualHostRoot/$1 [L,P]
