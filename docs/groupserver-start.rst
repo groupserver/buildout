@@ -47,15 +47,17 @@ it with the command in the GroupServer installation directory::
 This starts the Zope_ instance, which runs GroupServer, in
 *foreground* mode.
 
+.. index:: !ZMI
+
 .. _ZMI Login:
 
 Access the ZMI
 --------------
 
 Generally most configuration can be done from the Web interface
-of GroupServer. However the *Zope Management Interface* can be
-used to perform some low-level tasks, and accessing it is a good
-indication that everything is working correctly. The ZMI is
+of GroupServer. However the *Zope Management Interface* (ZMI) can
+be used to perform some low-level tasks, and accessing it is a
+good indication that everything is working correctly. The ZMI is
 accessed by visiting ``http://{zope_host}:{zope_port}/manage``:
 
 ``zope_host``:

@@ -112,7 +112,7 @@ browser. For a trial system, the name can be set up in the
 
         127.0.0.1    localhost gstest
 
-#. Save the ``hosts`` file.
+#. Save the :file:`/etc/hosts` file.
 
 .. index::
    pair: Configuration; GroupServer
