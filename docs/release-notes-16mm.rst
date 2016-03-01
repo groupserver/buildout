@@ -4,7 +4,7 @@ GroupServer 16.mm — Pastis proffered politely
 
 :Authors: `Michael JasonSmith`_;
 :Contact: Michael JasonSmith <mpj17@onlinegroups.net>
-:Date: 2016-01-26
+:Date: 2016-03-01
 :Organization: `GroupServer.org`_
 :Copyright: This document is licensed under a
   `Creative Commons Attribution-Share Alike 4.0 International
@@ -107,6 +107,8 @@ updated.
    pair: Internationalisation; German
    pair: JavaScript; Style guide
    pair: Notification; Confirm subscription
+   pair: ZMI; User objects
+   pair: ZMI; File objects
    triple: Group; Type; Announcement
 
 Minor improvements
@@ -130,9 +132,6 @@ Minor improvements
   the email-address of the group rather than the support email
   address. Thanks to `Jp Maxwell`_ for spotting the issue.
 
-* The code that provides the **image scaling** now handles some
-  errors in a more robust way.
-
 * The **installation script** :program:`gs_install_ubuntu.sh` now
   uses bold and muted text to make the information hierarchy more
   clear.
@@ -140,6 +139,16 @@ Minor improvements
 * The JavaScript code that makes up GroupServer has been updated
   to conform to the `Google JavaScript Style Guide`_, thanks to
   the use of the `Google Closure Linter`_.
+
+* The code that provides the **image scaling** handles some
+  errors in a more robust way.
+
+* Deleting **file-metadata** using the :ref:`ZMI <ZMI Login>`
+  handles the missing file-system data gracefully.
+
+* Deleting **user objects** using the :ref:`ZMI <ZMI Login>`
+  handles edge cases of users being listed as part of a group but
+  the group being absent from the user (and vice versa).
 
 * The code that determines if someone **can post** has been
   updated so it is more thoroughly tested.
