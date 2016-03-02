@@ -75,7 +75,7 @@ the change to jQuery
   1.48.
 
 The Zope2_ application framework, which supports GroupServer, has
-been updated to version 2.13.23 from 2.13.22. The buildout_
+been updated to version 2.13.24 from 2.13.22. The buildout_
 system, which controls most of the installation and update
 process, has been updated to use `zc.buildout 2.3.1`_.
 
