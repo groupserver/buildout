@@ -124,8 +124,8 @@ echo -e '\033[0m\033[2m'
 virtualenv --no-site-packages . 
 . ./bin/activate
 # Fetch the system that builds GroupServer
-pip install zc.buildout==2.3.1
-pip install setuptools==18.0.1
+pip install zc.buildout==2.5.0
+pip install setuptools==20.2.2
 buildout -c buildout.cfg bootstrap
 echo -en '\033[0m\033[1m'
 echo -n "Python setup complete."
