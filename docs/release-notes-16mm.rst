@@ -76,12 +76,12 @@ the change to jQuery
 
 The Zope2_ application framework, which supports GroupServer, has
 been updated to version 2.13.24 from 2.13.22. The buildout_
-system, which controls most of the installation and update
-process, has been updated to use `zc.buildout 2.5.1`_.
+system — which controls most of the installation and update
+process — has been updated to use `zc.buildout 2.5.1`_.
 
 In addition packages such as dnspython_, enum34_, lxml_,
-premailer_, pytz_, Pillow_, requests_, and six_ have also been
-updated.
+premailer_, pytz_, Pillow_, redis_, requests_, and six_ have also
+been updated.
 
 .. _buildout: http://www.buildout.org/en/latest/
 .. _dnspython: https://pypi.python.org/pypi/dnspython
@@ -92,6 +92,7 @@ updated.
 .. _premailer: https://pypi.python.org/pypi/premailer
 .. _pytz: https://pypi.python.org/pypi/pytz
 .. _Pillow: https://pypi.python.org/pypi/Pillow
+.. _redis: https://pypi.python.org/pypi/redis
 .. _requests: https://pypi.python.org/pypi/requests
 .. _six: https://pypi.python.org/pypi/six
 .. _WYMeditor: http://wymeditor.github.io/wymeditor/
