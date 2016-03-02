@@ -96,7 +96,7 @@ been updated.
 .. _requests: https://pypi.python.org/pypi/requests
 .. _six: https://pypi.python.org/pypi/six
 .. _WYMeditor: http://wymeditor.github.io/wymeditor/
-.. _zc.buildout 2.3.1: https://pypi.python.org/pypi/zc.buildout/2.3.1
+.. _zc.buildout 2.5.1: https://pypi.python.org/pypi/zc.buildout/2.5.1
 .. _Zope2: https://pypi.python.org/pypi/Zope2
 
 .. index::
