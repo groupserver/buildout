@@ -7,7 +7,7 @@ GroupServer installation
 :Authors: `Michael JasonSmith`_; `Richard Waid`_; `Marek Kuziel`_;
           `Alice Rose`_; `Dan Randow`_
 :Contact: Michael JasonSmith <mpj17@onlinegroups.net>
-:Date: 2015-12-16 (see `History`_)
+:Date: 2016-03-03 (see `History`_)
 :Organization: `GroupServer.org`_
 :Copyright: This document is licensed under a
   `Creative Commons Attribution-Share Alike 4.0 International License`_
@@ -477,7 +477,8 @@ History
 ======= ==========  ====================================================
 Version Date        Change
 ======= ==========  ====================================================
-16.mm   2015-12-16  Updating the `CentOS and RHEL`_ documentation,
+16.04   2016-03-03  Determining that Pastis will be GroupServer 16.04
+16.04   2015-12-16  Updating the `CentOS and RHEL`_ documentation,
                     following the changes to the configuration files.
 15.11   2015-08-17  Updating the Sphinx markup, and mentioning the log
                     files.

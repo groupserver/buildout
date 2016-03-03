@@ -1,5 +1,5 @@
 =============================================
-GroupServer 16.mm — Pastis proffered politely
+GroupServer 16.04 — Pastis proffered politely
 =============================================
 
 :Authors: `Michael JasonSmith`_;
@@ -202,14 +202,14 @@ Update an Existing GroupServer System
 =====================================
 
 To update a system running the Limoncello (15.11) release of
-GroupServer to Pastis (16.mm) carry out the following steps.
+GroupServer to Pastis (16.04) carry out the following steps.
 
 #.  Copy the new versions of the configuration files to your
     existing GroupServer installation:
 
       ::
 
-        $ cp ../groupserver-16.mm/[bivz]*cfg  .
+        $ cp ../groupserver-16.04/[bivz]*cfg  .
 
 #.  Run ``buildout`` in your existing GroupServer installation:
 
