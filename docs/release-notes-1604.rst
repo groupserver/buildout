@@ -105,6 +105,8 @@ been updated.
    single: Unit tests
    single: Continuous integration
    pair: Email; Can post
+   pair: Group; Join
+   pair: Group; Leave
    pair: Internationalisation; German
    pair: JavaScript; Style guide
    pair: Notification; Confirm subscription
@@ -149,6 +151,9 @@ Minor improvements
 * The system that provides the different lists of group-members
   (`gs.group.member.base`_) has been updated so it is faster,
   better tested, and documented.
+
+* Both **joining** and **leaving** can better handle
+  administrators that lack verified email addresses.
 
 * More **unit tests** have been added to many products that make
   up GroupServer, including the code that determines if someone
