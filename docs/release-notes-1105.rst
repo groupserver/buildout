@@ -16,6 +16,9 @@ are other `minor fixes`_ that have been made. You can `get Eskimo
 Pie`_ immediately. Work is now starting on GroupServer 11.06 —
 Soft Serve from Mr Whippy.
 
+.. index::
+   pair: Group; Request membership
+
 Request Membership
 ==================
 
@@ -25,6 +28,12 @@ informed of the request by email. The administrator can then accept
 or decline the request using a Web interface. Effectively the Request
 Membership system works like the system that is used to invite people
 to join groups, but in reverse.
+
+.. index::
+   single: Dependencies
+   pair: Group; Start a group
+   pair: Email; Verify
+   pair: Email; Formatting
 
 Minor Fixes
 ===========
