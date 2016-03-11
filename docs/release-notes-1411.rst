@@ -67,6 +67,8 @@ the internationalisation for GroupServer.
 .. index::
    pair: Email; Commands
    pair: Notification; Confirm subscription
+   triple: Group; Member; Subscribe
+   triple: Group; Member; Unsubscribe
 
 Updated email commands
 ======================

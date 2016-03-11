@@ -88,7 +88,7 @@ administrator is free to write any HTML. The WYMeditor is used to edit
 the contents of the tab [#WYMeditorUse]_.
 
 .. index::
-   pair: Group member; Manage
+   truoke: Group; Member; Manage
 
 Management of a Group Member
 ============================

@@ -241,25 +241,31 @@ new responsive_ user interface.
 
 .. _Issue 3788: https://redmine.iopen.net/issues/3788
 
+.. index::
+   triple: Group; Member; Add
+   triple: Group; Member; Join
+
 Adding people
 =============
 
-The system for adding people to a group has undergone many improvements,
-primarily to the pages that allow the new member details to be uploaded by
-CSV, but also to the system that allows existing site members to be invited
-to join a group.
+The system for adding people to a group has undergone many
+improvements, primarily to the pages that allow the new member
+details to be uploaded by CSV, but also to the system that allows
+existing site members to be invited to join a group.
 
-The systems for inviting people in bulk [#inviteCSV]_ — and adding people
-in bulk [#addCSV]_ — using a CSV file have been completely rewritten
-(`Issue 3494`_). Both systems now use AJAX and JSON to parse the CSV file,
-and invite [#inviteJSON]_ or add [#addJSON]_ individual people. This,
-combined with widgets provided by `Twitter Bootstrap`_, allows for
-continual progress updates, avoids server timeouts, and is **massively**
-more usable.
+The systems for inviting people in bulk [#inviteCSV]_ — and
+adding people in bulk [#addCSV]_ — using a CSV file have been
+completely rewritten (`Issue 3494`_). Both systems now use AJAX
+and JSON to parse the CSV file, and invite [#inviteJSON]_ or add
+[#addJSON]_ individual people. This, combined with widgets
+provided by `Twitter Bootstrap`_, allows for continual progress
+updates, avoids server timeouts, and is **massively** more
+usable.
 
-On a more minor note, the page for inviting site members to join a group
-has been enhanced with the addition of email-addresses, which helps
-distinguish between people with similar names (`Issue 452`_).
+On a more minor note, the page for inviting site members to join
+a group has been enhanced with the addition of email-addresses,
+which helps distinguish between people with similar names (`Issue
+452`_).
 
 .. _Issue 3494: https://redmine.iopen.net/issues/3494
 .. _Issue 452: https://redmine.iopen.net/issues/452

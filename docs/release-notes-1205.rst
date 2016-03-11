@@ -56,24 +56,29 @@ Public Access Period:
    pair: Notification; Welcome
    pair: Notification; New member
    pair: Notification; Invitation
+   pair: Notification; Cannot post
+   triple: Group; Member; Join
+   triple: Group; Member; Invite
 
 Notifications
 ~~~~~~~~~~~~~
 
-Four notifications have been rewritten. There are HTML versions of both  
+Four notifications have been rewritten. There are HTML versions
+of both
 
-* The *Welcome* message [#Welcome]_, which is sent to new group members, 
-  and 
-* The *New Member* notification, which is sent to the administrator when
-  someone joins a group [#NewMember]_.
+* The *Welcome* message [#Welcome]_, which is sent to new group
+  members, and
+* The *New Member* notification, which is sent to the
+  administrator when someone joins a group [#NewMember]_.
 
-The *Invitation* to join a group has undergone a rewrite too, along with
-a new default invitation-message from the group-administrator.
+The *Invitation* to join a group has undergone a rewrite too,
+along with a new default invitation-message from the
+group-administrator.
 
-Finally, the *Cannot Post* notification has undergone an extensive 
-change, along with the rest of the `can post`_ system [#CannotPost]_. It
-now has a HTML variant, as well as a wording change to (hopefully) make 
-it easer to understand.
+Finally, the *Cannot Post* notification has undergone an
+extensive change, along with the rest of the `can post`_ system
+[#CannotPost]_. It now has a HTML variant, as well as a wording
+change to (hopefully) make it easer to understand.
 
 .. index::
    pair: Email; Can post

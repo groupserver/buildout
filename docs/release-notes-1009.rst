@@ -15,7 +15,7 @@ Spaghettieis release of GroupServer. Work is now progressing on
 GroupServer 10.10 — Gelato while Viewing the Sights.
 
 .. index::
-   pair: Group member; Invite
+   triple: Group; Member; Invite
 
 Invitations
 ============
@@ -103,8 +103,8 @@ shares the fixes to the notifications that are sent to the new member
 and the group administrators.
 
 .. index::
-   pair: Group member; Join
-   pair: Group member; Leave
+   triple: Group; Member; Join
+   triple: Group; Member; Leave
 
 Join and Leave
 ==============
@@ -136,7 +136,7 @@ People joining and leaving groups is now audited [#JoinAudit]_. The
 audit-data is then fed into a new *Join and Leave Log* [#Log]_.
 
 .. index::
-   pair: Group member; Manage
+   triple: Group; Member; Manage
 
 Manage Members
 ==============

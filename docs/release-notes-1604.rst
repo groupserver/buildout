@@ -105,14 +105,14 @@ been updated.
    single: Unit tests
    single: Continuous integration
    pair: Email; Can post
-   pair: Group; Join
-   pair: Group; Leave
-   pair: Group; Request membership
    pair: Internationalisation; German
    pair: JavaScript; Style guide
    pair: Notification; Confirm subscription
    pair: ZMI; User objects
    pair: ZMI; File objects
+   triple: Group; Member; Join
+   triple: Group; Member; Leave
+   triple: Group; Member; Request
    triple: Group; Type; Announcement
 
 Minor improvements

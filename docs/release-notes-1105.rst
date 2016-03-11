@@ -17,7 +17,7 @@ Pie`_ immediately. Work is now starting on GroupServer 11.06 —
 Soft Serve from Mr Whippy.
 
 .. index::
-   pair: Group; Request membership
+   triple: Group; Member; Request
 
 Request Membership
 ==================
@@ -31,7 +31,7 @@ to join groups, but in reverse.
 
 .. index::
    single: Dependencies
-   pair: Group; Start a group
+   pair: Group; Start
    pair: Email; Verify
    pair: Email; Formatting
 
