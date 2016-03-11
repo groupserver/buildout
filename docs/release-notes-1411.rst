@@ -61,7 +61,7 @@ Development group is a good place to follow the improvements to
 internationalisation. We welcome any and all efforts to improve
 the internationalisation for GroupServer.
 
-.. _Status of internationalisation: 
+.. _Status of internationalisation:
    http://groupserver.org/r/topic/6ehnW0w59Ejf7R4xEUeCNt
 
 .. index::
@@ -125,7 +125,7 @@ implementation of the new headers closes `Bug 267`_.
 In addition the various ``List`` headers have been added, which
 closes `Issue 3785`_.
 
-.. _the gs.group.list.sender product: 
+.. _the gs.group.list.sender product:
    https://github.com/groupserver/gs.group.list.sender/
 .. _Bug 267: https://redmine.iopen.net/issues/267
 .. _Issue 3785: https://redmine.iopen.net/issues/3785
@@ -217,7 +217,7 @@ already have a functioning installation can `update an existing
 GroupServer system`_.
 
 ..  _The Downloads page for GroupServer: http://groupserver.org/downloads
-..  _The GroupServer Installation documentation: 
+..  _The GroupServer Installation documentation:
     http://groupserver.readthedocs.org/
 
 Update an existing GroupServer system

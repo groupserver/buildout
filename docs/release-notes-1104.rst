@@ -52,11 +52,11 @@ converted to support full addresses over time.
 Minor Fixes
 -----------
 
-Minor fixes in Slushy include 
+Minor fixes in Slushy include
 
 * A fix to the *Join and Leave Log* so it now uses jQuery UI tabs
   [#LogTabs]_,
-* A fix to the *view* link in the content editor so it works 
+* A fix to the *view* link in the content editor so it works
   [#ViewLink]_, and
 * Resolving an error with the *Change Email Settings* page that occurred
   when someone had no preferred email address set [#EmailSettings]_.
@@ -81,8 +81,8 @@ Update the Database
 ~~~~~~~~~~~~~~~~~~~
 
 The `hide a post`_ update requires a change to the database tables that
-are uses to record information about topics and posts. It also requires 
-the creation of a new table to record information about why posts have 
+are uses to record information about topics and posts. It also requires
+the creation of a new table to record information about why posts have
 been hidden.
 
 Too update the database carry out the following steps.
@@ -90,19 +90,19 @@ Too update the database carry out the following steps.
 #. Log into the PostgreSQL database used GroupServer by using the
    following command::
 
-     $ psql -Upgsql_user pgsql_dbname  
+     $ psql -Upgsql_user pgsql_dbname
 
    Note that ``pgsql_user`` and ``pgsql_dbname`` are the database user
    and database name that was setup during installation. Both can be
    found in the ``instance.cfg`` file in the installation directory
    of GroupServer.
-   
+
 #. Run the following SQL to update the post and topic tables::
-   
+
      ALTER TABLE topic ADD COLUMN hidden TIMESTAMP WITH TIME ZONE;
      ALTER TABLE post ADD COLUMN hidden TIMESTAMP WITH TIME ZONE;
-   
-#. Finally, create the hidden post table by running the following SQL 
+
+#. Finally, create the hidden post table by running the following SQL
    commands::
 
      CREATE TABLE hidden_post (
@@ -120,14 +120,14 @@ Update the Packages
 
 Carry out the following steps to update the package versions.
 
-#. Download the Pineapple Snow tar-ball from `the GroupServer download 
+#. Download the Pineapple Snow tar-ball from `the GroupServer download
    page <http://groupserver.org/downloads>`_
 
 #. Uncompress the tar-ball.
-   
+
 #. Copy the file ``groupserver-11.04/versions.cfg`` to your existing
    GroupServer installation.
-   
+
 #. In your existing GroupServer installation run::
 
       $ ./bin/buildout -N
@@ -142,11 +142,10 @@ Carry out the following steps to update the package versions.
    <https://redmine.iopen.net/issues/641>`_.
 .. [#ViewLink] Fixing the issue with the *view* link closes `Ticket 642
    <https://redmine.iopen.net/issues/642>`_.
-.. [#EmailSettings] Fixing the coding error on with the *Change Email 
+.. [#EmailSettings] Fixing the coding error on with the *Change Email
     Settings* page closes `Ticket 660
-    <https://redmine.iopen.net/issues/660>`_   
+    <https://redmine.iopen.net/issues/660>`_
 .. _GroupServer.org: http://groupserver.org/
 .. _OnlineGroups.Net: https://onlinegroups.net/
 .. _Creative Commons Attribution-Share Alike 3.0 New Zealand License:
    http://creativecommons.org/licenses/by-sa/3.0/nz/
-

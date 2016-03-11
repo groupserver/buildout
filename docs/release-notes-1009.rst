@@ -170,10 +170,10 @@ all the *Short link* links on the topics and posts pages to a
 JavaScript-based **share box** [#ShareBox]_. The share box provides
 a quick and easy way to share a post or topic on Facebook, Twitter,
 or just as a URL.
- 
+
 .. [#MessagePreview] The `GroupServer Development`_ online group contains
    examples of
-   
+
    * `The invitation-message preview
      <http://groupserver.org/r/img/1725-2010-04-14T073527Z>`_ and
    * `The response page
@@ -183,7 +183,7 @@ or just as a URL.
    will close `Ticket 290
    <https://redmine.iopen.net/issues/290>`_.
 
-.. [#AddressEntry] Being strict about what can be entered as an email 
+.. [#AddressEntry] Being strict about what can be entered as an email
    address fixes `Ticket 325
    <https://redmine.iopen.net/issues/325>`_. The fix also
    corrects the same error with the sign up page.
@@ -232,7 +232,7 @@ or just as a URL.
 .. [#JoinAudit] Auditing when people join and leave a group closes
    `Ticket 341 <https://redmine.iopen.net/issues/341>`_.
 
-.. [#LeaveAlt] The alternatives to leaving are shown in `an example 
+.. [#LeaveAlt] The alternatives to leaving are shown in `an example
    leave page <http://groupserver.org/r/img/7966-2010-07-08T142944Z>`_
    in the `GroupServer Development`_ group.
 
@@ -257,17 +257,16 @@ or just as a URL.
 
 .. [#ChangeHomepage] The fix so the `WYMeditor`_ on the *Change the
    Site Introduction* page closes `Ticket 357
-   <https://redmine.iopen.net/issues/357>`_. 
+   <https://redmine.iopen.net/issues/357>`_.
 
 .. [#ShareBox] Originally the share-box was slated for Pineapple Snow,
    but Richard completed the short-link improvements early on the
    request of a client, closing `Ticket 378
    <https://redmine.iopen.net/issues/378>`_.
-   
+
 .. _GroupServer.org: http://groupserver.org/
 .. _OnlineGroups.Net: https://onlinegroups.net/
 .. _Creative Commons Attribution-Share Alike 3.0 New Zealand License:
    http://creativecommons.org/licenses/by-sa/3.0/nz/
 .. _GroupServer Development: http://groupserver.org/groups/development
 .. _WYMeditor: http://www.wymeditor.org/
-

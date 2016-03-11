@@ -31,7 +31,7 @@ style pages`_. In addition the system for `adding people`_ in bulk has been
 completely rewritten, there has been an extensive `notifications update`_,
 and `other updates`_.
 
-.. index:: 
+.. index::
    single: Skin
    pair: JavaScript; Bootstrap
 

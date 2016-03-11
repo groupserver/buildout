@@ -13,16 +13,16 @@ GroupServer 12.05 — Faloodeh Consumed with an Eye on History
 Introduction
 ============
 
-The `changes to GroupServer`_ in the Faloodeh release cover sites, 
-groups and profiles — making them all more usable and extensible. You 
+The `changes to GroupServer`_ in the Faloodeh release cover sites,
+groups and profiles — making them all more usable and extensible. You
 can `get Faloodeh`_ immediately.
 
 Changes to GroupServer
 ======================
 
-The changes in Faloodeh are mostly `group improvements`_, `profile 
-improvements`_ and a new `site homepage`_. In addition we have made 
-steps towards `easier installation`_, and there have been some `minor 
+The changes in Faloodeh are mostly `group improvements`_, `profile
+improvements`_ and a new `site homepage`_. In addition we have made
+steps towards `easier installation`_, and there have been some `minor
 changes`_.
 
 .. index:: Group
@@ -30,8 +30,8 @@ changes`_.
 Group improvements
 ------------------
 
-The most visible change to groups in this release of GroupServer is to 
-the `notifications`_. However, the primary improvement is new code to 
+The most visible change to groups in this release of GroupServer is to
+the `notifications`_. However, the primary improvement is new code to
 determine if someone `can post`_ to a group. Underlying this is a system
 for `more extensible groups`_.
 
@@ -39,20 +39,20 @@ Minor changes to groups include the following.
 
 Better Links in Posts:
   Now ``http://youtu.be`` links are turned into embedded YouTube videos,
-  and ``www.`` "links" are turned into hypertext links. Thanks to 
+  and ``www.`` "links" are turned into hypertext links. Thanks to
   `Steven Clift`_ at E-Democracy.Org for sponsoring this improvement.
 
 Rest of Post Button:
-  The button to show the *remainder* of a post (normally just 
+  The button to show the *remainder* of a post (normally just
   bottom-quoted text) is now labelled "Rest of post".
 
 Public Access Period:
   The default public access period for files is now set to 72 hours.
-  This is the period that no password is required to access a file, 
+  This is the period that no password is required to access a file,
   making it easier for group members who follow conversations using
   email to access the files that are posted to the group.
 
-.. index:: 
+.. index::
    pair: Notification; Welcome
    pair: Notification; New member
    pair: Notification; Invitation
@@ -87,7 +87,7 @@ Can post
 ~~~~~~~~
 
 The biggest change to groups was a complete rewrite of the system that
-determines if a user can post. This system is used to 
+determines if a user can post. This system is used to
 
 * Send an email to someone who tries to post but is disallowed, and
 * To tell someone using the web why he or she cannot post *before* they
@@ -104,13 +104,13 @@ for `more extensible groups`_.
 More extensible groups
 ~~~~~~~~~~~~~~~~~~~~~~
 
-Along with the new `can post`_ code, the definition of what 
-*constitutes* a group has been redefined. GroupServer has always 
-supported three different types of group: 
+Along with the new `can post`_ code, the definition of what
+*constitutes* a group has been redefined. GroupServer has always
+supported three different types of group:
 
 Discussion Group:
   A group where only group members can post.
-  
+
 Announcement Group:
   A group where only certain group-members can post.
 
@@ -131,10 +131,10 @@ Profile improvements
 The primary improvements to profiles is a new *Verify Email Address*
 notification. Like the new `notifications`_ in the group, the new
 Verify email message has a HTML version, which is shown by default by
-most email clients. The wording of the Verify email has also been 
+most email clients. The wording of the Verify email has also been
 changed, so it is hopefully easier to understand.
 
-All the notifications with an HTML component are possible because of a 
+All the notifications with an HTML component are possible because of a
 new system for sending notifications. This system is documented as part
 of the ``gs.profile.notify`` component [#Notify]_.
 
@@ -143,7 +143,7 @@ Site homepage
 
 The site homepage has been completely rewritten, but it looks largely
 unchanged. Now the page — provided  by the new ``gs.site.home`` product
-[#SiteHome]_ — can be skinned easily. Extra components can be easily 
+[#SiteHome]_ — can be skinned easily. Extra components can be easily
 added to it in the future.
 
 .. index:: Installation
@@ -152,24 +152,24 @@ Easier installation
 -------------------
 
 Installation should be more reliable for three reasons. The first is a
-change of dependencies. The second reason is a more tightly constrained 
+change of dependencies. The second reason is a more tightly constrained
 set of software-sources. Finally, there is a new installation script.
 
-Three dependencies have changed. 
+Three dependencies have changed.
 
 #.  The least dramatic is to use `Pillow`_ rather than `PIL`_.  The
-    former is a *friendly fork* of the latter, which works with the 
+    former is a *friendly fork* of the latter, which works with the
     ``easy_install`` system that GroupServer uses. This change removes
     the requirement to download and install both ``zlib`` and
     ``libjpeg``. The ``zlib`` dependency in particular was a problem
-    with its frequent  changes. 
+    with its frequent  changes.
 
-#.  The *eGenex mx Extension Series* is now available as an egg, which 
+#.  The *eGenex mx Extension Series* is now available as an egg, which
     we now use.
 
 #.  Finally, the ``PyXML`` library is also provided by an egg [#xml]_.
 
-By default the eggs used by the GroupServer installation process now 
+By default the eggs used by the GroupServer installation process now
 come from only two sources. The eggs that make up GroupServer itself
 come from <http://eggs.iopen.net/groupserver/base/>. The third-party
 eggs come from <http://eggs.iopen.net/groupserver/cache/>. This should
@@ -187,20 +187,20 @@ There have been three sets of minor changes to GroupServer in the
 Faloodeh release: Zope events are better supported, ``wsgi`` is
 supported, and there have been numerous coding improvements.
 
-An **event** in Zope is a signal that is raised when an action is 
-carried out [#ZopeEvents]_. You can write code that subscribes to these 
-events, and takes additional action. (This extra code does not need to 
-alter the original code in any way.) Events are now raised when someone 
-joins a group, joins a site, leaves a group, and leaves a site. This 
-should make these actions more extensible, and allow others to add extra 
+An **event** in Zope is a signal that is raised when an action is
+carried out [#ZopeEvents]_. You can write code that subscribes to these
+events, and takes additional action. (This extra code does not need to
+alter the original code in any way.) Events are now raised when someone
+joins a group, joins a site, leaves a group, and leaves a site. This
+should make these actions more extensible, and allow others to add extra
 functionality to GroupServer [#SiteMember]_.
 
-**WSGI** is the method that most Python-based web applications use to 
+**WSGI** is the method that most Python-based web applications use to
 communicate to servers. GroupServer can now be served using WSGI, as
 the last problems with WSGI compatibility have been resolved.
 
-Finally, There have been numerous **coding improvements.** Most have 
-centred around the use of `caching`_. In addition there are new base 
+Finally, There have been numerous **coding improvements.** Most have
+centred around the use of `caching`_. In addition there are new base
 classes for pages and `viewlets`_ with GroupServer sites, profiles, and
 groups.
 
@@ -218,7 +218,7 @@ Update an Existing GroupServer System
 
 The update an existing GroupServer system to Faloodeh requires you to
 first `update the packages`_. Then there are two tasks to be carried out
-in the ZMI: first `update the site marker-interface`_, and then the 
+in the ZMI: first `update the site marker-interface`_, and then the
 complex task to `update the group marker-interface`_
 
 Update the Packages
@@ -230,17 +230,17 @@ To update the packages carry out the following steps.
     <http://groupserver.org/downloads>`_.
 
 #.  Uncompress the tar-ball.
-   
-#.  Copy the file ``groupserver-12.05/update-versions.cfg`` to your 
+
+#.  Copy the file ``groupserver-12.05/update-versions.cfg`` to your
     existing GroupServer installation, under the name ``versions.cfg``.
-   
-#.  Copy the file ``groupserver-12.05/update-buildout.cfg`` to your 
+
+#.  Copy the file ``groupserver-12.05/update-buildout.cfg`` to your
     existing GroupServer installation, under the name ``buildout.cfg``.
 
-#.  Copy the file ``groupserver-12.05/zope2-2.13.13.cfg`` to your 
+#.  Copy the file ``groupserver-12.05/zope2-2.13.13.cfg`` to your
     existing GroupServer installation.
 
-#.  Copy the file ``groupserver-12.05/ztk-versions-1.0.6.cfg`` to your 
+#.  Copy the file ``groupserver-12.05/ztk-versions-1.0.6.cfg`` to your
     existing GroupServer installation.
 
 #.  In your existing GroupServer installation run::
@@ -253,12 +253,12 @@ Update the Site Marker-Interface
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 The `site homepage`_ improvements require a modification to the sites in
-the ZMI before they can be seen. To update the sites, carry out the 
+the ZMI before they can be seen. To update the sites, carry out the
 following steps.
 
 #.  Log into the ZMI for your GroupServer Installation
 
-#.  Navigate to your GroupServer instance in the ZMI (called 
+#.  Navigate to your GroupServer instance in the ZMI (called
     ``groupserver`` by default).
 
 #.  Add a script by selecting ``Script (Python)`` from the *Add* menu
@@ -284,8 +284,8 @@ following steps.
 
       contentFolders = site_root.Content.objectValues(folders)
       sites = [ s for s in contentFolders
-                if ((s.getId() not in ignore) and 
-                    (s.getProperty('is_division', False)) and 
+                if ((s.getId() not in ignore) and
+                    (s.getProperty('is_division', False)) and
                     (hasattr(s, 'groups'))) ]
 
       print '<html><head><title>Site update</title></head><body>'
@@ -305,12 +305,12 @@ following steps.
 Update the Group Marker-Interface
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Updating the marker-interfaces in a group is similar to how you 
+Updating the marker-interfaces in a group is similar to how you
 `update the site marker-interface`_.
 
 #.  Log into the ZMI for your GroupServer Installation
 
-#.  Navigate to your GroupServer instance in the ZMI (called 
+#.  Navigate to your GroupServer instance in the ZMI (called
     ``groupserver`` by default).
 
 #.  Add a script by selecting ``Script (Python)`` from the *Add* menu
@@ -330,7 +330,7 @@ Updating the marker-interfaces in a group is similar to how you
       isSite = lambda d: d.getProperty('is_division', False) and hasattr(d, 'groups')
 
       contentFolders = site_root.Content.objectValues(folders)
-      sites = [ s for s in contentFolders 
+      sites = [ s for s in contentFolders
                 if ((s.getId() not in ignore) and  isSite(s)) ]
 
       groups = []
@@ -338,7 +338,7 @@ Updating the marker-interfaces in a group is similar to how you
       for site in sites:
           groupsFolder = getattr(site, 'groups')
           groups += filter(isGroup, groupsFolder.objectValues(folders))
-          
+
       oldInterfaces = ['Products.XWFChat.interfaces.IGSGroupFolder']
       newInterfaces = ['gs.group.type.discussion.interfaces.IGSDiscussionGroup']
       for group in groups:
@@ -354,59 +354,59 @@ Updating the marker-interfaces in a group is similar to how you
 
 #.  Change the *support* groups to the correct marker-interface by
     carrying out the following for each group.
-    
+
     #.  Navigate to the group.
 
     #.  Click on the *Interfaces* tab.
-    
-    #.  Select ``gs.group.type.discussion.interfaces.IGSDiscussionGroup`` 
+
+    #.  Select ``gs.group.type.discussion.interfaces.IGSDiscussionGroup``
         in the *Provided Interfaces* list.
-        
+
     #.  Click the *Remove* button. The discussion-group marker interface
         will be removed.
-    
+
     #.  Select ``gs.group.type.support.interfaces.IGSSupportGroup``
         in the *Available Marker Interfaces* list.
-    
+
     #.  Click the *Add* button. The support-group marker interface
         will be added.
-        
+
 #.  Change the *announcement* groups to the correct marker-interface by
     carrying out the following for each group.
-    
+
     #.  Navigate to the group.
 
     #.  Click on the *Interfaces* tab.
-    
-    #.  Select ``gs.group.type.discussion.interfaces.IGSDiscussionGroup`` 
+
+    #.  Select ``gs.group.type.discussion.interfaces.IGSDiscussionGroup``
         in the *Provided Interfaces* list.
-        
+
     #.  Click the *Remove* button. The discussion-group marker interface
         will be removed.
-    
-    #.  Select 
+
+    #.  Select
         ``gs.group.type.announcement.interfaces.IGSAnnouncementGroup``
         in the *Available Marker Interfaces* list.
-    
+
     #.  Click the *Add* button. The announcement-group marker interface
         will be added.
 
 #.  Finally, remove the legacy group-support from your site:
 
-    #.  Copy the file ``groupserver-12.05/versions.cfg`` to your 
-        existing GroupServer installation, under the name 
+    #.  Copy the file ``groupserver-12.05/versions.cfg`` to your
+        existing GroupServer installation, under the name
         ``versions.cfg``.
-       
-    #.  Copy the file ``groupserver-12.05/buildout.cfg`` to your 
-        existing GroupServer installation, under the name 
+
+    #.  Copy the file ``groupserver-12.05/buildout.cfg`` to your
+        existing GroupServer installation, under the name
         ``buildout.cfg``.
 
     #.  In your existing GroupServer installation run::
 
           $ ./bin/buildout -N
-    
-    #.  Restart your GroupServer instance.    
-    
+
+    #.  Restart your GroupServer instance.
+
 ..  _GroupServer.org: http://groupserver.org/
 ..  _OnlineGroups.Net: https://onlinegroups.net/
 ..  _Creative Commons Attribution-Share Alike 3.0 New Zealand License:
@@ -417,7 +417,7 @@ Updating the marker-interfaces in a group is similar to how you
 ..  _Steven Clift: http://groupserver.org/p/stevenc
 ..  _Facebook: https://facebook.com/
 ..  _The Downloads page for GroupServer: http://groupserver.org/downloads
-..  _The GroupServer Installation documentation: 
+..  _The GroupServer Installation documentation:
     http://groupserver.org/downloads/install
 ..  _caching: http://docs.zope.org/zope.cachedescriptors
 ..  _Viewlets: https://pypi.python.org/pypi/zope.viewlet
@@ -432,26 +432,25 @@ Updating the marker-interfaces in a group is similar to how you
 ..  [#CannotPost] A sample *Cannot Post* message can be viewed at
     <http://groupserver.org/groups/development/cannot-post.html>
 ..  [#RulesList] The Can Post system now produces a *Rules List* that
-    shows the rules that are checked whenever someone posts to the 
+    shows the rules that are checked whenever someone posts to the
     group. Example lists can be seen for `the GroupSever Development
     group <http://groupserver.org/groups/development/rules-list.html>`_
     and `the GroupServer Announcement Group
     <http://groupserver.org/groups/groupserver_announcements/rules-list.html>`_
-..  [#Notify] The documentation for how to write a notification is 
+..  [#Notify] The documentation for how to write a notification is
     in `the product.
     <https://source.iopen.net/groupserver/gs.profile.notify/summary>`_
 ..  [#SiteHome] The documentation for how to add components to the new
     site homepage is in `the site-homepage product.
     <https://source.iopen.net/groupserver/gs.site.home/summary>`_
-..  [#xml] Two other libraries, ``libxml2`` and ``libxslt``, are brought 
+..  [#xml] Two other libraries, ``libxml2`` and ``libxslt``, are brought
     into the system  by a small script, which is part of the buildout
-    process. The global libraries *are* used, but they must be 
+    process. The global libraries *are* used, but they must be
     symbolically-linked (*symlinked*) because the ``virtualenv`` system
     does not link to them.
-..  [#ZopeEvents] The Zope events are provided by `the ZTK 
+..  [#ZopeEvents] The Zope events are provided by `the ZTK
     documentation. <http://docs.zope.org/zope.event/>`_
-..  [#SiteMember] `The site-member product 
+..  [#SiteMember] `The site-member product
     <https://source.iopen.net/groupserver/gs.site.member/summary>`_
     provides an example of code that both *subscribes* to an event and
     *raises* an event.
-
