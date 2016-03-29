@@ -274,6 +274,8 @@ using carry out the following tasks.
 
 .. index:: !Skin, Theme
 
+.. _skin:
+
 Change the skin
 ===============
 

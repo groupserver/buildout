@@ -105,6 +105,7 @@ and the group administrators.
 .. index::
    triple: Group; Member; Join
    triple: Group; Member; Leave
+   triple: Group; Member; Moderate
 
 Join and Leave
 ==============
