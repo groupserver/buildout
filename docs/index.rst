@@ -15,6 +15,7 @@ GroupServer Documentation
    development
    groupserver-uninstall
    release-notes
+   faq
 
 .. toctree::
    :hidden:
