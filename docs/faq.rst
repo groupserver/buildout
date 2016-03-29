@@ -17,6 +17,8 @@ How do I...
 .. index::
    pair: Configuration; Host name
 
+.. _changeHostname:
+
 ... change the host name?
   The host-name is normally set during
   :doc:`installation. <groupserver-install>` However, it can be
@@ -39,8 +41,9 @@ How do I...
 .. index:: Support!
    pair: Support; Email
 
+.. _changeSupport:
+
 ... change the support email?
-  .. _changeSupport:
 
   The email address for support is first set during the
   :doc:`GroupServer installation. <groupserver-install>` To
@@ -53,6 +56,10 @@ How do I...
   #. Click the *Save changes* button.
 
   <http://groupserver.org/r/post/2rO2bKiq6X4UjZ9MmYkZ8S>
+
+.. index:: Editable page!
+
+.. _createPage:
 
 ... create a page?
   Some pages in GroupServer (such as ``/about``) are editable.
@@ -71,6 +78,8 @@ How do I...
 
 .. index::
    triple: Group; Member; Moderate
+
+.. _allModerated:
 
 ... make all the members of a group moderated?
   Ideally you would change the moderation of a group to *Moderate
@@ -101,8 +110,11 @@ How do I...
    pair: User; Delete
    pair: Profile; Delete
 
+.. _removeUser:
+
 ... remove a user?
-  When a person leaves the last group on their site they are no
+
+  When a person leaves their last group on a site they are no
   longer a site member, but they will still have a
   user-object. These objects can be deleted, but it is
   discouraged.
@@ -118,6 +130,8 @@ How do I...
 .. index::
    pair: Email; Virus scan
 
+.. _scanVirus:
+
 ... scan for viruses?
   Install `pyClamd. <http://xael.org/pages/pyclamd-en.html>`_
 
@@ -125,6 +139,8 @@ How do I...
 
 .. index:: Support
    pair: Group; Support
+
+.. _multipleSupport:
 
 ... set multiple people to receive the support email?
   The easiest way for multiple people to receive messages to the
@@ -164,6 +180,8 @@ Why do I see...
 .. index:: Proxy, Web proxy, Postfix
    pair: Configuration; Proxy
 
+.. _requestEntityTooLarge:
+
 ...  Request Entity Too Large?
   Email messages are added to GroupServer, by :doc:`postifx,
   <postfix-configure>` using a web-hook. Because of this the
@@ -176,6 +194,8 @@ Why do I see...
 
 .. index:: Skin
    pair: Email; Skin
+
+.. _emailCSS:
 
 ... email messages with the wrong CSS?
   The web-hook that adds a message may use different URL to the
@@ -192,6 +212,8 @@ Why do I see...
   <http://groupserver.org/r/post/47QGmyKwX9pkaLj6j8mzZe>
 
 .. index:: root!
+
+.. _rootInstall:
 
 ... so many errors when installing?
   GroupServer can only run as a normal user, never as the
