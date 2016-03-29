@@ -105,6 +105,7 @@ been updated.
    single: Unit tests
    single: Continuous integration
    pair: Email; Can post
+   pair: Email; DMARC
    pair: Internationalisation; German
    pair: JavaScript; Style guide
    pair: Notification; Confirm subscription
@@ -167,6 +168,9 @@ Minor improvements
   This script is run by the new **continuous integration** system
   provided by `Travis CI`_.
 
+* The suffix-list in the **DMARC** code has been updated thanks
+  to `Baran Kaynak`_.
+
 * More JavaScript has been switched to use *strict mode* —
   including the code that supports **Registration.** In addition,
   the JavaScript code that makes up GroupServer has been updated
@@ -191,6 +195,8 @@ Minor improvements
 
 .. _Google Closure Linter:
    https://developers.google.com/closure/utilities/
+
+.. _Baran Kaynak: https://github.com/barankaynak
 
 ----------
 Get Pastis
