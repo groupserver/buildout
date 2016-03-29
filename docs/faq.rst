@@ -18,6 +18,9 @@ How do I...
    pair: Configuration; Host name
 
 ... change the host name?
+  The host-name is normally set during
+  :doc:`installation. <groupserver-install>` However, it can be
+  changed afterwards.
 
   #. Visit the :file:`/groupserver/` folder in the
      :ref:`ZMI <ZMI Login>`.
@@ -52,6 +55,7 @@ How do I...
   <http://groupserver.org/r/post/2rO2bKiq6X4UjZ9MmYkZ8S>
 
 ... create a page?
+  Some pages in GroupServer (such as ``/about``) are editable.
 
   #. Visit the folder that should contain the page in the
      :ref:`ZMI <ZMI Login>`.
@@ -87,8 +91,8 @@ How do I...
   #. Visit the :file:`/groupserver/ListManager` folder in the
      ZMI.
   #. Open the mailing list object for the group.
-  #. Copy the list of members to be moderated into the
-     ``moderated_members`` list.
+  #. Copy the list of members to be moderated from the text
+     editor into the ``moderated_members`` list.
   #. Click the *Save changes* button.
 
   <http://groupserver.org/r/post/7r2kAxK3Y4zUPJgvl2A2rz>
@@ -98,6 +102,11 @@ How do I...
    pair: Profile; Delete
 
 ... remove a user?
+  When a person leaves the last group on their site they are no
+  longer a site member, but they will still have a
+  user-object. These objects can be deleted, but it is
+  discouraged.
+
   #. Visit the :file:`/groupserver/` folder in the
      :ref:`ZMI <ZMI Login>`,
   #. Open the ``acl_users`` object,
@@ -106,19 +115,19 @@ How do I...
 
   <http://groupserver.org/r/post/tXN8SrD8dcrfyqKdD8QgZ>
 
-.. index:: 
+.. index::
    pair: Email; Virus scan
 
-.. scan for viruses?
-  Install `pyClamd <http://xael.org/pages/pyclamd-en.html>`_
+... scan for viruses?
+  Install `pyClamd. <http://xael.org/pages/pyclamd-en.html>`_
 
   <http://groupserver.org/r/post/36Os84MG4oZgi5GPtPhGvr>
 
 .. index:: Support
    pair: Group; Support
 
-... set multiple people to receive the support email?  The
-  easiest way for multiple people to receive messages to the
+... set multiple people to receive the support email?
+  The easiest way for multiple people to receive messages to the
   Support email address is to create a new *Support group*.
 
   #. Start a *secret* group.
@@ -135,7 +144,6 @@ How do I...
    pair: Profile; Password
 
 ... turn off a feature?
-
   Normally the easiest way to turn off a feature is to hide it in
   the CSS.
 
