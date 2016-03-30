@@ -235,20 +235,15 @@ How do I...
 Why do I see...
 ---------------
 
-.. index:: Proxy, Web proxy, Postfix
-   pair: Configuration; Proxy
+.. index:: lxml!
+   pair: Install; Buildout
 
-.. _requestEntityTooLarge:
+.. _lxml:
 
-...  Request Entity Too Large?
-  Email messages are added to GroupServer, by :doc:`postifx,
-  <postfix-configure>` using a web-hook. Because of this the
-  :doc:`proxy <proxy-configure>` can block a message if it is too
-  large.  Adjust the ``client_max_body_size`` parameter in
-  :program:`nginx` or similar variable in your proxy of choice.
+... couldn't install lxml?
+  To compile ``lxml`` the system needs at least 1024M of RAM.
 
-  <http://groupserver.org/r/post/xXIumIpGyDIKgaifmxuRy>
-
+  <http://groupserver.org/r/post/4tKMVOifDkPPKKcaiSUJvY>
 
 .. index:: Skin
    pair: Email; Skin
@@ -269,15 +264,19 @@ Why do I see...
 
   <http://groupserver.org/r/post/47QGmyKwX9pkaLj6j8mzZe>
 
-.. index:: lxml!
-   pair: Install; Buildout
+.. index:: Proxy, Web proxy, Postfix
+   pair: Configuration; Proxy
 
-.. _lxml:
+.. _requestEntityTooLarge:
 
-... couldn't install lxml?
-  To compile ``lxml`` the system needs at least 1024M of RAM.
+...  Request Entity Too Large?
+  Email messages are added to GroupServer, by :doc:`postifx,
+  <postfix-configure>` using a web-hook. Because of this the
+  :doc:`proxy <proxy-configure>` can block a message if it is too
+  large.  Adjust the ``client_max_body_size`` parameter in
+  :program:`nginx` or similar variable in your proxy of choice.
 
-  <http://groupserver.org/r/post/4tKMVOifDkPPKKcaiSUJvY>
+  <http://groupserver.org/r/post/xXIumIpGyDIKgaifmxuRy>
 
 .. index:: root!
 
