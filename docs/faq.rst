@@ -101,6 +101,25 @@ How do I...
 
   <http://groupserver.org/r/post/11BNEy4jQtmKL5UaE0ERvh>
 
+.. index:: DMARC!
+   pair: Email; DMARC
+
+.. _dmarc:
+
+... disable email address obfuscation?
+   You cannot disable this feature. If a person posts from a
+   domain controlled by DMARC (:rfc:`7489`) then GroupServer
+   rewrites the :mailheader:`From` header so others will receive
+   the message. (If this was skipped then the message will fail
+   the DMARC check and the group members would never see the
+   message.) This conforms to `the draft DMARC interoperability
+   specification.`_
+
+   .. _the draft DMARC interoperability specification.:
+      https://tools.ietf.org/html/draft-ietf-dmarc-interoperability-13#section-4.1.1.1
+
+   <http://groupserver.org/r/post/3aBYSugEuqZuTFnFMYakL1>
+
 .. index::
    pair: Email; Import
 
