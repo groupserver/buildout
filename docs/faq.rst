@@ -266,7 +266,6 @@ Why do I see...
 .. _distribute:
 
 ... an error with distribute?
-
   Sometimes there is an issue with installing the ``distribute``
   package:
 
