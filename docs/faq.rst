@@ -26,6 +26,23 @@ How do I...
 -----------
 
 .. index::
+   triple: Group; Email address; Change
+
+.. _changeEmail:
+
+... change the email address for a group?
+  The email address for a group is normally the group-identifier
+  followed by the domain name for the site. However, it can be
+  changed:
+
+  #. Open the list object in the :file:`/groupserver/ListManager`
+     folder.
+  #. Edit the ``mailto`` property to the new value.
+  #. Click the *Save changes* button.
+
+  <http://groupserver.org/r/post/5mOm2zRgLhDxWFxreDP2EI>
+
+.. index::
    pair: Configuration; Host name
 
 .. _changeHostname:
@@ -40,12 +57,9 @@ How do I...
   #. Open the ``GlobalConfiguration`` object.
   #. Edit the ``canonicalHost`` property to the new value.
   #. Click the *Save changes* button.
-  #. Visit the :file:`/groupserver/ListManager`  folder.
-  #. For every group in the folder
-
-     #. Open the group object.
-     #. Edit the ``mailto`` property to the new valie.
-     #. Click the *Save changes* button.
+  #. Visit the :file:`/groupserver/ListManager` folder.
+  #. :ref:`Change the email address <changeEmail>` for every
+     group in the folder
 
   <http://groupserver.org/r/post/78hOqzXeQ0IOO9UYGxIsKZ>
 
