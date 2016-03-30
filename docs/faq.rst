@@ -3,6 +3,17 @@
 Frequently asked questions
 ==========================
 
+:Authors: `Michael JasonSmith`_;
+:Contact: Michael JasonSmith <mpj17@onlinegroups.net>
+:Date: 2016-03-30
+:Organization: `GroupServer.org`_
+:Copyright: This document is licensed under a
+  `Creative Commons Attribution-Share Alike 4.0 International
+  License`_ by `OnlineGroups.net`_.
+
+..  _Creative Commons Attribution-Share Alike 4.0 International License:
+    https://creativecommons.org/licenses/by-sa/4.0/
+
 .. Markup cribbed off the Sphinx FAQ
 .. <http://www.sphinx-doc.org/en/stable/_sources/faq.txt>
 
@@ -235,6 +246,37 @@ How do I...
 Why do I see...
 ---------------
 
+.. index::
+   pair: Install; Distribute
+
+.. _distribute:
+
+... an error with distribute?
+
+  Sometimes there is an issue with installing the ``distribute``
+  package:
+
+    | Error: There is a version conflict
+    | We already have : distribute 0.6.24
+
+  The solution is
+
+  #. Go to your GroupServer folder,
+  #. Get :command:`pip` to install the correct version of
+     distribute:
+
+     .. code-block:: console
+
+       $ ./bin/pip install "distribute == 0.6.49"
+
+  #. Carry on installing GroupServer:
+
+     .. code-block:: console
+
+       $ ./gs_install_ubuntu.sh
+
+  <http://groupserver.org/r/post/64795Fwr7CrIF0CtywwrCf>
+
 .. index:: !lxml
    pair: Install; Buildout
 
@@ -308,3 +350,8 @@ Why do I see...
   directory and all of its contents to a normal user.
 
   <http://groupserver.org/r/post/5pZmyC9GUCCxmRlZzOfj7R>
+
+..  _GroupServer: http://groupserver.org/
+..  _GroupServer.org: http://groupserver.org/
+..  _OnlineGroups.Net: https://onlinegroups.net/
+..  _Michael JasonSmith: http://groupserver.org/p/mpj17
