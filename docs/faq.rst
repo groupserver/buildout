@@ -159,6 +159,8 @@ How do I...
    pair: Email; Hide
    pair: Profile; Password
 
+.. _hideFeature:
+
 ... turn off a feature?
   Normally the easiest way to turn off a feature is to hide it in
   the CSS.
@@ -210,6 +212,16 @@ Why do I see...
      used in the proxy configuration.
 
   <http://groupserver.org/r/post/47QGmyKwX9pkaLj6j8mzZe>
+
+.. index:: lxml!
+   pair: Install; Buildout
+
+.. _lxml:
+
+... couldn't install lxml?
+  To compile ``lxml`` the system needs at least 1024M of RAM.
+
+  <http://groupserver.org/r/post/4tKMVOifDkPPKKcaiSUJvY>
 
 .. index:: root!
 
