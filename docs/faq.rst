@@ -38,7 +38,7 @@ How do I...
 
   <http://groupserver.org/r/post/78hOqzXeQ0IOO9UYGxIsKZ>
 
-.. index:: Support!
+.. index:: !Support
    pair: Support; Email
 
 .. _changeSupport:
@@ -56,7 +56,7 @@ How do I...
 
   <http://groupserver.org/r/post/2rO2bKiq6X4UjZ9MmYkZ8S>
 
-.. index:: Editable page!
+.. index:: !Editable page
 
 .. _createPage:
 
@@ -101,7 +101,7 @@ How do I...
 
   <http://groupserver.org/r/post/11BNEy4jQtmKL5UaE0ERvh>
 
-.. index:: DMARC!
+.. index:: !DMARC
    pair: Email; DMARC
 
 .. _dmarc:
@@ -127,7 +127,7 @@ How do I...
 
 ... import posts from another system?
    To import posts from another system first export the posts as
-   an ``mbox`` file, then use the :program:`mbox2gs` script to
+   an ``mbox`` file, then use the :command:`mbox2gs` script to
    import the posts into GroupServer
    `(documentation). <http://groupserver.readthedocs.org/projects/gsgroupmessagesaddmbox2gs/en/latest/>`_
 
@@ -194,7 +194,7 @@ How do I...
   <http://groupserver.org/r/post/36Os84MG4oZgi5GPtPhGvr>
 
 .. index:: Support
-   pair: Group; Support
+   triple: Group; Type; Support
 
 .. _multipleSupport:
 
@@ -235,12 +235,12 @@ How do I...
 Why do I see...
 ---------------
 
-.. index:: lxml!
+.. index:: !lxml
    pair: Install; Buildout
 
 .. _lxml:
 
-... couldn't install lxml?
+... "couldn't install: lxml"?
   To compile ``lxml`` the system needs at least 1024M of RAM.
 
   <http://groupserver.org/r/post/4tKMVOifDkPPKKcaiSUJvY>
@@ -264,6 +264,18 @@ Why do I see...
 
   <http://groupserver.org/r/post/47QGmyKwX9pkaLj6j8mzZe>
 
+.. index::
+   pair: Notification; Topic digest
+
+.. _senddigest:
+
+... "Error with the configuration file" when sending the digest?
+  Specify the full path to the :file:`gsconfig.ini` on the
+  command line to :command:`senddigest`. (See also
+  :ref:`cronDigest`.)
+
+  <http://groupserver.org/r/post/5s9tsZFDKPDHJS1JkunBun>
+
 .. _noEmail:
 
 ... no email when I make a post?
@@ -286,7 +298,7 @@ Why do I see...
 
   <http://groupserver.org/r/post/xXIumIpGyDIKgaifmxuRy>
 
-.. index:: root!
+.. index:: !root
 
 .. _rootInstall:
 

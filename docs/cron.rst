@@ -35,9 +35,10 @@ profile status`_ to everyone.
 .. _The Ubuntu Cron HOWTO: https://help.ubuntu.com/community/CronHowto
 
 
-.. index::
-   single: sendidgest
+.. index:: !sendidgest
    pair: Notification; Topic digest
+
+.. _cronDigest:
 
 ----------------------
 Daily digest of topics
