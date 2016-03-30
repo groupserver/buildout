@@ -44,7 +44,6 @@ How do I...
 .. _changeSupport:
 
 ... change the support email?
-
   The email address for support is first set during the
   :doc:`GroupServer installation. <groupserver-install>` To
   change it
@@ -75,6 +74,32 @@ How do I...
   #. Click the *Add* button.
 
   <http://groupserver.org/r/post/77U0Vt8tiiaSbxm05JXfay>
+
+.. index::
+   pair: Email; Delete
+
+.. _deletePost:
+
+... delete a post?
+  Once a post has been made then the group members will receive
+  an email message containing that post, and there is no way to
+  recall the message. However, a post can be hidden in the
+  archive: click the :guilabel:`Hide` button next to the
+  post. The post will be replaced with a message saying why it
+  was deleted.
+
+  To actually delete a post:
+
+  * Any associated files must be removed from the ``file`` table,
+  * The ``first_post_id``, ``last_post_id`` and ``num_posts``
+    must be updated in the ``topic`` table, and
+  * The post itself must be removed from the ``post`` table.
+
+  After deleting a post anyone following a link to the post on
+  the archive (from the earlier message) will see a ``404 (Not
+  found)`` error rather than the nicer ``410 (Gone)`` error.
+
+  <http://groupserver.org/r/post/11BNEy4jQtmKL5UaE0ERvh>
 
 .. index::
    triple: Group; Member; Moderate
@@ -113,7 +138,6 @@ How do I...
 .. _removeUser:
 
 ... remove a user?
-
   When a person leaves their last group on a site they are no
   longer a site member, but they will still have a
   user-object. These objects can be deleted, but it is
