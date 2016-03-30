@@ -102,6 +102,19 @@ How do I...
   <http://groupserver.org/r/post/11BNEy4jQtmKL5UaE0ERvh>
 
 .. index::
+   pair: Email; Import
+
+.. _importPosts:
+
+... import posts from another system?
+   To import posts from another system first export the posts as
+   an ``mbox`` file, then use the :program:`mbox2gs` script to
+   import the posts into GroupServer
+   `(documentation). <http://groupserver.readthedocs.org/projects/gsgroupmessagesaddmbox2gs/en/latest/>`_
+
+   <http://groupserver.org/r/post/83qZzkEAFBN1tEeXv1Dkf>
+
+.. index::
    triple: Group; Member; Moderate
 
 .. _allModerated:
