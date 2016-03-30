@@ -264,6 +264,14 @@ Why do I see...
 
   <http://groupserver.org/r/post/47QGmyKwX9pkaLj6j8mzZe>
 
+.. _noEmail:
+
+... no email when I make a post?
+  If you are testing, ensure that your group members are on
+  :guilabel:`One email per post`.
+
+  <http://groupserver.org/r/post/A0TVjgcUWJnFVbk82YsJh>
+
 .. index:: Proxy, Web proxy, Postfix
    pair: Configuration; Proxy
 
