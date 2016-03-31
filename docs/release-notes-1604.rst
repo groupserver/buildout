@@ -131,6 +131,8 @@ Minor improvements
 * The **German translation** has been updated, thanks to Alice
   and `Stephan G. Blendinger`_.
 
+* The GroupServer **documentation** now has a :doc:`faq` section.
+
 * The :mailheader:`From` address used in the *Confirm
   subscription* notification has been fixed, so it is now set to
   the email-address of the group rather than the support email
