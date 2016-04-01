@@ -86,6 +86,9 @@ closes `Feature 4160`_.
 .. _Feature 3676: https://redmine.iopen.net/issues/3676
 .. _Feature 4160: https://redmine.iopen.net/issues/4160
 
+.. index::
+   pair: Email; Bottom quoting
+
 .. _web post:
 
 Post formatting on the web

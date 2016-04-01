@@ -106,6 +106,7 @@ been updated.
    single: Continuous integration
    pair: Email; Can post
    pair: Email; DMARC
+   pair: Email; Bottom quoting
    pair: Internationalisation; German
    pair: JavaScript; Style guide
    pair: Notification; Confirm subscription
@@ -130,6 +131,9 @@ Minor improvements
 
 * The **German translation** has been updated, thanks to Alice
   and `Stephan G. Blendinger`_.
+
+* The code that detects **bottom quoting** has been improved, and
+  long lines that are quoted look better.
 
 * The GroupServer **documentation** now has a :doc:`faq` section.
 
