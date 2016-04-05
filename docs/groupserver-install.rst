@@ -321,9 +321,12 @@ to ``parts/log/{year}-{month}-{day}.{n}.log``.
 .. _Zope 2.13: http://docs.zope.org/zope2/releases/2.13/
 
 .. index::
-   single: CentOS
-   single: RHEL
+   single: !CentOS
+   single: !RHEL
    pair: Install; Bootstrap
+   pair: Install; CentOS
+   pair: Install; RHEL
+
 .. _centos-install:
 
 CentOS and RHEL
@@ -359,6 +362,25 @@ testing.
 
         # createuser -D -S -R -l gsadmin
         # createuser -D -S -R -l gszodbadmin
+
+#. Change the :program:`PostgreSQL` authentication from ``ident``
+   to ``md5``.
+
+   #. Open the file :file:`pg_hba.conf`. (It is normally found
+      within :file:`/etc/postgresql`, but the specific location
+      depends on your version of :program:`PostgreSQL`.)
+
+   #. Change ``ident`` to ``md5`` in the lines that read::
+
+        host  all  all  127.0.0.1/32  ident
+        host  all  all  ::1/128       ident
+
+      They should end up like the following::
+
+        host  all  all  127.0.0.1/32  md5
+        host  all  all  ::1/128       md5
+
+   #. Restart :program:`PostgreSQL`.
 
 #. Create the two databases specified in :file:`config.cfg` using
    :command:`createdb`:
@@ -477,6 +499,8 @@ History
 ======= ==========  ====================================================
 Version Date        Change
 ======= ==========  ====================================================
+16.04   2016-04-05  Adding instructions for changing the authentication
+                    used by :program:`PostgreSQL` in `CentOS and RHEL`_
 16.04   2016-03-03  Determining that Pastis will be GroupServer 16.04
 16.04   2015-12-16  Updating the `CentOS and RHEL`_ documentation,
                     following the changes to the configuration files.
