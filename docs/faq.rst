@@ -5,7 +5,7 @@ Frequently asked questions
 
 :Authors: `Michael JasonSmith`_;
 :Contact: Michael JasonSmith <mpj17@onlinegroups.net>
-:Date: 2016-03-30
+:Date: 2016-04-05
 :Organization: `GroupServer.org`_
 :Copyright: This document is licensed under a
   `Creative Commons Attribution-Share Alike 4.0 International
@@ -41,6 +41,29 @@ How do I...
   #. Click the *Save changes* button.
 
   <http://groupserver.org/r/post/5mOm2zRgLhDxWFxreDP2EI>
+
+.. index:: !Footer
+
+... change the footer?
+  To change the footer edit a file called ``footerlinks.xml`` in
+  the ZMI.
+
+  #. Log into the :ref:`ZMI <ZMI Login>`.
+  #. Visit the file
+     :file:`/groupserver/Content/Templates/output/footerlinks.xml`.
+  #. Change the contents of the page template to the footer you
+     desire. Something like the following:
+
+     .. code-block:: xml
+
+       <ul class="inline-list pull-right">
+        <li>Like</li>
+        <li>This</li>
+       </ul>
+
+  #. Click the :guilabel:`Save Changes` button.
+
+  <http://groupserver.org/r/post/5D6mSVRGrOy25TArcrb4fQ>
 
 .. index::
    pair: Configuration; Host name
