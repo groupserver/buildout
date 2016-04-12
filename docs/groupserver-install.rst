@@ -320,9 +320,7 @@ to ``parts/log/{year}-{month}-{day}.{n}.log``.
 .. _Pillow: https://pypi.python.org/pypi/Pillow/
 .. _Zope 2.13: http://docs.zope.org/zope2/releases/2.13/
 
-.. index::
-   single: !CentOS
-   single: !RHEL
+.. index:: !CentOS, !RHEL
    pair: Install; Bootstrap
    pair: Install; CentOS
    pair: Install; RHEL
