@@ -26,6 +26,113 @@ How do I...
 -----------
 
 .. index::
+   single: User group
+   double: Site; Start
+
+.. _startSite:
+
+... create a new site?
+
+  GroupServer can handle more than one site. Each site will have
+  its own set of groups, while the profiles will be shared
+  between the sites. Sadly, the process is very manual, and prone
+  to problems.
+
+  #. Copy the folder for the initial site.
+
+     #. Visit the :file:`/groupserver/Content` folder in the
+        :ref:`ZMI <ZMI Login>`.
+     #. Select the folder.
+     #. Click the :guilabel:`Copy` button.
+     #. Click the :guilabel:`Paste` button to paste it into the
+        :file:`/groupserver/Content` folder.
+     #. Select the new folder.
+     #. Click the :guilabel:`Rename` button.
+     #. Give the folder a new *unique* name. The new name must be
+        unique among the sites, and all the groups.
+     #. Click the :guilabel:`Ok` button.
+
+  #. Create a new *user group* for the site.
+
+     #. Visit :file:`/groupserver/acl_users`
+     #. Select the :guilabel:`User Groups` tab.
+     #. Click the :guilabel:`Add...` button.
+     #. Set the :guilabel:`Name` of the new user group to
+        ``{site-name}_member``, where ``{site-name}`` is the name
+        of your site.
+     #. Click the :guilabel:`Add` button.
+
+  #. Update the site configuration.
+
+     #. Update the site title.
+
+        #. Visit the folder for your new site.
+        #. Select the :guilabel:`Properties` tab.
+        #. Edit the title.
+        #. Click the :guilabel:`Ok` button.
+
+     #. Update the URL
+
+        #. Visit the :file:`DivisionConfiguration` in the folder for
+           your new site.
+        #. Set the following at a minimum.
+
+           * Update ``canonicalHost`` to be the hostname of your
+             site.
+           * Ensure that ``canonicalPort`` is correct. If this
+             site is going to be an HTTP site ``canonicalPort``
+             should be ``80``; for HTTPS it should be ``443``
+           * Add a new property named ``emailDomain``. This is
+             the domain used after the ``@`` in the email
+             addresses for the groups on the site. It may be the
+             same as ``canonicalHost`` or different.
+
+        #. Click the :guilabel:`Save Changes` button.
+
+  #. Delete the groups.
+
+     #. Visit the :file:`groups` folder in your new site.
+     #. Select all the groups.
+     #. Click the :guilabel:`Delete` button.
+
+  #. Set the permissions.
+
+     #. Visit the folder for your new site.
+     #. Select the :guilabel:`Security` tab.
+
+        * If there is no ``DivisionAdmin`` role listed enter
+          ``DivisionAdmin`` into the :guilabel:`User defined
+          roles` entry and click :guilabel:`Add Role`
+        * If there is no ``DivisionMember`` role listed enter
+          ``DivisionMember`` into the :guilabel:`User defined
+          roles` entry and click :guilabel:`Add Role`
+
+     #. Click :guilabel:`local roles` at the top of the page.
+     #. Set yourself as a site administrator.
+
+        #. Enter your user-identifier (it is the last segment of
+           your profile URL, between the ``/`` characters) into the
+           :guilabel:`User` entry.
+        #. Select :guilabel:`DivisionAdmin` from the
+           :guilabel:`Roles` list.
+        #. Click the :guilabel:`Add` button.
+     #. Set the user-group.
+
+        #. Select the name of the user-group for the site from
+           the :guilabel:`Group` list.
+        #. Select ``DivisionMember`` from the :guilabel:`Roles`
+           list.
+        #. Click the :guilabel:`Add` button.
+
+  #. Add :doc:`the proxy configuration <proxy-configure>` for
+     your new site.
+  #. Add :doc:`the Postfix configuration <postfix-configure>` for
+     your new site.
+
+  <http://groupserver.org/r/topic/44uT6Wt3mkmod7cyqugqp2>
+  <http://groupserver.org/r/topic/1S6podvwyVodJydNUfh4DY>
+
+.. index::
    triple: Group; Email address; Change
 
 .. _changeEmail:
