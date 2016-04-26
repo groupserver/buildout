@@ -26,6 +26,38 @@ How do I...
 -----------
 
 .. index::
+   double: Administration; Site
+
+.. _multipleAdmin:
+
+... add another site administrator?
+
+  Multiple people can administer a site. A person must *already*
+  have a profile to be an administrator. (The easiest way to
+  create one is to `create a support group <multipleSupport>`_
+  and add the new site administrator to that.)
+
+  #. Log into the :ref:`ZMI <ZMI Login>`.
+  #. Visit the folder for your site in
+     :file:`/groupserver/Content`.
+  #. Select the :guilabel:`Security` tab.
+  #. Click :guilabel:`local roles` at the top of the page.
+  #. Enter the user-identifier (it is the last segment of the
+     profile URL, between the ``/`` characters) into the
+     :guilabel:`User` entry.
+  #. Select :guilabel:`DivisionAdmin` from the :guilabel:`Roles`
+     list.
+  #. Click the :guilabel:`Add` button.
+
+  .. note:: The site administrator can change any group, but only
+            :index:`group administrators <pair: Administration;
+            Group>` will receive notifications about each
+            group. A site administrator can be made a group
+            administrator using the *Manage members* page.
+
+  [From OnlineGroups.net Support]
+
+.. index::
    single: User group
    double: Site; Start
 
@@ -108,14 +140,8 @@ How do I...
           roles` entry and click :guilabel:`Add Role`
 
      #. Click :guilabel:`local roles` at the top of the page.
-     #. Set yourself as a site administrator.
-
-        #. Enter your user-identifier (it is the last segment of
-           your profile URL, between the ``/`` characters) into the
-           :guilabel:`User` entry.
-        #. Select :guilabel:`DivisionAdmin` from the
-           :guilabel:`Roles` list.
-        #. Click the :guilabel:`Add` button.
+     #. :ref:`Set yourself as a site
+        administrator. <multipleAdmin>`
      #. Set the user-group.
 
         #. Select the name of the user-group for the site from
@@ -157,7 +183,7 @@ How do I...
 
   #. Log into the :ref:`ZMI <ZMI Login>`.
   #. Visit the file
-     :file:`/groupserver/Content/Templates/output/footerlinks.xml`.
+     :file:`/groupserver/Templates/output/footerlinks.xml`.
   #. Change the contents of the page template to the footer you
      desire. Something like the following:
 
@@ -192,6 +218,32 @@ How do I...
      group in the folder
 
   <http://groupserver.org/r/post/78hOqzXeQ0IOO9UYGxIsKZ>
+
+.. index:: !Reply-to
+
+... change the Reply-to behaviour for a group?
+
+  The default :mailheader:`Reply-to` is set depending according
+  to the type of group.
+
+  ============  ======================
+  Group type    :mailheader:`Reply-to`
+  ============  ======================
+  Discussion    Group
+  Announcement  Sender
+  Support       Sender
+  ============  ======================
+
+  To change the default :mailheader:`Reply-to`
+
+  #. Visit the *Group* page.
+  #. Select :guilabel:`Change the general properties` in the
+     :guilabel:`This group` section of the :guilabel:`Admin`
+     area.
+  #. Select the new setting from :guilabel:`Email replies go to…`
+  #. Click the :guilabel:`Change` button.
+
+  [From OnlineGroups.net Support]
 
 .. index:: !Support
    pair: Support; Email
@@ -274,6 +326,31 @@ How do I...
       https://tools.ietf.org/html/draft-ietf-dmarc-interoperability-13#section-4.1.1.1
 
    <http://groupserver.org/r/post/3aBYSugEuqZuTFnFMYakL1>
+
+.. index::
+   pair: Email; Formatting
+
+.. _disableHTMLEmail:
+
+... disable HTML email
+
+  HTML formatted email messages from a group can be disabled for
+  an entire site.
+
+  #. Log into the :ref:`ZMI <ZMI Login>`.
+  #. Visit the :file:`DivisionConfiguration` for your site (by
+     default :file:`/groupserver/Content/initial_site/`).
+  #. Add the ``htmlEmail`` property.
+
+     #. Add ``htmlEmail`` to the :guilabel:`Name` entry.
+     #. Select ``boolean`` as the :guilabel:`Type`.
+     #. Leave the :guilabel:`Value` as blank (``False``).
+     #. Click the :guilabel:`Add` button.
+
+  To enable HTML formatted email messages either delete the
+  ``htmlEmail`` property, or set it to ``True``.
+
+  [From OnlineGroups.net Support]
 
 .. index::
    pair: Email; Import
