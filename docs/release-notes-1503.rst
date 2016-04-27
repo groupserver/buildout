@@ -194,7 +194,7 @@ GroupServer system`_.
 
 ..  _The Downloads page for GroupServer: http://groupserver.org/downloads
 ..  _The GroupServer Installation documentation:
-    http://groupserver.readthedocs.org/
+    http://groupserver.readthedocs.io/
 
 Update an Existing GroupServer System
 =====================================

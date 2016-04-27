@@ -361,7 +361,7 @@ How do I...
    To import posts from another system first export the posts as
    an ``mbox`` file, then use the :command:`mbox2gs` script to
    import the posts into GroupServer
-   `(documentation). <http://groupserver.readthedocs.org/projects/gsgroupmessagesaddmbox2gs/en/latest/>`_
+   `(documentation). <http://groupserver.readthedocs.io/projects/gsgroupmessagesaddmbox2gs/en/latest/>`_
 
    <http://groupserver.org/r/post/83qZzkEAFBN1tEeXv1Dkf>
 

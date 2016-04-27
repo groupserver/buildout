@@ -312,15 +312,15 @@ Implementing the web-hooks closes `Issue 262`_.
 
 .. _Team Z: http://triteamz.com/
 .. _Discover:
-   http://groupserver.readthedocs.org/projects/gsgroupgroupsjson/en/latest/hook.html
+   http://groupserver.readthedocs.io/projects/gsgroupgroupsjson/en/latest/hook.html
 .. _Add:
-   http://groupserver.readthedocs.org/projects/gsgroupmemberaddjson/en/latest/hook.html
+   http://groupserver.readthedocs.io/projects/gsgroupmemberaddjson/en/latest/hook.html
 .. _Search:
-   http://groupserver.readthedocs.org/projects/gssearchpeople/en/latest/hook.html
+   http://groupserver.readthedocs.io/projects/gssearchpeople/en/latest/hook.html
 .. _List:
-   http://groupserver.readthedocs.org/projects/gssitememberjson/en/latest/hook.html
+   http://groupserver.readthedocs.io/projects/gssitememberjson/en/latest/hook.html
 .. _Remove:
-   http://groupserver.readthedocs.org/projects/gsgroupmemberleavejson/en/latest/hook.html
+   http://groupserver.readthedocs.io/projects/gsgroupmemberleavejson/en/latest/hook.html
 .. _Issue 262: https://redmine.iopen.net/issues/262
 
 .. index:: i10n, German, Translation
@@ -343,9 +343,9 @@ generated during installation. The document components of
 GroupServer are listed as `sub-projects of GroupServer`_ on Read
 the Docs.
 
-.. _Read the Docs: https://readthedocs.org/
+.. _Read the Docs: https://readthedocs.io/
 .. _sub-projects of GroupServer:
-   https://readthedocs.org/projects/groupserver/
+   https://readthedocs.io/projects/groupserver/
 
 Minor improvements
 ==================
@@ -394,7 +394,7 @@ existing GroupServer system`_.
 
 ..  _The Downloads page for GroupServer: http://groupserver.org/downloads
 ..  _The GroupServer Installation documentation:
-    http://groupserver.readthedocs.org/
+    http://groupserver.readthedocs.io/
 
 Update an Existing GroupServer System
 =====================================
@@ -432,7 +432,7 @@ To update a system running the Rakı release of GroupServer
 
 
     .. Use Alembic?
-    .. https://alembic.readthedocs.org/en/latest/
+    .. https://alembic.readthedocs.io/en/latest/
 
 #.  Download the Limoncello tar-ball from `the GroupServer
     download page <http://groupserver.org/downloads>`_.

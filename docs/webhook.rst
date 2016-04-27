@@ -115,7 +115,7 @@ web hooks is exposed.
              program.
 
 .. _The documentation at Read the Docs:
-     http://groupserver.readthedocs.org/projects/gsauthtoken/en/latest/script.html
+     http://groupserver.readthedocs.io/projects/gsauthtoken/en/latest/script.html
 
 .. index::
    pair: Group; JSON
@@ -133,7 +133,7 @@ the action (``get``) — and it returns a list of group-objects.
              examples.
 
 .. _The documentation for the Groups web-hook:
-   http://groupserver.readthedocs.org/projects/gsgroupgroupsjson/en/latest/hook.html
+   http://groupserver.readthedocs.io/projects/gsgroupgroupsjson/en/latest/hook.html
 
 .. index::
    pair: Profile; JSON
@@ -259,7 +259,7 @@ created, or already existed.
              examples.
 
 .. _The documentation for the Add a profile web-hook:
-   http://groupserver.readthedocs.org/projects/gsgroupmemberaddjson/en/latest/hook.html
+   http://groupserver.readthedocs.io/projects/gsgroupmemberaddjson/en/latest/hook.html
 
 Retrieve profile information
 ============================
@@ -290,7 +290,7 @@ It returns the `profile data`_ of the person, or an empty object
              works, including examples.
 
 .. _The documentation for the Search for people web-hook:
-   http://groupserver.readthedocs.org/projects/gssearchpeople/en/latest/hook.html
+   http://groupserver.readthedocs.io/projects/gssearchpeople/en/latest/hook.html
 
 .. Group members
 .. -------------
@@ -314,7 +314,7 @@ information about the site members in a couple of ways.
              examples.
 
 .. _The documentation for the Site members web-hook:
-   http://groupserver.readthedocs.org/projects/gssitememberjson/en/latest/hook.html
+   http://groupserver.readthedocs.io/projects/gssitememberjson/en/latest/hook.html
 
 Remove a profile
 ================
@@ -341,7 +341,7 @@ groups (:js:attr:`groups`) you will eventually remove someone
 from the site.
 
 .. _The documentation for the Leave group web-hook:
-   http://groupserver.readthedocs.org/projects/gsgroupmemberleavejson/en/latest/hook.html
+   http://groupserver.readthedocs.io/projects/gsgroupmemberleavejson/en/latest/hook.html
 
 ..  _Eugene Guilaran: http://www.euge.com/
 ..  _GroupServer: http://groupserver.org/

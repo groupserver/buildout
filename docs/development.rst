@@ -298,7 +298,7 @@ technology:
 .. _Python: https://www.python.org/
 .. _Pyramid: http://www.pylonsproject.org/
 .. _Plone: https://plone.org/
-.. _Chameleon: http://chameleon.readthedocs.org/
+.. _Chameleon: http://chameleon.readthedocs.io/
 
 The source-code for GroupServer is split into many products_,
 with the documentation_ provided by reStructuredText_.
@@ -564,7 +564,7 @@ project at Read The Docs`_; if it is then a link will be in the
 
 .. _autodoc: http://sphinx-doc.org/tutorial.html#autodoc
 .. _the GroupServer project at Read The Docs:
-   https://readthedocs.org/projects/groupserver/
+   https://readthedocs.io/projects/groupserver/
 
 ..  _GroupServer: http://groupserver.org/
 ..  _GroupServer.org: http://groupserver.org/

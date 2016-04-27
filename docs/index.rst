@@ -26,7 +26,7 @@ Resources
 =========
 
 - :ref:`genindex`
-- Documentation: http://groupserver.readthedocs.org/
+- Documentation: http://groupserver.readthedocs.io/
 - Code repository: https://github.com/groupserver/
 - Questions and comments to
   http://groupserver.org/groups/development

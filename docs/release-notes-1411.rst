@@ -204,7 +204,7 @@ Minor code improvements
 .. _Feature 601: https://redmine.iopen.net/issues/601
 .. _Bug 640: https://redmine.iopen.net/issues/640
 .. _the documentation for GroupServer installation:
-   http://groupserver.readthedocs.org/
+   http://groupserver.readthedocs.io/
 .. _Sphinx: http://sphinx-doc.org/
 
 ------------
@@ -218,7 +218,7 @@ GroupServer system`_.
 
 ..  _The Downloads page for GroupServer: http://groupserver.org/downloads
 ..  _The GroupServer Installation documentation:
-    http://groupserver.readthedocs.org/
+    http://groupserver.readthedocs.io/
 
 Update an existing GroupServer system
 =====================================

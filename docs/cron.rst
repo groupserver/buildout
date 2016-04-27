@@ -70,7 +70,7 @@ for the senddigest command`_ has more information about the
 optional arguments, and running the command manually.
 
 .. _the documentation for the senddigest command:
-   https://groupserver.readthedocs.org/projects/gsgroupmessagestopicdigestsend/en/latest/command.html
+   https://groupserver.readthedocs.io/projects/gsgroupmessagestopicdigestsend/en/latest/command.html
 
 .. _profile status:
 
@@ -110,7 +110,7 @@ in the middle of the day when the site is likely to be busy, it
 is intensive to process, and is unique for every recipient.
 
 .. _The documentation for the sendprofile command:
-   http://groupserver.readthedocs.org/projects/gsprofilestatussend/en/latest/script.html
+   http://groupserver.readthedocs.io/projects/gsprofilestatussend/en/latest/script.html
 
 .. _GroupServer: http://groupserver.org/
 .. _GroupServer.org: http://groupserver.org/

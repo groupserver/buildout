@@ -165,7 +165,7 @@ Ubuntu.
              arguments, return values, and examples — is
              available from `the smtp2gs documentation.`_
 
-.. _the smtp2gs documentation.: http://groupserver.readthedocs.org/projects/gsgroupmessagesaddsmtp2gs/en/latest/script.html
+.. _the smtp2gs documentation.: http://groupserver.readthedocs.io/projects/gsgroupmessagesaddsmtp2gs/en/latest/script.html
 
 
 .. _GroupServer: http://groupserver.org/
