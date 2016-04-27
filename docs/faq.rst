@@ -468,6 +468,23 @@ Why do I see...
 ---------------
 
 .. index::
+   pair: Install; Buildout
+
+.. _crcCheck:
+
+... a ``CRC check failed`` error during install?
+
+  If a file partly downloads and the network connection times out
+  then you may see a CRC-check error after you restart the
+  install. For example::
+
+    Getting distribution for 'sqlalchemy==0.9.10'.
+    error: CRC check failed 0xcea84515 != 0x22d9d947L
+
+  Delete the associated file in :file:`downloads/dist` and
+  restart the build.
+
+.. index::
    pair: Install; CentOS
    pair: Install; PostgreSQL
    pair: Install; RHEL
