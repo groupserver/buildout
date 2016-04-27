@@ -453,7 +453,7 @@ in the ZCML_.
 .. code-block:: xml
 
      <browser:resource
-       name="gs-group-messages-topic-compose-20140327.js"
+       name="gs-group-messages-topic-compose-20160127.js"
        file="browser/javascript/compose.js"
        permission="zope2.Public" />
 
@@ -476,7 +476,7 @@ in the ZCML_.
 
 In GroupServer the resources are always accessed from the root of
 the site, with ``++resource++`` added to the start of the name:
-<http://groupserver.org/++resource++gs-group-messages-topic-compose-20140327.js>
+<http://groupserver.org/++resource++gs-group-messages-topic-compose-20160127.js>
 
 .. index:: ZPT, Chameleon, Page templates
 
