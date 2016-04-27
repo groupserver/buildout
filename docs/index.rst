@@ -27,6 +27,7 @@ Resources
 
 - :ref:`genindex`
 - Documentation: http://groupserver.readthedocs.io/
+- Translations: https://www.transifex.com/groupserver/public
 - Code repository: https://github.com/groupserver/
 - Questions and comments to
   http://groupserver.org/groups/development

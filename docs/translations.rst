@@ -45,7 +45,7 @@ please feel free to ask away in `the GroupServer development
 group`_.
 
 .. _the Transifex system:
-   https://www.transifex.com/organization/groupserver/dashboard
+   https://www.transifex.com/groupserver/public
 
 .. index:: Development
 
@@ -309,7 +309,7 @@ project carry out the following tasks.
 .. _the GroupServer development group:
    http://groupserver.org/groups/development
 .. _the GroupServer organisation on Transifex:
-   https://www.transifex.com/organization/groupserver/dashboard
+   https://www.transifex.com/groupserver/public
 
 .. [#i18n] Download ``i18n.sh`` from
            <http://groupserver.org/downloads/i18n.sh>. It wraps

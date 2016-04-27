@@ -120,7 +120,7 @@ support in GroupServer continues apace. GroupServer is now using
 Transifex_ to manage the translations. **You can add
 translations,** without needing to know any Python or HTML!
 
-.. _Transifex: https://www.transifex.com/organization/groupserver/
+.. _Transifex: https://www.transifex.com/groupserver/public
 
 All the major components of GroupServer have internationalisation
 support. This includes the site homepage, the group page, the
@@ -134,7 +134,7 @@ and Spanish (with English being the default language). French is
 has the most complete localisation, thanks to the amazing efforts
 of `Razique Mahroua`_.
 
-.. _Razique Mahroua: https://www.transifex.com/accounts/profile/Razique/
+.. _Razique Mahroua: https://www.transifex.com/user/profile/Razique/
 
 Finally there is now a :doc:`translations` included in the
 GroupServer_ documentation. Adding the new internalisation

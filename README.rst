@@ -85,9 +85,9 @@ Resources
 - Questions and comments to
   http://groupserver.org/groups/development
 - Report bugs at https://redmine.iopen.net/projects/groupserver
+- Translate GroupServer at https://www.transifex.com/groupserver/public
 - Code repository: https://github.com/groupserver/buildout
 - Build status: https://travis-ci.org/groupserver/buildout
-- Translate GroupServer at https://www.transifex.com/groupserver
 
 .. |build| image:: https://travis-ci.org/groupserver/buildout.svg?branch=master
    :target: https://travis-ci.org/groupserver/buildout
