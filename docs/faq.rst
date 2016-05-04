@@ -164,6 +164,7 @@ How do I...
 .. _changeEmail:
 
 ... change the email address for a group?
+
   The email address for a group is normally the group-identifier
   followed by the domain name for the site. However, it can be
   changed:
@@ -178,6 +179,7 @@ How do I...
 .. index:: !Footer
 
 ... change the footer?
+
   To change the footer edit a file called ``footerlinks.xml`` in
   the ZMI.
 
@@ -204,6 +206,7 @@ How do I...
 .. _changeHostname:
 
 ... change the host name?
+
   The host-name is normally set during
   :doc:`installation. <groupserver-install>` However, it can be
   changed afterwards.
@@ -251,6 +254,7 @@ How do I...
 .. _changeSupport:
 
 ... change the support email?
+
   The email address for support is first set during the
   :doc:`GroupServer installation. <groupserver-install>` To
   change it
@@ -268,6 +272,7 @@ How do I...
 .. _createPage:
 
 ... create a page?
+
   Some pages in GroupServer (such as ``/about``) are editable.
 
   #. Visit the folder that should contain the page in the
@@ -288,6 +293,7 @@ How do I...
 .. _deletePost:
 
 ... delete a post?
+
   Once a post has been made then the group members will receive
   an email message containing that post, and there is no way to
   recall the message. However, a post can be hidden in the
@@ -314,6 +320,7 @@ How do I...
 .. _dmarc:
 
 ... disable email address obfuscation?
+
    You cannot disable this feature. If a person posts from a
    domain controlled by DMARC (:rfc:`7489`) then GroupServer
    rewrites the :mailheader:`From` header so others will receive
@@ -358,6 +365,7 @@ How do I...
 .. _importPosts:
 
 ... import posts from another system?
+
    To import posts from another system first export the posts as
    an ``mbox`` file, then use the :command:`mbox2gs` script to
    import the posts into GroupServer
@@ -371,6 +379,7 @@ How do I...
 .. _allModerated:
 
 ... make all the members of a group moderated?
+
   Ideally you would change the moderation of a group to *Moderate
   specified members, and all new members that join this group*
   before the new members are added. However, if this was skipped,
@@ -402,6 +411,7 @@ How do I...
 .. _removeUser:
 
 ... remove a user?
+
   When a person leaves their last group on a site they are no
   longer a site member, but they will still have a
   user-object. These objects can be deleted, but it is
@@ -421,6 +431,7 @@ How do I...
 .. _scanVirus:
 
 ... scan for viruses?
+
   Install `pyClamd. <http://xael.org/pages/pyclamd-en.html>`_
 
   <http://groupserver.org/r/post/36Os84MG4oZgi5GPtPhGvr>
@@ -431,6 +442,7 @@ How do I...
 .. _multipleSupport:
 
 ... set multiple people to receive the support email?
+
   The easiest way for multiple people to receive messages to the
   Support email address is to create a new *Support group*.
 
@@ -450,6 +462,7 @@ How do I...
 .. _hideFeature:
 
 ... turn off a feature?
+
   Normally the easiest way to turn off a feature is to hide it in
   the CSS.
 
@@ -466,23 +479,6 @@ How do I...
 
 Why do I see...
 ---------------
-
-.. index::
-   pair: Install; Buildout
-
-.. _crcCheck:
-
-... a ``CRC check failed`` error during install?
-
-  If a file partly downloads and the network connection times out
-  then you may see a CRC-check error after you restart the
-  install. For example::
-
-    Getting distribution for 'sqlalchemy==0.9.10'.
-    error: CRC check failed 0xcea84515 != 0x22d9d947L
-
-  Delete the associated file in :file:`downloads/dist` and
-  restart the build.
 
 .. index::
    pair: Install; CentOS
@@ -527,6 +523,7 @@ Why do I see...
 .. _distribute:
 
 ... an error with distribute?
+
   Sometimes there is an issue with installing the ``distribute``
   package:
 
@@ -557,6 +554,7 @@ Why do I see...
 .. _lxml:
 
 ... "couldn't install: lxml"?
+
   To compile ``lxml`` the system needs at least 1024M of RAM.
 
   <http://groupserver.org/r/post/4tKMVOifDkPPKKcaiSUJvY>
@@ -567,6 +565,7 @@ Why do I see...
 .. _emailCSS:
 
 ... email messages with the wrong CSS?
+
   The web-hook that adds a message may use different URL to the
   one used for normal web traffic (see :ref:`skin`). If this is
   the case GroupServer may have to be explicitly told the skin to
@@ -586,6 +585,7 @@ Why do I see...
 .. _senddigest:
 
 ... "Error with the configuration file" when sending the digest?
+
   Specify the full path to the :file:`gsconfig.ini` on the
   command line to :command:`senddigest`. (See also
   :ref:`cronDigest`.)
@@ -595,6 +595,7 @@ Why do I see...
 .. _noEmail:
 
 ... no email when I make a post?
+
   If you are testing, ensure that your group members are on
   :guilabel:`One email per post`.
 
@@ -606,6 +607,7 @@ Why do I see...
 .. _requestEntityTooLarge:
 
 ...  Request Entity Too Large?
+
   Email messages are added to GroupServer, by :doc:`postifx,
   <postfix-configure>` using a web-hook. Because of this the
   :doc:`proxy <proxy-configure>` can block a message if it is too
@@ -619,6 +621,7 @@ Why do I see...
 .. _rootInstall:
 
 ... so many errors when installing?
+
   GroupServer can only run as a normal user, never as the
   ``root`` superuser. Change the ownership of the GroupServer
   directory and all of its contents to a normal user.

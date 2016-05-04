@@ -311,8 +311,24 @@ automatic.
   GroupServer requirements.
 
 It is a good idea to make a cup of coffee, or go to lunch, while
-buildout processes. The log file for the install will be written
-to ``parts/log/{year}-{month}-{day}.{n}.log``.
+buildout processes. :index:`The log file for the install <pair:
+Install; Log>` will be written to
+``parts/log/{year}-{month}-{day}.{n}.log``.
+
+.. index::
+   pair: Install; Error
+
+.. Note::
+
+  If a file partly downloads and the network connection times out
+  then you may see a CRC-check error after you restart the
+  install. For example::
+
+    Getting distribution for 'sqlalchemy==0.9.10'.
+    error: CRC check failed 0xcea84515 != 0x22d9d947L
+
+  To recover from this error, delete the associated file in
+  :file:`downloads/dist` and restart the build.
 
 .. _eGenix.com mx Base: http://www.egenix.com/products/python/mxBase
 .. _SQL Alchemy: http://www.sqlalchemy.org/
