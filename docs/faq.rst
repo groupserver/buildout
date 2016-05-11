@@ -222,20 +222,42 @@ How do I...
 
   <http://groupserver.org/r/post/78hOqzXeQ0IOO9UYGxIsKZ>
 
+.. index::
+   pair: Profile; Password
+
+.. _adminSetPassword:
+
+... change the password for another person?
+
+    For security reasons, people can only change their own
+    passwords. GroupServer deliberately prevents administrators
+    from changing the passwords of other members.
+
+    If someone has forgotten their password then they should use
+    the *Password reset* to set a new password. The page is
+    linked from the *Sign in* page.
+
+    <http://groupserver.org/r/post/3Khm0ZtYOXnlzKhl4Vj1lw>
+
 .. index:: !Reply-to
+
+.. _replyTo:
 
 ... change the Reply-to behaviour for a group?
 
-  The default :mailheader:`Reply-to` is set depending according
-  to the type of group.
+  GroupServer sets the email address in the
+  :mailheader:`Reply-to` header when sending a message from a
+  group. The address can be that of the group, the author, or
+  both. The default :mailheader:`Reply-to` is set depending
+  according to the type of group.
 
-  ============  ======================
-  Group type    :mailheader:`Reply-to`
-  ============  ======================
+  ============  ==============================
+  Group type    Default :mailheader:`Reply-to`
+  ============  ==============================
   Discussion    Group
-  Announcement  Sender
-  Support       Sender
-  ============  ======================
+  Announcement  Author
+  Support       Author
+  ============  ==============================
 
   To change the default :mailheader:`Reply-to`
 
@@ -289,6 +311,8 @@ How do I...
 
 .. index::
    pair: Email; Delete
+   pair: Email; Hide
+
 
 .. _deletePost:
 
@@ -455,10 +479,6 @@ How do I...
 
   <http://groupserver.org/r/post/4Hr99NYlpzmoQqnFVH2ira>
 
-.. index::
-   pair: Email; Hide
-   pair: Profile; Password
-
 .. _hideFeature:
 
 ... turn off a feature?
@@ -471,6 +491,8 @@ How do I...
      :doc:`development`).
   #. Hide the interface element in question by setting it to
      ``display: none``.
+
+  For example:
 
   * Hide post: <http://groupserver.org/r/post/3e6qousrx7qyvpsK0HsZUt>
   * Password toggle: <http://groupserver.org/r/post/7ezGHt8QtK9zdl82uSxrgo>
