@@ -83,6 +83,7 @@ the new notification (finally) closes `Issue 269`_.
 Minor improvements
 ==================
 
+* **German** language updates
 * An error that prevented the *Profile log* (found as
   ``log.html`` under a profile) from being shown has been fixed.
 * An error with password-link creation in the *Welcome*
