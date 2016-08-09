@@ -13,6 +13,7 @@ GroupServer Documentation
    webhook
    translations
    development
+   CONTRIBUTING
    groupserver-uninstall
    faq
    release-notes
