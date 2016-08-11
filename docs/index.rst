@@ -11,6 +11,7 @@ GroupServer Documentation
    proxy-configure
    cron
    webhook
+   CONTRIBUTING
    translations
    development
    groupserver-uninstall

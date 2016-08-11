@@ -460,6 +460,29 @@ How do I...
 
   <http://groupserver.org/r/post/36Os84MG4oZgi5GPtPhGvr>
 
+.. index:: !Security, DMARC, DKIM, SMTPS, HTTPS
+
+.. _secure:
+
+... secure GroupServer?
+
+  Ensuring the following should enhance your security, and the
+  members of your site should notice very little change.
+
+  * The GroupServer site should *only* be accessible via HTTPS
+    (as in HTTP over TLS). See :ref:`secure connections`.
+  * Postfix should be using SMTPS (as in SMTP over TLS).
+  * Postfix should be grey-listing all incoming messages.
+  * Postfix should be running DMARC checks for all incoming
+    messages.
+  * Postfix should add DKIM signing to messages from the
+    groups.
+  * `Scan for viruses. <#scanvirus>`_
+  * Keep the operating system up to date.
+  * Keep GroupServer up to date.
+
+  <http://groupserver.org/r/post/7mlFZoPhqnzqUJEoG9sbEe>
+
 .. index:: Support
    triple: Group; Type; Support
 

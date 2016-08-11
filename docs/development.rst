@@ -1,6 +1,4 @@
-.. index::
-   single: development
-   single: source
+.. index:: !Development, source
 
 =================
 Development guide
