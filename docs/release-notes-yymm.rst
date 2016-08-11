@@ -93,6 +93,7 @@ Minor improvements
 * The **Invite members in bulk** system is now more robust, as it
   will handle *tab* separated values, as well as *comma*
   separated values (CSV), with thanks to `Piers Goodhew`_.
+* The *favicon* images have been optimised.
 * The image-processing code is now more robust.
 
 .. _Piers Goodhew: http://groupserver.org/p/4PI0NlxVg75Z6a8puM0zbv
@@ -157,3 +158,4 @@ Resources
 ..  LocalWords:  Randow Organization sectnum Slivovica DMARC CSS Calvados AIRA
 ..  LocalWords:  SMTP smtp mbox CSV Transifex cfg mkdir groupserver Vimeo WAI
 ..  LocalWords:  buildout Limoncello iframe Pastis Linter
+..  LocalWords:  favicon Goodhew
