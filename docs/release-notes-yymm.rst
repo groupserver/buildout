@@ -94,9 +94,17 @@ Minor improvements
   will handle *tab* separated values, as well as *comma*
   separated values (CSV), with thanks to `Piers Goodhew`_.
 * The *favicon* images have been optimised.
-* The image-processing code is now more robust.
+* The image-processing code is now more robust, including the
+  scaling of very wide and very short images, with thanks to
+  `Donald Winship`_ for pointing out the issue.
+* Errors in the :doc:`development` documentation have been fixed,
+  with thanks to `Nick Bell`_.
 
-.. _Piers Goodhew: http://groupserver.org/p/4PI0NlxVg75Z6a8puM0zbv
+.. _Piers Goodhew:
+   http://groupserver.org/p/4PI0NlxVg75Z6a8puM0zbv
+.. _Nick Bell: http://groupserver.org/p/3Fkga91WZ1O65yPEh0QYOb
+.. _Donald Winship:
+   http://groupserver.org/p/1cQiyqkdTbIFKQjlqzq49Z
 
 ----------
 Get Sherry
