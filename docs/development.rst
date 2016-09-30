@@ -55,7 +55,7 @@ to **activate** the virtual environment:
 
    $ . ./bin/activate
 
-The command-prompt will change to indicate that you are now in a
+The command-prompt may change to indicate that you are now in a
 virtual environment.
 
 When you have done with development you can **deactivate** the
@@ -105,6 +105,15 @@ GroupServer_. Its usage_ is simple (which is why we use
 ``mr.developer``) and its behaviour is controlled by the
 `development configuration file`_.
 
+Installation
+------------
+
+Enter your virtual environment using `activate` as above, then:
+
+.. code-block:: console
+
+  $ pip install mr.developer
+
 Usage
 -----
 
@@ -128,7 +137,7 @@ configuration to point to the new code:
 
 .. code-block:: console
 
-   $ buildout -N
+   $ buildout -n -c site.cfg install
 
 Now any changes that you make to the ``gs.group.home`` product
 will change your version of GroupServer.
@@ -142,7 +151,7 @@ the source code version of the product and rebuild GroupServer:
 .. code-block:: console
 
     $ develop deactivate gs.group.home
-    $ buildout -N
+    $ buildout -n -c site.cfg install
 
 Development configuration file
 ------------------------------
