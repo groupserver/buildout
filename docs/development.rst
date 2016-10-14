@@ -6,7 +6,7 @@ Development guide
 
 :Authors: `Michael JasonSmith`_;
 :Contact: Michael JasonSmith <mpj17@onlinegroups.net>
-:Date: 2016-01-26
+:Date: 2016-10-13
 :Organization: `GroupServer.org`_
 :Copyright: This document is licensed under a
   `Creative Commons Attribution-Share Alike 4.0 International
@@ -92,18 +92,20 @@ you can make a `pull request`_.
 .. _fork a repo: https://help.github.com/articles/fork-a-repo/
 .. _pull request: https://help.github.com/articles/using-pull-requests/
 
-.. index:: Mr. Developer
+.. index:: Mr.Developer
    pair: Install; development
    pair: Install; buildout
 
-Mr Developer
-============
+:mod:`mr.developer`
+===================
 
-I recommend that you use `mr.developer`_ to integrate your
-development with the Buildout_ system that builds
-GroupServer_. Its usage_ is simple (which is why we use
-``mr.developer``) and its behaviour is controlled by the
-`development configuration file`_.
+I recommend that you use :mod:`mr.developer` (PyPI_) to integrate
+your development with the buildout_ system that builds
+GroupServer. In this section we will cover its installation_ with
+:program:`buildout`, its usage_, and the `development
+configuration file`_.
+
+.. index:: i18n, i18ndude, transifex
 
 Installation
 ------------
@@ -112,23 +114,29 @@ Enter your virtual environment using `activate` as above, then:
 
 .. code-block:: console
 
-  $ pip install mr.developer
+  $ buildout -N -c develop.cfg
+
+This builds your site (the same as a normal
+:doc:`groupserver-install`) along with the :mod:`mr.developer`
+script :program:`develop`. (Two scripts to help with
+internationalisation, :program:`i18ndude` and :program:`tx` are
+also installed; see the :doc:`translations` for more
+information.)
 
 Usage
 -----
 
-Run the following To use ``mr.developer`` to **checkout** the
-code from the VCS, and active the source code so you can work on
-it:
+First you will need code to work on. Use :mod:`mr.developer` to
+**checkout** the source-code from the repository:
 
 .. code-block:: console
 
    $ develop checkout gs.group.home
 
-This will checkout the ``gs.group.home`` product from `its
-repository`_ into the ``gs.group.home`` directory within the
-``src`` directory of your GroupServer installation. (There is
-more on products_ below.)
+This will checkout the :mod:`gs.group.home` *product* from `its
+repository`_ into the :file:`src/gs.group.home` directory within
+your GroupServer installation. (There is more on products_
+below.)
 
 .. _its repository: https://github.com/groupserver/gs.group.home
 
@@ -137,27 +145,27 @@ configuration to point to the new code:
 
 .. code-block:: console
 
-   $ buildout -n -c site.cfg install
+   $ buildout -N -c develop.cfg
 
-Now any changes that you make to the ``gs.group.home`` product
-will change your version of GroupServer.
+Now any changes that you make to the code in
+:file:`src/gs.group.home` will change your version of
+GroupServer.
 
 When you have finished making changes you want you should commit
-them, and push your changes up to a repository.
-
-To resume using the standard version of a product **deactivate**
-the source code version of the product and rebuild GroupServer:
+them, and push your changes up to a repository. To resume using
+the standard version of a product **deactivate** the source code
+version of the product and rebuild GroupServer:
 
 .. code-block:: console
 
     $ develop deactivate gs.group.home
-    $ buildout -n -c site.cfg install
+    $ buildout -N -c develop.cfg
 
 Development configuration file
 ------------------------------
 
-The configuration for ``mr.developer`` is in the ``develop.cfg``
-file, which is a configuration file that is very similar to the
+The configuration for :mod:`mr.developer` is in the
+:file:`develop.cfg` file, which is very similar to the
 configuration files that control the rest of the build.
 
 The main configuration is in the ``[sources]`` section. This maps
@@ -192,10 +200,10 @@ products.
 Default configuration
 ~~~~~~~~~~~~~~~~~~~~~
 
-The default configuration for ``mr.developer`` is generated from
-the :file:`versions.cfg` file using the following :command:`awk`
-script. It specifies that :command:`git` should be used with all
-the products.
+The default configuration for :mod:`mr.developer` is generated
+from the :file:`versions.cfg` file using the following
+:command:`awk` script. It specifies that :command:`git` should be
+used with all the products.
 
 .. code-block:: awk
 
@@ -213,9 +221,9 @@ the products.
     printf "%s = %s %s%s\n", $1, vcs, dest, $1
   }
 
-To change Mr Developer to use **Mercurial** as the default VCS,
-but use GitHub as the primary repository, carry out the following
-tasks.
+To change Mr Developer to use :program:`Mercurial` as the default
+version-control system, but use :program:`GitHub` as the primary
+repository, carry out the following tasks.
 
 #. Install `the Hg-Git plugin`_ for Mercurial.
 
@@ -284,7 +292,7 @@ following tasks.
 
      .. code-block:: console
 
-        $ buildout -N
+        $ buildout -N -c develop.cfg
 
 .. index:: Pyramid, Zope component architecture, ZCA
 
@@ -583,8 +591,8 @@ project at Read The Docs`_; if it is then a link will be in the
 ..  _E-Democracy.org: http://forums.e-democracy.org/
 .. _GroupServer development: http://groupserver.org/groups/development/
 .. _GitHub: https://github.com/groupserver
-.. _mr.developer: https://pypi.python.org/pypi/mr.developer/
-.. _Buildout: http://buildout.org/
+.. _PyPI: https://pypi.python.org/pypi/mr.developer/
+.. _buildout: http://buildout.org/
 .. _reStructuredText: http://sphinx-doc.org/rest.html
 .. _Sphinx: http://sphinx-doc.org/
 .. _SQLAlchemy: http://www.sqlalchemy.org/
