@@ -316,7 +316,98 @@ technology:
 .. _Chameleon: http://chameleon.readthedocs.io/
 
 The source-code for GroupServer is split into many products_,
-with the documentation_ provided by reStructuredText_.
+with the documentation_ provided by reStructuredText_. It is all
+coordinated by buildout_.
+
+.. index:: !Buildout, !eggs
+
+Buildout
+========
+
+Buildout assembles and deploys the different parts that make up
+GroupServer. The basic idea is that the high-level *components*
+are specified by buildout. For GroupServer all the components are
+Python products_, which are installed as **eggs**. Each Python
+product specifies its dependencies in the
+:file:`setup.py`. However, buildout restricts the *versions* that
+are installed, ensuring that a *known good set* of products is
+installed.
+
+Buildout is controlled by the ``*.cfg`` files at the top of your
+GroupServer installation directory. There are three `main
+files`_, and seven `supplementary files`_, all of which are in
+``INI`` format.
+
+.. _main files:
+
+Main configuration files
+------------------------
+
+The three main files specify the ways the products can be
+deployed.
+
+:file:`buildout.cfg`:
+  Controls the installation of all the components that make up
+  GroupServer, up to the point that the unit tests can be run,
+  but it stops short of creating the site::
+
+       $ buildout
+       $ testrunner -k --auto-color --udiff -m gs\\..*
+
+:file:`site.cfg`:
+  Extends :file:`buildout.cfg` by adding the *recipes* (buildout
+  scripts) that actually initialise the database and create the
+  GroupServer site (if necessary). This is the normal way to
+  build GroupServer::
+
+       $ buildout -c site.cfg
+
+:file:`develop.cfg`:
+   Extends :file:`site.cfg` by adding the components that allow
+   for development: :mod:`mr.developer`, :mod:`i18ndude`, and
+   :mod:`transifex-client`::
+
+       $ buildout -c develop.cfg
+
+.. index:: ztk, zope tool kit
+
+.. _supplementary files:
+
+Supplementary configuration files
+---------------------------------
+
+The seven supplementary configuration files are used by the three
+`main files`_ in a similar way to *modules*.
+
+:file:`config.cfg`:
+  The main site configuration that is written during
+  :doc:`groupserver-install`. Used by :file:`site.cfg`.
+
+:file:`custom.cfg`:
+  The products that customise the install go in this
+  configuration file. Initially it is mostly blank. Used by
+  :file:`buildout.cfg`.
+
+:file:`dependencies.cfg`:
+  The *parts* that control the *recipes* that set up the base
+  install. Used by :file:`buildout.cfg`.
+
+:file:`instance.cfg`:
+   The *parts* that control the *recipes* that install the
+   initial GroupServer site (the *instance*). Used by
+   :file:`site.cfg`.
+
+:file:`versions.cfg`:
+   The list of what specific versions should be installed. Used
+   by :file:`buildout.cfg`.
+
+:file:`zope2-2.13.24-versions-gs.cfg`:
+   The configuration for the Zope2 web-application server that
+   GroupServer is based on. Used by :file:`buildout.cfg`.
+
+:file:`ztk-versions.cfg`:
+   The configuration for the Zope Toolkit. Used by
+   :file:`buildout.cfg`.
 
 .. index::
    pair: Development; Python products
@@ -592,7 +683,6 @@ project at Read The Docs`_; if it is then a link will be in the
 .. _GroupServer development: http://groupserver.org/groups/development/
 .. _GitHub: https://github.com/groupserver
 .. _PyPI: https://pypi.python.org/pypi/mr.developer/
-.. _buildout: http://buildout.org/
 .. _reStructuredText: http://sphinx-doc.org/rest.html
 .. _Sphinx: http://sphinx-doc.org/
 .. _SQLAlchemy: http://www.sqlalchemy.org/
