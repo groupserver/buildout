@@ -7,7 +7,7 @@ Unreleased
 
 :Authors: `Michael JasonSmith`_;
 :Contact: Michael JasonSmith <mpj17@ldots.org>
-:Date: 2016-07-11
+:Date: 2016-10-18
 :Organization: `GroupServer.org`_
 :Copyright: This document is licensed under a
   `Creative Commons Attribution-Share Alike 4.0 International
@@ -99,6 +99,10 @@ Minor improvements
   `Donald Winship`_ for pointing out the issue.
 * Errors in the :doc:`development` documentation have been fixed,
   with thanks to `Nick Bell`_.
+* The creation of a development build of GroupServer is now
+  easier, and better documented.
+* :pep:`484` type hints have been added to some low-level
+  libraries.
 
 .. _Piers Goodhew:
    http://groupserver.org/p/4PI0NlxVg75Z6a8puM0zbv
