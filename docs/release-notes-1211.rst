@@ -48,7 +48,10 @@ groups`_, and the new `profile search`_ will help administrators
 find the profiles of participants. Finally, `SVG thumbnails`_ are
 now shown.
 
-.. index::
+.. index:: !Search
+   pair: Topic; Keywords
+   pair: Topic; Search
+   pair: Post; Search
    pair: Email; Search
 
 New search system

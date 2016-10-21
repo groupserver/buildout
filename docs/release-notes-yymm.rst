@@ -76,9 +76,10 @@ the new notification (finally) closes `Issue 269`_.
 .. _Issue 269: https://redmine.iopen.net/issues/269
 
 
-.. index:: Keywords
-   pair: Profile; Activity log
+.. index::
    pair: Notification; Welcome
+   pair: Profile; Activity log
+   pair: Topic; Keywords
    triple: Group; Member; Invite
 
 Minor improvements
@@ -94,7 +95,7 @@ Minor improvements
   will handle *tab* separated values, as well as *comma*
   separated values (CSV), with thanks to `Piers Goodhew`_.
 * Email addresses and web-page addresses are now omitted from the
-  keywords, closing `Bug 3919`_ and `Bug 4028`_.
+  **topic keywords**, closing `Bug 3919`_ and `Bug 4028`_.
 * The image-processing code is now more robust, including the
   scaling of very wide and very short images, with thanks to
   `Donald Winship`_ for pointing out the issue.
