@@ -7,7 +7,7 @@ Unreleased
 
 :Authors: `Michael JasonSmith`_;
 :Contact: Michael JasonSmith <mpj17@ldots.org>
-:Date: 2016-10-18
+:Date: 2016-10-21
 :Organization: `GroupServer.org`_
 :Copyright: This document is licensed under a
   `Creative Commons Attribution-Share Alike 4.0 International
@@ -77,8 +77,9 @@ the new notification (finally) closes `Issue 269`_.
 
 
 .. index::
-   pair: Profile; Activity log
    pair: Notification; Welcome
+   pair: Profile; Activity log
+   pair: Topic; Keywords
    triple: Group; Member; Invite
 
 Minor improvements
@@ -93,7 +94,8 @@ Minor improvements
 * The **Invite members in bulk** system is now more robust, as it
   will handle *tab* separated values, as well as *comma*
   separated values (CSV), with thanks to `Piers Goodhew`_.
-* The *favicon* images have been optimised.
+* Email addresses and web-page addresses are now omitted from the
+  **topic keywords**, closing `Bug 3919`_ and `Bug 4028`_.
 * The image-processing code is now more robust, including the
   scaling of very wide and very short images, with thanks to
   `Donald Winship`_ for pointing out the issue.
@@ -101,6 +103,7 @@ Minor improvements
   with thanks to `Nick Bell`_.
 * The creation of a development build of GroupServer is now
   easier, and better documented.
+* The *favicon* images have been optimised.
 * :pep:`484` type hints have been added to some low-level
   libraries.
 
@@ -109,6 +112,8 @@ Minor improvements
 .. _Nick Bell: http://groupserver.org/p/3Fkga91WZ1O65yPEh0QYOb
 .. _Donald Winship:
    http://groupserver.org/p/1cQiyqkdTbIFKQjlqzq49Z
+.. _Bug 3919: https://redmine.iopen.net/issues/3939
+.. _Bug 4028: https://redmine.iopen.net/issues/4028
 
 ----------
 Get Sherry
@@ -143,6 +148,18 @@ GroupServer to Sherry (YY.MM) carry out the following steps.
       ::
 
         $ ./bin/buildout -N
+
+#.  Update the SQL function that generates the topic keywords:
+
+      ::
+
+        $ shopt -s globstar  # This makes the ** below work
+        $ psql -U {psql_user} -h {psql_host} {psql_dbname} -f \
+          eggs/gs.group.messages.topic.base*/**/03-keywords.sql 
+
+    Where ``{psql_user}``, ``{psql_host}``, ``{psql_dbname}`` are
+    the name of your PostgreSQL user, host, and database, as
+    configured during your :doc:`groupserver-install`.
 
 #.  Restart your GroupServer instance (see
     :doc:`groupserver-start`).

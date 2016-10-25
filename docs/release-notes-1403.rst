@@ -142,6 +142,15 @@ page, and the *Post message* area of the *Topic* and *Start topic* pages.
 
 .. _Issue 3873: https://redmine.iopen.net/issues/3873
 
+.. index::
+   pair: Files; List
+   pair: Group; List
+   pair: Group; Page
+   pair: Topic; Keywords
+   pair: Topic; List
+   pair: Post; Most recent
+   triple: Group; Member; Recently active
+
 Updated lists
 -------------
 

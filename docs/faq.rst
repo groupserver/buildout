@@ -58,6 +58,66 @@ How do I...
   [From OnlineGroups.net Support]
 
 .. index::
+   single: Host name
+   single: Domain name
+   single: Proxy
+   double: Email; Domain
+   double: Email; Configuration
+   double: Site; Address
+
+.. _changeName:
+
+... change the host name?
+
+  GroupServer uses two slightly different host names: one for the
+  web-site and one for the mail-host. To change the host name for
+  the site both will have to be changed.
+
+  * Change the host name for the web site.
+
+     #. Log into the :ref:`ZMI <ZMI Login>`.
+     #. Visit the :file:`DivisionConfiguration` for your site (by
+        default :file:`/groupserver/Content/initial_site/`).
+     #. Change the :guilabel:`canonicalHost` property to the new
+        name.
+     #. Click the :guilabel:`Save changes` button.
+     #. Change the proxy forwarding (see :doc:`proxy-configure`).
+
+  * Change the various names for the mail-host.
+
+     #. Log into the :ref:`ZMI <ZMI Login>`.
+     #. Visit the :file:`DivisionConfiguration` for your site (by
+        default :file:`/groupserver/Content/initial_site/`).
+     #. Change the :guilabel:`emailDomain` to the new name, which
+        may or may not be the same as the
+        :guilabel:`canonicalHost` property. The
+        :guilabel:`emailDomain` property of the
+        :guilabel:`DivisionConfiguration` is used by the *Start*
+        *a* *group* page to determine the email-address of a new
+        group (``{groupId}@{emailDomain}``). (If absent the
+        :guilabel:`emailDomain` of the
+        :guilabel:`GlobalConfugration` object is used.)
+     #. Click the :guilabel:`Save changes` button.
+
+     #. Change the email address for each and every group.
+
+        #. Log into the :ref:`ZMI <ZMI Login>`.
+        #. Visit the :file:`ListManager` for your site (by
+           default :file:`/groupserver/ListManager`).
+        #. For each group
+
+           #. Select the group
+           #. Select the :guilabel:`Property` tab.
+           #. Change the :guilabel:`mailto` property so it
+              contains the correct address.
+           #. Click the :guilabel:`Save changes` button.
+
+     #. Change the configuration for :command:`postfix` (see
+        :doc:`postfix-configure`).
+
+  <http://groupserver.org/r/topic/2DdgBqagGaFs6cuCctFUfA>
+
+.. index::
    single: User group
    double: Site; Start
 
@@ -424,7 +484,7 @@ How do I...
   #. Open the mailing list object for the group.
   #. Copy the list of members to be moderated from the text
      editor into the ``moderated_members`` list.
-  #. Click the *Save changes* button.
+  #. Click the :guilabel:`Save changes` button.
 
   <http://groupserver.org/r/post/7r2kAxK3Y4zUPJgvl2A2rz>
 
