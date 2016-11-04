@@ -85,6 +85,8 @@ How do I...
 
   * Change the various names for the mail-host.
 
+     #. Change the configuration for :command:`postfix` (see
+        :doc:`postfix-configure`).
      #. Log into the :ref:`ZMI <ZMI Login>`.
      #. Visit the :file:`DivisionConfiguration` for your site (by
         default :file:`/groupserver/Content/initial_site/`).
@@ -111,9 +113,6 @@ How do I...
            #. Change the :guilabel:`mailto` property so it
               contains the correct address.
            #. Click the :guilabel:`Save changes` button.
-
-     #. Change the configuration for :command:`postfix` (see
-        :doc:`postfix-configure`).
 
   <http://groupserver.org/r/topic/2DdgBqagGaFs6cuCctFUfA>
 
