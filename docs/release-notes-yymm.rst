@@ -7,7 +7,7 @@ Unreleased
 
 :Authors: `Michael JasonSmith`_;
 :Contact: Michael JasonSmith <mpj17@ldots.org>
-:Date: 2016-10-21
+:Date: 2016-12-19
 :Organization: `GroupServer.org`_
 :Copyright: This document is licensed under a
   `Creative Commons Attribution-Share Alike 4.0 International
@@ -67,7 +67,7 @@ HTML message crafted, and be moved to the file-system. Creating
 the new notification (finally) closes `Issue 269`_.
 
 :Acknowledgements: Thanks to Robert_ and `Alice Rose`_ for their
-                   help with the *Request contact* page.
+		   help with the *Request contact* page.
 
 .. _Issue 627: https://redmine.iopen.net/issues/627
 .. _Issue 3409: https://redmine.iopen.net/issues/3409
@@ -80,6 +80,7 @@ the new notification (finally) closes `Issue 269`_.
    pair: Notification; Welcome
    pair: Profile; Activity log
    pair: Topic; Keywords
+   pair: Email; DMARC
    triple: Group; Member; Invite
 
 Minor improvements
@@ -99,6 +100,9 @@ Minor improvements
 * The image-processing code is now more robust, including the
   scaling of very wide and very short images, with thanks to
   `Donald Winship`_ for pointing out the issue.
+* The **DMARC** sub-domain policy is now checked when necessary,
+  with thanks to Igor Colombi for clarifying the standard and
+  testing.
 * Errors in the :doc:`development` documentation have been fixed,
   with thanks to `Nick Bell`_.
 * The creation of a development build of GroupServer is now
@@ -141,13 +145,13 @@ GroupServer to Sherry (YY.MM) carry out the following steps.
 
       ::
 
-        $ cp ../groupserver-yy.mm/[bivz]*cfg  .
+       $ cp ../groupserver-yy.mm/[bivz]*cfg  .
 
 #.  Run ``buildout`` in your existing GroupServer installation:
 
       ::
 
-        $ ./bin/buildout -N
+	$ ./bin/buildout -N
 
 #.  Update the SQL function that generates the topic keywords:
 
@@ -155,7 +159,7 @@ GroupServer to Sherry (YY.MM) carry out the following steps.
 
         $ shopt -s globstar  # This makes the ** below work
         $ psql -U {psql_user} -h {psql_host} {psql_dbname} -f \
-          eggs/gs.group.messages.topic.base*/**/03-keywords.sql 
+          eggs/gs.group.messages.topic.base*/**/03-keywords.sql
 
     Where ``{psql_user}``, ``{psql_host}``, ``{psql_dbname}`` are
     the name of your PostgreSQL user, host, and database, as
