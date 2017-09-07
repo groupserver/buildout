@@ -97,6 +97,8 @@ system, and finally `start Zope`_.
 .. index::
    pair: Configuration; Host name
 
+.. _Pick Hostname:
+
 Pick a host name
 ----------------
 

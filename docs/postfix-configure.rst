@@ -146,6 +146,14 @@ Ubuntu.
 
          smtpd_authorized_verp_clients = 127.0.0.1,localhost
 
+#.  Forward your mailing list domains to GroupServer by adding
+    them to the end of the
+    :file:`/etc/postfix/groupserver.virtual` file, like so
+
+      .. code-block:: cfg
+
+        @groups.example.com groupserver-automagic@localhost
+
 #.  Generate the Postfix hashes by running :command:`postmap` and
     :command:`postalias`:
 

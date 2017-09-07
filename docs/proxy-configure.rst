@@ -184,11 +184,13 @@ text-editor.
       .. code-block:: nginx
 
         upstream gs {
-          server localhost:8080;
+          server gstest:8080;
         }
 
         server {
           listen 80;
+          listen [::]:80;
+
           server_name groups.example.com;
 
           location / {
@@ -196,30 +198,25 @@ text-editor.
             proxy_pass http://gs/;
             include proxy_params;
           }
-        }
 
-        server {
-          listen 80;
-          server_name zmi.groups.example.com;
-
-          location / {
+          location /manage {
             rewrite /(.*) /VirtualHostBase/http/$host:80/VirtualHostRoot/$1 break;
             proxy_pass http://gs/;
             include proxy_params;
           }
         }
 
-    * Two virtual sites are defined: one that presents
-      GroupServer (which is used most of the time) and one for
-      :ref:`the ZMI. <ZMI Login>`
+    * One virtual site is defined with two location blocks: one
+      that presents GroupServer (which is used most of the time)
+      and one for :ref:`the ZMI. <ZMI Login>`
 
-      + Change the ``server_name`` in the first ``server`` from
+      + Change the server name ``gstest`` in the ``upstream``
+        block to :ref:`the hostname you set for your site.
+        <Pick Hostname>`
+
+      + Change the ``server_name`` in the ``server`` block from
         ``groups.example.com`` to the address of you new virtual
         host.
-
-      + Change the host name for the ZMI, defined by the second
-        ``server`` from ``zmi.groups.example.com`` to that of
-        your new virtual host, keeping the ``zmi`` at the start.
 
 #.  Link the configuration for your host:
 
@@ -240,13 +237,27 @@ text-editor.
 Update the DNS
 ==============
 
-The service that supplies your domain-name should provide
-instructions for updating the domain name to point to your new
-:ref:`virtual host <virtual host>`. You will also need the domain
-for the ZMI to also point to the **same** server. You can either
+You will need to update your domain name's DNS records to point
+to the :ref:`virtual host(s) <virtual host>` you defined above.
+Your domain name registrar will provide you with instructions on
+how to accomplish this.
 
-* Add a DNS entry for the ZMI, or
-* Add an entry to your local :file:`/etc/hosts` file.
+If you configured ``groups.example.com`` as your virtual host,
+you will need to create DNS records that look like this:
+
+.. code-block:: cfg
+
+  groups  IN      A       123.123.123.123
+  groups  IN      AAAA    120f:120f:120f:120f:120f:120f:120f:120f
+
+If you configured the ZMI on a separate subdomain, you will also
+need to point it to the **same** server.
+
+.. code-block:: cfg
+
+  zmi.groups  IN      A       123.123.123.123
+  zmi.groups  IN      AAAA    120f:120f:120f:120f:120f:120f:120f:120f
+
 
 Change the reported port
 ========================
@@ -323,6 +334,8 @@ the following:
 
   server {
     listen 80;
+    listen [::]:80;
+
     server_name groups.example.com;
 
     return 301 https://$server_name$request_uri;
@@ -340,6 +353,8 @@ when you `add a virtual host`_, but
 
   server {
     listen 443;
+    listen [::]:443;
+
     server_name groups.example.com;
 
     ssl on;
@@ -348,6 +363,12 @@ when you `add a virtual host`_, but
 
     location / {
       rewrite /(.*) /VirtualHostBase/https/$host:443/groupserver/Content/initial_site/VirtualHostRoot/$1 break;
+      proxy_pass http://gs/;
+      include proxy_params;
+    }
+
+    location /manage {
+      rewrite /(.*) /VirtualHostBase/http/$host:80/VirtualHostRoot/$1 break;
       proxy_pass http://gs/;
       include proxy_params;
     }
